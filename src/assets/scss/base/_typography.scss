@@ -1,0 +1,119 @@
+@font-face {
+	font-family: 'Montserrat';
+	src: url('~/assets/fonts/Montserrat/static/Montserrat-Bold.ttf')
+		format('truetype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	src: url('~/assets/fonts/Montserrat/static/Montserrat-SemiBold.ttf')
+		format('truetype');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	src: url('~/assets/fonts/Montserrat/static/Montserrat-Medium.ttf')
+		format('truetype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	src: url('~/assets/fonts/Montserrat/static/Montserrat-Regular.ttf')
+		format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('~/assets/fonts/Open_Sans/static/OpenSans/OpenSans-Bold.ttf')
+		format('truetype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('~/assets/fonts/Open_Sans/static/OpenSans/OpenSans-SemiBold.ttf')
+		format('truetype');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('~/assets/fonts/Open_Sans/static/OpenSans/OpenSans-Regular.ttf')
+		format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('~/assets/fonts/Open_Sans/static/OpenSans/OpenSans-Light.ttf')
+		format('truetype');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	font-weight: 500;
+	line-height: 120%;
+	color: $base-font-color;
+}
+
+h1 {
+	font-size: 80px;
+	font-weight: 700;
+}
+
+h2 {
+	font-size: 42px;
+}
+
+h3 {
+	font-size: 32px;
+}
+
+h4 {
+	font-size: 25px;
+}
+
+h5 {
+	font-size: 20px;
+}
+
+p {
+	font-size: 20px;
+	line-height: $base-line-height;
+}
+
+.p-18 {
+	font-size: 18px;
+	line-height: 140%;
+}
+
+.m-auto {
+	margin: 0 auto;
+}

@@ -1,0 +1,53 @@
+<template>
+	<section v-editable="blok" class="section-big-form">
+		<div class="container">
+			<div class="grid-2-col">
+				<div>
+					<h2 v-if="blok.headline">{{ blok.headline }}</h2>
+					<div v-html="richtext" class="mt-medium" v-if="richtext"></div>
+				</div>
+				<div>
+					<form class="big-form">
+						<div class="big-form__inputs">
+							<DefaultInput
+								:title="input.placeholder"
+								:name="input.name"
+								:type="input.type"
+								v-for="input in blok.inputs"
+								:key="input"
+								:class="{ 'is-full': input.fullWidth }"
+								:isTextArea="input.textArea"
+							></DefaultInput>
+						</div>
+						<button type="submit" class="button-primary w-full">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</template>
+
+<script setup>
+	const props = defineProps({
+		blok: {
+			type: Object,
+			default: () => ({}),
+		},
+	})
+
+	const richtext = computed(() => renderRichText(props.blok.description))
+</script>
+
+<style lang="scss">
+	.big-form__inputs {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		column-gap: 35px;
+		row-gap: 25px;
+		margin-bottom: 36px;
+	}
+
+	.section-big-form {
+		padding: 124px 0 100px 0;
+	}
+</style>

@@ -1,0 +1,3 @@
+@function rem($targetSize) {
+  @return calc($targetSize / $base-font-size) + rem
+}

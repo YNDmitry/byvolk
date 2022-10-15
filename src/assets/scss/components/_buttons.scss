@@ -1,0 +1,78 @@
+.button {
+	&-primary,
+	&-secondary,
+	&-bordered {
+		display: inline-block;
+		min-width: 180px;
+		padding: 16px 70px;
+		font-weight: 500;
+		font-size: 25px;
+		line-height: 140%;
+		border: none;
+		cursor: pointer;
+		text-align: center;
+		transition: all 200ms ease;
+	}
+
+	&-primary {
+		background-color: $dark-background-color;
+		color: $dark-font-color;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+
+	&-secondary {
+		background-color: $base-background-color;
+		color: $base-font-color;
+
+		&:hover {
+			box-shadow: 2px 0px 20px $white;
+			transform: scale(1.1);
+		}
+	}
+
+	&-bordered {
+		border: 2px solid $base-dark-background-color;
+
+		&:hover {
+			color: $white;
+			background-color: $base-dark-background-color;
+		}
+	}
+
+	&-social {
+		@include flex-center;
+		min-width: 48px;
+		max-width: 48px;
+		width: 100%;
+		height: 48px;
+
+		& svg {
+			width: 26px;
+			height: 26px;
+		}
+	}
+}
+
+.radio-button {
+	display: inline-block;
+	padding: 12px 16px;
+	border: 1px solid #d8d9d8;
+	border-radius: 100px;
+	font-size: 18px;
+	line-height: 22px;
+	transition: all 200ms ease;
+	cursor: pointer;
+
+	& input {
+		display: none;
+	}
+
+	&.is-active {
+		border: 1px solid black;
+		background-color: black;
+		color: $white;
+	}
+}

@@ -1,0 +1,157 @@
+@import '../../../node_modules/normalize.css/normalize.css';
+
+@import './utilities/variables';
+
+@import './base/typography';
+@import './base/spacing';
+
+@import './utilities/functions';
+@import './utilities/mixins';
+
+@import './components/buttons';
+@import './components/lists';
+@import './components/header';
+@import './components/footer';
+@import './components/forms';
+@import './components/banners';
+
+@import './layouts/main';
+
+@import './transitions/page';
+
+* {
+	box-sizing: border-box;
+
+	&:focus {
+		outline: 3px solid black;
+	}
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	transition: all 0.2s ease;
+}
+
+body.dark {
+	color: $dark-font-color;
+	background-color: $dark-background-color;
+
+	& h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p {
+		color: $dark-font-color;
+	}
+
+	& .header {
+		background-color: $base-dark-background-color;
+	}
+
+	& .banner {
+		background-color: $base-dark-background-color;
+	}
+}
+
+body {
+	font-family: $base-font-family;
+	font-size: $base-font-size;
+	color: $base-font-color;
+	font-weight: 400;
+	line-height: $base-line-height;
+	background-color: $base-background-color;
+}
+
+main {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+}
+
+b {
+	font-weight: 600;
+}
+
+a,
+button {
+	display: inline-block;
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+img {
+	max-width: 100%;
+}
+
+input,
+textarea {
+	outline: none;
+
+	&:active {
+		outline: none;
+	}
+	&:focus {
+		outline: none;
+	}
+}
+
+.container,
+.container-md {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.container {
+	max-width: 1344px;
+}
+
+.container-md {
+	max-width: 890px;
+}
+
+.grid-2-col {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 15%;
+}
+
+.grid-3-col {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	column-gap: 35px;
+	row-gap: 50px;
+}
+
+.w-full {
+	width: 100%;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.fw-600 {
+	font-weight: 600;
+}
