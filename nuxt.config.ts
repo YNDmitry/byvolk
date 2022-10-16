@@ -59,7 +59,7 @@ export default defineNuxtConfig({
 		},
 	},
 	image: {
-		dir: 'assets/images',
+		dir: 'public',
 		storyblok: {
 			baseURL: 'https://a.storyblok.com',
 		},
