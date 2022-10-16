@@ -26,22 +26,21 @@
 						</div>
 
 						<div class="print__info-body">
-							<div>
-								<div>Chose Frame</div>
+							<div v-for="option in data.productByHandle.options" :key="option">
+								<div>Chose {{ option.name }}</div>
 								<div class="print__info-body-buttons">
-									<label class="radio-button">
-										<input type="radio" name="frame" value="0" />
-										<span>Black</span>
-									</label>
-								</div>
-							</div>
-
-							<div class="mt-medium">
-								<div>Select Size</div>
-								<div class="print__info-body-buttons">
-									<label class="radio-button">
-										<input type="radio" name="frame" value="0" />
-										<span>A3</span>
+									<label
+										class="radio-button"
+										v-for="item in option.values"
+										:key="item"
+									>
+										<input
+											type="radio"
+											:name="option.name"
+											:value="item"
+											v-model="frame"
+										/>
+										<span>{{ item }}</span>
 									</label>
 								</div>
 							</div>
@@ -107,103 +106,3 @@
 		}).format(data.value.productByHandle.priceRange.minVariantPrice.amount)
 	})
 </script>
-
-<style lang="scss">
-	.section-print {
-		padding-bottom: 96px;
-	}
-	.section-prints {
-		padding: 96px 0;
-	}
-	.print {
-		&__wrapper {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			align-items: flex-start;
-			column-gap: 48px;
-		}
-
-		&__left {
-			max-width: 750px;
-		}
-
-		&__info {
-			margin-top: 84px;
-			position: sticky;
-			top: 150px;
-
-			&-price {
-				font-family: 'Montserrat';
-				font-weight: 400;
-				font-size: 25px;
-				line-height: 120%;
-
-				& strong {
-					font-weight: 500;
-				}
-			}
-			&-head {
-			}
-
-			&-body {
-				margin: 50px 0;
-
-				&-buttons {
-					margin-top: 10px;
-					display: flex;
-					gap: 15px;
-				}
-			}
-
-			&-footer {
-				&-col-1 {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					margin-bottom: 12px;
-				}
-
-				&-buttons {
-					display: flex;
-					flex-direction: column;
-
-					.print__info-footer-a {
-						font-size: 16px;
-						line-height: 140%;
-						color: rgba(25, 26, 25, 0.5);
-						text-decoration: underline;
-					}
-				}
-			}
-		}
-
-		&__slider {
-			background-color: #f8f8f8;
-			height: 700px;
-
-			&-slide {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-
-				& img {
-					width: 100%;
-					object-fit: contain;
-				}
-			}
-
-			&-slide:nth-child(1) {
-				padding: 64px;
-				& img {
-					max-width: 450px;
-				}
-			}
-
-			&-slide:nth-child(2) {
-				& img {
-					object-fit: cover;
-				}
-			}
-		}
-	}
-</style>

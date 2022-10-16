@@ -1,0 +1,48 @@
+.community-slide {
+	background-color: #f8f8f8;
+	padding: 32px 25px;
+
+	&__body {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 10px;
+		margin-top: 64px;
+	}
+}
+
+.slider {
+	padding: 96px 0px;
+	overflow: hidden;
+
+	&__head {
+		@include flex-space-between-center;
+
+		&-button {
+			margin-left: 25px;
+		}
+	}
+
+	&__slider {
+		overflow: visible;
+	}
+
+	&__nav {
+		display: flex;
+		align-items: center;
+		gap: 15px;
+
+		&-button {
+			@include flex-center;
+			max-width: 48px;
+			min-width: 48px;
+			height: 48px;
+			border-radius: 100%;
+			background-color: #f8f8f8;
+
+			&.is-prev {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}

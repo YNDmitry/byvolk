@@ -21,9 +21,3 @@
 
 	const richtext = computed(() => renderRichText(props.blok.description))
 </script>
-
-<style lang="scss">
-	.section-hero {
-		padding: 128px 0 196px 0;
-	}
-</style>

@@ -18,20 +18,3 @@
 		},
 	})
 </script>
-
-<style lang="scss">
-	.contact-hero {
-		min-height: 80vh;
-		padding: 10vh 80px;
-		display: flex;
-		align-items: center;
-		background-position: 50% 50%;
-		background-repeat: no-repeat;
-		background-size: 80%;
-
-		&__container {
-			display: inline-block;
-			margin: 0 auto;
-		}
-	}
-</style>

@@ -20,18 +20,3 @@
 		},
 	})
 </script>
-
-<style lang="scss">
-	.community-slide {
-		background-color: #f8f8f8;
-		padding: 32px 25px;
-
-		&__body {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			gap: 10px;
-			margin-top: 64px;
-		}
-	}
-</style>

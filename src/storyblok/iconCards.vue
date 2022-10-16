@@ -33,39 +33,3 @@
 
 	const columnCount = computedAsync(() => props.blok.columnCount)
 </script>
-
-<style lang="scss">
-	.icons__grid {
-		display: grid;
-		padding: 96px 0;
-		row-gap: 50px;
-		margin-left: -20px;
-		margin-right: -20px;
-	}
-
-	.icons__card {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		gap: 14px;
-		padding: 0 20px;
-		border-right: 1px solid #d9d9d9;
-
-		&:last-child {
-			border-right: 0;
-		}
-
-		&-icon {
-			margin-bottom: 8px;
-
-			&-img {
-				object-fit: contain;
-			}
-		}
-
-		& h5 {
-			text-transform: none;
-		}
-	}
-</style>

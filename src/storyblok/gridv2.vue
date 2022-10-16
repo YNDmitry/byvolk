@@ -21,12 +21,3 @@
 		},
 	})
 </script>
-
-<style lang="scss">
-	.grid-v2 {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		column-gap: 35px;
-		row-gap: 50px;
-	}
-</style>

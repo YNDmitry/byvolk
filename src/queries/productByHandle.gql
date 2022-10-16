@@ -19,15 +19,9 @@ query ProductByHandle($handle: String!) {
 				currencyCode
 			}
 		}
-		variants(first: 10) {
-			edges {
-				node {
-					selectedOptions {
-						name
-						value
-					}
-				}
-			}
+		options(first: 10) {
+			name
+			values
 		}
 	}
 }

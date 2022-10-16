@@ -1,0 +1,92 @@
+.section-hero-main {
+	position: relative;
+	display: flex;
+	padding-bottom: 128px;
+	padding-top: 8vh;
+
+	& .hero-main {
+		&__img-wrapper {
+			position: absolute;
+			z-index: 0;
+			bottom: 0;
+			top: 0;
+			left: 0;
+			right: 0;
+			width: 50%;
+			background-color: black;
+
+			&::before {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				top: 0;
+				left: 0;
+				right: 0;
+				background-color: #f8f8f8;
+				opacity: 0.75;
+			}
+
+			& img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+
+		&__body {
+			max-width: 620px;
+			margin-left: auto;
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__footer {
+			display: flex;
+			flex-direction: column;
+			margin-left: auto;
+			margin-top: 10vh;
+		}
+
+		&__p {
+			font-weight: 200;
+			font-style: italic;
+			margin-left: auto;
+		}
+
+		&__info {
+			display: flex;
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 30px;
+			max-width: 940px;
+			margin-left: auto;
+
+			& h1 {
+				text-align: right;
+			}
+
+			&-buttons {
+				margin-top: 24px;
+			}
+		}
+
+		&__content {
+			position: relative;
+			display: flex;
+			align-items: flex-end;
+			z-index: 1;
+		}
+
+		&__stars {
+			margin-left: auto;
+			display: inline-block;
+			text-align: end;
+
+			& span {
+				margin-top: -8px;
+				display: block;
+				font-size: 8px;
+			}
+		}
+	}
+}

@@ -8,14 +8,9 @@
 @import './utilities/functions';
 @import './utilities/mixins';
 
-@import './components/buttons';
-@import './components/lists';
-@import './components/header';
-@import './components/footer';
-@import './components/forms';
-@import './components/banners';
+@import './components/index';
 
-@import './layouts/main';
+@import './pages/prints';
 
 @import './transitions/page';
 

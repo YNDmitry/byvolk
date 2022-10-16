@@ -33,12 +33,3 @@
 
 	const richtext = computed(() => renderRichText(props.blok.description))
 </script>
-
-<style lang="scss">
-	.section-iwt {
-		padding: 64px 0;
-	}
-	.iwt__items {
-		align-items: center;
-	}
-</style>

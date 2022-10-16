@@ -37,17 +37,3 @@
 
 	const richtext = computed(() => renderRichText(props.blok.description))
 </script>
-
-<style lang="scss">
-	.big-form__inputs {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		column-gap: 35px;
-		row-gap: 25px;
-		margin-bottom: 36px;
-	}
-
-	.section-big-form {
-		padding: 124px 0 100px 0;
-	}
-</style>
