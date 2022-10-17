@@ -1,0 +1,20 @@
+query ProductRecommendations($productId: ID!) {
+	productRecommendations(productId: $productId) {
+		title
+		handle
+		totalInventory
+		images(first: 2) {
+			edges {
+				node {
+					src
+				}
+			}
+		}
+		priceRange {
+			minVariantPrice {
+				amount
+				currencyCode
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+<template>
+	<svg
+		width="30"
+		height="30"
+		fill="none"
+		stroke="currentColor"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		stroke-width="1"
+		viewBox="0 0 24 24"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<path
+			d="M16 4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4Z"
+		></path>
+		<path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
+		<path d="M16.5 7.5v.001"></path>
+	</svg>
+</template>

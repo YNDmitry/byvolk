@@ -13,7 +13,29 @@
 								<NuxtImg :src="image.node.src"></NuxtImg>
 							</SwiperSlide>
 						</Swiper>
-						<div class="print__faq"></div>
+						<div class="print__faq">
+							<Dropdown>
+								<template #head>
+									<h5>Printing & Framing</h5>
+								</template>
+								<template #body>
+									<p>
+										Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+										Sapiente, dignissimos.Lorem, ipsum dolor sit amet
+										consectetur adipisicing elit. Sapiente, dignissimos.Lorem,
+										ipsum dolor
+									</p>
+								</template>
+							</Dropdown>
+							<Dropdown>
+								<template #head>
+									<h5>Shipping & returns</h5>
+								</template>
+								<template #body>
+									<p>Body</p>
+								</template>
+							</Dropdown>
+						</div>
 					</div>
 					<div class="print__info">
 						<div class="print__info-head">
@@ -26,19 +48,39 @@
 						</div>
 
 						<div class="print__info-body">
-							<div v-for="option in data.productByHandle.options" :key="option">
-								<div>Chose {{ option.name }}</div>
+							<div>
+								<div>Chose {{ data.productByHandle.options[0].name }}</div>
 								<div class="print__info-body-buttons">
 									<label
 										class="radio-button"
-										v-for="item in option.values"
+										:class="{ 'is-active': frameVal === item }"
+										v-for="item in data.productByHandle.options[0].values"
 										:key="item"
 									>
 										<input
 											type="radio"
-											:name="option.name"
+											:name="data.productByHandle.options[0].name"
 											:value="item"
-											v-model="frame"
+											v-model="frameVal"
+										/>
+										<span>{{ item }}</span>
+									</label>
+								</div>
+							</div>
+							<div>
+								<div>Chose {{ data.productByHandle.options[1].name }}</div>
+								<div class="print__info-body-buttons">
+									<label
+										class="radio-button"
+										:class="{ 'is-active': sizeVal === item }"
+										v-for="item in data.productByHandle.options[1].values"
+										:key="item"
+									>
+										<input
+											type="radio"
+											:name="data.productByHandle.options[1].name"
+											:value="item"
+											v-model="sizeVal"
 										/>
 										<span>{{ item }}</span>
 									</label>
@@ -50,11 +92,19 @@
 							<div class="print__info-footer-col-1">
 								<span class="print__info-price">
 									Price:
-									<strong>{{ price }}</strong>
+									<strong>{{
+										price(
+											currentProductVariant.price.amount,
+											currentProductVariant.price.currencyCode
+										)
+									}}</strong>
 								</span>
 								<div>
 									<IconsHearth></IconsHearth>
-									<IconsShare></IconsShare>
+									<IconsShare
+										v-if="isSupported"
+										@click="startShare()"
+									></IconsShare>
 								</div>
 							</div>
 
@@ -71,20 +121,12 @@
 				</div>
 			</div>
 		</section>
-		<section class="section-prints">
-			<div class="container">
-				<h2>You May Also Like</h2>
-				<!-- <div class="grid-3-col mt-large">
-					<ProductBlock></ProductBlock>
-					<ProductBlock></ProductBlock>
-					<ProductBlock></ProductBlock>
-				</div> -->
-			</div>
-		</section>
+		<sectionPrints :handle="data.productByHandle.id"></sectionPrints>
 	</div>
 </template>
 
 <script setup>
+	const { share, isSupported } = useShare()
 	const { slug } = useRoute().params
 
 	const { data } = await useAsyncGql({
@@ -94,15 +136,41 @@
 		},
 	})
 
+	const frameVal = ref(data.value.productByHandle.options[0].values[0])
+	const sizeVal = ref(data.value.productByHandle.options[1].values[0])
+	const currentProductVariant = ref(null)
+
 	await useHead({
 		title: data.value?.productByHandle?.title + ' - byvolk',
+		meta: [
+			{
+				name: 'description',
+				content: data.value?.productByHandle?.description,
+			},
+		],
 	})
 
-	const price = asyncComputed(() => {
+	asyncComputed(() => {
+		data.value.productByHandle.variants.edges.find((el) => {
+			el.node.selectedOptions[0].value === frameVal.value &&
+			el.node.selectedOptions[1].value === sizeVal.value
+				? (currentProductVariant.value = el.node)
+				: ''
+		})
+	})
+
+	const price = (amount, currencyCode) => {
 		return new Intl.NumberFormat('en-US', {
 			style: 'currency',
-			currency:
-				data.value.productByHandle.priceRange.minVariantPrice.currencyCode,
-		}).format(data.value.productByHandle.priceRange.minVariantPrice.amount)
-	})
+			currency: currencyCode,
+		}).format(amount)
+	}
+
+	function startShare() {
+		share({
+			title: data.value?.productByHandle?.title,
+			text: data.value?.productByHandle?.description,
+			url: location.href,
+		})
+	}
 </script>

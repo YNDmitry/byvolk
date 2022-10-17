@@ -18,14 +18,20 @@
 					<FormNewsletter title="Subscribe for spam"></FormNewsletter>
 
 					<div class="footer__soc-wrapper">
+						<h5>Connect</h5>
 						<div class="footer__soc">
 							<NuxtLink
-								:to="link.path"
 								class="footer__soc-link"
-								v-for="link in socLinks"
-								:key="link"
+								to="https://www.instagram.com/byvolk/"
+								target="_blank"
 							>
-								<component :is="`icons-${link.label}`"></component>
+								<IconsSocialInstagram></IconsSocialInstagram>
+							</NuxtLink>
+							<NuxtLink class="footer__soc-link" target="_blank">
+								<IconsSocialWhatsapp></IconsSocialWhatsapp>
+							</NuxtLink>
+							<NuxtLink class="footer__soc-link" to="mailto:info@byvolk.com">
+								<IconsSocialEmail></IconsSocialEmail>
 							</NuxtLink>
 						</div>
 					</div>
@@ -34,7 +40,7 @@
 				</div>
 			</div>
 			<div class="footer__bottom">
-				<div class="footer__bottom-copy">© 2022 VOLK.</div>
+				<div class="footer__bottom-copy">© 2022 VOLK</div>
 				<div class="footer__payments">
 					<IconsVisa></IconsVisa>
 					<IconsMastercard></IconsMastercard>

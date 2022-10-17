@@ -38,7 +38,7 @@ export default defineNuxtConfig({
 			'graphql-client': {
 				clients: {
 					default: {
-						host: 'https://byvolk.myshopify.com/api/graphql.json',
+						host: 'https://byvolk.myshopify.com/api/2022-10/graphql.json',
 						headers: {
 							'X-Shopify-Storefront-Access-Token':
 								process.env.SHOPIFY_ACCESS_TOKEN,

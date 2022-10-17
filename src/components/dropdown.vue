@@ -1,14 +1,42 @@
 <template>
-	<div></div>
+	<div class="dropdown" @click="open()" ref="target">
+		<div class="dropdown__toggle">
+			<slot name="head"></slot>
+			<IconsPluse :class="{ 'is-active': isOpen }"></IconsPluse>
+		</div>
+		<Transition name="dropdown">
+			<div class="dropdown__list" v-show="isOpen">
+				<slot name="body" class="dropdown__list-content"></slot>
+			</div>
+		</Transition>
+	</div>
 </template>
 
 <script setup>
-	const props = defineProps({
-		title: {
-			type: String,
-		},
-		description: {
-			type: Object,
-		},
-	})
+	const target = ref(null)
+	const isOpen = ref(false)
+
+	function open() {
+		if (!isOpen.value) {
+			return (isOpen.value = true)
+		}
+		return (isOpen.value = false)
+	}
 </script>
+
+<style lang="scss">
+	.dropdown-leave-active,
+	.dropdown-enter-active {
+		transition: all 0.2s;
+		max-height: 230px;
+	}
+
+	.dropdown-enter-from {
+		max-height: 0px;
+	}
+
+	.dropdown-enter,
+	.dropdown-leave-to {
+		max-height: 0px;
+	}
+</style>

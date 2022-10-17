@@ -5,6 +5,27 @@
 	padding-bottom: 35px;
 	margin-top: 96px;
 
+	& h5 {
+		color: $white;
+		text-transform: none;
+	}
+
+	&__soc {
+		margin-top: 15px;
+		display: flex;
+		align-items: center;
+		gap: 20px;
+
+		&-wrapper {
+			margin-top: 32px;
+		}
+
+		&-link {
+			height: 30px;
+			width: 30px;
+		}
+	}
+
 	&__links {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
