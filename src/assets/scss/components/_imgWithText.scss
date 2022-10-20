@@ -5,3 +5,9 @@
 .iwt__items {
 	align-items: center;
 }
+
+.iwt__info-rich {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}

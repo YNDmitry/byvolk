@@ -109,7 +109,22 @@
 							</div>
 
 							<div class="print__info-footer-buttons">
-								<button type="submit" class="button-primary w-full">
+								<button
+									type="button"
+									class="button-primary w-full"
+									@click="
+										addToCart({
+											...currentProductVariant,
+											title: data.productByHandle.title,
+											description: data.productByHandle.description,
+											image: data.productByHandle.images.edges[0].node.src,
+											price: price(
+												currentProductVariant.price.amount,
+												currentProductVariant.price.currencyCode
+											),
+										})
+									"
+								>
 									Add To Cart
 								</button>
 								<a href="#" class="print__info-footer-a m-auto mt-small"
@@ -126,6 +141,8 @@
 </template>
 
 <script setup>
+	import { useCartStore } from '../../../store/cart'
+
 	const { share, isSupported } = useShare()
 	const { slug } = useRoute().params
 
@@ -173,4 +190,6 @@
 			url: location.href,
 		})
 	}
+
+	const addToCart = (item) => useCartStore().addToCart(item)
 </script>

@@ -1,0 +1,15 @@
+mutation CheckoutCreate($lineItems: [CheckoutLineItemInput!]) {
+	checkoutCreate(input: { lineItems: $lineItems }) {
+		checkout {
+			webUrl
+			lineItems(first: 5) {
+				edges {
+					node {
+						title
+						quantity
+					}
+				}
+			}
+		}
+	}
+}

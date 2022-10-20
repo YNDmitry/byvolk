@@ -1,20 +1,51 @@
 <template>
 	<Teleport to="body">
 		<Transition name="modal-cart">
-			<div class="cart-wrapper" v-if="modal.$state.isOpen">
-				<div class="cart-wrapper__overlay" @click="modal.handleModal()"></div>
+			<div class="cart-wrapper" v-if="cart.isOpen">
+				<div class="cart-wrapper__overlay" @click="cart.handleModal()"></div>
 				<div class="cart">
 					<!-- <h4 class="cart__empty">Your cart is empty :(</h4> -->
 					<div class="cart__head">
-						<h4>Cart</h4>
-						<button @click="modal.handleModal()">
+						<h5>Your prints</h5>
+						<button @click="cart.handleModal()">
 							<icons-close></icons-close>
 						</button>
 					</div>
-					<div class="cart__body"></div>
-					<div class="cart__footer"></div>
-					<!-- <template> -->
-					<!-- </template> -->
+					<div class="cart__body" v-if="cart.items.length > 0">
+						<div class="cart__body-card" v-for="card in cart.items" :key="card">
+							<div class="cart__body-card-img">
+								<NuxtImg :src="card.variantId.image"></NuxtImg>
+							</div>
+							<div class="cart__body-card-info">
+								<div class="cart__body-card-info-head">
+									<h6>{{ card.variantId.title }}</h6>
+									<p>
+										{{ card.variantId.description }}
+									</p>
+								</div>
+								<div class="cart__body-card-info-footer">
+									<PlusMinusInput :value="card.quantity"></PlusMinusInput>
+									<button class="cart__body-card-remove">Remove</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div v-else class="cart__empty">Your cart is empty :(</div>
+					<div class="cart__footer" v-if="cart.items.length > 0">
+						<div class="cart__footer-info">
+							<span>Total price: <strong>$410</strong></span>
+							<span
+								>Total items: <strong>{{ cart.items.length }}</strong></span
+							>
+						</div>
+						<button
+							type="button"
+							class="button-primary w-full"
+							@click="cart.submit()"
+						>
+							Checkout
+						</button>
+					</div>
 				</div>
 			</div>
 		</Transition>
@@ -24,5 +55,5 @@
 <script setup>
 	import { useCartStore } from '~~/src/store/cart'
 
-	const modal = useCartStore()
+	const cart = useCartStore()
 </script>

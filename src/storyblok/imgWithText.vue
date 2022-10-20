@@ -9,7 +9,7 @@
 					loading="lazy"
 				></NuxtPicture>
 				<div class="iwt__info">
-					<div v-html="richtext"></div>
+					<div v-html="richtext" class="iwt__info-rich"></div>
 					<NuxtLink
 						:to="button.link.cached_url"
 						v-for="button in blok.button"

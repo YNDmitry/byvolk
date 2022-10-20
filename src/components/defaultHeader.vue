@@ -22,8 +22,8 @@
 					</ul>
 				</nav>
 				<div class="header__cart" @click="cartModal.handleModal()">
-					<div class="header__cart-count" v-if="cartModal.itemsCount > 0">
-						{{ cartModal.itemsCount }}
+					<div class="header__cart-count" v-if="cartModal.items.length > 0">
+						{{ cartModal.items.length }}
 					</div>
 					<IconsCart></IconsCart>
 				</div>
