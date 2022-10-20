@@ -32,6 +32,15 @@
 		row-gap: 30px;
 		column-gap: 80px;
 		margin: 0 auto;
+
+		@include tablet {
+			margin: 0;
+			margin-right: auto;
+		}
+
+		@include phone-l {
+			column-gap: 30px;
+		}
 	}
 
 	&__link {
@@ -44,6 +53,10 @@
 		display: flex;
 		justify-content: space-between;
 		row-gap: 45px;
+
+		@include tablet {
+			flex-direction: column;
+		}
 	}
 
 	&__first {
@@ -55,6 +68,13 @@
 		margin-left: 50px;
 		max-width: 450px;
 		width: 40%;
+
+		@include tablet {
+			margin-left: 0;
+			width: 100%;
+			max-width: none;
+			margin-top: 30px;
+		}
 	}
 
 	&__bottom {

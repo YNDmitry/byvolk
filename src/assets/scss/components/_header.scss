@@ -25,6 +25,10 @@
 		display: flex;
 		gap: 25px;
 
+		@include phone-l {
+			display: none;
+		}
+
 		& a {
 			transition: opacity 200ms ease;
 		}
@@ -46,10 +50,31 @@
 		}
 	}
 
+	&__menu-btn {
+		display: none;
+		width: 30px;
+
+		@include phone-l {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		&-burger {
+			height: 2px;
+			width: 100%;
+			background-color: black;
+		}
+	}
+
 	&__cart {
 		display: inherit;
 		position: relative;
 		cursor: pointer;
+
+		@include phone-l {
+			display: none;
+		}
 
 		&-count {
 			display: flex;

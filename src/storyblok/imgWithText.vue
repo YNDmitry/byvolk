@@ -7,6 +7,7 @@
 					provider="storyblok"
 					class="iwt__img"
 					loading="lazy"
+					:style="{ order: blok.imageOrder }"
 				></NuxtPicture>
 				<div class="iwt__info">
 					<div v-html="richtext" class="iwt__info-rich"></div>

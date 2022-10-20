@@ -14,6 +14,14 @@
 	align-items: flex-end;
 	color: white;
 
+	@include phone-l {
+		height: 500px;
+	}
+
+	@include phone {
+		height: 450px;
+	}
+
 	&-info {
 		position: relative;
 		z-index: 2;

@@ -24,12 +24,20 @@
 				right: 0;
 				background-color: #f8f8f8;
 				opacity: 0.75;
+
+				@include phone-l {
+					opacity: 0.9;
+				}
 			}
 
 			& img {
 				height: 100%;
 				width: 100%;
 				object-fit: cover;
+			}
+
+			@include phone-l {
+				width: 100%;
 			}
 		}
 
@@ -38,6 +46,10 @@
 			margin-left: auto;
 			display: flex;
 			flex-direction: column;
+
+			@include phone-l {
+				max-width: none;
+			}
 		}
 
 		&__footer {
@@ -45,6 +57,11 @@
 			flex-direction: column;
 			margin-left: auto;
 			margin-top: 10vh;
+
+			@include phone-l {
+				margin-left: 0;
+				margin-top: 5vh;
+			}
 		}
 
 		&__p {
@@ -63,6 +80,10 @@
 
 			& h1 {
 				text-align: right;
+
+				@include phone-l {
+					text-align: left;
+				}
 			}
 
 			&-buttons {
@@ -86,6 +107,11 @@
 				margin-top: -8px;
 				display: block;
 				font-size: 8px;
+			}
+
+			@include phone-l {
+				margin-left: 0;
+				text-align: left;
 			}
 		}
 	}

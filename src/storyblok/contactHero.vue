@@ -2,7 +2,11 @@
 	<section
 		class="contact-hero"
 		v-editable="blok"
-		:style="`background-image:url(${blok.backgroundImage.filename})`"
+		:style="{
+			'background-image': isPhoneScreen.value
+				? `url(${mobileBgImg})`
+				: `url(${deskBgImg})`,
+		}"
 	>
 		<div class="contact-hero__container">
 			<div class="contact-hero__social">
@@ -25,10 +29,14 @@
 </template>
 
 <script setup>
-	defineProps({
+	const props = defineProps({
 		blok: {
 			type: Object,
 			default: () => ({}),
 		},
 	})
+
+	const isPhoneScreen = useMediaQuery('(max-width: 771px)')
+	const deskBgImg = props.blok.backgroundImage.filename
+	const mobileBgImg = props.blok.mobileBackgroundImage.filename
 </script>

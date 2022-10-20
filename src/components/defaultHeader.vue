@@ -27,6 +27,13 @@
 					</div>
 					<IconsCart></IconsCart>
 				</div>
+				<div class="header__menu-btn">
+					<div
+						v-for="item in 3"
+						:key="item"
+						class="header__menu-btn-burger"
+					></div>
+				</div>
 			</div>
 		</div>
 	</header>

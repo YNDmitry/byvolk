@@ -19,3 +19,21 @@
 	align-items: center;
 	justify-content: space-between;
 }
+
+@mixin tablet {
+	@media screen and (max-width: $layout-breakpoint-tablet) {
+		@content;
+	}
+}
+
+@mixin phone-l {
+	@media screen and (max-width: $layout-breakpoint-mobile-landscape) {
+		@content;
+	}
+}
+
+@mixin phone {
+	@media screen and (max-width: $layout-breakpoint-phone) {
+		@content;
+	}
+}

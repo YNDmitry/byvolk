@@ -2,11 +2,11 @@
 
 @import './utilities/variables';
 
+@import './utilities/mixins';
+@import './utilities/functions';
+
 @import './base/typography';
 @import './base/spacing';
-
-@import './utilities/functions';
-@import './utilities/mixins';
 
 @import './components/index';
 
@@ -46,6 +46,10 @@ body.dark {
 
 	& .header {
 		background-color: $base-dark-background-color;
+
+		& .header__menu-btn-burger {
+			background-color: $white;
+		}
 	}
 
 	& .banner {
@@ -134,6 +138,11 @@ textarea {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 15%;
+	row-gap: 50px;
+
+	@include phone-l {
+		grid-template-columns: 1fr;
+	}
 }
 
 .grid-3-col {
@@ -141,6 +150,10 @@ textarea {
 	grid-template-columns: repeat(3, 1fr);
 	column-gap: 35px;
 	row-gap: 50px;
+
+	@include tablet {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 .w-full {

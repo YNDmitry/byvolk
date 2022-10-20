@@ -8,6 +8,10 @@
 	gap: 80px;
 	margin-top: 72px;
 
+	@include phone-l {
+		gap: 150px;
+	}
+
 	& .grid-card:nth-child(even) {
 		& .grid-card__picture-wrapper {
 			margin-left: auto;
@@ -46,9 +50,17 @@ body.dark {
 	display: flex;
 	position: relative;
 
+	@include phone-l {
+		flex-direction: column;
+	}
+
 	&__picture-wrapper {
 		width: 52%;
 		position: relative;
+
+		@include phone-l {
+			width: 100%;
+		}
 
 		&::before {
 			content: '';
@@ -68,19 +80,44 @@ body.dark {
 		max-width: 700px;
 		right: 0;
 
+		@include tablet {
+			top: 64px;
+		}
+
+		@include phone-l {
+			margin-top: 32px;
+			position: static;
+		}
+
 		& h3 {
 			font-size: 68px;
 			font-weight: 700;
+
+			@include tablet {
+				font-size: 50px;
+			}
+
+			@include phone-l {
+				font-size: 40px;
+			}
 		}
 
 		& h4 {
 			font-size: 28px;
 			margin: 18px 0;
+
+			@include phone-l {
+				font-size: 22px;
+			}
 		}
 	}
 
 	&__rich,
 	& h4 {
 		margin-left: 85px;
+
+		@include phone-l {
+			margin-left: 0;
+		}
 	}
 }

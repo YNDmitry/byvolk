@@ -1,7 +1,8 @@
 .button {
 	&-primary,
 	&-secondary,
-	&-bordered {
+	&-bordered,
+	&-transparent {
 		display: inline-block;
 		font-family: 'Montserrat';
 		font-weight: 500;
@@ -41,6 +42,9 @@
 			color: $white;
 			background-color: $base-dark-background-color;
 		}
+	}
+
+	&-transparent {
 	}
 
 	&-social {

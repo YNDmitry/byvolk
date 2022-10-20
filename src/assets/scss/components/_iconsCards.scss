@@ -4,6 +4,14 @@
 	row-gap: 50px;
 	margin-left: -20px;
 	margin-right: -20px;
+
+	@include tablet {
+		grid-template-columns: repeat(2, 1fr) !important;
+	}
+
+	@include phone {
+		grid-template-columns: repeat(1, 1fr) !important;
+	}
 }
 
 .icons__card {
@@ -14,6 +22,18 @@
 	gap: 14px;
 	padding: 0 20px;
 	border-right: 1px solid #d9d9d9;
+
+	@include tablet {
+		&:nth-child(even) {
+			border-right: 0;
+		}
+
+		&:nth-child(-2n) {
+			border-bottom: 0;
+		}
+
+		border-bottom: 1px solid #d9d9d9;
+	}
 
 	&:last-child {
 		border-right: 0;

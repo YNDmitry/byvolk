@@ -12,7 +12,11 @@
 						</button>
 					</div>
 					<div class="cart__body" v-if="cart.items.length > 0">
-						<div class="cart__body-card" v-for="card in cart.items" :key="card">
+						<div
+							class="cart__body-card"
+							v-for="(card, idx) in cart.items"
+							:key="idx"
+						>
 							<div class="cart__body-card-img">
 								<NuxtImg :src="card.variantId.image"></NuxtImg>
 							</div>
@@ -25,7 +29,13 @@
 								</div>
 								<div class="cart__body-card-info-footer">
 									<PlusMinusInput :value="card.quantity"></PlusMinusInput>
-									<button class="cart__body-card-remove">Remove</button>
+									<button
+										type="button"
+										class="cart__body-card-remove"
+										@click="cart.removeFromCart(idx)"
+									>
+										Remove
+									</button>
 								</div>
 							</div>
 						</div>
@@ -33,7 +43,12 @@
 					<div v-else class="cart__empty">Your cart is empty :(</div>
 					<div class="cart__footer" v-if="cart.items.length > 0">
 						<div class="cart__footer-info">
-							<span>Total price: <strong>$410</strong></span>
+							<span
+								>Total price:
+								<strong>{{
+									price(cart.totalPrice, cart.currencyCode)
+								}}</strong></span
+							>
 							<span
 								>Total items: <strong>{{ cart.items.length }}</strong></span
 							>
@@ -54,6 +69,13 @@
 
 <script setup>
 	import { useCartStore } from '~~/src/store/cart'
+
+	const price = (amount, currencyCode) => {
+		return new Intl.NumberFormat('en-US', {
+			style: 'currency',
+			currency: currencyCode,
+		}).format(amount)
+	}
 
 	const cart = useCartStore()
 </script>

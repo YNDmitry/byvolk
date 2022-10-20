@@ -1,11 +1,12 @@
 <template>
 	<main class="main">
 		<NuxtLoadingIndicator />
-		<default-banner></default-banner>
-		<default-header></default-header>
+		<DefaultBanner></DefaultBanner>
+		<DefaultHeader></DefaultHeader>
 		<slot></slot>
-		<default-footer></default-footer>
-		<popup-cart></popup-cart>
+		<DefaultFooter></DefaultFooter>
+		<PopupCart></PopupCart>
+		<!-- <PopupCookie></PopupCookie> -->
 	</main>
 </template>
 

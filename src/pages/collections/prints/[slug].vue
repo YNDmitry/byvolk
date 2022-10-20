@@ -118,10 +118,8 @@
 											title: data.productByHandle.title,
 											description: data.productByHandle.description,
 											image: data.productByHandle.images.edges[0].node.src,
-											price: price(
-												currentProductVariant.price.amount,
-												currentProductVariant.price.currencyCode
-											),
+											price: currentProductVariant.price.amount,
+											currencyCode: currentProductVariant.price.currencyCode,
 										})
 									"
 								>
