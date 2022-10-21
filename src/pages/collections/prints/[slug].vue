@@ -13,29 +13,39 @@
 								<NuxtImg :src="image.node.src"></NuxtImg>
 							</SwiperSlide>
 						</Swiper>
-						<div class="print__faq">
-							<Dropdown>
-								<template #head>
-									<h5>Printing & Framing</h5>
-								</template>
-								<template #body>
-									<p>
-										Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-										Sapiente, dignissimos.Lorem, ipsum dolor sit amet
-										consectetur adipisicing elit. Sapiente, dignissimos.Lorem,
-										ipsum dolor
-									</p>
-								</template>
-							</Dropdown>
-							<Dropdown>
-								<template #head>
-									<h5>Shipping & returns</h5>
-								</template>
-								<template #body>
-									<p>Body</p>
-								</template>
-							</Dropdown>
-						</div>
+						<ClientOnly>
+							<Teleport
+								:to="
+									useMediaQuery('(max-width: 771px)').value
+										? '.print__wrapper'
+										: '.print__left'
+								"
+							>
+								<div class="print__faq">
+									<Dropdown>
+										<template #head>
+											<h5>Printing & Framing</h5>
+										</template>
+										<template #body>
+											<p>
+												Lorem, ipsum dolor sit amet consectetur adipisicing
+												elit. Sapiente, dignissimos.Lorem, ipsum dolor sit amet
+												consectetur adipisicing elit. Sapiente,
+												dignissimos.Lorem, ipsum dolor
+											</p>
+										</template>
+									</Dropdown>
+									<Dropdown>
+										<template #head>
+											<h5>Shipping & returns</h5>
+										</template>
+										<template #body>
+											<p>Body</p>
+										</template>
+									</Dropdown>
+								</div>
+							</Teleport>
+						</ClientOnly>
 					</div>
 					<div class="print__info">
 						<div class="print__info-head">

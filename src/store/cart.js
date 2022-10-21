@@ -5,7 +5,8 @@ export const useCartStore = defineStore('Cart', {
     return {
       isOpen: false,
       isLocked: false,
-      items: [],
+      isError: null,
+      items: useLocalStorage('cartItems', []),
     }
   },
 
@@ -22,6 +23,9 @@ export const useCartStore = defineStore('Cart', {
     },
     currencyCode: (state) => {
       return state.items.length > 0 ? state.items[0].variantId.currencyCode : ''
+    },
+    cartItems: (state) => {
+      console.log(state.items)
     }
   },
 
@@ -49,7 +53,7 @@ export const useCartStore = defineStore('Cart', {
           variables: {
             lineItems: [...this.items].map(el => el = { variantId: el.variantId.id, quantity: el.quantity })
           }
-        }).then(res => window.location = res.data.value.checkoutCreate.checkout.webUrl)
+        }).then(res => window.location = res.data.value.checkoutCreate.checkout.webUrl).catch(err => this.isError = err)
       }
     }
   }

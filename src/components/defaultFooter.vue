@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			<div class="footer__bottom">
-				<div class="footer__bottom-copy">© 2022 VOLK</div>
+				<div class="footer__bottom-copy">© 2022 VOLK All rights reserved</div>
 				<div class="footer__payments">
 					<IconsVisa></IconsVisa>
 					<IconsMastercard></IconsMastercard>

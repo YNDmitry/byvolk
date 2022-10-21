@@ -18,6 +18,11 @@
 	@include flex-space-between-center;
 }
 
+.swiper-slide.product-card {
+	width: 100%;
+	max-width: 380px;
+}
+
 .product-card {
 	&:hover {
 		& .product-card__head {

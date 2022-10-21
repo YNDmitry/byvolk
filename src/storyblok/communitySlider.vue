@@ -23,11 +23,17 @@
 				</div>
 			</div>
 			<Swiper
-				:slides-per-view="3"
+				:slides-per-view="'auto'"
+				:centered-slides="true"
 				:space-between="35"
+				:loop="true"
 				class="slider__slider mt-large"
 			>
-				<SwiperSlide v-for="slide in blok.communitySlides" :key="slide._uid">
+				<SwiperSlide
+					v-for="slide in blok.communitySlides"
+					:key="slide._uid"
+					class="slider__slider-slide"
+				>
 					<CommunitySlide :content="slide"></CommunitySlide>
 				</SwiperSlide>
 			</Swiper>

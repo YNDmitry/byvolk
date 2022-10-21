@@ -9,24 +9,45 @@
 
 .print {
 	&__wrapper {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		display: flex;
 		align-items: flex-start;
-		column-gap: 48px;
+
+		@include phone-l {
+			flex-direction: column;
+		}
 	}
 
 	&__left {
+		width: 56%;
 		max-width: 750px;
+
+		@include phone-l {
+			width: 100%;
+			max-width: none;
+		}
 	}
 
 	&__faq {
 		margin-top: 124px;
+
+		@include phone-l {
+			margin-top: 48px;
+			width: 100%;
+		}
 	}
 
 	&__info {
+		margin-left: 48px;
 		margin-top: 84px;
 		position: sticky;
 		top: 150px;
+		width: 100%;
+
+		@include phone-l {
+			margin-left: 0;
+			margin-top: 48px;
+			position: static;
+		}
 
 		&-price {
 			font-family: 'Montserrat';
@@ -38,6 +59,7 @@
 				font-weight: 500;
 			}
 		}
+
 		&-head {
 		}
 
@@ -48,8 +70,9 @@
 			margin: 50px 0;
 
 			&-buttons {
-				margin-top: 10px;
 				display: flex;
+				flex-wrap: wrap;
+				margin-top: 10px;
 				gap: 15px;
 			}
 		}

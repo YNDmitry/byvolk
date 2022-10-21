@@ -27,7 +27,7 @@
 				<Swiper
 					class="b-sellers__slider"
 					v-if="data"
-					:slides-per-view="3"
+					:slides-per-view="'auto'"
 					:space-between="35"
 				>
 					<SwiperSlide

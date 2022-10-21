@@ -4,7 +4,10 @@
 			<div class="slider__head">
 				<h2>You May Also Like</h2>
 				<div class="slider__nav">
-					<div class="slider__nav-button is-prev">
+					<div
+						class="slider__nav-button is-prev"
+						@click="$refs.swiper.slideNext()"
+					>
 						<IconsArrowRight></IconsArrowRight>
 					</div>
 					<div class="slider__nav-button is-next">
@@ -15,8 +18,9 @@
 
 			<Swiper
 				class="b-sellers__slider mt-large"
-				:slides-per-view="3"
+				:slides-per-view="'auto'"
 				:space-between="35"
+				ref="swiper"
 			>
 				<SwiperSlide
 					class="product-card"
