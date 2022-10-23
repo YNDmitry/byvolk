@@ -5,28 +5,29 @@ export const useCartStore = defineStore('Cart', {
     return {
       isOpen: false,
       isLocked: false,
+      isPending: false,
       isError: null,
       items: useLocalStorage('cartItems', []),
+      productPrices: null
     }
   },
 
   getters: {
+    productPrice(state) {
+      return state.productPrices = state.items.length > 0
+        ? state.items.map(el => Number(el.variantId.price) * el.quantity)
+        : 0
+    },
     totalPrice: (state) => {
-      if (state.items.length > 0) {
-        return state.items.length === 1 ? state.items[0].variantId.price : state.items.reduce(
-          (firstEl, secondEl) =>
-            Number(firstEl.variantId.price) + Number(secondEl.variantId.price)
-        )
+      if (state.items.length > 1) {
+        return state.productPrices.reduce(el => el + el)
       } else {
-        return 0
+        return state.productPrices
       }
     },
     currencyCode: (state) => {
       return state.items.length > 0 ? state.items[0].variantId.currencyCode : ''
     },
-    cartItems: (state) => {
-      console.log(state.items)
-    }
   },
 
   actions: {
@@ -48,12 +49,21 @@ export const useCartStore = defineStore('Cart', {
 
     async submit() {
       if (this.items.length > 0) {
-        const { data } = await useAsyncGql({
+        this.isPending = true
+        const { data, pending } = await useAsyncGql({
           operation: 'CheckoutCreate',
           variables: {
-            lineItems: [...this.items].map(el => el = { variantId: el.variantId.id, quantity: el.quantity })
+            lineItems: [...this.items].map(el => el = {
+              variantId: el.variantId.id,
+              quantity: el.quantity
+            })
           }
-        }).then(res => window.location = res.data.value.checkoutCreate.checkout.webUrl).catch(err => this.isError = err)
+        })
+          .then(res => window.location = res.data.value.checkoutCreate.checkout.webUrl)
+          .catch(err => {
+            this.isError = err
+            this.isPending = false
+          })
       }
     }
   }

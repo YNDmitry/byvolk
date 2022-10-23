@@ -151,5 +151,10 @@
 		width: 30px;
 		font-weight: 400;
 		cursor: pointer;
+
+		&[disabled='true'] {
+			cursor: not-allowed;
+			user-select: none;
+		}
 	}
 }

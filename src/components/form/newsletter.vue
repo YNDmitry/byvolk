@@ -2,7 +2,13 @@
 	<form class="form-newsletter">
 		<h5 v-if="title">{{ title }}</h5>
 		<div :class="['form-newsletter__input-wrapper', { 'is-white': isWhite }]">
-			<input type="email" placeholder="Email adress" name="email" required />
+			<input
+				type="email"
+				placeholder="Email adress"
+				name="email"
+				required
+				v-model.trim="inputVal"
+			/>
 			<button type="submit" class="form-newsletter__input-wrapper_button">
 				<IconsArrowRight
 					class="form-newsletter__input-wrapper-arrow"
@@ -25,4 +31,6 @@
 			default: false,
 		},
 	})
+
+	const inputVal = ref(null)
 </script>

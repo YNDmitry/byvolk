@@ -4,7 +4,7 @@
 		<textarea
 			:name="props.name"
 			v-if="isTextArea"
-			v-model="inputValue.value"
+			v-model.trim="inputValue.value"
 			@focus="isActive = true"
 			@focusout="isActive = false"
 			required
@@ -13,9 +13,10 @@
 			v-else
 			:type="props.type"
 			:name="props.name"
-			v-model="inputValue.value"
+			v-model.trim="inputValue.value"
 			@focus="isActive = true"
 			@focusout="isActive = false"
+			@focusin="isActive = true"
 			required
 		/>
 	</label>

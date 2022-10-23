@@ -4,7 +4,6 @@
 			<div class="cart-wrapper" v-if="cart.isOpen">
 				<div class="cart-wrapper__overlay" @click="cart.handleModal()"></div>
 				<div class="cart">
-					<!-- <h4 class="cart__empty">Your cart is empty :(</h4> -->
 					<div class="cart__head">
 						<h5>Your prints</h5>
 						<button @click="cart.handleModal()">
@@ -28,7 +27,11 @@
 									</p>
 								</div>
 								<div class="cart__body-card-info-footer">
-									<PlusMinusInput :value="card.quantity"></PlusMinusInput>
+									<PlusMinusInput
+										:value="card.quantity"
+										@increment="card.quantity++"
+										@decrement="card.quantity--"
+									></PlusMinusInput>
 									<button
 										type="button"
 										class="cart__body-card-remove"
@@ -58,7 +61,7 @@
 							class="button-primary w-full"
 							@click="cart.submit()"
 						>
-							Checkout
+							{{ cart.isPending ? 'Loading' : 'Checkout' }}
 						</button>
 					</div>
 				</div>

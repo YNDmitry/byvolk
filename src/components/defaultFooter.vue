@@ -8,7 +8,7 @@
 					</NuxtLink>
 				</div>
 				<ul class="footer__links list-unstyled">
-					<li v-for="link in data.data.datasource_entries" :key="link.id">
+					<li v-for="link in data.datasource_entries" :key="link.id">
 						<NuxtLink :to="link.value" class="footer__link">
 							{{ link.name }}
 						</NuxtLink>
@@ -35,8 +35,6 @@
 							</NuxtLink>
 						</div>
 					</div>
-
-					<!-- <div class="footer__lang-select"><div>ENG</div></div> -->
 				</div>
 			</div>
 			<div class="footer__bottom">
@@ -54,27 +52,9 @@
 </template>
 
 <script setup>
-	const socLinks = [
-		{
-			label: 'instagram',
-			path: 'https://www.instagram.com/byvolk/',
+	const props = defineProps({
+		data: {
+			type: Object,
 		},
-		{
-			label: 'whatsapp',
-			path: '',
-		},
-		{
-			label: 'email',
-			path: 'mailto:info@byvolk.com',
-		},
-	]
-
-	const { data } = await useAsyncData('footer', async () => {
-		return await useStoryblokApi().get(
-			'cdn/datasource_entries?datasource=footer-links',
-			{
-				version: 'published',
-			}
-		)
 	})
 </script>

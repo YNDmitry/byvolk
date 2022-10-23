@@ -1,5 +1,5 @@
 <template>
-	<div v-if="data">
+	<div>
 		<section class="section-print">
 			<div class="container">
 				<div class="print__wrapper">

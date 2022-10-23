@@ -6,7 +6,7 @@
 				class="instagram__photos"
 				:modules="[SwiperAutoplay]"
 				:loop="true"
-				:slides-per-view="3"
+				:slides-per-view="'auto'"
 				:space-between="35"
 				:autoplay="{ delay: 1, disableOnInteraction: true }"
 				:speed="8000"

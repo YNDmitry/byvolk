@@ -1,20 +1,13 @@
 <template>
-	<header class="header" :class="y > 10 ? 'active' : ''">
+	<header class="header">
 		<div class="container">
 			<div class="header__desk-content">
-				<NuxtLink
-					:to="
-						useState('locale').value === 'default'
-							? '/'
-							: `/${useState('locale').value}/`
-					"
-					class="header__brand"
-				>
+				<NuxtLink to="/" class="header__brand">
 					<IconsLogo></IconsLogo>
 				</NuxtLink>
 				<nav>
 					<ul class="header__nav-list list-unstyled">
-						<li v-for="item in data.data.datasource_entries" :key="item.id">
+						<li v-for="item in data.datasource_entries" :key="item.id">
 							<NuxtLink :to="item.value" class="header__link">
 								<div>{{ item.name }}</div>
 							</NuxtLink>
@@ -27,6 +20,20 @@
 					</div>
 					<IconsCart></IconsCart>
 				</div>
+				<!-- <ClientOnly>
+					<Teleport
+						:to="
+							useMediaQuery('(max-width: 771px)').value
+								? '.header__mobile-menu'
+								: '.header__desk-content'
+						"
+					>
+					</Teleport>
+				</ClientOnly> -->
+				<div
+					class="header__mobile-menu"
+					v-if="useMediaQuery('(max-width: 771px)').value"
+				></div>
 				<div class="header__menu-btn">
 					<div
 						v-for="item in 3"
@@ -41,13 +48,11 @@
 
 <script setup>
 	import { useCartStore } from '../store/cart'
-	const { data } = await useAsyncData('menu', async () => {
-		return await useStoryblokApi().get(
-			'cdn/datasource_entries?datasource=menu-links',
-			{
-				version: 'published',
-			}
-		)
+
+	const props = defineProps({
+		data: {
+			type: Object,
+		},
 	})
 
 	const cartModal = useCartStore()
