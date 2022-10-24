@@ -13,39 +13,29 @@
 								<NuxtImg :src="image.node.src"></NuxtImg>
 							</SwiperSlide>
 						</Swiper>
-						<ClientOnly>
-							<Teleport
-								:to="
-									useMediaQuery('(max-width: 771px)').value
-										? '.print__wrapper'
-										: '.print__left'
-								"
-							>
-								<div class="print__faq">
-									<Dropdown>
-										<template #head>
-											<h5>Printing & Framing</h5>
-										</template>
-										<template #body>
-											<p>
-												Lorem, ipsum dolor sit amet consectetur adipisicing
-												elit. Sapiente, dignissimos.Lorem, ipsum dolor sit amet
-												consectetur adipisicing elit. Sapiente,
-												dignissimos.Lorem, ipsum dolor
-											</p>
-										</template>
-									</Dropdown>
-									<Dropdown>
-										<template #head>
-											<h5>Shipping & returns</h5>
-										</template>
-										<template #body>
-											<p>Body</p>
-										</template>
-									</Dropdown>
-								</div>
-							</Teleport>
-						</ClientOnly>
+						<div class="print__faq">
+							<Dropdown>
+								<template #head>
+									<h5>Printing & Framing</h5>
+								</template>
+								<template #body>
+									<p>
+										Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+										Sapiente, dignissimos.Lorem, ipsum dolor sit amet
+										consectetur adipisicing elit. Sapiente, dignissimos.Lorem,
+										ipsum dolor
+									</p>
+								</template>
+							</Dropdown>
+							<Dropdown>
+								<template #head>
+									<h5>Shipping & returns</h5>
+								</template>
+								<template #body>
+									<p>Body</p>
+								</template>
+							</Dropdown>
+						</div>
 					</div>
 					<div class="print__info">
 						<div class="print__info-head">
@@ -130,6 +120,10 @@
 											image: data.productByHandle.images.edges[0].node.src,
 											price: currentProductVariant.price.amount,
 											currencyCode: currentProductVariant.price.currencyCode,
+											variant: {
+												frame: frameVal,
+												size: sizeVal,
+											},
 										})
 									"
 								>
@@ -176,7 +170,7 @@
 	})
 
 	asyncComputed(() => {
-		data.value.productByHandle.variants.edges.find((el) => {
+		return data.value.productByHandle.variants.edges.find((el) => {
 			el.node.selectedOptions[0].value === frameVal.value &&
 			el.node.selectedOptions[1].value === sizeVal.value
 				? (currentProductVariant.value = el.node)

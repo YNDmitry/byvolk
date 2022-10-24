@@ -25,8 +25,13 @@
 									<p>
 										{{ card.variantId.description }}
 									</p>
+									<div class="cart__body-card-variant mt-xsmall flex">
+										<div>Frame: {{ card.variantId?.variant['frame'] }}</div>
+										<div class="cart__body-card-sep">|</div>
+										<div>Size: {{ card.variantId?.variant['size'] }}</div>
+									</div>
 								</div>
-								<div class="cart__body-card-info-footer">
+								<div class="cart__body-card-info-footer mt-xsmall">
 									<PlusMinusInput
 										:value="card.quantity"
 										@increment="card.quantity++"

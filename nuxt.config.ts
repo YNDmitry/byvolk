@@ -19,7 +19,6 @@ export default defineNuxtConfig({
 	storyblok: {
 		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
 		cacheProvider: 'memory',
-		bridge: false,
 	},
 	css: ['~/assets/scss/main.scss'],
 	app: {

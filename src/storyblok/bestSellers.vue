@@ -5,13 +5,21 @@
 				<div class="slider__head">
 					<h2 v-if="blok.headline">{{ blok.headline }}</h2>
 					<div class="slider__nav">
-						<div class="slider__nav-button is-prev">
+						<button
+							type="button"
+							id="best-sellers-prev"
+							class="slider__nav-button is-prev"
+						>
 							<IconsArrowRight></IconsArrowRight>
-						</div>
-						<div class="slider__nav-button is-next">
+						</button>
+						<button
+							type="button"
+							id="best-sellers-next"
+							class="slider__nav-button is-next"
+						>
 							<IconsArrowRight></IconsArrowRight>
-						</div>
-						<div class="slider__head-button">
+						</button>
+						<a class="slider__head-button">
 							<NuxtLink
 								:class="`button-${button.buttonType}`"
 								:to="button.link.cached_url"
@@ -20,15 +28,20 @@
 							>
 								{{ button.title }}
 							</NuxtLink>
-						</div>
+						</a>
 					</div>
 				</div>
 
 				<Swiper
 					class="b-sellers__slider"
 					v-if="data"
+					:modules="[Navigation]"
 					:slides-per-view="'auto'"
 					:space-between="35"
+					:navigation="{
+						nextEl: '#best-sellers-next',
+						prevEl: '#best-sellers-prev',
+					}"
 				>
 					<SwiperSlide
 						class="product-card"
@@ -53,6 +66,8 @@
 </template>
 
 <script setup>
+	import { Navigation } from 'swiper'
+
 	defineProps({
 		blok: {
 			type: Object,

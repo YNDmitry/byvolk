@@ -4,12 +4,20 @@
 			<div class="slider__head">
 				<h2>{{ blok.headline }}</h2>
 				<div class="slider__nav">
-					<div class="slider__nav-button is-prev">
+					<button
+						type="button"
+						id="community-prev"
+						class="slider__nav-button is-prev"
+					>
 						<IconsArrowRight></IconsArrowRight>
-					</div>
-					<div class="slider__nav-button is-next">
+					</button>
+					<button
+						type="button"
+						id="community-next"
+						class="slider__nav-button is-next"
+					>
 						<IconsArrowRight></IconsArrowRight>
-					</div>
+					</button>
 					<div class="slider__head-button">
 						<a
 							:href="item.link.cached_url"
@@ -23,10 +31,15 @@
 				</div>
 			</div>
 			<Swiper
+				:modules="[Navigation]"
 				:slides-per-view="'auto'"
 				:centered-slides="true"
 				:space-between="35"
 				:loop="true"
+				:navigation="{
+					nextEl: '#community-next',
+					prevEl: '#community-prev',
+				}"
 				class="slider__slider mt-large"
 			>
 				<SwiperSlide
@@ -42,6 +55,7 @@
 </template>
 
 <script setup>
+	import { Navigation } from 'swiper'
 	const props = defineProps({
 		blok: {
 			type: Object,

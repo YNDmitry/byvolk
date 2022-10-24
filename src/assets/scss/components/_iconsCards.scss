@@ -1,7 +1,6 @@
 .icons__grid {
 	display: grid;
 	padding: 96px 0;
-	row-gap: 50px;
 	margin-left: -20px;
 	margin-right: -20px;
 
@@ -20,7 +19,7 @@
 	align-items: center;
 	text-align: center;
 	gap: 14px;
-	padding: 0 20px;
+	padding: 20px;
 	border-right: 1px solid #d9d9d9;
 
 	@include tablet {
@@ -28,11 +27,15 @@
 			border-right: 0;
 		}
 
-		&:nth-child(-2n) {
+		&:nth-last-child(-n + 2) {
 			border-bottom: 0;
 		}
 
 		border-bottom: 1px solid #d9d9d9;
+	}
+
+	@include phone {
+		border-bottom: 0;
 	}
 
 	&:last-child {

@@ -1,14 +1,21 @@
 <template>
 	<div class="product-input">
-		<div
+		<button
+			type="button"
 			class="product-input__button"
 			:disabled="isDisabled"
 			@click="!isDisabled ? emit('decrement') : ''"
 		>
 			-
-		</div>
+		</button>
 		<div>{{ props.value }}</div>
-		<div class="product-input__button" @click="emit('increment')">+</div>
+		<button
+			type="button"
+			class="product-input__button"
+			@click="emit('increment')"
+		>
+			+
+		</button>
 	</div>
 </template>
 

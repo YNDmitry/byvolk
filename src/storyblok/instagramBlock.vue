@@ -8,9 +8,8 @@
 				:loop="true"
 				:slides-per-view="'auto'"
 				:space-between="35"
-				:autoplay="{ delay: 1, disableOnInteraction: true }"
+				:autoplay="{ delay: 1, disableOnInteraction: false }"
 				:speed="8000"
-				:allowTouchMove="false"
 			>
 				<SwiperSlide
 					class="instagram__photos-item"
