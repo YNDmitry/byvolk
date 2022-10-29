@@ -8,7 +8,6 @@
 						type="button"
 						class="slider__nav-button is-prev"
 						id="prints-prev"
-						@click="$refs.swiper.slideNext()"
 					>
 						<IconsArrowRight></IconsArrowRight>
 					</button>

@@ -166,6 +166,38 @@
 				name: 'description',
 				content: data.value?.productByHandle?.description,
 			},
+			{
+				name: 'og:type',
+				content: 'website'
+			},
+			{
+				property: 'og:title',
+				content: data.value?.productByHandle.title
+			},
+			{
+				property: 'og:description',
+				content: data.value?.productByHandle.description
+			},
+			{
+				property: 'og:image',
+				content: data.value?.productByHandle.images.edges[0].node.src
+			},
+			{
+				property: 'twitter:title',
+				content: data.value?.productByHandle.title
+			},
+			{
+				property: 'twitter:description',
+				content: data.value?.productByHandle.description
+			},
+			{
+				property: 'twitter:image',
+				content: data.value?.productByHandle.images.edges[0].node.src
+			},
+			{
+				name: 'twitter:card',
+				content: 'summary_large_image'
+			}
 		],
 	})
 

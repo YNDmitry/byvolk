@@ -36,4 +36,38 @@
 			handle: slug,
 		},
 	})
+
+	useHead({
+		title: data.value.collectionByHandle.title,
+		meta: [
+			{
+				name: 'description',
+				content: data.value.collectionByHandle.description
+			},
+			{
+				name: 'og:type',
+				content: 'website'
+			},
+			{
+				name: 'og:title',
+				content: data.value.collectionByHandle.title
+			},
+			{
+				name: 'og:description',
+				content: data.value.collectionByHandle.description
+			},
+			{
+				name: 'twitter:title',
+				content: data.value.collectionByHandle.title
+			},
+			{
+				name: 'twitter:description',
+				content: data.value.collectionByHandle.description
+			},
+			{
+				name: 'twitter:card',
+				content: 'summary_large_image'
+			}
+		]
+	})
 </script>

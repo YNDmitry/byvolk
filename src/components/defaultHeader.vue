@@ -6,8 +6,8 @@
 					<IconsLogo></IconsLogo>
 				</NuxtLink>
 				<nav>
-					<ul class="header__nav-list list-unstyled">
-						<li v-for="item in data.datasource_entries" :key="item.id">
+					<ul class="header__nav-list list-unstyled" v-if="menu.data">
+						<li v-for="item in menu.data.datasource_entries" :key="item.id">
 							<NuxtLink :to="item.value" class="header__link">
 								<div>{{ item.name }}</div>
 							</NuxtLink>
@@ -20,16 +20,6 @@
 					</div>
 					<IconsCart></IconsCart>
 				</div>
-				<!-- <ClientOnly>
-					<Teleport
-						:to="
-							useMediaQuery('(max-width: 771px)').value
-								? '.header__mobile-menu'
-								: '.header__desk-content'
-						"
-					>
-					</Teleport>
-				</ClientOnly> -->
 				<div
 					class="header__mobile-menu"
 					v-if="useMediaQuery('(max-width: 771px)').value"
@@ -49,10 +39,13 @@
 <script setup>
 	import { useCartStore } from '../store/cart'
 
-	const props = defineProps({
-		data: {
-			type: Object,
-		},
+	const { data: menu } = await useAsyncData('menu', async () => {
+		return await useStoryblokApi().get(
+			'cdn/datasource_entries?datasource=menu-links',
+			{
+				version: 'published',
+			}
+		)
 	})
 
 	const cartModal = useCartStore()

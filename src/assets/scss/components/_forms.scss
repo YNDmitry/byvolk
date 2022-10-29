@@ -152,7 +152,7 @@
 		font-weight: 400;
 		cursor: pointer;
 
-		&[disabled='true'] {
+		&[disabled] {
 			cursor: not-allowed;
 			user-select: none;
 		}

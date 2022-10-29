@@ -36,6 +36,7 @@
 				:centered-slides="true"
 				:space-between="35"
 				:loop="true"
+				:grabCursor="true"
 				:navigation="{
 					nextEl: '#community-next',
 					prevEl: '#community-prev',
