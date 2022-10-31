@@ -71,6 +71,7 @@
 		display: inherit;
 		position: relative;
 		cursor: pointer;
+		margin-left: 15px;
 
 		@include phone-l {
 			display: none;

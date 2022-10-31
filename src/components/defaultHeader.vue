@@ -6,19 +6,22 @@
 					<IconsLogo></IconsLogo>
 				</NuxtLink>
 				<nav>
-					<ul class="header__nav-list list-unstyled" v-if="menu.data">
-						<li v-for="item in menu.data.datasource_entries" :key="item.id">
+					<ul class="header__nav-list list-unstyled" >
+						<li v-for="item in menu.datasource_entries" :key="item.id">
 							<NuxtLink :to="item.value" class="header__link">
 								<div>{{ item.name }}</div>
 							</NuxtLink>
 						</li>
 					</ul>
 				</nav>
-				<div class="header__cart" @click="cartModal.handleModal()">
-					<div class="header__cart-count" v-if="cartModal.items.length > 0">
-						{{ cartModal.items.length }}
+				<div class="flex center">
+					<LocationsSelect></LocationsSelect>
+					<div class="header__cart" @click="cartModal.handleModal()">
+						<div class="header__cart-count" v-if="cartModal.items.length > 0">
+							{{ cartModal.items.length }}
+						</div>
+						<IconsCart></IconsCart>
 					</div>
-					<IconsCart></IconsCart>
 				</div>
 				<div
 					class="header__mobile-menu"
@@ -37,16 +40,18 @@
 </template>
 
 <script setup>
-	import { useCartStore } from '../store/cart'
+import { useCartStore } from '../store/cart'
 
-	const { data: menu } = await useAsyncData('menu', async () => {
+	let menu = ref(null)
+
+	await useAsyncData('menu', async () => {
 		return await useStoryblokApi().get(
 			'cdn/datasource_entries?datasource=menu-links',
 			{
 				version: 'published',
 			}
 		)
-	})
+	}).then(res => menu = res.data.value.data)
 
 	const cartModal = useCartStore()
 

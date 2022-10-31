@@ -6,6 +6,7 @@
 			loop="loop"
 			autoplay="autoplay"
 			muted="muted"
+			loading="lazy"
 		></video>
 	</section>
 </template>

@@ -26,6 +26,9 @@ export default defineNuxtConfig({
 			title: 'BYVOLK',
 			link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
 			noscript: [{ children: 'Javascript is required' }],
+			htmlAttrs: {
+				lang: 'en'
+			}
 		},
 	},
 	pageTransition: {

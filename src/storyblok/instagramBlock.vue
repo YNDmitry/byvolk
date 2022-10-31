@@ -23,7 +23,7 @@
 							:src="item?.filename"
 							:modifiers="{ smart: true }"
 							width="350"
-							alt=""
+							loading="lazy"
 						/>
 					</NuxtLink>
 				</SwiperSlide>

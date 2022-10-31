@@ -24,7 +24,7 @@
 								:class="`button-${button.buttonType}`"
 								:to="button.link.cached_url"
 								v-for="button in blok.button"
-								:key="button"
+								:key="button._uid"
 							>
 								{{ button.title }}
 							</NuxtLink>

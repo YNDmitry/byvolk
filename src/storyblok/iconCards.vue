@@ -13,6 +13,7 @@
 							width="140"
 							height="100"
 							class="icons__card-icon-img"
+							loading="lazy"
 						></NuxtImg>
 					</div>
 					<h5 class="fw-600">{{ card.headline }}</h5>

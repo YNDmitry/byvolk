@@ -13,6 +13,7 @@
 @import './pages/prints';
 
 @import './transitions/page';
+@import './transitions/fade';
 
 * {
 	box-sizing: border-box;
@@ -171,4 +172,8 @@ textarea {
 
 .flex {
 	display: flex;
+
+	&.center {
+		align-items: center;
+	}
 }
