@@ -8,7 +8,9 @@ export default defineNuxtConfig({
 		[
 			'@pinia/nuxt',
 			{
-				autoImports: ['defineStore', 'acceptHMRUpdate'],
+				autoImports: [
+					['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
+				],
 			},
 		],
 		'@storyblok/nuxt',
@@ -27,8 +29,8 @@ export default defineNuxtConfig({
 			link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
 			noscript: [{ children: 'Javascript is required' }],
 			htmlAttrs: {
-				lang: 'en'
-			}
+				lang: 'en',
+			},
 		},
 	},
 	pageTransition: {

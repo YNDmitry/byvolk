@@ -11,55 +11,56 @@
 						</button>
 					</div>
 					<div class="cart__body" v-if="cart.items.length > 0">
-						<div
-							class="cart__body-card"
-							v-for="(card, idx) in cart.items"
-							:key="idx"
-						>
-							<div class="cart__body-card-img">
-								<NuxtImg :src="card.variantId.image"></NuxtImg>
-							</div>
-							<div class="cart__body-card-info">
-								<div class="cart__body-card-info-head">
-									<h6>{{ card.variantId.title }}</h6>
-									<p>
-										{{ card.variantId.description }}
-									</p>
-									<div class="cart__body-card-variant mt-xsmall flex">
-										<div>Frame: {{ card.variantId?.variant['frame'] }}</div>
-										<div class="cart__body-card-sep">|</div>
-										<div>Size: {{ card.variantId?.variant['size'] }}</div>
+						<TransitionGroup name="slide-left">
+							<div
+								class="cart__body-card"
+								v-for="(card, idx) in cart.items"
+								:key="idx"
+							>
+								<div class="cart__body-card-img">
+									<NuxtImg :src="card.variantId.image"></NuxtImg>
+								</div>
+								<div class="cart__body-card-info">
+									<div class="cart__body-card-info-head">
+										<h6>{{ card.variantId.title }}</h6>
+										<p>
+											{{ card.variantId.description }}
+										</p>
+										<div class="cart__body-card-variant mt-xsmall flex">
+											<div>Frame: {{ card.variantId?.variant['frame'] }}</div>
+											<div class="cart__body-card-sep">|</div>
+											<div>Size: {{ card.variantId?.variant['size'] }}</div>
+										</div>
+									</div>
+									<div class="cart__body-card-info-footer mt-xsmall">
+										<PlusMinusInput
+											:value="card.quantity"
+											@increment="card.quantity++"
+											@decrement="card.quantity--"
+										></PlusMinusInput>
+										<button
+											type="button"
+											class="cart__body-card-remove"
+											@click="cart.removeFromCart(idx)"
+										>
+											Remove
+										</button>
 									</div>
 								</div>
-								<div class="cart__body-card-info-footer mt-xsmall">
-									<PlusMinusInput
-										:value="card.quantity"
-										@increment="card.quantity++"
-										@decrement="card.quantity--"
-									></PlusMinusInput>
-									<button
-										type="button"
-										class="cart__body-card-remove"
-										@click="cart.removeFromCart(idx)"
-									>
-										Remove
-									</button>
-								</div>
 							</div>
-						</div>
+						</TransitionGroup>
 					</div>
 					<div v-else class="cart__empty">Your cart is empty :(</div>
 					<div class="cart__footer" v-if="cart.items.length > 0">
 						<div class="cart__footer-info">
-							<span
-								>Total price:
-								<strong>{{
-									price(cart.totalPrice, cart.currencyCode)
-								}}</strong></span
-							>
-							<span
-								>Total items: <strong>{{ cart.items.length }}</strong></span
-							>
+							<span>Total price: 
+								<strong>
+									{{ helpers.price(cart.productPrice, cart.currencyCode) }}
+								</strong>
+							</span>
+							<span>Total items: 
+								<strong>{{ cart.items.length }}</strong>
+							</span>
 						</div>
 						<button
 							type="button"
@@ -77,13 +78,16 @@
 
 <script setup>
 	import { useCartStore } from '~~/src/store/cart'
+	import { useHelpersStore } from '~~/src/store/helpers';
 
-	const price = (amount, currencyCode) => {
-		return new Intl.NumberFormat('en-US', {
-			style: 'currency',
-			currency: currencyCode,
-		}).format(amount)
-	}
+	const helpers = useHelpersStore()
 
 	const cart = useCartStore()
+
+	onMounted(() => {
+		cart.items = localStorage.getItem('cartItems')
+			? JSON.parse(localStorage.getItem('cartItems'))
+			: []
+	})
+
 </script>

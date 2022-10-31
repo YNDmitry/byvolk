@@ -32,6 +32,8 @@
 </template>
 
 <script setup>
+import { useHelpersStore } from '../store/helpers';
+
 	const props = defineProps({
 		handle: {
 			type: String,
@@ -53,12 +55,10 @@
 		},
 	})
 
-	const isHoverIn = ref(false)
+const isHoverIn = ref(false)
+	const helpers = useHelpersStore()
 
-	const price = asyncComputed(() => {
-		return new Intl.NumberFormat('en-US', {
-			style: 'currency',
-			currency: props.currencyCode,
-		}).format(props.minPrice)
+const price = asyncComputed(() => {
+		return helpers.price(props.minPrice, props.currencyCode)
 	})
 </script>

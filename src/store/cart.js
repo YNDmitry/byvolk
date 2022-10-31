@@ -4,28 +4,18 @@ export const useCartStore = defineStore('Cart', {
   state: () => {
     return {
       isOpen: false,
-      isLocked: false,
       isPending: false,
       isError: null,
-      items: useLocalStorage('cartItems', []),
-      productPrices: null
+      items: [],
     }
   },
 
   getters: {
     productPrice(state) {
-      return state.productPrices = state.items.length > 0
-        ? state.items.map(el => Number(el.variantId.price) * el.quantity)
-        : 0
+      localStorage.setItem('cartItems', JSON.stringify(state.items))
+      return state.items.map(el => Number(el.variantId.price) * el.quantity).reduce((pV, cV) => pV + cV)
     },
-    totalPrice: (state) => {
-      if (state.items.length > 1) {
-        return state.productPrices.reduce(el => el + el)
-      } else {
-        return state.productPrices
-      }
-    },
-    currencyCode: (state) => {
+    currencyCode(state) {
       return state.items.length > 0 ? state.items[0].variantId.currencyCode : ''
     },
   },
@@ -40,11 +30,13 @@ export const useCartStore = defineStore('Cart', {
 
     addToCart(item) {
       this.items.push({ variantId: item, quantity: 1 })
+      localStorage.setItem('cartItems', JSON.stringify(this.items))
       this.handleModal()
     },
 
     removeFromCart(item) {
-      return this.items.splice(item, 1)
+      this.items.splice(item, 1)
+      localStorage.setItem('cartItems', JSON.stringify(this.items))
     },
 
     async submit() {

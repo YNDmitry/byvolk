@@ -124,24 +124,3 @@
 		}
 	}
 }
-
-.modal-cart-enter-active,
-.modal-cart-leave-active {
-	transition: all 200ms ease;
-
-	& .cart {
-		transition-delay: 0.25s;
-		transition: all 200ms ease;
-	}
-}
-
-.modal-cart-enter-form,
-.modal-cart-leave-to {
-	& .cart-wrapper__overlay {
-		opacity: 0;
-	}
-
-	& .cart {
-		transform: translateX(100%);
-	}
-}

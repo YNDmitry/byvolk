@@ -1,0 +1,34 @@
+.modal-cart-enter-active,
+.modal-cart-leave-active {
+	transition: all 200ms ease-in-out;
+
+	& .cart-wrapper__overlay {
+		transition: all 200ms ease-in-out;
+	}
+
+	& .cart {
+		transition: transform 200ms ease-in-out;
+	}
+}
+
+.modal-cart-enter-from,
+.modal-cart-leave-to {
+	& .cart-wrapper__overlay {
+		opacity: 0;
+	}
+	
+	& .cart {
+		transform: translateX(100%);
+	}
+}
+
+.modal-cart-enter-to,
+.modal-cart-leave-from {
+	& .cart-wrapper__overlay {
+		opacity: 1;
+	}
+	
+	& .cart {
+		transform: translateX(0%);
+	}
+}
