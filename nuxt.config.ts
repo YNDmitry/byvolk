@@ -3,13 +3,17 @@ import { defineNuxtConfig } from 'nuxt/config'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	srcDir: 'src/',
+	components: {
+		global: true,
+		dirs: ['~/components'],
+	},
 	modules: [
 		'@nuxt/image-edge',
 		[
 			'@pinia/nuxt',
 			{
 				autoImports: [
-					['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
+					['defineStore', 'definePiniaStore'],
 				],
 			},
 		],

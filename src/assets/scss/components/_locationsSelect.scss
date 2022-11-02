@@ -1,0 +1,45 @@
+body.dark {
+  .locations-select {
+    &__list {
+
+      &-item {
+        color: $white;
+      }
+    }
+  }  
+}
+
+.locations-select {
+  position: relative;
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__flag {
+    width: 25px;
+    height: 13px;
+  }
+
+  &__list {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    padding: 15px;
+    height: 150px;
+    overflow: auto;
+    background-color: $dark-background-color;
+    color: $white;
+    white-space: nowrap;
+
+    &-item {
+      cursor: pointer;
+
+      & span {
+        margin-left: 5px;
+      }
+    }
+  }
+}

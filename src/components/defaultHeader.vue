@@ -17,7 +17,7 @@
 							</ul>
 						</nav>
 						<div class="flex center">
-							<LocationsSelect></LocationsSelect>
+							<LocationsSelect :data="languages.datasource_entries"></LocationsSelect>
 							<div class="header__cart" @click="cartModal.handleModal()">
 								<div class="header__cart-count" v-if="cartModal.items.length > 0">
 									{{ cartModal.items.length }}
@@ -43,10 +43,12 @@
 </template>
 
 <script setup>
-import { useCartStore } from '../store/cart'
+	import { useCartStore } from '../store/cart'
 
-let menu = ref(null)
+	let menu = ref(null)
+	let languages = ref(null)
 	let isOpen = ref(false)
+	const cartModal = useCartStore()
 
 	const isMobile = computed(() => {
 		if (useMediaQuery('(max-width: 769px)').value) {
@@ -64,11 +66,16 @@ let menu = ref(null)
 		)
 	}).then(res => menu = res.data.value.data)
 
-const cartModal = useCartStore()
+	await useAsyncData('languages', async () => {
+    return await useStoryblokApi().get(
+      'cdn/datasource_entries?datasource=languages',
+      {
+        version: 'published',
+      }
+    )
+  }).then(res => languages = res.data.value.data)
 
-function openMenu() {
-	isOpen.value === false ? isOpen.value = true : isOpen.value = false
-}
-
-	// const { x, y } = useWindowScroll()
+	function openMenu() {
+		isOpen.value === false ? isOpen.value = true : isOpen.value = false
+	}
 </script>
