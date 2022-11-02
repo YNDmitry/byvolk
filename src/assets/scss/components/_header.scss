@@ -9,7 +9,56 @@
 	background-color: $base-background-color;
 	margin-bottom: auto;
 
+	&.menu-is-open {
+		& .header__brand {
+			color: $white;
+		}
+
+		&	.header__menu-btn-burger {
+			background-color: $white;
+		}
+
+		& .header__nav-list {
+			& li {
+				overflow: hidden;
+			}
+		}
+	}
+
+	&__mobile-menu {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		padding: 60px 30px 30px 30px;
+		position: fixed;
+		bottom: 0;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: black;
+		overflow: auto;
+
+		& .header__nav-list {
+			flex-direction: column;
+			gap: 20px;
+
+			& li {
+				text-align: center;
+			}
+		}
+
+		& a {
+			font-size: 50px;
+			line-height: 120%;
+			color: $white;
+			transition: transform 600ms ease !important;
+		}
+	}
+
 	&__brand {
+		position: relative;
+		z-index: 100;
 		display: flex;
 		align-items: center;
 	}
@@ -24,10 +73,6 @@
 	&__nav-list {
 		display: flex;
 		gap: 25px;
-
-		@include phone-l {
-			display: none;
-		}
 
 		& a {
 			transition: opacity 200ms ease;
@@ -51,6 +96,8 @@
 	}
 
 	&__menu-btn {
+		position: relative;
+		z-index: 100;
 		display: none;
 		width: 30px;
 
@@ -74,7 +121,13 @@
 		margin-left: 15px;
 
 		@include phone-l {
-			display: none;
+			color: $white;
+			margin-top: 20px;
+
+			& svg {
+				width: 60px;
+				height: 60px;
+			}
 		}
 
 		&-count {
@@ -93,6 +146,12 @@
 			justify-content: center;
 			background-color: $white;
 			border: 1px solid black;
+
+			@include phone-l {
+				width: 25px;
+				height: 25px;
+				font-size: 15px;
+			}
 		}
 	}
 }

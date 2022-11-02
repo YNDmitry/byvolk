@@ -13,29 +13,33 @@
 								<NuxtImg :src="image.node.src"></NuxtImg>
 							</SwiperSlide>
 						</Swiper>
-						<div class="print__faq">
-							<Dropdown>
-								<template #head>
-									<h5>Printing & Framing</h5>
-								</template>
-								<template #body>
-									<p>
-										Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-										Sapiente, dignissimos.Lorem, ipsum dolor sit amet
-										consectetur adipisicing elit. Sapiente, dignissimos.Lorem,
-										ipsum dolor
-									</p>
-								</template>
-							</Dropdown>
-							<Dropdown>
-								<template #head>
-									<h5>Shipping & returns</h5>
-								</template>
-								<template #body>
-									<p>Body</p>
-								</template>
-							</Dropdown>
-						</div>
+						<ClientOnly>
+							<Teleport to=".print__wrapper" :disabled="isMobile">
+								<div class="print__faq">
+									<Dropdown>
+										<template #head>
+											<h5>Printing & Framing</h5>
+										</template>
+										<template #body>
+											<p>
+												Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+												Sapiente, dignissimos.Lorem, ipsum dolor sit amet
+												consectetur adipisicing elit. Sapiente, dignissimos.Lorem,
+												ipsum dolor
+											</p>
+										</template>
+									</Dropdown>
+									<Dropdown>
+										<template #head>
+											<h5>Shipping & returns</h5>
+										</template>
+										<template #body>
+											<p>Body</p>
+										</template>
+									</Dropdown>
+								</div>
+							</Teleport>
+						</ClientOnly>
 					</div>
 					<div class="print__info">
 						<div class="print__info-head">
@@ -147,6 +151,13 @@
 
 	const { share, isSupported } = useShare()
 	const { slug } = useRoute().params
+
+	const isMobile = computed(() => {
+		if (useMediaQuery('(max-width: 769px)').value) {
+			return false
+		}
+		return true
+	})
 
 	const { data } = await useAsyncGql({
 		operation: 'ProductByHandle',

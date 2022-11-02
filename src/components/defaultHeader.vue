@@ -1,33 +1,36 @@
 <template>
-	<header class="header">
+	<header class="header" :class="{ 'menu-is-open': isOpen ? true : false }">
 		<div class="container">
 			<div class="header__desk-content">
 				<NuxtLink to="/" class="header__brand">
 					<IconsLogo></IconsLogo>
 				</NuxtLink>
-				<nav>
-					<ul class="header__nav-list list-unstyled" >
-						<li v-for="item in menu.datasource_entries" :key="item.id">
-							<NuxtLink :to="item.value" class="header__link">
-								<div>{{ item.name }}</div>
-							</NuxtLink>
-						</li>
-					</ul>
-				</nav>
-				<div class="flex center">
-					<LocationsSelect></LocationsSelect>
-					<div class="header__cart" @click="cartModal.handleModal()">
-						<div class="header__cart-count" v-if="cartModal.items.length > 0">
-							{{ cartModal.items.length }}
+				<ClientOnly>
+					<Teleport to=".header__mobile-menu" :disabled="isMobile">
+						<nav>
+							<ul class="header__nav-list list-unstyled" >
+								<li v-for="item in menu.datasource_entries" :key="item.id">
+									<NuxtLink :to="item.value" class="header__link">
+										<div>{{ item.name }}</div>
+									</NuxtLink>
+								</li>
+							</ul>
+						</nav>
+						<div class="flex center">
+							<LocationsSelect></LocationsSelect>
+							<div class="header__cart" @click="cartModal.handleModal()">
+								<div class="header__cart-count" v-if="cartModal.items.length > 0">
+									{{ cartModal.items.length }}
+								</div>
+								<IconsCart></IconsCart>
+							</div>
 						</div>
-						<IconsCart></IconsCart>
-					</div>
-				</div>
-				<div
-					class="header__mobile-menu"
-					v-if="useMediaQuery('(max-width: 771px)').value"
-				></div>
-				<div class="header__menu-btn">
+					</Teleport>
+				</ClientOnly>
+				<Transition name="menu-open">
+					<div class="header__mobile-menu" v-show="isOpen"></div>
+				</Transition>
+				<div class="header__menu-btn" @click="openMenu()">
 					<div
 						v-for="item in 3"
 						:key="item"
@@ -42,7 +45,15 @@
 <script setup>
 import { useCartStore } from '../store/cart'
 
-	let menu = ref(null)
+let menu = ref(null)
+	let isOpen = ref(false)
+
+	const isMobile = computed(() => {
+		if (useMediaQuery('(max-width: 769px)').value) {
+			return false
+		}
+		return true
+	})
 
 	await useAsyncData('menu', async () => {
 		return await useStoryblokApi().get(
@@ -53,7 +64,11 @@ import { useCartStore } from '../store/cart'
 		)
 	}).then(res => menu = res.data.value.data)
 
-	const cartModal = useCartStore()
+const cartModal = useCartStore()
 
-	const { x, y } = useWindowScroll()
+function openMenu() {
+	isOpen.value === false ? isOpen.value = true : isOpen.value = false
+}
+
+	// const { x, y } = useWindowScroll()
 </script>

@@ -103,6 +103,10 @@
 		background-color: #f8f8f8;
 		height: 700px;
 
+		@include phone-l {
+			height: auto;	
+		}
+
 		&-slide {
 			display: flex;
 			align-items: center;
