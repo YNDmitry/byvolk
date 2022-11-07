@@ -5,17 +5,17 @@
 				<NuxtLink to="/" class="header__brand">
 					<IconsLogo></IconsLogo>
 				</NuxtLink>
+				<nav v-if="isMobile">
+					<ul class="header__nav-list list-unstyled" >
+						<li v-for="item in menu.datasource_entries" :key="item.id">
+							<NuxtLink :to="item.value" class="header__link">
+								<div>{{ item.name }}</div>
+							</NuxtLink>
+						</li>
+					</ul>
+				</nav>
 				<ClientOnly>
 					<Teleport to=".header__mobile-menu" :disabled="isMobile">
-						<nav>
-							<ul class="header__nav-list list-unstyled" >
-								<li v-for="item in menu.datasource_entries" :key="item.id">
-									<NuxtLink :to="item.value" class="header__link">
-										<div>{{ item.name }}</div>
-									</NuxtLink>
-								</li>
-							</ul>
-						</nav>
 						<div class="flex center">
 							<LocationsSelect :data="languages.datasource_entries"></LocationsSelect>
 							<div class="header__cart" @click="cartModal.handleModal()">
@@ -28,7 +28,17 @@
 					</Teleport>
 				</ClientOnly>
 				<Transition name="menu-open">
-					<div class="header__mobile-menu" v-show="isOpen"></div>
+					<div class="header__mobile-menu" v-show="isOpen">
+						<nav>
+							<ul class="header__nav-list list-unstyled" >
+								<li v-for="item in menu.datasource_entries" :key="item.id">
+									<NuxtLink :to="item.value" class="header__link" @click="openMenu()">
+										<div>{{ item.name }}</div>
+									</NuxtLink>
+								</li>
+							</ul>
+						</nav>
+					</div>
 				</Transition>
 				<div class="header__menu-btn" @click="openMenu()">
 					<div

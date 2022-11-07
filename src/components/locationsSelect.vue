@@ -1,7 +1,7 @@
 <template>
   <div class="locations-select" @click="open()">
     <div class="locations-select__toggle">
-      <component :is="flag" class="locations-select__flag"></component>
+      <component :is="currentFlag" class="locations-select__flag"></component>
       <IconsArrowDown></IconsArrowDown>
     </div>
     <Transition name="select">
@@ -31,7 +31,7 @@
     ? JSON.parse(localStorage.getItem('lang'))
     : props.data[14]
   )
-  let flag = resolveComponent(`iconsFlags${currentOption.value.value.split('-')[1]}`)
+  let currentFlag = resolveComponent(`iconsFlags${currentOption.value.value.split('-')[1]}`)
   const isOpen = ref(false)
 
   function open() {
@@ -43,43 +43,3 @@
     return window.location.reload()
   }
 </script>
-
-<style lang="scss">
-.select-enter-active,
-.select-leave-active {
-  transition: all 200ms ease;
-
-  &[data-select-list] {
-    transition: all 200ms ease;
-  }
-}
-
-.select-enter-from {
-  &[data-select-list] {
-    opacity: 0;
-    transform: scale(0.8);
-    margin-top: -25px;
-  }
-}
-.select-enter-to {
-  &[data-select-list] {
-    opacity: 1;
-    transform: scale(1);
-    margin-top: 0;
-  }
-}
-.select-leave-from {
-  &[data-select-list] {
-    opacity: 1;
-    transform: scale(1);
-    margin-top: 0;
-  }
-}
-.select-leave-to {
-  &[data-select-list] {
-    opacity: 0;
-    transform: scale(0.8);
-    margin-top: -25px;
-  }
-}
-</style>

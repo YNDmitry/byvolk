@@ -12,10 +12,7 @@
 
 @import './pages/prints';
 
-@import './transitions/page';
-@import './transitions/fade';
-@import './transitions/modalCart';
-@import './transitions/menuOpen';
+@import './transitions/index';
 
 * {
 	box-sizing: border-box;

@@ -9,7 +9,7 @@
 					<icons-google-pay></icons-google-pay>
 					<icons-paypal></icons-paypal>
 				</div>
-				<p>Lorem ipsum</p>
+				<p>FREE SHIPPING & RETURNS GLOBALLY</p>
 			</div>
 		</div>
 	</div>

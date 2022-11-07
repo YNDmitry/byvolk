@@ -12,7 +12,7 @@
 		<div class="container">
 			<div class="hero-main__content">
 				<div class="hero-main__info">
-					<h1 v-if="blok.headline">{{ blok.headline }}</h1>
+					<h1 v-if="blok.headline" class="g-up">{{ blok.headline }}</h1>
 					<div class="hero-main__body">
 						<p v-if="blok.description" class="hero-main__p">
 							{{ blok.description }}

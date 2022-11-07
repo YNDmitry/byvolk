@@ -19,6 +19,7 @@
     "@pinia/nuxt": "^0.4.2",
     "@storyblok/nuxt": "^4.4.1",
     "axios": "^0.27.2",
+    "gsap": "^3.11.3",
     "normalize.css": "^8.0.1",
     "nuxt-graphql-client": "^0.1.25",
     "nuxt-swiper": "^0.1.5",

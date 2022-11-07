@@ -4,9 +4,17 @@
 	padding: 4px 0;
 
 	& p {
+		position: absolute;
+		left: 50%;
 		font-size: 8px;
 		text-transform: uppercase;
 		letter-spacing: 0.3em;
+		transform: translate(-50%, 0%);
+
+		@include phone-l {
+			transform: translate(0, 0);
+			position: static;
+		}
 	}
 
 	&__content {

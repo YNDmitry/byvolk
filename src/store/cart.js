@@ -29,7 +29,12 @@ export const useCartStore = defineStore('Cart', {
     },
 
     addToCart(item) {
-      this.items.push({ variantId: item, quantity: 1 })
+      if (this.items.find(el => el.variantId.id === item.id)) {
+        this.items.find(el => el.variantId.id === item.id).quantity++
+      } else {
+        this.items.push({ variantId: item, quantity: 1 })
+      }
+      
       localStorage.setItem('cartItems', JSON.stringify(this.items))
       this.handleModal()
     },

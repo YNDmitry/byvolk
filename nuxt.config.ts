@@ -22,6 +22,9 @@ export default defineNuxtConfig({
 		'nuxt-swiper',
 		'nuxt-graphql-client',
 	],
+	build: {
+		transpile: ['gsap']
+	},
 	storyblok: {
 		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
 		cacheProvider: 'memory',
@@ -39,6 +42,9 @@ export default defineNuxtConfig({
 	},
 	pageTransition: {
 		name: 'page',
+	},
+	layoutTransition: {
+		name: 'layout',
 	},
 	runtimeConfig: {
 		// Config within public will be also exposed to the client
