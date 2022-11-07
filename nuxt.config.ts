@@ -12,9 +12,7 @@ export default defineNuxtConfig({
 		[
 			'@pinia/nuxt',
 			{
-				autoImports: [
-					['defineStore', 'definePiniaStore'],
-				],
+				autoImports: [['defineStore', 'definePiniaStore']],
 			},
 		],
 		'@storyblok/nuxt',
@@ -23,7 +21,7 @@ export default defineNuxtConfig({
 		'nuxt-graphql-client',
 	],
 	build: {
-		transpile: ['gsap']
+		transpile: ['gsap'],
 	},
 	storyblok: {
 		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
@@ -68,7 +66,9 @@ export default defineNuxtConfig({
 		postcss: {
 			postcssOptions: {
 				plugins: {
-					autoprefixer: {},
+					autoprefixer: {
+						overrideBrowserslist: 'last 10 version'
+					},
 				},
 			},
 		},
