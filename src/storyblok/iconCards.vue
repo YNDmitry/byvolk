@@ -10,6 +10,7 @@
 					<div class="icons__card-icon">
 						<NuxtImg
 							provider="storyblok"
+							v-if="card.image"
 							:src="card.image.filename"
 							width="140"
 							height="100"
@@ -17,8 +18,8 @@
 							loading="lazy"
 						></NuxtImg>
 					</div>
-					<h5 class="fw-600">{{ card.headline }}</h5>
-					<p class="p-18">{{ card.description }}</p>
+					<h5 class="fw-600" v-if="card.headline">{{ card.headline }}</h5>
+					<p class="p-18" v-if="card.description">{{ card.description }}</p>
 				</div>
 			</div>
 		</div>
