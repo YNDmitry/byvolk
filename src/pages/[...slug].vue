@@ -36,7 +36,6 @@
 			slug && slug.length > 0 ? slug.join('/') : 'home',
 			{
 				version: version,
-				language: useState('locale').value,
 			}
 		)
 	} catch (error) {

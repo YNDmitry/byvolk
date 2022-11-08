@@ -2,6 +2,7 @@
 	<main class="main">
 		<NuxtLoadingIndicator></NuxtLoadingIndicator>
 		<AppPreloader></AppPreloader>
+		<AppTransition></AppTransition>
 		<DefaultBanner></DefaultBanner>
 		<DefaultHeader></DefaultHeader>
 		<slot></slot>
@@ -12,7 +13,7 @@
 </template>
 
 <script setup>
-	await preloadComponents('AppPreloader')
+	await preloadComponents(['AppPreloader', 'AppTransition'])
 
 	const { data: footer } = await useAsyncData('footer', () => {
 		return useStoryblokApi().get(

@@ -3,8 +3,8 @@
 		<div class="container">
 			<div class="grid-2-col">
 				<div class="timer__head">
-					<h2>{{ blok.headline }}</h2>
-					<div class="mt-small" v-html="richtext"></div>
+					<h2 v-if="blok.headline">{{ blok.headline }}</h2>
+					<div class="mt-small" v-html="richtext" v-if="richtext"></div>
 				</div>
 				<div class="timer__body" v-if="isActive">
 					<div class="timer__bl">
@@ -40,7 +40,8 @@
 	})
 
 	const richtext = computed(() => renderRichText(props.blok.description))
-	let isActive = ref(true)
+	let isActive = computed(() => new Date(props.blok.date) <= new Date() ? false : true)
+	let endTime = new Date(props.blok.date)
 
 	const timer = reactive({
 		days: 0,
@@ -48,10 +49,9 @@
 		minutes: 0,
 		seconds: 0,
 	})
-
+	
 	onMounted(() => {
 		const init = () => {
-			let endTime = new Date(props.blok.date)
 			endTime = Date.parse(endTime) / 1000
 
 			let now = new Date()
