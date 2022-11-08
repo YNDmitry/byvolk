@@ -1,6 +1,5 @@
 <template>
 	<main class="main">
-		<NuxtLoadingIndicator></NuxtLoadingIndicator>
 		<AppPreloader></AppPreloader>
 		<AppTransition></AppTransition>
 		<DefaultBanner></DefaultBanner>
