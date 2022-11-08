@@ -1,7 +1,7 @@
 <template>
 	<main class="main">
 		<AppPreloader></AppPreloader>
-		<AppTransition></AppTransition>
+		<!-- <AppTransition></AppTransition> -->
 		<DefaultBanner></DefaultBanner>
 		<DefaultHeader></DefaultHeader>
 		<slot></slot>
