@@ -3,6 +3,7 @@ import { defineNuxtConfig } from 'nuxt/config'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	srcDir: 'src/',
+	css: ['~/assets/scss/main.scss'],
 	components: {
 		global: true,
 		dirs: ['~/components'],
@@ -27,7 +28,6 @@ export default defineNuxtConfig({
 		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
 		cacheProvider: 'memory',
 	},
-	css: ['~/assets/scss/main.scss'],
 	app: {
 		head: {
 			title: 'BYVOLK',
