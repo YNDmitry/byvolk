@@ -8,6 +8,7 @@
 						type="button"
 						class="slider__nav-button is-prev"
 						id="prints-prev"
+						ref="leftArr"
 					>
 						<IconsArrowRight></IconsArrowRight>
 					</button>
@@ -15,6 +16,7 @@
 						type="button"
 						id="prints-next"
 						class="slider__nav-button is-next"
+						ref="rightArr"
 					>
 						<IconsArrowRight></IconsArrowRight>
 					</button>
@@ -25,8 +27,8 @@
 				class="b-sellers__slider mt-large"
 				:modules="[Navigation]"
 				:navigation="{
-					nextEl: '#prints-next',
-					prevEl: '#prints-prev',
+					nextEl: rightArr,
+					prevEl: leftArr,
 				}"
 				:slides-per-view="'auto'"
 				:space-between="35"
@@ -65,4 +67,7 @@
 			productId: props.handle,
 		},
 	})
+
+	const leftArr = ref(null)
+	const rightArr = ref(null)
 </script>

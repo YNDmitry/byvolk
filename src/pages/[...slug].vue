@@ -16,12 +16,13 @@
 		<Body :class="story?.content?.page_black ? 'dark' : ''">
 			<StoryblokComponent v-if="story" :blok="story.content" />
 		</Body>
-
-		<!-- <page-transition></page-transition> -->
 	</div>
 </template>
 
 <script setup>
+	// import { gsap, Power3 } from 'gsap'
+	// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	
 	const config = useRuntimeConfig()
 
 	const { slug } = useRoute().params
@@ -44,4 +45,41 @@
 			statusMessage: 'Page not found or something went wrong...',
 		})
 	}
+
+	function animFrom(el) {
+		gsap.from('.up', {
+			scale: 0,
+			opacity: 0,
+		})
+	}
+
+	function animTo(el) {
+		gsap.to(el, {
+			scale: 1,
+			opacity: 1,
+			duration: 1,
+			ease: Power3.easeInOut,
+		})
+	}
+
+	function animInit() {
+		gsap.utils.toArray('.up').forEach((el) => {
+			ScrollTrigger.create({
+				trigger: el,
+				markers: true,
+				start: 'top 80%',
+				end: 'bottom 10%',
+				once: true,
+				onEnter: () => {
+					animTo(el)
+				},
+			})
+		})
+	}
+
+	onMounted(() => {
+		// gsap.registerPlugin(ScrollTrigger)
+		// animFrom()
+		// animInit()
+	})
 </script>

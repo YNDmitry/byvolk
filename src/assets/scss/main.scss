@@ -26,10 +26,6 @@ html {
 	height: 100%;
 }
 
-body {
-	transition: all 0.2s ease;
-}
-
 body.dark {
 	color: $dark-font-color;
 	background-color: $dark-background-color;
@@ -64,6 +60,7 @@ body {
 	font-weight: 400;
 	line-height: $base-line-height;
 	background-color: $base-background-color;
+	overflow-x: hidden;
 }
 
 main {

@@ -14,21 +14,19 @@
 						</li>
 					</ul>
 				</nav>
-				<ClientOnly>
-					<Teleport to=".header__mobile-menu" :disabled="isMobile">
-						<div class="flex center">
-							<LocationsSelect :data="languages.datasource_entries"></LocationsSelect>
-							<div class="header__cart" @click="cartModal.handleModal()">
-								<div class="header__cart-count" v-if="cartModal.items.length > 0">
-									{{ cartModal.items.length }}
-								</div>
-								<IconsCart></IconsCart>
-							</div>
+				<div class="flex center" v-if="isMobile">
+					<ClientOnly>
+						<LocationsSelect :data="languages.datasource_entries"></LocationsSelect>
+					</ClientOnly>
+					<div class="header__cart" @click="cartModal.handleModal()">
+						<div class="header__cart-count" v-if="cartModal.items.length > 0">
+							{{ cartModal.items.length }}
 						</div>
-					</Teleport>
-				</ClientOnly>
+						<IconsCart></IconsCart>
+					</div>
+				</div>
 				<Transition name="menu-open">
-					<div class="header__mobile-menu" v-show="isOpen">
+					<div class="header__mobile-menu" v-if="isOpen">
 						<nav>
 							<ul class="header__nav-list list-unstyled" >
 								<li v-for="item in menu.datasource_entries" :key="item.id">
@@ -38,6 +36,17 @@
 								</li>
 							</ul>
 						</nav>
+						<div class="flex center">
+							<ClientOnly>
+								<LocationsSelect :data="languages.datasource_entries"></LocationsSelect>
+							</ClientOnly>
+							<div class="header__cart" @click="cartModal.handleModal()">
+								<div class="header__cart-count" v-if="cartModal.items.length > 0">
+									{{ cartModal.items.length }}
+								</div>
+								<IconsCart></IconsCart>
+							</div>
+						</div>
 					</div>
 				</Transition>
 				<div class="header__menu-btn" @click="openMenu()">
@@ -74,7 +83,7 @@
 				version: 'published',
 			}
 		)
-	}).then(res => menu = res.data.value.data)
+	}).then(res => menu.value = res.data.value.data)
 
 	await useAsyncData('languages', async () => {
     return await useStoryblokApi().get(
@@ -83,7 +92,7 @@
         version: 'published',
       }
     )
-  }).then(res => languages = res.data.value.data)
+  }).then(res => languages.value = res.data.value.data)
 
 	function openMenu() {
 		isOpen.value === false ? isOpen.value = true : isOpen.value = false

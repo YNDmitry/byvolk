@@ -8,6 +8,7 @@
 						type="button"
 						id="community-prev"
 						class="slider__nav-button is-prev"
+						ref="leftArr"
 					>
 						<IconsArrowRight></IconsArrowRight>
 					</button>
@@ -15,6 +16,7 @@
 						type="button"
 						id="community-next"
 						class="slider__nav-button is-next"
+						ref="rightArr"
 					>
 						<IconsArrowRight></IconsArrowRight>
 					</button>
@@ -38,8 +40,8 @@
 				:loop="true"
 				:grabCursor="true"
 				:navigation="{
-					nextEl: '#community-next',
-					prevEl: '#community-prev',
+					nextEl: rightArr,
+					prevEl: leftArr,
 				}"
 				class="slider__slider mt-large"
 			>
@@ -63,4 +65,7 @@
 			default: () => ({}),
 		},
 	})
+
+	const leftArr = ref(null)
+	const rightArr = ref(null)
 </script>

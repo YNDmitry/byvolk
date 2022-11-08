@@ -1,6 +1,6 @@
 <template>
 	<section class="section-hero-main" v-editable="blok">
-		<div class="hero-main__img-wrapper">
+		<div class="hero-main__img-wrapper up">
 			<NuxtPicture
 				:src="blok.bgImage?.filename"
 				v-if="blok.bgImage"
@@ -11,7 +11,7 @@
 		</div>
 		<div class="container">
 			<div class="hero-main__content">
-				<div class="hero-main__info">
+				<div class="hero-main__info up">
 					<h1 v-if="blok.headline" class="g-up">{{ blok.headline }}</h1>
 					<div class="hero-main__body">
 						<p v-if="blok.description" class="hero-main__p">

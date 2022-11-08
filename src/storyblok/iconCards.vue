@@ -12,8 +12,6 @@
 							provider="storyblok"
 							v-if="card.image"
 							:src="card.image.filename"
-							width="140"
-							height="100"
 							class="icons__card-icon-img"
 							loading="lazy"
 						></NuxtImg>

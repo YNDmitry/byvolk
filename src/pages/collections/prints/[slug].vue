@@ -3,7 +3,7 @@
 		<section class="section-print">
 			<div class="container">
 				<div class="print__wrapper">
-					<div class="print__left">
+					<div class="print__left" ref="productSlider">
 						<Swiper class="print__slider" :slides-per-view="1">
 							<SwiperSlide
 								class="print__slider-slide"
@@ -104,7 +104,6 @@
 									}}</strong>
 								</span>
 								<div>
-									<IconsHearth></IconsHearth>
 									<IconsShare
 										v-if="isSupported"
 										@click="startShare()"
@@ -148,6 +147,7 @@
 
 <script setup>
 	import { useCartStore } from '../../../store/cart'
+	import { gsap } from 'gsap';
 
 	const { share, isSupported } = useShare()
 	const { slug } = useRoute().params
@@ -237,4 +237,16 @@
 	}
 
 	const addToCart = (item) => useCartStore().addToCart(item)
+	
+	const productSlider = ref(null)
+
+	
+	gsap.from(productSlider, {
+		scale: 0,
+	})
+
+	gsap.to(productSlider, {
+		scale: 1,
+		duration: 1	
+	})
 </script>

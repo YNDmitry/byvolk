@@ -9,6 +9,7 @@
 							type="button"
 							id="best-sellers-prev"
 							class="slider__nav-button is-prev"
+							ref="leftArr"
 						>
 							<IconsArrowRight></IconsArrowRight>
 						</button>
@@ -16,6 +17,7 @@
 							type="button"
 							id="best-sellers-next"
 							class="slider__nav-button is-next"
+							ref="rightArr"
 						>
 							<IconsArrowRight></IconsArrowRight>
 						</button>
@@ -34,13 +36,12 @@
 
 				<Swiper
 					class="b-sellers__slider"
-					v-if="data"
 					:modules="[Navigation]"
 					:slides-per-view="'auto'"
 					:space-between="35"
 					:navigation="{
-						nextEl: '#best-sellers-next',
-						prevEl: '#best-sellers-prev',
+						nextEl: rightArr,
+						prevEl: leftArr,
 					}"
 				>
 					<SwiperSlide
@@ -74,6 +75,9 @@
 			default: () => ({}),
 		},
 	})
+
+	const leftArr = ref(null)
+	const rightArr = ref(null)
 
 	const { data } = await useAsyncGql({
 		operation: 'Collection',

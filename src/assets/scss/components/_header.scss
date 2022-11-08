@@ -104,17 +104,21 @@
 		z-index: 100;
 		display: none;
 		width: 30px;
+		flex-direction: column;
 
 		@include phone-l {
 			display: flex;
-			flex-direction: column;
-			gap: 8px;
 		}
 
 		&-burger {
+			margin-bottom: 8px;
 			height: 2px;
 			width: 100%;
 			background-color: black;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 	}
 

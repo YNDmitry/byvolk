@@ -67,7 +67,7 @@ export default defineNuxtConfig({
 			postcssOptions: {
 				plugins: {
 					autoprefixer: {
-						overrideBrowserslist: 'last 10 version'
+						overrideBrowserslist: 'last 10 version',
 					},
 				},
 			},
