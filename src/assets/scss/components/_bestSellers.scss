@@ -7,6 +7,10 @@
 	display: flex;
 	flex-direction: column;
 	gap: 50px;
+
+	@include phone {
+		gap: 24px;
+	}
 }
 
 .b-sellers__slider {
@@ -24,13 +28,6 @@
 }
 
 .product-card {
-	// &:hover {
-	// 	& .product-card__head {
-	// 		& img:nth-child(2) {
-	// 			opacity: 1;
-	// 		}
-	// 	}
-	// }
 	&__head {
 		@include flex-center;
 		position: relative;

@@ -38,12 +38,6 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	pageTransition: {
-		name: 'page',
-	},
-	layoutTransition: {
-		name: 'layout',
-	},
 	runtimeConfig: {
 		// Config within public will be also exposed to the client
 		public: {

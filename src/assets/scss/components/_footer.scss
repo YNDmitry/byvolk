@@ -2,7 +2,7 @@
 	background-color: $base-dark-background-color;
 	color: $dark-font-color;
 	padding-top: 60px;
-	padding-bottom: 35px;
+	padding-bottom: 15px;
 	margin-top: 96px;
 
 	& h5 {
@@ -34,8 +34,8 @@
 	&__links {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		row-gap: 30px;
-		column-gap: 80px;
+		row-gap: 25px;
+		column-gap: 40px;
 		margin: 0 auto;
 
 		@include tablet {
@@ -62,6 +62,7 @@
 	&__grid {
 		display: flex;
 		justify-content: space-between;
+		align-items: flex-start;
 		row-gap: 45px;
 
 		@include tablet {
@@ -91,10 +92,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin-top: 124px;
+		margin-top: 48px;
 
 		&-copy {
-			font-size: 14px;
+			font-size: 10px;
 			opacity: 0.7;
 
 			@include phone-l {
@@ -106,5 +107,6 @@
 	&__payments {
 		display: flex;
 		gap: 10px;
+		width: 9%;
 	}
 }

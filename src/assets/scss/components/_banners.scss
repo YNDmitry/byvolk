@@ -10,10 +10,12 @@
 		text-transform: uppercase;
 		letter-spacing: 0.3em;
 		transform: translate(-50%, 0%);
+		font-style: normal;
 
 		@include phone-l {
 			transform: translate(0, 0);
 			position: static;
+			display: none;
 		}
 	}
 
