@@ -1,6 +1,6 @@
 <template>
 	<section class="section-hero-main" v-editable="blok">
-		<div class="hero-main__img-wrapper up">
+		<div class="hero-main__img-wrapper up" v-if="blok.bgImage.filename">
 			<NuxtPicture
 				:src="blok.bgImage?.filename"
 				v-if="blok.bgImage"
