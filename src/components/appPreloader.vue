@@ -17,7 +17,7 @@
   useNuxtApp().hook('page:finish', () => {
     setTimeout(() => {
       isActive.value = false
-    }, 800)
+    }, 400)
   })
 </script>
 
@@ -49,9 +49,15 @@
   left: 0;
   right: 0;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background-color: black;
   z-index: 10000000;
 

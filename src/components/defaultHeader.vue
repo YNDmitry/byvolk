@@ -49,7 +49,7 @@
 						</div>
 					</div>
 				</Transition>
-				<div class="header__menu-btn" @click="openMenu()">
+				<div class="header__menu-btn" :class="{'active': isOpen ? true : false}" @click="openMenu()">
 					<div
 						v-for="item in 3"
 						:key="item"

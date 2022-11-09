@@ -8,7 +8,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       gsap.utils.toArray('.up').forEach((el) => {
         gsap.set(el, {
           css: {
-            scale: 0,
+            scale: 0.1,
             opacity: 0
           }
         })
@@ -22,7 +22,7 @@ export default defineNuxtPlugin((nuxtApp) => {
             start: 'bottom 100%',
             once: true,
           },
-          duration: 0.8,
+          duration: 0.5,
           ease: Power3.easeInOut
         })
       })

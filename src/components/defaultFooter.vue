@@ -21,17 +21,17 @@
 						<h5 class="up">Connect</h5>
 						<div class="footer__soc">
 							<NuxtLink
-								class="footer__soc-link up"
+								class="footer__soc-link"
 								to="https://www.instagram.com/byvolk/"
 								target="_blank"
 							>
-								<IconsSocialInstagram></IconsSocialInstagram>
+								<IconsSocialInstagram class="up"></IconsSocialInstagram>
 							</NuxtLink>
-							<NuxtLink class="footer__soc-link up" target="_blank">
-								<IconsSocialWhatsapp></IconsSocialWhatsapp>
+							<NuxtLink class="footer__soc-link" target="_blank">
+								<IconsSocialWhatsapp class="up"></IconsSocialWhatsapp>
 							</NuxtLink>
-							<NuxtLink class="footer__soc-link up" to="mailto:info@byvolk.com">
-								<IconsSocialEmail></IconsSocialEmail>
+							<NuxtLink class="footer__soc-link" to="mailto:info@byvolk.com">
+								<IconsSocialEmail class="up"></IconsSocialEmail>
 							</NuxtLink>
 						</div>
 					</div>
