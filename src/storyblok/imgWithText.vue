@@ -5,17 +5,18 @@
 				<NuxtPicture
 					:src="blok.image.filename"
 					provider="storyblok"
-					class="iwt__img"
+					class="iwt__img up"
 					loading="lazy"
 					:style="{ order: blok.imageOrder }"
 				></NuxtPicture>
 				<div class="iwt__info">
-					<div v-html="richtext" class="iwt__info-rich"></div>
+					<div v-html="richtext" class="iwt__info-rich up"></div>
 					<NuxtLink
 						:to="button.link.cached_url"
 						v-for="button in blok.button"
 						:key="button"
 						:class="[`button-${button.buttonType}`, 'mt-medium']"
+						class="up"
 						>Projects</NuxtLink
 					>
 				</div>

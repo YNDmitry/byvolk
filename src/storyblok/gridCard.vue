@@ -9,7 +9,7 @@
 				class="grid-card__picture"
 			></NuxtImg>
 		</div>
-		<div class="grid-card__info">
+		<div class="grid-card__info up">
 			<h3 v-if="content.headline">{{ content.headline }}</h3>
 			<h4 v-if="content.headline2">{{ content.headline2 }}</h4>
 			<div v-html="richtext" v-if="richtext" class="grid-card__rich"></div>

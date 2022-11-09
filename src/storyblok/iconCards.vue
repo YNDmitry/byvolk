@@ -6,7 +6,7 @@
 				:style="`grid-template-columns: repeat(${columnCount}, 1fr);`"
 				:data-columns="columnCount"
 			>
-				<div class="icons__card" v-for="(card, idx) in blok.cards" :key="idx">
+				<div class="icons__card up" v-for="(card, idx) in blok.cards" :key="idx">
 					<div class="icons__card-icon">
 						<NuxtImg
 							provider="storyblok"

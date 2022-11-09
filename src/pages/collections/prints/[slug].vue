@@ -10,13 +10,13 @@
 								v-for="image in data.productByHandle?.images?.edges"
 								:key="image"
 							>
-								<NuxtImg :src="image.node.src"></NuxtImg>
+								<NuxtImg :src="image.node.src" class="up"></NuxtImg>
 							</SwiperSlide>
 						</Swiper>
 						<ClientOnly>
 							<Teleport to=".print__wrapper" :disabled="isMobile">
 								<div class="print__faq">
-									<Dropdown>
+									<Dropdown class="up">
 										<template #head>
 											<h5>Printing & Framing</h5>
 										</template>
@@ -29,7 +29,7 @@
 											</p>
 										</template>
 									</Dropdown>
-									<Dropdown>
+									<Dropdown class="up">
 										<template #head>
 											<h5>Shipping & returns</h5>
 										</template>
@@ -42,11 +42,11 @@
 						</ClientOnly>
 					</div>
 					<div class="print__info">
-						<div class="print__info-head">
-							<h2>
+						<div class="print__info-head up">
+							<h2 v-if="data.productByHandle.title" class="up">
 								{{ data.productByHandle.title }}
 							</h2>
-							<p class="mt-small" v-if="data.productByHandle.description">
+							<p class="mt-small up" v-if="data.productByHandle.description">
 								{{ data.productByHandle.description }}
 							</p>
 						</div>
@@ -56,7 +56,7 @@
 								<div>Chose {{ data.productByHandle.options[0].name }}</div>
 								<div class="print__info-body-buttons">
 									<label
-										class="radio-button"
+										class="radio-button up"
 										:class="{ 'is-active': frameVal === item }"
 										v-for="item in data.productByHandle.options[0].values"
 										:key="item"
@@ -75,7 +75,7 @@
 								<div>Chose {{ data.productByHandle.options[1].name }}</div>
 								<div class="print__info-body-buttons">
 									<label
-										class="radio-button"
+										class="radio-button up"
 										:class="{ 'is-active': sizeVal === item }"
 										v-for="item in data.productByHandle.options[1].values"
 										:key="item"
@@ -94,7 +94,7 @@
 
 						<div class="print__info-footer">
 							<div class="print__info-footer-col-1">
-								<span class="print__info-price">
+								<span class="print__info-price up">
 									Price:
 									<strong>{{
 										price(
@@ -103,7 +103,7 @@
 										)
 									}}</strong>
 								</span>
-								<div>
+								<div class="up">
 									<IconsShare
 										v-if="isSupported"
 										@click="startShare()"
@@ -114,7 +114,7 @@
 							<div class="print__info-footer-buttons">
 								<button
 									type="button"
-									class="button-primary w-full"
+									class="button-primary w-full up"
 									@click="
 										addToCart({
 											...currentProductVariant,
@@ -132,7 +132,7 @@
 								>
 									Add To Cart
 								</button>
-								<a href="#" class="print__info-footer-a m-auto mt-small"
+								<a href="#" class="print__info-footer-a m-auto mt-small up"
 									>Ask a question</a
 								>
 							</div>
@@ -147,7 +147,6 @@
 
 <script setup>
 	import { useCartStore } from '../../../store/cart'
-	import { gsap } from 'gsap';
 
 	const { share, isSupported } = useShare()
 	const { slug } = useRoute().params
@@ -239,14 +238,4 @@
 	const addToCart = (item) => useCartStore().addToCart(item)
 	
 	const productSlider = ref(null)
-
-	
-	gsap.from(productSlider, {
-		scale: 0,
-	})
-
-	gsap.to(productSlider, {
-		scale: 1,
-		duration: 1	
-	})
 </script>

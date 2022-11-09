@@ -11,16 +11,16 @@
 		<div class="contact-hero__container">
 			<div class="contact-hero__social">
 				<NuxtLink
-					class="contact-hero__social-link"
+					class="contact-hero__social-link up"
 					to="https://www.instagram.com/byvolk/"
 					target="_blank"
 				>
 					<IconsSocialInstagram width="50" height="50"></IconsSocialInstagram>
 				</NuxtLink>
-				<NuxtLink class="contact-hero__social-link" target="_blank">
+				<NuxtLink class="contact-hero__social-link up" target="_blank">
 					<IconsSocialWhatsapp width="50" height="50"></IconsSocialWhatsapp>
 				</NuxtLink>
-				<NuxtLink class="contact-hero__social-link" to="mailto:info@byvolk.com">
+				<NuxtLink class="contact-hero__social-link up" to="mailto:info@byvolk.com">
 					<IconsSocialEmail width="50" height="50"></IconsSocialEmail>
 				</NuxtLink>
 			</div>

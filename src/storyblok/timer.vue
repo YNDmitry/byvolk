@@ -3,28 +3,32 @@
 		<div class="container">
 			<div class="grid-2-col">
 				<div class="timer__head">
-					<h2 v-if="blok.headline">{{ blok.headline }}</h2>
-					<div class="mt-small" v-html="richtext" v-if="richtext"></div>
+					<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
+					<div class="mt-small up" v-html="richtext" v-if="richtext"></div>
 				</div>
 				<div class="timer__body" v-if="isActive">
 					<div class="timer__bl">
-						<div class="timer__card" v-for="(item, idx) in timer" :key="idx">
+						<div class="timer__card up" v-for="(item, idx) in timer" :key="idx">
 							<span class="timer__card-time">{{ item }}</span>
 							<span class="timer__card-title">{{ idx }}</span>
 						</div>
 					</div>
-					<FormNewsletter :isWhite="true"></FormNewsletter>
+					<FormNewsletter :isWhite="true" class="up"></FormNewsletter>
 				</div>
 				<div class="timer__success" v-else>
-					<h4 class="m-auto">Already dropped!</h4>
-					<NuxtLink
-						v-for="button in blok.successButton"
-						:key="button"
-						:to="button.link.cached_url"
-						:class="[`button-${button.buttonType}`, 'mt-medium', 'w-full']"
-					>
-						{{ button.title }}
-					</NuxtLink>
+					<h4 class="m-auto up">Already dropped!</h4>
+					<template v-if="blok.successButton">
+						<div class="mt-medium w-full up">
+							<NuxtLink
+								v-for="button in blok.successButton"
+								:key="button"
+								:to="button.link.cached_url"
+								:class="[`button-${button.buttonType}`, 'w-full']"
+							>
+								{{ button.title }}
+							</NuxtLink>
+						</div>
+					</template>
 				</div>
 			</div>
 		</div>
@@ -40,7 +44,7 @@
 	})
 
 	const richtext = computed(() => renderRichText(props.blok.description))
-	let isActive = computed(() => new Date(props.blok.date) <= new Date() ? false : true)
+	let isActive = asyncComputed(() => new Date(props.blok.date) <= new Date() ? false : true)
 	let endTime = new Date(props.blok.date)
 
 	const timer = reactive({
@@ -56,7 +60,7 @@
 
 			let now = new Date()
 			now = Date.parse(now) / 1000
-
+			
 			if (endTime <= now) {
 				isActive.value = false
 				return clearInterval(interval)

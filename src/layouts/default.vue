@@ -1,7 +1,6 @@
 <template>
 	<main class="main">
 		<AppPreloader></AppPreloader>
-		<!-- <AppTransition></AppTransition> -->
 		<DefaultBanner></DefaultBanner>
 		<DefaultHeader></DefaultHeader>
 		<slot></slot>
@@ -12,7 +11,7 @@
 </template>
 
 <script setup>
-	await preloadComponents(['AppPreloader', 'AppTransition'])
+	await preloadComponents(['AppPreloader'])
 
 	const { data: footer } = await useAsyncData('footer', () => {
 		return useStoryblokApi().get(

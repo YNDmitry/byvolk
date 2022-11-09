@@ -1,7 +1,7 @@
 <template>
 	<section class="section-instagram" v-editable="blok">
 		<div class="container">
-			<h2 v-if="blok.headline">{{ blok.headline }}</h2>
+			<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
 			<LazyClientOnly>
 				<Swiper
 					class="instagram__photos"
@@ -20,7 +20,7 @@
 						v-for="item in blok.instagram_images"
 						:key="item.id"
 					>
-						<NuxtLink to="https://www.instagram.com/byvolk/" target="_blank">
+						<NuxtLink to="https://www.instagram.com/byvolk/" target="_blank" class="up">
 							<NuxtPicture
 								provider="storyblok"
 								quality="30"

@@ -20,65 +20,16 @@
 </template>
 
 <script setup>
-	// import { gsap, Power3 } from 'gsap'
-	// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-	
 	const config = useRuntimeConfig()
 
 	const { slug } = useRoute().params
 	const version =
 		config.public.baseUrl === 'https://localhost:3000' ? 'draft' : 'published'
 
-	let story = null
-
-	try {
-		story = await useAsyncStoryblok(
-			slug && slug.length > 0 ? slug.join('/') : 'home',
-			{
-				version: version,
-			}
-		)
-	} catch (error) {
-		throw createError({
-			statusCode: 404,
-			statusMessage: 'Page not found or something went wrong...',
-		})
-	}
-
-	function animFrom(el) {
-		gsap.from('.up', {
-			scale: 0,
-			opacity: 0,
-		})
-	}
-
-	function animTo(el) {
-		gsap.to(el, {
-			scale: 1,
-			opacity: 1,
-			duration: 1,
-			ease: Power3.easeInOut,
-		})
-	}
-
-	function animInit() {
-		gsap.utils.toArray('.up').forEach((el) => {
-			ScrollTrigger.create({
-				trigger: el,
-				markers: true,
-				start: 'top 80%',
-				end: 'bottom 10%',
-				once: true,
-				onEnter: () => {
-					animTo(el)
-				},
-			})
-		})
-	}
-
-	onMounted(() => {
-		// gsap.registerPlugin(ScrollTrigger)
-		// animFrom()
-		// animInit()
-	})
+	let story = await useAsyncStoryblok(
+		slug && slug.length > 0 ? slug.join('/') : 'home',
+		{
+			version: version,
+		}
+	)
 </script>

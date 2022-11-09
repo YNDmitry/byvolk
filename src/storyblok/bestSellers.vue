@@ -3,14 +3,14 @@
 		<div class="container">
 			<div class="b-sellers__wrapper">
 				<div class="slider__head">
-					<h2 v-if="blok.headline">{{ blok.headline }}</h2>
+					<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
 					<ClientOnly>
 						<Teleport to=".b-sellers__wrapper" :disabled="isMobile">
 							<div class="slider__nav">
 								<button
 									type="button"
 									id="best-sellers-prev"
-									class="slider__nav-button is-prev"
+									class="slider__nav-button is-prev up"
 									ref="leftArr"
 								>
 									<IconsArrowRight></IconsArrowRight>
@@ -18,12 +18,12 @@
 								<button
 									type="button"
 									id="best-sellers-next"
-									class="slider__nav-button is-next"
+									class="slider__nav-button is-next up"
 									ref="rightArr"
 								>
 									<IconsArrowRight></IconsArrowRight>
 								</button>
-								<a class="slider__head-button">
+								<div class="slider__head-button up">
 									<NuxtLink
 										:class="`button-${button.buttonType}`"
 										:to="button.link.cached_url"
@@ -32,7 +32,7 @@
 									>
 										{{ button.title }}
 									</NuxtLink>
-								</a>
+								</div>
 							</div>
 						</Teleport>
 					</ClientOnly>
@@ -62,6 +62,7 @@
 							"
 							:minPrice="product.node.priceRange.minVariantPrice.amount"
 							:totalInventory="product.node.totalInventory"
+							class="up"
 						></ProductBlock>
 					</SwiperSlide>
 				</Swiper>

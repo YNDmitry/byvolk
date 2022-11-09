@@ -1,10 +1,10 @@
 <template>
 	<section v-editable="blok" class="section-collections">
 		<div class="container">
-			<h2 v-if="blok.headline">{{ blok.headline }}</h2>
+			<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
 			<div class="grid-2-col mt-large">
 				<div
-					class="collections__card"
+					class="collections__card up"
 					v-for="collection in collections"
 					:key="collection"
 				>

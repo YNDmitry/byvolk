@@ -6,7 +6,7 @@
 				<div class="slider__nav">
 					<button
 						type="button"
-						class="slider__nav-button is-prev"
+						class="slider__nav-button is-prev up"
 						id="prints-prev"
 						ref="leftArr"
 					>
@@ -15,7 +15,7 @@
 					<button
 						type="button"
 						id="prints-next"
-						class="slider__nav-button is-next"
+						class="slider__nav-button is-next up"
 						ref="rightArr"
 					>
 						<IconsArrowRight></IconsArrowRight>
@@ -35,7 +35,7 @@
 				ref="swiper"
 			>
 				<SwiperSlide
-					class="product-card"
+					class="product-card up"
 					v-for="product in data.productRecommendations"
 					:key="product"
 				>

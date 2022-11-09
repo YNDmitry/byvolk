@@ -2,12 +2,12 @@
 	<section class="slider" v-editable="blok">
 		<div class="container">
 			<div class="slider__head">
-				<h2>{{ blok.headline }}</h2>
+				<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
 				<div class="slider__nav">
 					<button
 						type="button"
 						id="community-prev"
-						class="slider__nav-button is-prev"
+						class="slider__nav-button is-prev up"
 						ref="leftArr"
 					>
 						<IconsArrowRight></IconsArrowRight>
@@ -15,12 +15,12 @@
 					<button
 						type="button"
 						id="community-next"
-						class="slider__nav-button is-next"
+						class="slider__nav-button is-next up"
 						ref="rightArr"
 					>
 						<IconsArrowRight></IconsArrowRight>
 					</button>
-					<div class="slider__head-button">
+					<div class="slider__head-button up">
 						<a
 							:href="item.link.cached_url"
 							v-for="item in blok.button"
@@ -50,7 +50,7 @@
 					:key="slide._uid"
 					class="slider__slider-slide"
 				>
-					<CommunitySlide :content="slide"></CommunitySlide>
+					<CommunitySlide :content="slide" class="up"></CommunitySlide>
 				</SwiperSlide>
 			</Swiper>
 		</div>

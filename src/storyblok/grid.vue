@@ -1,7 +1,6 @@
 <template>
 	<section v-editable="blok" class="section-grid">
 		<div class="container">
-			<h2>{{ blok.headline }}</h2>
 			<div class="cards-grid">
 				<GridCard
 					v-for="card in blok.cards"

@@ -2,8 +2,8 @@
 	<div>
 		<section class="section-hero">
 			<div class="container-md">
-				<h1>{{ data.collectionByHandle.title }}</h1>
-				<p v-if="data.collectionByHandle.description">
+				<h1 class="up" v-if="data.collectionByHandle.title">{{ data.collectionByHandle.title }}</h1>
+				<p v-if="data.collectionByHandle.description" class="up">
 					{{ data.collectionByHandle.description }}
 				</p>
 			</div>
@@ -20,7 +20,7 @@
 						:min-price="card.node.priceRange.minVariantPrice.amount"
 						:handle="card.node.handle"
 						:total-inventory="card.node.totalInventory"
-						class="product-card"
+						class="product-card up"
 					></ProductBlock>
 				</div>
 			</div>
