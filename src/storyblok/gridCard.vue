@@ -1,6 +1,9 @@
 <template>
 	<div class="grid-card">
-		<div class="grid-card__picture-wrapper">
+		<div 
+			class="grid-card__picture-wrapper" 
+			:class="imgEffect"
+		>
 			<NuxtImg
 				:src="content.image.filename"
 				provider="storyblok"
@@ -18,6 +21,8 @@
 </template>
 
 <script setup>
+	import { gsap } from 'gsap'
+	
 	const props = defineProps({
 		content: {
 			type: Object,
@@ -26,6 +31,30 @@
 		},
 	})
 
+	const isMobile = computed(() => {
+		if (useMediaQuery('(max-width: 769px)').value) {
+			return false
+		}
+		return true
+	})
+	const imgEffect = computed(() => isMobile ? 'parallax' : 'up')
+
 	const richtext = computed(() => renderRichText(props.content.description))
 	const opacity = computed(() => Number(props.content.imageOpacity)).value
+
+	useNuxtApp().hook('page:finish', () => {
+		setTimeout(() => {	
+			gsap.utils.toArray('.parallax').forEach(el => {
+				gsap.to(el, {
+					scrollTrigger: {
+						trigger: el,
+						start: 'bottom 80%',
+						scrub: 1
+					},
+					translateY: 80,
+					opacity: 0
+				})
+			})
+		}, 400)
+	})
 </script>
