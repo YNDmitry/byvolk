@@ -39,7 +39,7 @@
 				</div>
 
 				<Swiper
-					class="b-sellers__slider"
+					class="b-sellers__slider mt-large"
 					:modules="[Navigation]"
 					:slides-per-view="'auto'"
 					:space-between="35"

@@ -72,12 +72,12 @@
 			display: flex;
 			align-items: flex-start;
 			flex-direction: column;
-			gap: 30px;
 			max-width: 940px;
 			margin-left: auto;
 
 			& h1 {
 				text-align: right;
+				margin-bottom: 30px;
 
 				@include phone-l {
 					text-align: left;

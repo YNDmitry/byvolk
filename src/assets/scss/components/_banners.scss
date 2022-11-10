@@ -25,7 +25,10 @@
 
 	&__payments {
 		display: flex;
-		gap: 10px;
 		margin-left: auto;
+
+		& svg {
+			margin-left: 10px;
+		}
 	}
 }

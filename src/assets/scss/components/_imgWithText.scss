@@ -9,7 +9,14 @@
 .iwt__info-rich {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+
+	& p {
+		margin-bottom: 10px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 }
 
 .iwt__info {

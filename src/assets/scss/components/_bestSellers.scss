@@ -6,7 +6,6 @@
 .b-sellers__wrapper {
 	display: flex;
 	flex-direction: column;
-	gap: 50px;
 
 	@include phone {
 		gap: 24px;
