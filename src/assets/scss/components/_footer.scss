@@ -101,7 +101,7 @@
 
 		&-copy {
 			font-size: 10px;
-			opacity: 0.7;
+			color: #BABABA;
 
 			@include phone-l {
 				font-size: 10px;
@@ -116,12 +116,14 @@
 
 	&__payments {
 		display: flex;
-		gap: 10px;
-		width: 9%;
+		width: 10%;
+
+		& svg {
+			margin-left: 10px;
+		}
 
 		@include phone {
 			width: 100%;
-
 		}
 	}
 }

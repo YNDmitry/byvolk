@@ -1,12 +1,12 @@
 .form-newsletter {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
 	position: relative;
 
 	& h5 {
 		color: $dark-font-color;
 		text-transform: capitalize;
+		margin-bottom: 20px;
 	}
 
 	&__input-wrapper {

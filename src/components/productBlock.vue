@@ -1,22 +1,20 @@
 <template>
 	<NuxtLink :to="'/collections/prints/' + handle" class="w-full" @mouseenter="isHoverIn = true" @mouseleave="isHoverIn = false">
 		<div class="product-card__head">
-			<NuxtImg
+			<img
 				:src="images[0].node.src"
-				:srcset="`${images[0].node.src}&width=320 320w, ${images[0].node.src}&width=640 640w, ${images[0].node.src}&width=768 768w, ${images[0].node.src}&width=1024 1024w, ${images[0].node.src}&width=1280 1280w, ${images[0].node.src}&width=1536 1536w, ${images[0].node.src}&width=1536 1536w`"
-				sizes="(max-width: 320px) 320px, (max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1280px) 1280px, (max-width: 1536px) 1536px, 1536px"
+				:srcset="`${images[0].node.src}&width=479 479w, ${images[0].node.src}&width=600 600w`"
+				sizes="(max-width: 479px) 479px, (max-width: 1536px) 600px, 600px"
 				width="300"
-				loading="lazy"
-			></NuxtImg>
+				loading="lazy" />
 			<Transition name="fade">
-				<NuxtImg
+				<img
 					:src="images[1].node.src"
 					:srcset="`${images[1].node.src}&width=320 320w, ${images[1].node.src}&width=640 640w, ${images[1].node.src}&width=768 768w, ${images[1].node.src}&width=1024 1024w, ${images[1].node.src}&width=1280 1280w, ${images[1].node.src}&width=1536 1536w, ${images[1].node.src}&width=1536 1536w`"
 					sizes="(max-width: 320px) 320px, (max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1280px) 1280px, (max-width: 1536px) 1536px, 1536px"
-					width="300"
 					loading="lazy"
-					v-show="isHoverIn"
-				></NuxtImg>
+					width="380"
+					v-if="isHoverIn" />
 			</Transition>
 		</div>
 		<div class="product-card__body">
