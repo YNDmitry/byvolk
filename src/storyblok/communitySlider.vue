@@ -3,11 +3,11 @@
 		<div class="container">
 			<div class="slider__head">
 				<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
-				<div class="slider__nav">
+				<div class="slider__nav up">
 					<button
 						type="button"
 						id="community-prev"
-						class="slider__nav-button is-prev up"
+						class="slider__nav-button is-prev"
 						ref="leftArr"
 					>
 						<IconsArrowRight></IconsArrowRight>
@@ -15,12 +15,12 @@
 					<button
 						type="button"
 						id="community-next"
-						class="slider__nav-button is-next up"
+						class="slider__nav-button is-next"
 						ref="rightArr"
 					>
 						<IconsArrowRight></IconsArrowRight>
 					</button>
-					<div class="slider__head-button up">
+					<div class="slider__head-button">
 						<a
 							:href="item.link.cached_url"
 							v-for="item in blok.button"

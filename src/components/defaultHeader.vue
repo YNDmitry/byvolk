@@ -15,9 +15,6 @@
 					</ul>
 				</nav>
 				<div class="flex center" v-if="isMobile">
-					<ClientOnly>
-						<LocationsSelect :data="languages.datasource_entries"></LocationsSelect>
-					</ClientOnly>
 					<div class="header__cart" @click="cartModal.handleModal()">
 						<div class="header__cart-count" v-if="cartModal.items.length > 0">
 							{{ cartModal.items.length }}

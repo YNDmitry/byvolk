@@ -1,19 +1,15 @@
 .section-instagram {
 	padding-top: 96px;
-	overflow: hidden;
 
 	@include phone-l {
 		padding-top: 32px;
 	}
 
-	& .swiper-wrapper {
-		transition-timing-function: linear !important;
-	}
-
 	& .instagram__photos {
 		margin-top: 64px;
-		height: 350px;
-		overflow: visible;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		column-gap: 35px;
 
 		@include phone-l {
 			height: 250px;
@@ -22,15 +18,11 @@
 
 		&-item {
 			display: flex;
-			width: 350px;
 
 			@include phone-l {
 				width: 250px;
 			}
 
-			& a {
-				width: 100%;
-			}
 			& img {
 				width: 100%;
 				height: 100%;

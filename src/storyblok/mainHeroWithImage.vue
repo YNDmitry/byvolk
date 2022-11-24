@@ -1,18 +1,9 @@
 <template>
 	<section class="section-hero-main" v-editable="blok">
-		<div class="hero-main__img-wrapper up" v-if="blok.bgImage.filename">
-			<NuxtPicture
-				:src="blok.bgImage?.filename"
-				v-if="blok.bgImage"
-				provider="storyblok"
-				quality="70"
-				class="hero-main__img"
-			></NuxtPicture>
-		</div>
 		<div class="container">
 			<div class="hero-main__content">
 				<div class="hero-main__info up">
-					<h1 v-if="blok.headline" class="g-up">{{ blok.headline }}</h1>
+					<h1 v-if="blok.headline">{{ blok.headline }}</h1>
 					<div class="hero-main__body">
 						<p v-if="blok.description" class="hero-main__p">
 							{{ blok.description }}

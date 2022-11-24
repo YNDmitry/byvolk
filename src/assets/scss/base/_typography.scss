@@ -34,6 +34,42 @@
 	font-display: swap;
 }
 
+@font-face {
+	font-family: 'Avenir Next';
+	src: url('~/assets/fonts/Avenir/AvenirNextCyr-Regular.woff2')
+		format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Avenir Next';
+	src: url('~/assets/fonts/Avenir/AvenirNextCyr-Light.woff')
+		format('truetype');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Avenir Next';
+	src: url('~/assets/fonts/Avenir/AvenirNextCyr-Medium.woff2')
+		format('truetype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Avenir Next';
+	src: url('~/assets/fonts/Avenir/AvenirNextCyr-Bold.woff2')
+		format('truetype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
 h1,
 h2,
 h3,
@@ -48,20 +84,20 @@ h6 {
 }
 
 h1 {
-	font-size: 80px;
+	font-size: 50px;
 	font-weight: 700;
 
 	@include tablet {
-		font-size: 60px;
+		font-size: 50px;
 	}
 
 	@include phone-l {
-		font-size: 50px;
+		font-size: 40px;
 	}
 }
 
 h2 {
-	font-size: 42px;
+	font-size: 34px;
 
 	@include tablet {
 		font-size: 35px;
@@ -73,7 +109,7 @@ h2 {
 }
 
 h3 {
-	font-size: 32px;
+	font-size: 28px;
 
 	@include tablet {
 		font-size: 26px;
@@ -85,37 +121,33 @@ h3 {
 }
 
 h4 {
-	font-size: 25px;
+	font-size: 22px;
 
 	@include tablet {
-		font-size: 21px;
+		font-size: 20px;
 	}
 
 	@include phone-l {
-		font-size: 20px;
+		font-size: 18px;
 	}
 }
 
 h5 {
-	font-size: 20px;
+	font-size: 18px;
 }
 
 h6 {
-	font-size: 16px;
+	font-size: 14px;
 }
 
 p {
 	font-family: Avenir Next, Helvetica, sans-serif;
 	font-style: italic;
-	font-size: 20px;
+	font-size: 16px;
 	line-height: $base-line-height;
 
-	@include tablet {
-		font-size: 18px;
-	}
-
 	@include phone-l {
-		font-size: 16px;
+		font-size: 14px;
 	}
 }
 

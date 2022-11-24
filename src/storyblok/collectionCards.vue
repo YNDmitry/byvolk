@@ -1,26 +1,28 @@
 <template>
 	<section v-editable="blok" class="section-collections">
 		<div class="container">
-			<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
-			<div class="grid-2-col mt-large">
-				<div
-					class="collections__card up"
+			<div v-if="collections">
+				<div 
+					class="collections__cards" 
 					v-for="collection in collections"
 					:key="collection"
 				>
-					<div class="collections__card-img-wrapper">
-						<NuxtImg
-							class="collections__card-img"
-							:src="collection.node?.image?.src || 'stars.svg'"
-						></NuxtImg>
+					<div class="collections__cards-head">
+						<h2 class="up" v-if="collection.node.title">{{ collection.node.title }} |</h2>
+						<span class="up" v-if="collection.node.description">{{ collection.node.description }}</span>
 					</div>
-					<div class="collections__card-info">
-						<h4>{{ collection.node.title }}</h4>
-						<NuxtLink
-							class="button-secondary mt-small"
-							:to="'/collections/' + collection.node.handle"
-							>View</NuxtLink
-						>
+					<div class="collections__cards-items">
+						<ProductBlock
+							v-for="card in collection.node.products.edges"
+							:key="card"
+							:title="card.node.title"
+							:images="card.node.images.edges"
+							:currency-code="card.node.priceRange.minVariantPrice.currencyCode"
+							:min-price="card.node.priceRange.minVariantPrice.amount"
+							:total-inventory="card.node.totalInventory"
+							:handle="card.node.handle"
+							class="product-card up"
+						></ProductBlock>
 					</div>
 				</div>
 			</div>

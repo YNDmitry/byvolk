@@ -1,6 +1,6 @@
 <template>
 	<main class="main">
-		<AppPreloader></AppPreloader>
+		<NuxtLoadingIndicator></NuxtLoadingIndicator>
 		<DefaultBanner></DefaultBanner>
 		<DefaultHeader></DefaultHeader>
 		<slot></slot>
@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-	await preloadComponents(['AppPreloader'])
+	await preloadComponents(['DefaultHeader'])
 
 	const { data: footer } = await useAsyncData('footer', () => {
 		return useStoryblokApi().get(
@@ -21,4 +21,8 @@
 			}
 		)
 	})
+
+	useNuxtApp().hook('page:finish', () => {
+		window.scrollTo(0, 0);
+  })
 </script>

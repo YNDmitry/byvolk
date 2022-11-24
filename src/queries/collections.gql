@@ -8,6 +8,28 @@ query Collections($first: Int) {
 				image {
 					src
 				}
+				products(first: 10) {
+					edges {
+						node {
+							images(first: 2) {
+								edges {
+									node {
+										src
+									}
+								}
+							}
+							title
+							priceRange {
+								minVariantPrice {
+									amount
+									currencyCode
+								}
+							}
+							handle
+							totalInventory
+						}
+					}
+				}
 			}
 		}
 	}

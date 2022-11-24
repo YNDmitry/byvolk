@@ -30,7 +30,7 @@
 					nextEl: rightArr,
 					prevEl: leftArr,
 				}"
-				:slides-per-view="'auto'"
+				:slides-per-view="data.productRecommendations.length > 5 ? 5 : data.productRecommendations.length"
 				:space-between="35"
 				ref="swiper"
 			>

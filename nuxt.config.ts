@@ -26,7 +26,6 @@ export default defineNuxtConfig({
 	},
 	storyblok: {
 		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
-		cacheProvider: 'memory',
 	},
 	app: {
 		head: {
@@ -51,17 +50,6 @@ export default defineNuxtConfig({
 								process.env.SHOPIFY_ACCESS_TOKEN,
 						},
 						retainToken: true,
-					},
-				},
-			},
-		},
-	},
-	build: {
-		postcss: {
-			postcssOptions: {
-				plugins: {
-					autoprefixer: {
-						overrideBrowserslist: 'last 10 version',
 					},
 				},
 			},

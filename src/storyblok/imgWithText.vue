@@ -1,22 +1,22 @@
 <template>
 	<section class="section-iwt" v-editable="blok">
 		<div class="container">
-			<div class="grid-2-col iwt__items">
+			<div class="iwt__items">
 				<NuxtPicture
 					:src="blok.image.filename"
 					provider="storyblok"
 					class="iwt__img up"
 					loading="lazy"
 					:style="{ order: blok.imageOrder }"
+					width="350"
 				></NuxtPicture>
-				<div class="iwt__info">
-					<div v-html="richtext" class="iwt__info-rich up"></div>
+				<div class="iwt__info up">
+					<div v-html="richtext" class="iwt__info-rich"></div>
 					<NuxtLink
 						:to="button.link.cached_url"
 						v-for="button in blok.button"
 						:key="button"
 						:class="[`button-${button.buttonType}`, 'mt-medium']"
-						class="up"
 						>Projects</NuxtLink
 					>
 				</div>

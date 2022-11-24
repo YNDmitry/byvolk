@@ -2,37 +2,26 @@
 	<section class="section-instagram" v-editable="blok">
 		<div class="container">
 			<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
-			<LazyClientOnly>
-				<Swiper
-					class="instagram__photos"
-					ref="swiper"
-					:modules="[SwiperAutoplay]"
-					:loop="loop"
-					:slides-per-view="'auto'"
-					:space-between="35"
-					:autoplay="{ delay: 1, disableOnInteraction: false }"
-					:speed="8000"
-					:centeredSlides="true"
-					@init="update()"
+			<div
+				class="instagram__photos"
+			>
+				<NuxtLink
+					class="instagram__photos-item up"
+					to="https://www.instagram.com/byvolk/" 
+					target="_blank"
+					v-for="item in blok.instagramImages"
+					:key="item.id"
 				>
-					<SwiperSlide
-						class="instagram__photos-item"
-						v-for="item in blok.instagram_images"
-						:key="item.id"
-					>
-						<NuxtLink to="https://www.instagram.com/byvolk/" target="_blank" class="up">
-							<NuxtPicture
-								provider="storyblok"
-								quality="30"
-								:src="item?.filename"
-								:modifiers="{ smart: true }"
-								width="350"
-								loading="lazy"
-							/>
-						</NuxtLink>
-					</SwiperSlide>
-				</Swiper>
-			</LazyClientOnly>
+					<NuxtPicture
+						provider="storyblok"
+						quality="30"
+						:src="item?.filename"
+						:modifiers="{ smart: true }"
+						width="350"
+						loading="lazy"
+					/>
+				</NuxtLink>
+			</div>
 		</div>
 	</section>
 </template>

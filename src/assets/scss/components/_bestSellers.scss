@@ -1,5 +1,5 @@
 .section-b-sellers {
-	padding: 124px 0;
+	padding: 32px 0;
 	overflow: hidden;
 }
 
@@ -8,7 +8,7 @@
 	flex-direction: column;
 
 	@include phone {
-		gap: 24px;
+		row-gap: 24px;
 	}
 }
 
@@ -27,12 +27,14 @@
 }
 
 .product-card {
+	position: relative;
+
 	&__head {
 		@include flex-center;
 		position: relative;
 		background-color: #f8f8f8;
-		padding: 42px;
-		height: 400px;
+		padding: 20px;
+		height: 250px;
 		overflow: hidden;
 
 		& img:nth-child(1) {
@@ -56,7 +58,24 @@
 		&-price {
 			@include flex-space-between-center;
 			margin-top: 10px;
-			gap: 10px;
+			row-gap: 10px;
 		}
+	}
+
+	&__disabled {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		font-weight: 600;
+		font-size: 20px;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 10;
+		background-color: rgba(255, 255, 255, 0.8);
+		height: 100%;
+		cursor: not-allowed;
 	}
 }

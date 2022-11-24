@@ -1,49 +1,10 @@
 .section-hero-main {
 	position: relative;
 	display: flex;
-	padding-bottom: 128px;
-	padding-top: 8vh;
+	padding-top: 24px;
 
 	& .hero-main {
-		&__img-wrapper {
-			position: absolute;
-			z-index: 0;
-			bottom: 0;
-			top: 0;
-			left: 0;
-			right: 0;
-			width: 50%;
-			background-color: black;
-
-			&::before {
-				content: '';
-				position: absolute;
-				bottom: 0;
-				top: 0;
-				left: 0;
-				right: 0;
-				background-color: #f8f8f8;
-				opacity: 0.75;
-
-				@include phone-l {
-					opacity: 0.9;
-				}
-			}
-
-			& img {
-				height: 100%;
-				width: 100%;
-				object-fit: cover;
-			}
-
-			@include phone-l {
-				width: 100%;
-			}
-		}
-
 		&__body {
-			max-width: 620px;
-			margin-left: auto;
 			display: flex;
 			flex-direction: column;
 
@@ -55,8 +16,7 @@
 		&__footer {
 			display: flex;
 			flex-direction: column;
-			margin-left: auto;
-			margin-top: 10vh;
+			margin-top: 32px;
 
 			@include phone-l {
 				margin-left: 0;
@@ -70,37 +30,26 @@
 
 		&__info {
 			display: flex;
-			align-items: flex-start;
+			align-items: center;
 			flex-direction: column;
 			max-width: 940px;
-			margin-left: auto;
+			text-align: center;
 
 			& h1 {
-				text-align: right;
 				margin-bottom: 30px;
-
-				@include phone-l {
-					text-align: left;
-				}
 			}
 
-			&-buttons {
-				margin-top: 24px;
-			}
 		}
 
 		&__content {
 			position: relative;
 			display: flex;
-			align-items: flex-end;
+			align-items: center;
+			justify-content: center;
 			z-index: 1;
 		}
 
 		&__stars {
-			margin-left: auto;
-			display: inline-block;
-			text-align: end;
-
 			& span {
 				margin-top: -8px;
 				display: block;

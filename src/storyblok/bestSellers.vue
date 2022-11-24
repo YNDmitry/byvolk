@@ -39,9 +39,9 @@
 				</div>
 
 				<Swiper
-					class="b-sellers__slider mt-large"
+					class="b-sellers__slider mt-medium"
 					:modules="[Navigation]"
-					:slides-per-view="'auto'"
+					:slides-per-view="5"
 					:space-between="35"
 					:navigation="{
 						nextEl: rightArr,

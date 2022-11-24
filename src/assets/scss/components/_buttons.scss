@@ -6,7 +6,7 @@
 		display: inline-block;
 		font-family: 'Montserrat';
 		font-weight: 500;
-		font-size: 25px;
+		font-size: 18px;
 		line-height: 140%;
 		min-width: 180px;
 		padding: 16px 70px;
@@ -70,7 +70,6 @@
 	display: inline-block;
 	padding: 12px 16px;
 	border: 1px solid #d8d9d8;
-	border-radius: 100px;
 	font-size: 18px;
 	line-height: 22px;
 	transition: all 200ms ease;
@@ -99,14 +98,14 @@
 	}
 
 	& a {
-		border: 1px solid $white;
+		border: 1px solid black;
 		padding: 35px;
 		font-family: 'Montserrat';
 		font-size: 40px;
 		text-transform: uppercase;
 		letter-spacing: 0.15em;
 		line-height: 100%;
-		color: $white;
+		color: black;
 		transition: all 200ms ease;
 
 		@include phone-l {
@@ -116,6 +115,7 @@
 
 		&:hover {
 			color: white;
+			background-color: black;
 		}
 	}
 }

@@ -1,9 +1,21 @@
 .section-iwt {
-	padding: 64px 0;
+	padding: 96px 0;
+}
+
+.iwt__items {
+	display: flex;
+	align-items: center;
+	column-gap: 64px;
+	max-width: 900px;
+	margin: 0 auto;
 }
 
 .iwt__items {
 	align-items: center;
+}
+
+.iwt__img {
+	max-width: 260px;
 }
 
 .iwt__info-rich {

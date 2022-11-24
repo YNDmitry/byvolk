@@ -7,7 +7,7 @@
 	flex-direction: column;
 
 	@include phone-l {
-		gap: 150px;
+		row-gap: 150px;
 	}
 
 	& .grid-card:nth-child(even) {
