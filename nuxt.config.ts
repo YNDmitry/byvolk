@@ -36,6 +36,10 @@ export default defineNuxtConfig({
 				lang: 'en',
 			},
 		},
+		pageTransition: {
+			name: 'page',
+			mode: 'out-in',
+		},
 	},
 	runtimeConfig: {
 		// Config within public will be also exposed to the client

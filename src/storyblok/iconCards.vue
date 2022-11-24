@@ -16,7 +16,7 @@
 						/>
 					</div>
 					<h5 class="fw-600" v-if="card.headline">{{ card.headline }}</h5>
-					<p class="p-18" v-if="card.description">{{ card.description }}</p>
+					<p class="p-18 mt-small" v-if="card.description">{{ card.description }}</p>
 				</div>
 			</div>
 		</div>

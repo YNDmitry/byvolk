@@ -21,7 +21,7 @@
 						>
 							<IconsArrowRight></IconsArrowRight>
 						</button>
-						<div class="slider__head-button up">
+						<div class="slider__head-button up" v-if="isButton">
 							<NuxtLink
 								:class="`button-${button.buttonType}`"
 								:to="button.link.cached_url"
@@ -32,8 +32,6 @@
 							</NuxtLink>
 						</div>
 					</div>
-					<!-- <Teleport to=".b-sellers__wrapper" :disabled="isMobile"> -->
-					<!-- </Teleport> -->
 				</div>
 
 				<Swiper
@@ -72,7 +70,7 @@
 <script setup>
 	import { Navigation } from 'swiper'
 
-	defineProps({
+	const props = defineProps({
 		blok: {
 			type: Object,
 			default: () => ({}),
@@ -81,6 +79,7 @@
 
 	const leftArr = ref(null)
 	const rightArr = ref(null)
+	
 	const slidesPerView = computed(() => {
 		if (useMediaQuery('(max-width: 991px)').value != useMediaQuery('(max-width: 700px)').value) {
 			return 3
@@ -90,6 +89,14 @@
 			return 'auto'
 		} else {
 			return 5
+		}
+	})
+
+	const isButton = asyncComputed(() => {
+		if (props.blok.button.length > 0) {
+			return true
+		} else {
+			return false
 		}
 	})
 
