@@ -4,38 +4,36 @@
 			<div class="b-sellers__wrapper">
 				<div class="slider__head">
 					<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
-					<ClientOnly>
-						<Teleport to=".b-sellers__wrapper" :disabled="isMobile">
-							<div class="slider__nav">
-								<button
-									type="button"
-									id="best-sellers-prev"
-									class="slider__nav-button is-prev up"
-									ref="leftArr"
-								>
-									<IconsArrowRight></IconsArrowRight>
-								</button>
-								<button
-									type="button"
-									id="best-sellers-next"
-									class="slider__nav-button is-next up"
-									ref="rightArr"
-								>
-									<IconsArrowRight></IconsArrowRight>
-								</button>
-								<div class="slider__head-button up">
-									<NuxtLink
-										:class="`button-${button.buttonType}`"
-										:to="button.link.cached_url"
-										v-for="button in blok.button"
-										:key="button._uid"
-									>
-										{{ button.title }}
-									</NuxtLink>
-								</div>
-							</div>
-						</Teleport>
-					</ClientOnly>
+					<div class="slider__nav">
+						<button
+							type="button"
+							id="best-sellers-prev"
+							class="slider__nav-button is-prev up"
+							ref="leftArr"
+						>
+							<IconsArrowRight></IconsArrowRight>
+						</button>
+						<button
+							type="button"
+							id="best-sellers-next"
+							class="slider__nav-button is-next up"
+							ref="rightArr"
+						>
+							<IconsArrowRight></IconsArrowRight>
+						</button>
+						<div class="slider__head-button up">
+							<NuxtLink
+								:class="`button-${button.buttonType}`"
+								:to="button.link.cached_url"
+								v-for="button in blok.button"
+								:key="button._uid"
+							>
+								{{ button.title }}
+							</NuxtLink>
+						</div>
+					</div>
+					<!-- <Teleport to=".b-sellers__wrapper" :disabled="isMobile"> -->
+					<!-- </Teleport> -->
 				</div>
 
 				<Swiper

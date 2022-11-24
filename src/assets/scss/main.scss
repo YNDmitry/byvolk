@@ -177,3 +177,9 @@ textarea {
 		align-items: center;
 	}
 }
+
+.phone-hide {
+	@include phone-l {
+		display: none;
+	}
+}
