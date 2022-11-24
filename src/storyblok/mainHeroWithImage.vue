@@ -22,7 +22,7 @@
 								</template>
 							</div>
 							<div class="hero-main__stars" v-if="blok.reviewsCount > 1">
-								<img src="stars.svg"/>
+								<img src="../public/stars.svg"/>
 								<span>Rated Excellent ({{ blok.reviewsCount }}+ Reviews)</span>
 							</div>
 						</div>

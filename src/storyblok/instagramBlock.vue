@@ -12,9 +12,7 @@
 					v-for="item in blok.instagramImages"
 					:key="item.id"
 				>
-					<NuxtPicture
-						provider="storyblok"
-						quality="30"
+					<img
 						:src="item?.filename"
 						:modifiers="{ smart: true }"
 						width="350"

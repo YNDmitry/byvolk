@@ -2,14 +2,13 @@
 	<section class="section-iwt" v-editable="blok">
 		<div class="container">
 			<div class="iwt__items">
-				<NuxtPicture
+				<img
 					:src="blok.image.filename"
-					provider="storyblok"
 					class="iwt__img up"
 					loading="lazy"
 					:style="{ order: blok.imageOrder }"
 					width="350"
-				></NuxtPicture>
+				/>
 				<div class="iwt__info up">
 					<div v-html="richtext" class="iwt__info-rich"></div>
 					<NuxtLink
