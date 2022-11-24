@@ -18,7 +18,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         },
         scrollTrigger: {
           trigger: el,
-          start: 'bottom 100%',
+          start: 'top bottom',
           once: true,
         },
         duration: 1.5,

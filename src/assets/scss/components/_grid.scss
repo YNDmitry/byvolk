@@ -3,28 +3,9 @@
 }
 
 .cards-grid {
-	display: flex;
-	flex-direction: column;
-
-	@include phone-l {
-		row-gap: 150px;
-	}
-
-	& .grid-card:nth-child(even) {
-		& .grid-card__picture-wrapper {
-			margin-left: auto;
-		}
-
-		& .grid-card__info {
-			left: 0;
-			right: auto;
-
-			& .grid-card__rich {
-				margin-left: 0;
-				margin-right: 80px;
-			}
-		}
-	}
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	column-gap: 35px;
 }
 
 .grid-v2 {
@@ -46,24 +27,12 @@ body.dark {
 
 .grid-card {
 	display: flex;
+	flex-direction: column;
 	position: relative;
 	margin-bottom: 100px;
 
-	&:last-child {
-		margin-bottom: 0;
-	}
-
-	@include phone-l {
-		flex-direction: column;
-	}
-
 	&__picture-wrapper {
-		width: 52%;
 		position: relative;
-
-		@include phone-l {
-			width: 100%;
-		}
 
 		&::before {
 			content: '';
@@ -78,49 +47,10 @@ body.dark {
 	}
 
 	&__info {
-		position: absolute;
-		top: 124px;
-		max-width: 700px;
-		right: 0;
-
-		@include tablet {
-			top: 64px;
-		}
-
-		@include phone-l {
-			margin-top: 32px;
-			position: static;
-		}
-
-		& h3 {
-			font-size: 68px;
-			font-weight: 700;
-
-			@include tablet {
-				font-size: 50px;
-			}
-
-			@include phone-l {
-				font-size: 40px;
-			}
-		}
+		margin-top: 24px;
 
 		& h4 {
-			font-size: 28px;
-			margin: 18px 0;
-
-			@include phone-l {
-				font-size: 22px;
-			}
-		}
-	}
-
-	&__rich,
-	& h4 {
-		margin-left: 85px;
-
-		@include phone-l {
-			margin-left: 0;
+			margin-bottom: 20px;
 		}
 	}
 }

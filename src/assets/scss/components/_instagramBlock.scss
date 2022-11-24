@@ -1,5 +1,6 @@
 .section-instagram {
 	padding-top: 96px;
+	overflow: hidden;
 
 	@include phone-l {
 		padding-top: 32px;
@@ -10,19 +11,14 @@
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		column-gap: 35px;
+		row-gap: 35px;
 
 		@include phone-l {
-			height: 250px;
 			margin-top: 32px;
+			grid-template-columns: repeat(2, 1fr);
 		}
 
 		&-item {
-			display: flex;
-
-			@include phone-l {
-				width: 250px;
-			}
-
 			& img {
 				width: 100%;
 				height: 100%;

@@ -8,7 +8,7 @@
 		</div>
 		<div class="community-slide__body">
 			<h6>{{ content.authorName }}</h6>
-			<img src="../public/stars.svg"/>
+			<img src="/stars.svg"/>
 		</div>
 	</div>
 </template>

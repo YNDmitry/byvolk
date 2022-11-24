@@ -61,6 +61,10 @@ body {
 	line-height: $base-line-height;
 	background-color: $base-background-color;
 	overflow-x: hidden;
+
+	@include phone {
+		font-size: 12px;
+	}
 }
 
 main {

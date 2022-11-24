@@ -3,6 +3,10 @@
 	display: flex;
 	padding-top: 24px;
 
+	@include phone {
+		padding-bottom: 48px;
+	}
+
 	& .hero-main {
 		&__body {
 			display: flex;
@@ -19,7 +23,6 @@
 			margin-top: 32px;
 
 			@include phone-l {
-				margin-left: 0;
 				margin-top: 5vh;
 			}
 		}
@@ -54,11 +57,6 @@
 				margin-top: -8px;
 				display: block;
 				font-size: 8px;
-			}
-
-			@include phone-l {
-				margin-left: 0;
-				text-align: left;
 			}
 		}
 	}

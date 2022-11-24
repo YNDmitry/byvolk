@@ -2,23 +2,26 @@
 	<section class="section-instagram" v-editable="blok">
 		<div class="container">
 			<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
-			<div
-				class="instagram__photos"
+			<div 
+				class="instagram__photos" 
 			>
-				<NuxtLink
-					class="instagram__photos-item up"
-					to="https://www.instagram.com/byvolk/" 
-					target="_blank"
+				<div 
 					v-for="item in blok.instagramImages"
-					:key="item.id"
+					:key="item"
+					class="instagram__photos-item"
 				>
-					<img
-						:src="item?.filename"
-						:modifiers="{ smart: true }"
-						width="350"
-						loading="lazy"
-					/>
-				</NuxtLink>
+					<NuxtLink
+						class="up"
+						to="https://www.instagram.com/byvolk/" 
+						target="_blank"
+					>
+						<img
+							:src="item?.filename + '/m/filters:quality(10)'"
+							width="350"
+							loading="lazy"
+						/>
+					</NuxtLink>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -32,12 +35,10 @@
 		},
 	})
 
-	let loop = ref(true)
-	let swiper = ref(null)
-
-	function update() {
-		loop.value = false
-		loop.value = true
-		swiper.value = null
-	}
+	const isMobile = computed(() => {
+		if (useMediaQuery('(max-width: 479px)').value) {
+			return false
+		}
+		return true
+	})
 </script>

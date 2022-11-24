@@ -39,7 +39,7 @@
 				<Swiper
 					class="b-sellers__slider mt-medium"
 					:modules="[Navigation]"
-					:slides-per-view="5"
+					:slides-per-view="slidesPerView"
 					:space-between="35"
 					:navigation="{
 						nextEl: rightArr,
@@ -81,11 +81,16 @@
 
 	const leftArr = ref(null)
 	const rightArr = ref(null)
-	const isMobile = computed(() => {
-		if (useMediaQuery('(max-width: 479px)').value) {
-			return false
+	const slidesPerView = computed(() => {
+		if (useMediaQuery('(max-width: 991px)').value != useMediaQuery('(max-width: 700px)').value) {
+			return 3
+		} else if (useMediaQuery('(max-width: 700px)').value != useMediaQuery('(max-width: 479px)').value) {
+			return 2
+		} else if (useMediaQuery('(max-width: 479px)').value) {
+			return 'auto'
+		} else {
+			return 5
 		}
-		return true
 	})
 
 	const { data } = await useAsyncGql({

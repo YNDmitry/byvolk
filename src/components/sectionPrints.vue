@@ -30,7 +30,7 @@
 					nextEl: rightArr,
 					prevEl: leftArr,
 				}"
-				:slides-per-view="data.productRecommendations.length > 5 ? 5 : data.productRecommendations.length"
+				:slides-per-view="slidesPerView"
 				:space-between="35"
 				ref="swiper"
 			>
@@ -69,5 +69,17 @@
 	})
 
 	const leftArr = ref(null)
-	const rightArr = ref(null)
+const rightArr = ref(null)
+
+	const slidesPerView = asyncComputed(() => {
+		if (useMediaQuery('(max-width: 991px)').value != useMediaQuery('(max-width: 700px)').value) {
+			return 3
+		} else if (useMediaQuery('(max-width: 700px)').value != useMediaQuery('(max-width: 479px)').value) {
+			return 2
+		} else if (useMediaQuery('(max-width: 479px)').value) {
+			return 'auto'
+		} else {
+			return data.value.productRecommendations.length
+		}
+	})
 </script>

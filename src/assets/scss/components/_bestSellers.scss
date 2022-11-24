@@ -6,10 +6,6 @@
 .b-sellers__wrapper {
 	display: flex;
 	flex-direction: column;
-
-	@include phone {
-		row-gap: 24px;
-	}
 }
 
 .b-sellers__slider {
@@ -23,7 +19,10 @@
 
 .swiper-slide.product-card {
 	width: 100%;
-	max-width: 380px;
+	
+	@include phone-l {
+		max-width: 280px;
+	}
 }
 
 .product-card {

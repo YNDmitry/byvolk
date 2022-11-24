@@ -8,14 +8,18 @@
 	column-gap: 64px;
 	max-width: 900px;
 	margin: 0 auto;
-}
-
-.iwt__items {
-	align-items: center;
+	
+	@include phone {
+		flex-direction: column;
+	}
 }
 
 .iwt__img {
 	max-width: 260px;
+
+	@include phone {
+		margin-bottom: 25px;
+	}
 }
 
 .iwt__info-rich {

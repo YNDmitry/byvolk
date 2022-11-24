@@ -4,6 +4,7 @@
 	&-head {
 		display: flex;
 		align-items: flex-end;
+		flex-wrap: wrap;
 
 		& span {
 			display: inline-block;
@@ -12,6 +13,10 @@
 			margin-left: 10px;
 			text-transform: uppercase;
 			margin-bottom: 1px;
+
+			@include phone {
+				font-size: 14px;
+			}
 		}
 	}
 
@@ -21,5 +26,17 @@
 		column-gap: 35px;
 		row-gap: 40px;
 		margin-top: 32px;
+
+		@include tablet {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		@include phone-l {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		@include phone {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 }
