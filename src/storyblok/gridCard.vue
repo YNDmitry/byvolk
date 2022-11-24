@@ -4,13 +4,11 @@
 			class="grid-card__picture-wrapper" 
 			:class="imgEffect"
 		>
-			<NuxtImg
+			<img
 				:src="content.image.filename"
-				provider="storyblok"
-				quality="70"
 				width="700"
 				class="grid-card__picture"
-			></NuxtImg>
+			/>
 		</div>
 		<div class="grid-card__info up">
 			<h3 v-if="content.headline">{{ content.headline }}</h3>

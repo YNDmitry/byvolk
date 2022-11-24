@@ -8,13 +8,12 @@
 			>
 				<div class="icons__card up" v-for="(card, idx) in blok.cards" :key="idx">
 					<div class="icons__card-icon">
-						<NuxtImg
-							provider="storyblok"
+						<img
 							v-if="card.image"
 							:src="card.image.filename"
 							class="icons__card-icon-img"
 							loading="lazy"
-						></NuxtImg>
+						/>
 					</div>
 					<h5 class="fw-600" v-if="card.headline">{{ card.headline }}</h5>
 					<p class="p-18" v-if="card.description">{{ card.description }}</p>

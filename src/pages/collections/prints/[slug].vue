@@ -10,7 +10,7 @@
 								v-for="image in data.productByHandle?.images?.edges"
 								:key="image"
 							>
-								<NuxtImg :src="image.node.src"></NuxtImg>
+								<img :src="image.node.src"/>
 							</SwiperSlide>
 						</Swiper>
 						<ClientOnly>

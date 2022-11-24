@@ -22,7 +22,7 @@
 								</template>
 							</div>
 							<div class="hero-main__stars" v-if="blok.reviewsCount > 1">
-								<NuxtImg src="stars.svg"></NuxtImg>
+								<img src="stars.svg"/>
 								<span>Rated Excellent ({{ blok.reviewsCount }}+ Reviews)</span>
 							</div>
 						</div>

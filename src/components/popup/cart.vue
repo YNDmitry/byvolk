@@ -18,7 +18,7 @@
 								:key="idx"
 							>
 								<div class="cart__body-card-img">
-									<NuxtImg :src="card.variantId.image"></NuxtImg>
+									<img :src="card.variantId.image"/>
 								</div>
 								<div class="cart__body-card-info">
 									<div class="cart__body-card-info-head">
