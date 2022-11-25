@@ -70,6 +70,13 @@
 <script setup>
 	import { Navigation } from 'swiper'
 
+	const { data } = await useAsyncGql({
+		operation: 'Collection',
+		variables: {
+			handle: 'best-sellers',
+		},
+	})
+
 	const props = defineProps({
 		blok: {
 			type: Object,
@@ -98,12 +105,5 @@
 		} else {
 			return false
 		}
-	})
-
-	const { data } = await useAsyncGql({
-		operation: 'Collection',
-		variables: {
-			handle: 'best-sellers',
-		},
 	})
 </script>

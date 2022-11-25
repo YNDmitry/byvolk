@@ -9,11 +9,7 @@
 				required
 				v-model.trim="inputVal"
 			/>
-			<button type="submit" class="form-newsletter__input-wrapper_button">
-				<IconsArrowRight
-					class="form-newsletter__input-wrapper-arrow"
-				></IconsArrowRight>
-			</button>
+			<button type="submit" class="button-primary">Subscribe</button>
 		</div>
 	</form>
 </template>

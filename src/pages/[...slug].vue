@@ -14,7 +14,7 @@
 		</Head>
 
 		<Body :class="story?.content?.page_black ? 'dark' : ''">
-			<StoryblokComponent v-if="story" :blok="story.content" />
+			<StoryblokComponent v-if="story" :blok="story?.content" />
 		</Body>
 	</div>
 </template>
