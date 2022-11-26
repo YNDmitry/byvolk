@@ -1,7 +1,7 @@
 <template>
   <section v-editable="blok" class="rich">
     <div class="container">
-      <div v-html="richtext" v-if="props.blok.richtext.content.length > 0"></div>
+      <div v-html="richtext" class="rich__body"></div>
     </div>
   </section>
 </template>
