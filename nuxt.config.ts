@@ -42,7 +42,6 @@ export default defineNuxtConfig({
 		},
 	},
 	runtimeConfig: {
-		// Config within public will be also exposed to the client
 		public: {
 			baseUrl: process.env.BASE_URL || 'https://localhost:3000',
 			'graphql-client': {

@@ -30,7 +30,7 @@
 					</li>
 					<div class="footer__link center">© 2022 VOLK | ALL RIGHTS RESERVED</div>
 					<li 
-						v-for="link in data.data.datasource_entries.slice((data.data.datasource_entries.length / 2), (data.data.datasource_entries.length / 2 + 2))" 
+						v-for="link in data.data.datasource_entries.slice((data.data.datasource_entries.length / 2), data.data.datasource_entries.length)" 
 						:key="link.id"
 					>
 						<NuxtLink :to="link.value" class="footer__link">
