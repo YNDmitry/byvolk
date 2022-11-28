@@ -7,7 +7,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     gsap.utils.toArray('.up').forEach((el) => {
       gsap.set(el, {
         css: {
-          scale: 0.5,
+          scale: 0.9,
           opacity: 0
         }
       })
@@ -31,7 +31,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     gsap.utils.toArray('.up').forEach((el) => {
       gsap.set(el, {
         css: {
-          scale: 0.5,
+          scale: 0.9,
           opacity: 0
         }
       })

@@ -11,8 +11,8 @@
 						</button>
 					</div>
 					<div class="cart__body" v-if="cart.items.length > 0">
-						<TransitionGroup name="slide-left">
-							<div
+						<TransitionGroup name="slide-left" tag="ul" class="list-cart list-unstyled">
+							<li
 								class="cart__body-card"
 								v-for="(card, idx) in cart.items"
 								:key="idx"
@@ -47,7 +47,7 @@
 										</button>
 									</div>
 								</div>
-							</div>
+							</li>
 						</TransitionGroup>
 					</div>
 					<div v-else class="cart__empty">Your cart is empty :(</div>
