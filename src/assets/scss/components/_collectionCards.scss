@@ -1,18 +1,23 @@
 .collections__cards {
-	padding-bottom: 64px;
+	padding: 120px 0;
+
+	&:last-child {
+		padding-top: 0;
+	}
 
 	&-head {
 		display: flex;
-		align-items: flex-end;
-		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		text-align: center;
 
 		& span {
 			display: inline-block;
-			font-size: 18px;
-			line-height: 120%;
-			margin-left: 10px;
+			font-size: 10px;
+			line-height: 110%;
 			text-transform: uppercase;
-			margin-bottom: 1px;
+			color: #999999;
 
 			@include phone {
 				font-size: 14px;

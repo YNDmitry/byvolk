@@ -1,5 +1,5 @@
 .footer {
-	margin-top: 96px;
+	margin-top: 60px;
 	padding-bottom: 20px;
 
 	&__soc {
@@ -38,14 +38,14 @@
 		display: inline-block;
 		font-family: 'Avenir Next', Arial, Helvetica, sans-serif;
 		font-weight: 300;
-		font-size: 15px;
+		font-size: 10px;
 		transition: opacity 200ms ease;
 		text-transform: uppercase;
-		margin: 5px 15px;
+		margin: 5px 10px;
 		text-align: center;
 
 		&.center {
-			margin: 5px 40px;
+			margin: 5px 25px;
 
 			@include tablet {
 				margin: 5px 15px;
@@ -72,5 +72,6 @@
 	&__img {
 		margin-top: 50px;
 		margin-bottom: 15px;
+		cursor: pointer;
 	}
 }

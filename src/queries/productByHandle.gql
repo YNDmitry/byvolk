@@ -1,7 +1,6 @@
 query ProductByHandle($handle: String!) {
 	productByHandle(handle: $handle) {
 		id
-		availableForSale
 		title
 		totalInventory
 		images(first: 2) {
@@ -31,10 +30,12 @@ query ProductByHandle($handle: String!) {
 						amount
 						currencyCode
 					}
+					availableForSale
 				}
 			}
 		}
 		options(first: 10) {
+			id
 			name
 			values
 		}

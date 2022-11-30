@@ -2,35 +2,23 @@
 	<section class="slider" v-editable="blok">
 		<div class="container">
 			<div class="slider__head">
+				<button
+					type="button"
+					id="community-prev"
+					class="slider__nav-button is-prev up"
+					ref="leftArr"
+				>
+					<IconsArrowRight></IconsArrowRight>
+				</button>
 				<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
-				<div class="slider__nav up">
-					<button
-						type="button"
-						id="community-prev"
-						class="slider__nav-button is-prev"
-						ref="leftArr"
-					>
-						<IconsArrowRight></IconsArrowRight>
-					</button>
-					<button
-						type="button"
-						id="community-next"
-						class="slider__nav-button is-next"
-						ref="rightArr"
-					>
-						<IconsArrowRight></IconsArrowRight>
-					</button>
-					<div class="slider__head-button">
-						<a
-							:href="item.link.cached_url"
-							v-for="item in blok.button"
-							:key="item"
-							:class="`button-${item.buttonType}`"
-							target="_blank"
-							>{{ item.title }}</a
-						>
-					</div>
-				</div>
+				<button
+					type="button"
+					id="community-next"
+					class="slider__nav-button is-next up"
+					ref="rightArr"
+				>
+					<IconsArrowRight></IconsArrowRight>
+				</button>
 			</div>
 			<Swiper
 				:modules="[Navigation]"
@@ -43,7 +31,7 @@
 					nextEl: rightArr,
 					prevEl: leftArr,
 				}"
-				class="slider__slider mt-large"
+				class="slider__slider mt-medium"
 			>
 				<SwiperSlide
 					v-for="slide in blok.communitySlides"

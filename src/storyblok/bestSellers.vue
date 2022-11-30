@@ -3,34 +3,32 @@
 		<div class="container">
 			<div class="b-sellers__wrapper">
 				<div class="slider__head">
+					<button
+						type="button"
+						id="best-sellers-prev"
+						class="slider__nav-button is-prev up"
+						ref="leftArr"
+					>
+						<IconsArrowRight></IconsArrowRight>
+					</button>
 					<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
-					<div class="slider__nav">
-						<button
-							type="button"
-							id="best-sellers-prev"
-							class="slider__nav-button is-prev up"
-							ref="leftArr"
+					<button
+						type="button"
+						id="best-sellers-next"
+						class="slider__nav-button is-next up"
+						ref="rightArr"
+					>
+						<IconsArrowRight></IconsArrowRight>
+					</button>
+					<div class="slider__head-button up" v-if="isButton">
+						<NuxtLink
+							:class="`button-${button.buttonType}`"
+							:to="button.link.cached_url"
+							v-for="button in blok.button"
+							:key="button._uid"
 						>
-							<IconsArrowRight></IconsArrowRight>
-						</button>
-						<button
-							type="button"
-							id="best-sellers-next"
-							class="slider__nav-button is-next up"
-							ref="rightArr"
-						>
-							<IconsArrowRight></IconsArrowRight>
-						</button>
-						<div class="slider__head-button up" v-if="isButton">
-							<NuxtLink
-								:class="`button-${button.buttonType}`"
-								:to="button.link.cached_url"
-								v-for="button in blok.button"
-								:key="button._uid"
-							>
-								{{ button.title }}
-							</NuxtLink>
-						</div>
+							{{ button.title }}
+						</NuxtLink>
 					</div>
 				</div>
 

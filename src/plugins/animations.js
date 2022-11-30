@@ -7,13 +7,13 @@ export default defineNuxtPlugin((nuxtApp) => {
     gsap.utils.toArray('.up').forEach((el) => {
       gsap.set(el, {
         css: {
-          scale: 0.9,
+          translateY: '70px',
           opacity: 0
         }
       })
       gsap.to(el, {
         css: {
-          scale: 1,
+          translateY: '0px',
           opacity: 1,
         },
         scrollTrigger: {
@@ -31,13 +31,13 @@ export default defineNuxtPlugin((nuxtApp) => {
     gsap.utils.toArray('.up').forEach((el) => {
       gsap.set(el, {
         css: {
-          scale: 0.9,
+          translateY: '70px',
           opacity: 0
         }
       })
       gsap.to(el, {
         css: {
-          scale: 1,
+          translateY: '0px',
           opacity: 1,
         },
         scrollTrigger: {

@@ -126,6 +126,10 @@ textarea {
 .container-md {
 	width: 95%;
 	margin: 0 auto;
+
+	@include phone-l {
+		width: 90%;
+	}
 }
 
 .container {

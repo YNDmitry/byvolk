@@ -2,8 +2,7 @@
 	<footer class="footer">
 		<div class="container">
 			<div class="footer__grid">
-				<FormNewsletter title="Subscribe for the latest news, print releases and limited drops" class="up"></FormNewsletter>
-				<img src="/footer-img.png" width="317" class="footer__img up">
+				<img src="/footer-img.png" width="200" class="footer__img up" @click="backToTop()">
 				<div class="footer__soc up">
 					<NuxtLink
 						class="footer__soc-link"
@@ -52,4 +51,8 @@
 			}
 		)
 	})
+
+	const backToTop = () => {
+		window.scrollTo(0, 0);
+	}
 </script>

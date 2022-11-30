@@ -70,9 +70,9 @@
 
 .radio-button {
 	display: inline-block;
-	padding: 12px 16px;
+	padding: 6px 13px;
 	border: 1px solid #d8d9d8;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 22px;
 	transition: all 200ms ease;
 	cursor: pointer;
@@ -86,33 +86,35 @@
 		background-color: black;
 		color: $white;
 	}
+
+	&[disabled="true"] {
+		opacity: 0.7;
+		cursor: not-allowed;
+		pointer-events: none;
+	}
 }
 
 .big-link {
-	padding: 164px 0;
-
-	@include tablet {
-		padding: 80px 0;
-	}
+	padding: 34px 0;
 
 	@include phone-l {
-		padding: 48px 0;
+		padding: 18px 0;
 	}
 
 	& a {
 		border: 1px solid black;
-		padding: 35px;
-		font-family: 'Montserrat';
-		font-size: 40px;
+		padding: 30px;
+		font-family: 'Avenir Next';
+		font-size: 20px;
 		text-transform: uppercase;
-		letter-spacing: 0.15em;
-		line-height: 100%;
+		letter-spacing: 0.3em;
+		line-height: 120%;
 		color: black;
 		transition: all 200ms ease;
 
 		@include phone-l {
-			padding: 20px;
-			font-size: 25px;
+			padding: 20px 10px;
+			font-size: 16px;
 		}
 
 		&:hover {

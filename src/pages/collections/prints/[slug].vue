@@ -129,8 +129,9 @@
 											},
 										})
 									"
+									:disabled="!currentProductVariant.availableForSale"
 								>
-									Add To Cart
+									{{ currentProductVariant.availableForSale ? 'Add to cart' : 'Sold out' }}
 								</button>
 								<a href="#" class="print__info-footer-a m-auto mt-small"
 									>Ask a question</a
@@ -148,15 +149,7 @@
 <script setup>
 	import { useCartStore } from '../../../store/cart'
 
-	const { share, isSupported } = useShare()
 	const { slug } = useRoute().params
-
-	const isMobile = computed(() => {
-		if (useMediaQuery('(max-width: 769px)').value) {
-			return false
-		}
-		return true
-	})
 
 	const { data } = await useAsyncGql({
 		operation: 'ProductByHandle',
@@ -164,10 +157,6 @@
 			handle: slug,
 		},
 	})
-
-	const frameVal = ref(data.value.productByHandle.options[0].values[0])
-	const sizeVal = ref(data.value.productByHandle.options[1].values[0])
-	const currentProductVariant = ref(null)
 
 	await useHead({
 		title: data.value?.productByHandle?.title + ' - byvolk',
@@ -210,6 +199,19 @@
 			}
 		],
 	})
+
+	const { share, isSupported } = useShare()
+
+	const isMobile = computed(() => {
+		if (useMediaQuery('(max-width: 769px)').value) {
+			return false
+		}
+		return true
+	})
+
+	const frameVal = ref(data.value.productByHandle.options[0].values[0])
+	const sizeVal = ref(data.value.productByHandle.options[1].values[0])
+	const currentProductVariant = ref(null)
 
 	asyncComputed(() => {
 		return data.value.productByHandle.variants.edges.find((el) => {

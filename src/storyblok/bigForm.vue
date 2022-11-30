@@ -1,8 +1,8 @@
 <template>
 	<section v-editable="blok" class="section-big-form">
 		<div class="container">
-			<div class="grid-2-col">
-				<div>
+			<div class="section-big-form__wrapper">
+				<div class="section-big-form__head">
 					<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
 					<div v-html="richtext" class="mt-medium up" v-if="richtext"></div>
 				</div>

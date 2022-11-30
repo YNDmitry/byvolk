@@ -3,7 +3,8 @@
 		<div class="container">
 			<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
 			<div 
-				class="instagram__photos" 
+				class="instagram__photos"
+				:class="blok.headline.length === 0 ? '' : 'mt-medium'"
 			>
 				<div 
 					v-for="item in blok.instagramImages"

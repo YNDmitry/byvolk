@@ -3,7 +3,7 @@
 		<div class="community-slide__head">
 			<h4>{{ content.title }}</h4>
 			<p class="mt-xsmall">
-				{{ content.description }}
+				{{ content.description }} <NuxtLink :to="content.link.url" v-if="content.link" target="_blank">View more...</NuxtLink>
 			</p>
 		</div>
 		<div class="community-slide__body">

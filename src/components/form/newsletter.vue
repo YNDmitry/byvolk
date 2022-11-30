@@ -1,14 +1,12 @@
 <template>
 	<form class="form-newsletter">
-		<h5 v-if="title">{{ title }}</h5>
-		<div :class="['form-newsletter__input-wrapper', { 'is-white': isWhite }]">
-			<input
-				type="email"
-				placeholder="Email adress"
-				name="email"
-				required
-				v-model.trim="inputVal"
-			/>
+		<h6 v-if="title" class="up">{{ title }}</h6>
+		<div :class="['form-newsletter__input-wrapper', { 'is-white': isWhite }, 'up']">
+			<DefaultInput
+				:title="'Email address'"
+				:name="'Email'"
+				:type="'email'"
+			></DefaultInput>
 			<button type="submit" class="button-primary">Subscribe</button>
 		</div>
 	</form>
@@ -27,6 +25,4 @@
 			default: false,
 		},
 	})
-
-	const inputVal = ref(null)
 </script>

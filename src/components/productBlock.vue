@@ -1,9 +1,7 @@
 <template>
 	<NuxtLink 
-		:to="totalInventory > 0 ? '/collections/prints/' + handle : ''" 
+		:to="'/collections/prints/' + handle" 
 		class="w-full" 
-		@mouseenter="isHoverIn = true" 
-		@mouseleave="isHoverIn = false"
 		:disabled="totalInventory === 0 ? true : false"
 	>
 		<div class="product-card__head">
@@ -13,27 +11,12 @@
 				sizes="(max-width: 479px) 479px, (max-width: 1536px) 600px, 600px"
 				width="300"
 				loading="lazy" />
-			<Transition name="fade">
-				<img
-					:src="images[1].node.src"
-					:srcset="`${images[1].node.src}&width=320 320w, ${images[1].node.src}&width=640 640w, ${images[1].node.src}&width=768 768w, ${images[1].node.src}&width=1024 1024w, ${images[1].node.src}&width=1280 1280w, ${images[1].node.src}&width=1536 1536w, ${images[1].node.src}&width=1536 1536w`"
-					sizes="(max-width: 320px) 320px, (max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1280px) 1280px, (max-width: 1536px) 1536px, 1536px"
-					loading="lazy"
-					width="380"
-					v-if="isHoverIn && totalInventory > 0" />
-			</Transition>
 		</div>
 		<div class="product-card__body">
 			<h5>{{ title }}</h5>
 			<div class="product-card__body-price">
-				<div v-if="price">From <span class="fw-600">{{ price }}</span>
-				</div>
-				<div>Left <span class="fw-600">{{ totalInventory }}</span>
-				</div>
+				<div v-if="price">From <span class="fw-600">{{ price }}</span></div>
 			</div>
-		</div>
-		<div class="product-card__disabled" v-if="totalInventory === 0">
-			<div>SOLD OUT</div>
 		</div>
 	</NuxtLink>
 </template>
@@ -62,10 +45,9 @@ import { useHelpersStore } from '../store/helpers';
 		},
 	})
 
-const isHoverIn = ref(false)
 	const helpers = useHelpersStore()
 
-const price = asyncComputed(() => {
+	const price = asyncComputed(() => {
 		return helpers.price(props.minPrice, props.currencyCode)
 	})
 </script>

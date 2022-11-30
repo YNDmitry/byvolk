@@ -1,13 +1,16 @@
 .section-instagram {
-	padding-top: 96px;
+	padding: 96px 0;
 	overflow: hidden;
 
 	@include phone-l {
-		padding-top: 32px;
+		padding: 64px 0;
+	}
+
+	& h2 {
+		text-align: center;
 	}
 
 	& .instagram__photos {
-		margin-top: 64px;
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		column-gap: 35px;

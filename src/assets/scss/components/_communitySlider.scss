@@ -30,9 +30,9 @@
 	&__head {
 		@include flex-space-between-center;
 
-		@include phone-l {
-			flex-direction: column;
-			align-items: flex-start;
+		& h2 {
+			text-align: center;
+			width: 100%;
 		}
 
 		&-button {
