@@ -22,7 +22,8 @@
     "normalize.css": "^8.0.1",
     "nuxt-graphql-client": "^0.2.14",
     "nuxt-swiper": "^0.1.5",
-    "pinia": "^2.0.22"
+    "pinia": "^2.0.22",
+    "vanilla-cookieconsent": "^2.8.9"
   },
   "browserslist": [
     ">0.3%",

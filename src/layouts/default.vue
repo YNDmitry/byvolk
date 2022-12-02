@@ -5,7 +5,6 @@
 		<slot></slot>
 		<DefaultFooter></DefaultFooter>
 		<PopupCart></PopupCart>
-		<!-- <PopupCookie></PopupCookie> -->
 	</main>
 </template>
 

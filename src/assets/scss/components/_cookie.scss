@@ -1,33 +1,18 @@
-.cookie {
-	position: fixed;
-	z-index: 1000;
-	bottom: 32px;
-	left: 47.5px;
-	width: 100%;
-	max-width: 440px;
-	background-color: #353735;
-	color: $white;
-	padding: 32px;
+#cc_div {
+	font-family: 'Avenir Next', Helvetica, sans-serif;
 
-	& p {
-		font-family: Avenir;
-		font-size: 16px;
-		line-height: 140%;
-
-		& a {
-			color: #fcdd2f;
-		}
+	& div[role="heading"] {
+		font-family: "Montserrat", Arial, sans-serif;
 	}
 
-	&__buttons {
-		margin-top: 32px;
-		display: flex;
-		column-gap: 10px;
+	& .c-bn {
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		border-radius: 0;
+	}
 
-		& a {
-			font-size: 20px;
-			padding: 10px 20px;
-			min-width: auto;
-		}
+	& #c-s-bn {
+		border: 1px solid black;
+		background-color: transparent;
 	}
 }
