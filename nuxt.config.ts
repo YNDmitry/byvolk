@@ -1,12 +1,8 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	srcDir: 'src/',
-	css: [
-		'~/assets/scss/base/_fonts.scss',
-		'~/assets/scss/main.scss'
-	],
+	css: ['~/assets/scss/main.scss'],
 	components: {
 		global: true,
 		dirs: ['~/components'],
@@ -15,13 +11,14 @@ export default defineNuxtConfig({
 		[
 			'@pinia/nuxt',
 			{
-				autoImports: [['defineStore', 'definePiniaStore']],
+				autoImports: ['defineStore', 'definePiniaStore'],
 			},
 		],
 		'@storyblok/nuxt',
 		'@vueuse/nuxt',
 		'nuxt-swiper',
 		'nuxt-graphql-client',
+		'nuxt-font-loader',
 	],
 	build: {
 		transpile: ['gsap'],
@@ -29,6 +26,50 @@ export default defineNuxtConfig({
 	storyblok: {
 		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
 		useApiClient: true,
+	},
+	fontLoader: {
+		local: [
+			{
+				src: '/fonts/Montserrat/static/Montserrat-Regular.woff2',
+				family: 'Montserrat',
+				weight: '400',
+			},
+			{
+				src: '/fonts/Montserrat/static/Montserrat-Medium.woff2',
+				family: 'Montserrat',
+				weight: '500',
+			},
+			{
+				src: '/fonts/Montserrat/static/Montserrat-SemiBold.woff2',
+				family: 'Montserrat',
+				weight: '600',
+			},
+			{
+				src: '/fonts/Montserrat/static/Montserrat-Bold.woff2',
+				family: 'Montserrat',
+				weight: '700',
+			},
+			{
+				src: '/fonts/Avenir/AvenirNextCyr-Regular.woff2',
+				family: 'Avenir Next',
+				weight: '400',
+			},
+			{
+				src: '/fonts/Avenir/AvenirNextCyr-Light.woff2',
+				family: 'Avenir Next',
+				weight: '300',
+			},
+			{
+				src: '/fonts/Avenir/AvenirNextCyr-Medium.woff2',
+				family: 'Avenir Next',
+				weight: '500',
+			},
+			{
+				src: '/fonts/Avenir/AvenirNextCyr-Bold.woff2',
+				family: 'Avenir Next',
+				weight: '700',
+			},
+		],
 	},
 	app: {
 		head: {

@@ -1,8 +1,8 @@
 #cc_div {
-	font-family: 'Avenir Next', Helvetica, sans-serif;
+	font-family: $base-font-family;
 
 	& div[role="heading"] {
-		font-family: "Montserrat", Arial, sans-serif;
+		font-family: "Montserrat", sans-serif;
 	}
 
 	& .c-bn {

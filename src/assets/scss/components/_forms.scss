@@ -128,7 +128,7 @@
 	background-color: #f8f8f8;
 	font-size: 13px;
 	font-weight: 500;
-	font-family: 'Montserrat';
+	font-family: 'Montserrat', sans-serif;
 
 	&__button {
 		@include flex-center;

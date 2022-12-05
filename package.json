@@ -11,6 +11,7 @@
     "@vueuse/core": "^9.3.0",
     "@vueuse/nuxt": "^9.3.0",
     "nuxt": "^3.0.0",
+    "nuxt-font-loader": "^2.2.1",
     "sass": "^1.55.0",
     "sass-loader": "^13.0.2"
   },

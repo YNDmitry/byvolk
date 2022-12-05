@@ -2,7 +2,6 @@
 @import '../../../node_modules/vanilla-cookieconsent/dist/cookieconsent.css';
 
 @import './utilities/variables';
-
 @import './utilities/mixins';
 @import './utilities/functions';
 
@@ -27,33 +26,6 @@
 
 html {
 	height: 100%;
-}
-
-body.dark {
-	color: $dark-font-color;
-	background-color: $dark-background-color;
-
-	& h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	p {
-		color: $dark-font-color;
-	}
-
-	& .header {
-		background-color: $base-dark-background-color;
-
-		& .header__menu-btn-burger {
-			background-color: $white;
-		}
-	}
-
-	& .banner {
-		background-color: $base-dark-background-color;
-	}
 }
 
 body {
