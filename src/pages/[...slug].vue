@@ -20,11 +20,11 @@
 </template>
 
 <script setup>
-	const config = useRuntimeConfig()
+const config = useRuntimeConfig()
 
 	const { slug } = useRoute().params
 	const version =
-		config.public.baseUrl === 'https://localhost:3000' ? 'draft' : 'published'
+		config?.app?.baseURL === 'https://localhost:3000' ? 'draft' : 'published'
 
 	let story = await useAsyncStoryblok(
 		slug && slug.length > 0 ? slug.join('/') : 'home',

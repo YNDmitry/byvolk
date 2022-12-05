@@ -3,7 +3,10 @@ import { defineNuxtConfig } from 'nuxt/config'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	srcDir: 'src/',
-	css: ['~/assets/scss/main.scss'],
+	css: [
+		'~/assets/scss/base/_fonts.scss',
+		'~/assets/scss/main.scss'
+	],
 	components: {
 		global: true,
 		dirs: ['~/components'],
