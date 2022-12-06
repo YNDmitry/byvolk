@@ -23,8 +23,7 @@
 const config = useRuntimeConfig()
 
 	const { slug } = useRoute().params
-	const version =
-		config?.app?.baseURL === 'https://localhost:3000' ? 'draft' : 'published'
+	const version = useRoute().query._storyblok ? "draft" : "published"
 
 	let story = await useAsyncStoryblok(
 		slug && slug.length > 0 ? slug.join('/') : 'home',

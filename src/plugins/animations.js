@@ -2,7 +2,7 @@ import { gsap, Power1 } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.hook('page:finish', () => {
+  nuxtApp.hook('app:beforeMount', () => {
     gsap.registerPlugin(ScrollTrigger)
     gsap.utils.toArray('.up').forEach((el) => {
       gsap.set(el, {
@@ -11,6 +11,16 @@ export default defineNuxtPlugin((nuxtApp) => {
           opacity: 0
         }
       })
+    })
+  })
+  nuxtApp.hook('page:finish', () => {
+    gsap.utils.toArray('.up').forEach((el) => {
+      // gsap.set(el, {
+      //   css: {
+      //     translateY: '70px',
+      //     opacity: 0
+      //   }
+      // })
       gsap.to(el, {
         css: {
           translateY: '0px',
@@ -27,7 +37,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   })
   nuxtApp.hook('page:transition:finish', () => {
-    gsap.registerPlugin(ScrollTrigger)
     gsap.utils.toArray('.up').forEach((el) => {
       gsap.set(el, {
         css: {

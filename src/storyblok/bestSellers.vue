@@ -44,7 +44,7 @@
 				>
 					<SwiperSlide
 						class="product-card"
-						v-for="product in data.collection.products.edges"
+						v-for="product in data?.collection?.products.edges"
 						:key="product.node.id"
 					>
 						<ProductBlock
@@ -68,17 +68,17 @@
 <script setup>
 	import { Navigation } from 'swiper'
 
-	const { data } = await useAsyncGql({
-		operation: 'Collection',
-		variables: {
-			handle: 'best-sellers',
-		},
-	})
-
 	const props = defineProps({
 		blok: {
 			type: Object,
 			default: () => ({}),
+		},
+	})
+
+	const { data } = await useAsyncGql({
+		operation: 'Collection',
+		variables: {
+			handle: 'best-sellers',
 		},
 	})
 
