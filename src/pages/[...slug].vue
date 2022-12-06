@@ -20,15 +20,24 @@
 </template>
 
 <script setup>
-const config = useRuntimeConfig()
+	const config = useRuntimeConfig()
 
 	const { slug } = useRoute().params
-	const version = useRoute().query._storyblok ? "draft" : "published"
+	const version = useRoute().query['_storyblok_tk[token]'] ? "draft" : "published"
 
-	let story = await useAsyncStoryblok(
-		slug && slug.length > 0 ? slug.join('/') : 'home',
-		{
-			version: version,
+	const story = ref(null);
+  const storyblokApi = useStoryblokApi();
+  const { data } = await useAsyncData(
+    'vue',
+    async () => await storyblokApi.get(`cdn/stories/${slug && slug.length > 0 ? slug.join('/') : 'home'}`, {
+			version: version
+
+		})
+  );
+  story.value = data.value.data.story;
+	onMounted(() => {
+		if (version === 'draft' && state?.story) {
+			useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory));
 		}
-	)
+  });
 </script>
