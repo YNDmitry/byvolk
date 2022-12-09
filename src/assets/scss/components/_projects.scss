@@ -1,0 +1,56 @@
+.projects {
+  padding: 60px 0;
+
+  &__card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 150px;
+
+    @include phone-l {
+      margin-bottom: 60px;
+    }
+
+    &:nth-child(even) {
+      .projects__card-info {
+        order: 1;
+        margin-right: 0;
+        margin-left: 80px;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-slider {
+      width: 50%;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-info {
+      width: 50%;
+      margin-right: 80px;
+      
+      & h1, h2 {
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      & h3, h4 {
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      & p {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

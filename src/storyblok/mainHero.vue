@@ -19,5 +19,5 @@
 		},
 	})
 
-	const richtext = computed(() => renderRichText(props.blok.description))
+	const richtext = asyncComputed(() => renderRichText(props.blok.description))
 </script>

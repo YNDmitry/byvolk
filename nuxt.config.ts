@@ -19,6 +19,7 @@ export default defineNuxtConfig({
 		'nuxt-swiper',
 		'nuxt-graphql-client',
 		'nuxt-font-loader',
+		'@nuxt/image-edge',
 	],
 	build: {
 		transpile: ['gsap'],
@@ -102,19 +103,19 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	// image: {
-	// 	dir: 'public',
-	// 	storyblok: {
-	// 		baseURL: 'https://a.storyblok.com',
-	// 	},
-	// 	screens: {
-	// 		xs: 320,
-	// 		sm: 640,
-	// 		md: 768,
-	// 		lg: 1024,
-	// 		xl: 1280,
-	// 		xxl: 1536,
-	// 		'2xl': 1536,
-	// 	},
-	// },
+	image: {
+		dir: 'public',
+		storyblok: {
+			baseURL: 'https://a.storyblok.com',
+		},
+		screens: {
+			xs: 320,
+			sm: 640,
+			md: 768,
+			lg: 1024,
+			xl: 1280,
+			xxl: 1536,
+			'2xl': 1536,
+		},
+	},
 })
