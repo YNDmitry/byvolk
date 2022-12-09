@@ -27,12 +27,6 @@
 						to="https://www.instagram.com/byvolk/" 
 						target="_blank"
 					>
-						<img
-							:src="item?.image.filename + '/m/filters:quality(10)'"
-							width="350"
-							loading="lazy"
-							v-if="item?.image"
-						/>
 						<NuxtPicture :src="item?.image.filename" provider="storyblok" loading="lazy" v-if="item?.image" quality="10"></NuxtPicture>
 					</NuxtLink>
 					<div class="instagram__photos-item-footer" v-if="item.likes">
