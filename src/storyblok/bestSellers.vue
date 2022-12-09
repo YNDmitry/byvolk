@@ -35,7 +35,7 @@
 				<Swiper
 					class="b-sellers__slider mt-medium"
 					:modules="[Navigation]"
-					:slides-per-view="slidesPerView"
+					:slides-per-view="(slidesPerView || 5)"
 					:space-between="35"
 					:navigation="{
 						nextEl: rightArr,
