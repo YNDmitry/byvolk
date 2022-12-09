@@ -21,7 +21,7 @@
 				</button>
 			</div>
 			<Swiper
-				:modules="[Navigation]"
+				:modules="[SwiperNavigation]"
 				:slides-per-view="'auto'"
 				:centered-slides="true"
 				:space-between="35"
@@ -46,7 +46,6 @@
 </template>
 
 <script setup>
-	import { Navigation } from 'swiper'
 	const props = defineProps({
 		blok: {
 			type: Object,

@@ -2,7 +2,7 @@
 	<div>
 		<section class="section-print">
 			<div class="container">
-				<div class="print__wrapper">
+				<div class="print__wrapper" id="wrapper">
 					<div class="print__left" ref="productSlider">
 						<Swiper class="print__slider" :slides-per-view="1">
 							<SwiperSlide
@@ -10,36 +10,32 @@
 								v-for="image in data.productByHandle?.images?.edges"
 								:key="image"
 							>
-								<img :src="image.node.src"/>
+								<NuxtImg :src="image.node.src"></NuxtImg>
 							</SwiperSlide>
 						</Swiper>
-						<ClientOnly>
-							<Teleport to=".print__wrapper" :disabled="isMobile">
-								<div class="print__faq">
-									<Dropdown>
-										<template #head>
-											<h5>Printing & Framing</h5>
-										</template>
-										<template #body>
-											<p>
-												Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-												Sapiente, dignissimos.Lorem, ipsum dolor sit amet
-												consectetur adipisicing elit. Sapiente, dignissimos.Lorem,
-												ipsum dolor
-											</p>
-										</template>
-									</Dropdown>
-									<Dropdown>
-										<template #head>
-											<h5>Shipping & returns</h5>
-										</template>
-										<template #body>
-											<p>Body</p>
-										</template>
-									</Dropdown>
-								</div>
-							</Teleport>
-						</ClientOnly>
+						<div class="print__faq phone-hide">
+							<Dropdown>
+								<template #head>
+									<h5>Printing & Framing</h5>
+								</template>
+								<template #body>
+									<p>
+										Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+										Sapiente, dignissimos.Lorem, ipsum dolor sit amet
+										consectetur adipisicing elit. Sapiente, dignissimos.Lorem,
+										ipsum dolor
+									</p>
+								</template>
+							</Dropdown>
+							<Dropdown>
+								<template #head>
+									<h5>Shipping & returns</h5>
+								</template>
+								<template #body>
+									<p>Body</p>
+								</template>
+							</Dropdown>
+						</div>
 					</div>
 					<div class="print__info">
 						<div class="print__info-head">
@@ -139,6 +135,29 @@
 							</div>
 						</div>
 					</div>
+					<div class="print__faq hide">
+						<Dropdown>
+							<template #head>
+								<h5>Printing & Framing</h5>
+							</template>
+							<template #body>
+								<p>
+									Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+									Sapiente, dignissimos.Lorem, ipsum dolor sit amet
+									consectetur adipisicing elit. Sapiente, dignissimos.Lorem,
+									ipsum dolor
+								</p>
+							</template>
+						</Dropdown>
+						<Dropdown>
+							<template #head>
+								<h5>Shipping & returns</h5>
+							</template>
+							<template #body>
+								<p>Body</p>
+							</template>
+						</Dropdown>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -201,13 +220,6 @@
 	})
 
 	const { share, isSupported } = useShare()
-
-	const isMobile = computed(() => {
-		if (useMediaQuery('(max-width: 769px)').value) {
-			return false
-		}
-		return true
-	})
 
 	const frameVal = ref(data.value.productByHandle.options[0].values[0])
 	const sizeVal = ref(data.value.productByHandle.options[1].values[0])

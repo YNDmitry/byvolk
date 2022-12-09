@@ -23,7 +23,7 @@
 
 			<Swiper
 				class="b-sellers__slider mt-large"
-				:modules="[Navigation]"
+				:modules="[SwiperNavigation]"
 				:navigation="{
 					nextEl: rightArr,
 					prevEl: leftArr,
@@ -52,7 +52,6 @@
 </template>
 
 <script setup>
-	import { Navigation } from 'swiper'
 	const props = defineProps({
 		handle: {
 			type: String,
@@ -67,7 +66,7 @@
 	})
 
 	const leftArr = ref(null)
-const rightArr = ref(null)
+	const rightArr = ref(null)
 
 	const slidesPerView = asyncComputed(() => {
 		if (useMediaQuery('(max-width: 991px)').value != useMediaQuery('(max-width: 700px)').value) {

@@ -1,5 +1,5 @@
 <template>
-	<section class="section-b-sellers" v-editable="blok">
+	<section class="section-b-sellers" v-editable="blok" v-if="data">
 		<div class="container">
 			<div class="b-sellers__wrapper">
 				<div class="slider__head">
@@ -20,22 +20,12 @@
 					>
 						<IconsArrowRight></IconsArrowRight>
 					</button>
-					<div class="slider__head-button up" v-if="isButton">
-						<NuxtLink
-							:class="`button-${button.buttonType}`"
-							:to="button.link.cached_url"
-							v-for="button in blok.button"
-							:key="button._uid"
-						>
-							{{ button.title }}
-						</NuxtLink>
-					</div>
 				</div>
 
 				<Swiper
 					class="b-sellers__slider mt-medium"
-					:modules="[Navigation]"
-					:slides-per-view="(slidesPerView || 5)"
+					:modules="[SwiperNavigation]"
+					:slides-per-view="slidesPerView"
 					:space-between="35"
 					:navigation="{
 						nextEl: rightArr,
@@ -44,7 +34,7 @@
 				>
 					<SwiperSlide
 						class="product-card"
-						v-for="product in data?.collection?.products.edges"
+						v-for="product in data?.collection.products.edges"
 						:key="product.node.id"
 					>
 						<ProductBlock
@@ -66,22 +56,15 @@
 </template>
 
 <script setup>
-	import { Navigation } from 'swiper'
-
 	const props = defineProps({
 		blok: {
 			type: Object,
-			default: () => ({}),
+			default: () => {},
 		},
 	})
 
-	const { data } = await useAsyncGql({
-		operation: 'Collection',
-		variables: {
-			handle: 'best-sellers',
-		},
-	})
-
+	const { data } = useAsyncData('collection', () => GqlCollection({ handle: 'best-sellers' }))
+	
 	const leftArr = ref(null)
 	const rightArr = ref(null)
 	
@@ -94,14 +77,6 @@
 			return 1
 		} else {
 			return 5
-		}
-	})
-
-	const isButton = asyncComputed(() => {
-		if (props.blok.button.length > 0) {
-			return true
-		} else {
-			return false
 		}
 	})
 </script>

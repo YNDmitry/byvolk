@@ -5,7 +5,7 @@
 				<NuxtLink to="/" class="header__brand" @click="!isMobile && isOpen ? openMenu() : ''">
 					<IconsLogo></IconsLogo>
 				</NuxtLink>
-				<nav class="phone-hide">
+				<nav class="phone-hide" aria-label="Site menu">
 					<ul class="header__nav-list list-unstyled" >
 						<li v-for="item in menu.data.value.data.datasource_entries" :key="item.id">
 							<NuxtLink :to="item.value" class="header__link">
@@ -24,7 +24,7 @@
 				</div>
 				<Transition name="menu-open">
 					<div class="header__mobile-menu" v-if="isOpen">
-						<nav>
+						<nav aria-label="Site mobile menu">
 							<ul class="header__nav-list list-unstyled" >
 								<li v-for="item in menu.data.value.data.datasource_entries" :key="item.id">
 									<NuxtLink :to="item.value" class="header__link" @click="openMenu()">

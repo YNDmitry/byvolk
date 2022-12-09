@@ -27,7 +27,7 @@
 							{{ link.name }}
 						</NuxtLink>
 					</li>
-					<div class="footer__link center">© 2022 VOLK | ALL RIGHTS RESERVED</div>
+					<li class="footer__link center">© 2022 VOLK | ALL RIGHTS RESERVED</li>
 					<li 
 						v-for="link in data.data.datasource_entries.slice((data.data.datasource_entries.length / 2), data.data.datasource_entries.length)" 
 						:key="link.id"
