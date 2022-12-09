@@ -31,22 +31,22 @@ export default defineNuxtConfig({
 	fontLoader: {
 		local: [
 			{
-				src: '/fonts/Montserrat/static/Montserrat-Regular.woff2',
+				src: '/fonts/Montserrat/Montserrat-Regular.woff2',
 				family: 'Montserrat',
 				weight: '400',
 			},
 			{
-				src: '/fonts/Montserrat/static/Montserrat-Medium.woff2',
+				src: '/fonts/Montserrat/Montserrat-Medium.woff2',
 				family: 'Montserrat',
 				weight: '500',
 			},
 			{
-				src: '/fonts/Montserrat/static/Montserrat-SemiBold.woff2',
+				src: '/fonts/Montserrat/Montserrat-SemiBold.woff2',
 				family: 'Montserrat',
 				weight: '600',
 			},
 			{
-				src: '/fonts/Montserrat/static/Montserrat-Bold.woff2',
+				src: '/fonts/Montserrat/Montserrat-Bold.woff2',
 				family: 'Montserrat',
 				weight: '700',
 			},
