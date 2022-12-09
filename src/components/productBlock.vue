@@ -2,8 +2,8 @@
 	<NuxtLink 
 		:to="'/collections/prints/' + handle" 
 		class="w-full" 
-		:disabled="totalInventory === 0 ? true : false"
 	>
+		<div class="product-card__sold-out" v-if="totalInventory === 0 ? true : false">Sold out</div>
 		<div class="product-card__head">
 			<img
 				:src="images[0].node.src"

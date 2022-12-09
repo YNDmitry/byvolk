@@ -1,5 +1,5 @@
 <template>
-	<section class="slider" v-editable="blok">
+	<section class="slider" v-editable="blok" id="community">
 		<div class="container">
 			<div class="slider__head">
 				<button

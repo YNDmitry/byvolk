@@ -50,7 +50,7 @@
 							</li>
 						</TransitionGroup>
 					</div>
-					<div v-else class="cart__empty">Your cart is empty :(</div>
+					<div v-else class="cart__empty">Your cart is empty</div>
 					<div class="cart__footer" v-if="cart.items.length > 0">
 						<div class="cart__footer-info">
 							<span>Total price: 

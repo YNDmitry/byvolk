@@ -20,7 +20,4 @@
 .swiper-slide.product-card {
 	width: 100%;
 	
-	@include phone-l {
-		max-width: 280px;
-	}
 }

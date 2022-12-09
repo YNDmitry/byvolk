@@ -37,6 +37,7 @@
 .iwt__info {
 	order: 1;
 	margin-left: 64px;
+	text-align: center;
 
 	@include phone {
 		margin-left: 0;

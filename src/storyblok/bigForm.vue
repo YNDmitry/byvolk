@@ -20,7 +20,7 @@
 								class="up"
 							></DefaultInput>
 						</div>
-						<button type="submit" class="button-primary w-full up">Submit</button>
+						<button type="submit" class="button-primary up">Submit</button>
 					</form>
 				</div>
 			</div>

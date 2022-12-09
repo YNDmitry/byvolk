@@ -1,5 +1,25 @@
 .product-card {
 	position: relative;
+  transition: all 200ms ease;
+
+  &:hover {
+    transform: scale(1.05) !important;
+  }
+
+  &__sold-out {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 5px 10px;
+    font-size: 12px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+  }
 
 	&__head {
 		@include flex-center;

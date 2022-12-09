@@ -91,7 +91,7 @@
 		} else if (useMediaQuery('(max-width: 700px)').value != useMediaQuery('(max-width: 479px)').value) {
 			return 2
 		} else if (useMediaQuery('(max-width: 479px)').value) {
-			return 'auto'
+			return 1
 		} else {
 			return 5
 		}

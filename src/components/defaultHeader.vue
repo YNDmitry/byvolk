@@ -2,7 +2,7 @@
 	<header class="header" :class="{ 'menu-is-open': isOpen ? true : false }">
 		<div class="container">
 			<div class="header__desk-content">
-				<NuxtLink to="/" class="header__brand">
+				<NuxtLink to="/" class="header__brand" @click="!isMobile && isOpen ? openMenu() : ''">
 					<IconsLogo></IconsLogo>
 				</NuxtLink>
 				<nav class="phone-hide">
@@ -37,6 +37,9 @@
 							<div class="header__cart" @click="cartModal.handleModal()">
 								<div class="header__cart-count" v-if="cartModal.items.length > 0">
 									{{ cartModal.items.length }}
+								</div>
+								<div class="header__cart-count-txt" v-if="cartModal.items.length > 0">
+									({{ cartModal.items.length }})
 								</div>
 								<IconsCart></IconsCart>
 							</div>

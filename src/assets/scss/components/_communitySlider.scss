@@ -13,6 +13,11 @@
 .community-slide {
 	background-color: #f8f8f8;
 	padding: 32px 25px;
+	transition: all 200ms ease;
+
+	&:hover {
+		transform: scale(1.05) !important;
+	}
 
 	&__body {
 		display: flex;
