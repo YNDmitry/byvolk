@@ -1,6 +1,6 @@
 <template>
   <div class="gallery__item">
-    <img :src=img alt="">
+    <NuxtImg provider="storyblok" :src="img" quality="50" width="500"></NuxtImg>
   </div>
 </template>
 

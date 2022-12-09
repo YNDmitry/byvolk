@@ -1,15 +1,18 @@
 <template>
-  <div v-editable="blok" class="gallery">
+  <section v-editable="blok" class="gallery">
     <div class="container">
       <div class="gallery__wrapper">
-        <GalleryItem :img="blok.img"></GalleryItem>
+        <GalleryItem :img="img.img.filename" v-for="img in blok.galleryBlocks"></GalleryItem>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
-<script>
-  export default {
-    
-  }
+<script setup>
+  const props = defineProps({
+    blok: {
+      type: Object,
+      default: () => {}
+    }
+  })
 </script>

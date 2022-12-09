@@ -9,7 +9,8 @@
     margin-bottom: 150px;
 
     @include phone-l {
-      margin-bottom: 60px;
+      flex-direction: column;
+      margin-bottom: 100px;
     }
 
     &:nth-child(even) {
@@ -17,6 +18,11 @@
         order: 1;
         margin-right: 0;
         margin-left: 80px;
+
+        @include phone-l {
+          order: 0;
+          margin-left: 0;
+        }
       }
     }
 
@@ -26,6 +32,10 @@
 
     &-slider {
       width: 50%;
+
+      @include phone-l {
+        width: 100%;
+      }
 
       & img {
         width: 100%;
@@ -37,7 +47,13 @@
     &-info {
       width: 50%;
       margin-right: 80px;
-      
+
+      @include phone-l {
+        margin-right: 0;
+        margin-bottom: 30px;
+        width: 100%;
+      }
+
       & h1, h2 {
         margin-bottom: 20px;
         font-weight: 700;

@@ -2,25 +2,23 @@
 	<section class="section-prints">
 		<div class="container">
 			<div class="slider__head">
+				<button
+					type="button"
+					class="slider__nav-button is-prev up"
+					id="prints-prev"
+					ref="leftArr"
+				>
+					<IconsArrowRight></IconsArrowRight>
+				</button>
 				<h2>You May Also Like</h2>
-				<div class="slider__nav">
-					<button
-						type="button"
-						class="slider__nav-button is-prev up"
-						id="prints-prev"
-						ref="leftArr"
-					>
-						<IconsArrowRight></IconsArrowRight>
-					</button>
-					<button
-						type="button"
-						id="prints-next"
-						class="slider__nav-button is-next up"
-						ref="rightArr"
-					>
-						<IconsArrowRight></IconsArrowRight>
-					</button>
-				</div>
+				<button
+					type="button"
+					id="prints-next"
+					class="slider__nav-button is-next up"
+					ref="rightArr"
+				>
+					<IconsArrowRight></IconsArrowRight>
+				</button>
 			</div>
 
 			<Swiper
