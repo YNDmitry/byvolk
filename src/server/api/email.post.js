@@ -1,0 +1,15 @@
+import { mailOptions, transporter } from '~~/src/config/nodemailer'
+
+export default defineEventHandler(async (event) => {
+  const body = await readBody(event)
+  try {
+    const data = await transporter.sendMail({
+      ...mailOptions,
+      subject: body.subject,
+      html: body.html
+    })
+    return data
+  } catch (error) {
+    return console.log(error)
+  }
+})

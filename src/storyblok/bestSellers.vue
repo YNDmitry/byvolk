@@ -1,5 +1,5 @@
 <template>
-	<section class="section-b-sellers" v-editable="blok" v-if="data">
+	<section class="section-b-sellers" v-editable="blok">
 		<div class="container">
 			<div class="b-sellers__wrapper">
 				<div class="slider__head">
@@ -63,15 +63,23 @@
 		},
 	})
 
-	const { data } = useAsyncData('collection', () => GqlCollection({ handle: 'best-sellers' }))
-	
+	const { data } = await useLazyAsyncData('collection', () =>
+		GqlCollection({ handle: 'best-sellers' })
+	)
+
 	const leftArr = ref(null)
 	const rightArr = ref(null)
-	
+
 	const slidesPerView = computed(() => {
-		if (useMediaQuery('(max-width: 991px)').value != useMediaQuery('(max-width: 700px)').value) {
+		if (
+			useMediaQuery('(max-width: 991px)').value !=
+			useMediaQuery('(max-width: 700px)').value
+		) {
 			return 3
-		} else if (useMediaQuery('(max-width: 700px)').value != useMediaQuery('(max-width: 479px)').value) {
+		} else if (
+			useMediaQuery('(max-width: 700px)').value !=
+			useMediaQuery('(max-width: 479px)').value
+		) {
 			return 2
 		} else if (useMediaQuery('(max-width: 479px)').value) {
 			return 1

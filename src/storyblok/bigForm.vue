@@ -7,21 +7,35 @@
 					<div v-html="richtext" class="mt-medium up" v-if="richtext"></div>
 				</div>
 				<div>
-					<form class="big-form">
+					<form
+						class="big-form"
+						@submit.prevent="submitHandler()"
+						v-if="!isSuccess"
+					>
 						<div class="big-form__inputs">
-							<DefaultInput
+							<FormDefaultInput
 								:title="input.placeholder"
 								:name="input.name"
 								:type="input.type"
-								v-for="input in blok.inputs"
-								:key="input"
+								v-for="input in dataInputs"
+								:key="input._uid"
 								:class="{ 'is-full': input.fullWidth }"
 								:isTextArea="input.textArea"
+								v-model:inputValue="input.value"
+								:isPending="isPending"
 								class="up"
-							></DefaultInput>
+							></FormDefaultInput>
 						</div>
-						<button type="submit" class="button-primary up">Submit</button>
+						<button type="submit" class="button-primary up">
+							{{ isPending ? 'Loading...' : 'Submit' }}
+						</button>
 					</form>
+					<div v-else-if="isSuccess && !isError" class="text-center">
+						Form submission is success
+					</div>
+					<div v-if="!isSuccess && isError" style="color: red" class="mt-small">
+						Something went wrong. Try again later
+					</div>
 				</div>
 			</div>
 		</div>
@@ -35,6 +49,40 @@
 			default: () => ({}),
 		},
 	})
+
+	const dataInputs = ref(
+		props.blok.inputs.map((el) => ({
+			...el,
+			value: '',
+		}))
+	)
+
+	const isPending = ref(false)
+	const isSuccess = ref(false)
+	const isError = ref(false)
+
+	const submitHandler = async () => {
+		isPending.value = true
+		let model = ''
+		dataInputs.value.forEach((el) => {
+			return (model +=
+				`<strong>${el.placeholder}: </strong>` + el.value + '<br>')
+		})
+		await $fetch('/api/email', {
+			method: 'POST',
+			body: {
+				subject: 'Form',
+				html: model,
+			},
+		})
+			.then(() => {
+				return (isSuccess.value = true)
+			})
+			.catch((err) => {
+				isPending.value = false
+				return (isError.value = true)
+			})
+	}
 
 	const richtext = computed(() => renderRichText(props.blok.description))
 </script>

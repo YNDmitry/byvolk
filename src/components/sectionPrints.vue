@@ -22,7 +22,7 @@
 			</div>
 
 			<Swiper
-				class="b-sellers__slider mt-large"
+				class="b-sellers__slider mt-medium"
 				:modules="[SwiperNavigation]"
 				:navigation="{
 					nextEl: rightArr,
@@ -69,9 +69,15 @@
 	const rightArr = ref(null)
 
 	const slidesPerView = asyncComputed(() => {
-		if (useMediaQuery('(max-width: 991px)').value != useMediaQuery('(max-width: 700px)').value) {
+		if (
+			useMediaQuery('(max-width: 991px)').value !=
+			useMediaQuery('(max-width: 700px)').value
+		) {
 			return 3
-		} else if (useMediaQuery('(max-width: 700px)').value != useMediaQuery('(max-width: 479px)').value) {
+		} else if (
+			useMediaQuery('(max-width: 700px)').value !=
+			useMediaQuery('(max-width: 479px)').value
+		) {
 			return 2
 		} else if (useMediaQuery('(max-width: 479px)').value) {
 			return 'auto'

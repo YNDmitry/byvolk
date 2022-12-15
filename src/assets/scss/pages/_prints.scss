@@ -101,11 +101,40 @@
 	}
 
 	&__slider {
+		position: relative;
 		background-color: #f8f8f8;
 		height: 700px;
+		display: flex;
+		align-items: center;
 
 		@include phone-l {
-			height: auto;	
+			height: auto;
+		}
+
+		&-arrow {
+			position: absolute;
+			z-index: 10;
+			width: 50px;
+			height: 50px;
+			background-color: white;
+			border: 1px solid black;
+			@include flex-center;
+
+			&.swiper-button-disabled {
+				display: none;
+			}
+
+			&#arrow-next {
+				right: 10px;
+			}
+
+			&#arrow-prev {
+				left: 10px;
+
+				& svg {
+					transform: rotate(180deg);
+				}
+			}
 		}
 
 		&-slide {

@@ -21,13 +21,24 @@
 									</NuxtLink>
 								</template>
 							</div>
-							<div class="hero-main__stars" v-if="blok.reviewsCount > 1">
-								<img src="/stars.svg"/>
+							<NuxtLink
+								to="#community"
+								class="hero-main__stars"
+								v-if="blok.reviewsCount > 1"
+							>
+								<img src="/stars.svg" />
 								<span>Rated Excellent ({{ blok.reviewsCount }}+ Reviews)</span>
-							</div>
+							</NuxtLink>
 						</div>
 					</div>
 				</div>
+				<NuxtPicture
+					:src="blok?.image?.filename"
+					provider="storyblok"
+					width="720"
+					v-if="blok?.image"
+					class="hero-main__img fade"
+				></NuxtPicture>
 			</div>
 		</div>
 	</section>

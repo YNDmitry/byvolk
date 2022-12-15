@@ -1,7 +1,6 @@
 .section-hero-main {
 	position: relative;
 	display: flex;
-	padding: 60px 0;
 
 	@include phone {
 		padding-bottom: 48px;
@@ -34,30 +33,41 @@
 		&__info {
 			display: flex;
 			align-items: center;
+			justify-content: flex-start;
 			flex-direction: column;
-			max-width: 940px;
-			text-align: center;
+			padding: 60px 0;
+
+			@include phone-l {
+				padding: 40px 0 0 0;
+			}
 
 			& h1 {
 				margin-bottom: 30px;
 			}
-
 		}
 
 		&__content {
 			position: relative;
-			display: flex;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			column-gap: 50px;
+			row-gap: 30px;
 			align-items: center;
-			justify-content: center;
 			z-index: 1;
+
+			@include phone-l {
+				grid-template-columns: 1fr;
+			}
 		}
 
 		&__stars {
 			margin-top: 10px;
+			margin-right: auto;
 			& span {
 				margin-top: -8px;
 				display: block;
 				font-size: 8px;
+				margin-left: 5px;
 			}
 		}
 	}

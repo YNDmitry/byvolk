@@ -4,19 +4,24 @@
 		<textarea
 			:name="props.name"
 			v-if="isTextArea"
-			v-model.trim="inputValue.value"
+			:value="props.inputValue"
+			@input="$emit('update:inputValue', $event.target.value)"
 			@focus="isActive = true"
 			@focusout="isActive = false"
+			@focusin="isActive = true"
+			:disabled="isPending ? true : false"
 			required
 		></textarea>
 		<input
 			v-else
 			:type="props.type"
 			:name="props.name"
-			v-model.trim="inputValue.value"
+			:value="props.inputValue"
+			@input="$emit('update:inputValue', $event.target.value)"
 			@focus="isActive = true"
 			@focusout="isActive = false"
 			@focusin="isActive = true"
+			:disabled="isPending ? true : false"
 			required
 		/>
 	</label>
@@ -44,12 +49,20 @@
 			default: false,
 			required: false,
 		},
+		inputValue: {
+			type: String,
+		},
+		isPending: {
+			type: Boolean,
+			default: false,
+		},
 	})
 
+	defineEmits(['update:inputValue'])
+
 	let isActive = ref(false)
-	const inputValue = reactive({ value: '' })
 
 	const isInputValue = computed(() => {
-		return inputValue.value.length > 0 ? (isActive = true) : (isActive = false)
+		return props.inputValue?.length > 0 ? (isActive = true) : (isActive = false)
 	})
 </script>

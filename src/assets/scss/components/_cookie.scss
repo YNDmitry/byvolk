@@ -1,8 +1,8 @@
 #cc_div {
 	font-family: $base-font-family;
 
-	& div[role="heading"] {
-		font-family: "Montserrat", sans-serif;
+	& div[role='heading'] {
+		font-family: 'Montserrat', sans-serif;
 	}
 
 	& .c-bn {
@@ -14,5 +14,13 @@
 	& #c-s-bn {
 		border: 1px solid black;
 		background-color: transparent;
+	}
+
+	& #cm {
+		left: 36px;
+
+		@include phone-l {
+			left: 16px;
+		}
 	}
 }

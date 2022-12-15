@@ -1,16 +1,23 @@
 <template>
-  <section class="projects" v-editable="blok">
-    <div class="container">
-      <ProjectsCard v-for="project in blok.projectsCard" :key="project" :images="project.images" :body="renderRichText(project.body)"></ProjectsCard>
-    </div>
-  </section>
+	<section class="projects" v-editable="blok">
+		<div class="container">
+			<ProjectsCard
+				v-for="project in blok.projectsCard"
+				:key="project"
+				:images="project.images"
+				:body="renderRichText(project.body)"
+				:width="project.imageWidth"
+				:height="project.imageHeight"
+			></ProjectsCard>
+		</div>
+	</section>
 </template>
 
 <script setup>
-  const props = defineProps({
-    blok: {
-      type: Object,
-      default: () => {}
-    }
-  })
+	const props = defineProps({
+		blok: {
+			type: Object,
+			default: () => {},
+		},
+	})
 </script>

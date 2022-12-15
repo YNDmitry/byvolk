@@ -5,18 +5,20 @@
 .iwt__items {
 	display: flex;
 	align-items: center;
-	max-width: 900px;
 	margin: 0 auto;
-	
-	@include phone {
+
+	@include phone-l {
 		flex-direction: column;
 	}
 }
 
 .iwt__img {
-	max-width: 240px;
+	margin-left: auto;
 
-	@include phone {
+	& img {
+		width: 100%;
+	}
+	@include phone-l {
 		margin-bottom: 25px;
 	}
 }
@@ -24,6 +26,7 @@
 .iwt__info-rich {
 	display: flex;
 	flex-direction: column;
+	text-align: left;
 
 	& p {
 		margin-bottom: 10px;
@@ -38,8 +41,10 @@
 	order: 1;
 	margin-left: 64px;
 	text-align: center;
+	max-width: 650px;
+	margin-right: auto;
 
-	@include phone {
+	@include phone-l {
 		margin-left: 0;
 	}
 }

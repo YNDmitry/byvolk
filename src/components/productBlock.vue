@@ -1,11 +1,7 @@
 <template>
-	<NuxtLink 
-		:to="'/collections/prints/' + props?.handle" 
-		class="w-full"
-	>
-		<div class="product-card__sold-out" v-if="totalInventory === 0 ? true : false">Sold out</div>
+	<NuxtLink :to="'/collections/prints/' + props?.handle" class="w-full">
 		<div class="product-card__head" v-if="images[0].node.src">
-			<NuxtImg 
+			<NuxtImg
 				:src="images[0].node.src"
 				:srcset="`${images[0].node.src}&width=479 479w, ${images[0].node.src}&width=600 600w`"
 				sizes="(max-width: 479px) 479px, (max-width: 1536px) 600px, 600px"
@@ -16,18 +12,27 @@
 		<div class="product-card__body">
 			<h5 v-if="title">{{ title }}</h5>
 			<div class="product-card__body-price">
-				<div v-if="price">From <span class="fw-600">{{ price }}</span></div>
+				<div v-if="price && totalInventory !== 0">
+					From <span class="fw-600">{{ price }}</span>
+				</div>
+				<div
+					class="product-card__sold-out"
+					v-if="totalInventory === 0 ? true : false"
+				>
+					Sold out
+				</div>
 			</div>
 		</div>
 	</NuxtLink>
 </template>
 
 <script setup>
-	import { useHelpersStore } from '../store/helpers';
+	import { useHelpersStore } from '../store/helpers'
 
 	const props = defineProps({
 		handle: {
 			type: String,
+			required: true,
 		},
 		images: {
 			type: Array,

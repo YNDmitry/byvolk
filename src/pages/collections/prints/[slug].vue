@@ -3,16 +3,50 @@
 		<section class="section-print">
 			<div class="container">
 				<div class="print__wrapper" id="wrapper">
-					<div class="print__left" ref="productSlider">
-						<Swiper class="print__slider" :slides-per-view="1">
-							<SwiperSlide
-								class="print__slider-slide"
-								v-for="image in data.productByHandle?.images?.edges"
-								:key="image"
+					<div class="print__left">
+						<div class="print__slider">
+							<button
+								type="button"
+								class="print__slider-arrow"
+								id="arrow-next"
+								ref="arrowNext"
 							>
-								<NuxtImg :src="image.node.src"></NuxtImg>
-							</SwiperSlide>
-						</Swiper>
+								<IconsSliderArrow></IconsSliderArrow>
+							</button>
+							<button
+								type="button"
+								class="print__slider-arrow"
+								id="arrow-prev"
+								ref="arrowPrev"
+							>
+								<IconsSliderArrow></IconsSliderArrow>
+							</button>
+							<Swiper
+								class="print__slider"
+								:modules="[SwiperNavigation, SwiperHashNavigation]"
+								:slides-per-view="1"
+								:navigation="{
+									nextEl: arrowNext,
+									prevEl: arrowPrev,
+								}"
+								:hashNavigation="{
+									replaceState: true,
+									watchState: true,
+								}"
+							>
+								<SwiperSlide
+									class="print__slider-slide"
+									v-for="(image, index) in data.productByHandle?.images?.edges"
+									:key="index"
+									:data-hash="'slide' + index"
+								>
+									<NuxtPicture
+										:src="image.node.src"
+										loading="lazy"
+									></NuxtPicture>
+								</SwiperSlide>
+							</Swiper>
+						</div>
 						<div class="print__faq phone-hide">
 							<Dropdown>
 								<template #head>
@@ -75,6 +109,7 @@
 										:class="{ 'is-active': sizeVal === item }"
 										v-for="item in data.productByHandle.options[1].values"
 										:key="item"
+										@click.once="onSliderChange()"
 									>
 										<input
 											type="radio"
@@ -127,7 +162,11 @@
 									"
 									:disabled="!currentProductVariant.availableForSale"
 								>
-									{{ currentProductVariant.availableForSale ? 'Add to cart' : 'Sold out' }}
+									{{
+										currentProductVariant.availableForSale
+											? 'Add to cart'
+											: 'Sold out'
+									}}
 								</button>
 								<a href="#" class="print__info-footer-a m-auto mt-small"
 									>Ask a question</a
@@ -143,9 +182,8 @@
 							<template #body>
 								<p>
 									Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-									Sapiente, dignissimos.Lorem, ipsum dolor sit amet
-									consectetur adipisicing elit. Sapiente, dignissimos.Lorem,
-									ipsum dolor
+									Sapiente, dignissimos.Lorem, ipsum dolor sit amet consectetur
+									adipisicing elit. Sapiente, dignissimos.Lorem, ipsum dolor
 								</p>
 							</template>
 						</Dropdown>
@@ -186,36 +224,36 @@
 			},
 			{
 				name: 'og:type',
-				content: 'website'
+				content: 'website',
 			},
 			{
 				property: 'og:title',
-				content: data.value?.productByHandle.title
+				content: data.value?.productByHandle.title,
 			},
 			{
 				property: 'og:description',
-				content: data.value?.productByHandle.description
+				content: data.value?.productByHandle.description,
 			},
 			{
 				property: 'og:image',
-				content: data.value?.productByHandle.images.edges[0].node.src
+				content: data.value?.productByHandle.images.edges[0].node.src,
 			},
 			{
 				property: 'twitter:title',
-				content: data.value?.productByHandle.title
+				content: data.value?.productByHandle.title,
 			},
 			{
 				property: 'twitter:description',
-				content: data.value?.productByHandle.description
+				content: data.value?.productByHandle.description,
 			},
 			{
 				property: 'twitter:image',
-				content: data.value?.productByHandle.images.edges[0].node.src
+				content: data.value?.productByHandle.images.edges[0].node.src,
 			},
 			{
 				name: 'twitter:card',
-				content: 'summary_large_image'
-			}
+				content: 'summary_large_image',
+			},
 		],
 	})
 
@@ -250,6 +288,11 @@
 	}
 
 	const addToCart = (item) => useCartStore().addToCart(item)
-	
-	const productSlider = ref(null)
+
+	const arrowPrev = ref(null)
+	const arrowNext = ref(null)
+
+	const onSliderChange = () => {
+		return (window.location.hash = 'slide1')
+	}
 </script>

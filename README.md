@@ -40,3 +40,11 @@ npm run preview
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+
+```ENV
+STORYBLOK_ACCESS_TOKEN=""
+SHOPIFY_ACCESS_TOKEN=""
+BASE_URL=""
+EMAIL=""
+EMAIL_PASS=""
+```

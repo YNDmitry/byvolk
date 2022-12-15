@@ -169,4 +169,8 @@ textarea {
 
 .hide {
 	display: none;
+
+	@include phone-l {
+		display: block;
+	}
 }
