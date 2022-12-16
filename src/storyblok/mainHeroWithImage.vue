@@ -35,12 +35,11 @@
 				<NuxtPicture
 					:src="blok?.image?.filename"
 					provider="storyblok"
-					width="720"
 					v-if="blok?.image"
 					class="hero-main__img fade"
-					role="presentation"
-					sizes="sm:100vw md:50vw lg:1400px"
 					:alt="blok?.image?.alt || 'Main image'"
+					sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw"
+					preload
 				></NuxtPicture>
 			</div>
 		</div>

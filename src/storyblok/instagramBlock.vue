@@ -40,7 +40,7 @@
 							loading="lazy"
 							v-if="item?.image"
 							alt="Instagram picture"
-							sizes="sm:100vw md:50vw lg:610px"
+							sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw"
 						></NuxtPicture>
 					</div>
 				</NuxtLink>

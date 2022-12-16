@@ -1,11 +1,12 @@
 <template>
 	<div class="grid-card">
 		<div class="grid-card__picture-wrapper">
-			<img
+			<NuxtPicture
 				:src="content.image.filename"
-				width="700"
+				provider="storyblok"
 				class="grid-card__picture up"
-			/>
+				sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw"
+			></NuxtPicture>
 		</div>
 		<div class="grid-card__info up">
 			<h4 v-if="content.headline">{{ content.headline }}</h4>
