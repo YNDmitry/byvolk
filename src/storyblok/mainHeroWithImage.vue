@@ -26,7 +26,7 @@
 								class="hero-main__stars"
 								v-if="blok.reviewsCount > 1"
 							>
-								<img src="/stars.svg" />
+								<img src="/stars.svg" alt="Rated excellent - 5 stars" />
 								<span>Rated Excellent ({{ blok.reviewsCount }}+ Reviews)</span>
 							</NuxtLink>
 						</div>
@@ -38,6 +38,7 @@
 					width="720"
 					v-if="blok?.image"
 					class="hero-main__img fade"
+					role="presentation"
 				></NuxtPicture>
 			</div>
 		</div>

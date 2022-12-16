@@ -20,6 +20,7 @@ export default defineNuxtConfig({
 		'nuxt-graphql-client',
 		'nuxt-font-loader',
 		'@nuxt/image-edge',
+		'@nuxtjs/robots',
 	],
 	build: {
 		transpile: ['gsap'],

@@ -5,6 +5,7 @@
 				<div class="slider__head">
 					<button
 						type="button"
+						aria-label="Best sellers slider arrow prev"
 						id="best-sellers-prev"
 						class="slider__nav-button is-prev up"
 						ref="leftArr"
@@ -14,6 +15,7 @@
 					<h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
 					<button
 						type="button"
+						aria-label="Best sellers slider arrow next"
 						id="best-sellers-next"
 						class="slider__nav-button is-next up"
 						ref="rightArr"
@@ -34,7 +36,7 @@
 				>
 					<SwiperSlide
 						class="product-card"
-						v-for="product in data?.collection.products.edges"
+						v-for="product in productsArr?.collection?.products?.edges"
 						:key="product.node.id"
 					>
 						<ProductBlock
@@ -63,9 +65,12 @@
 		},
 	})
 
-	const { data } = await useLazyAsyncData('collection', () =>
-		GqlCollection({ handle: 'best-sellers' })
-	)
+	let productsArr = ref([])
+
+	await useAsyncData(
+		'collection',
+		async () => await GqlCollection({ handle: 'best-sellers' })
+	).then((res) => (productsArr.value = res.data.value))
 
 	const leftArr = ref(null)
 	const rightArr = ref(null)

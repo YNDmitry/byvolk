@@ -2,24 +2,35 @@
 	<footer class="footer fade">
 		<div class="container">
 			<div class="footer__grid">
-				<img
+				<NuxtImg
 					src="/footer-img.png"
 					width="200"
 					class="footer__img"
 					@click="backToTop()"
+					alt="Footer image"
 				/>
 				<div class="footer__soc">
 					<NuxtLink
 						class="footer__soc-link"
 						to="https://www.instagram.com/byvolk/"
 						target="_blank"
+						aria-label="Instagram link"
 					>
 						<IconsSocialInstagram></IconsSocialInstagram>
 					</NuxtLink>
-					<NuxtLink class="footer__soc-link" target="_blank">
+					<NuxtLink
+						class="footer__soc-link"
+						target="_blank"
+						aria-label="WhatsApp link"
+						href="#"
+					>
 						<IconsSocialWhatsapp></IconsSocialWhatsapp>
 					</NuxtLink>
-					<NuxtLink class="footer__soc-link" to="mailto:info@byvolk.com">
+					<NuxtLink
+						class="footer__soc-link"
+						to="mailto:info@byvolk.com"
+						aria-label="Email link"
+					>
 						<IconsSocialEmail></IconsSocialEmail>
 					</NuxtLink>
 				</div>

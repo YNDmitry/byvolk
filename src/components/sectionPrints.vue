@@ -4,6 +4,7 @@
 			<div class="slider__head">
 				<button
 					type="button"
+					aria-label="You may also like slider arrow prev"
 					class="slider__nav-button is-prev up"
 					id="prints-prev"
 					ref="leftArr"
@@ -13,6 +14,7 @@
 				<h2>You May Also Like</h2>
 				<button
 					type="button"
+					aria-label="You may also like slider arrow next"
 					id="prints-next"
 					class="slider__nav-button is-next up"
 					ref="rightArr"

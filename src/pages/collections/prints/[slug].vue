@@ -7,6 +7,7 @@
 						<div class="print__slider">
 							<button
 								type="button"
+								aria-label="Product slider arrow next"
 								class="print__slider-arrow"
 								id="arrow-next"
 								ref="arrowNext"
@@ -15,6 +16,7 @@
 							</button>
 							<button
 								type="button"
+								aria-label="Product slider arrow prev"
 								class="print__slider-arrow"
 								id="arrow-prev"
 								ref="arrowPrev"

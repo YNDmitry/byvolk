@@ -28,21 +28,28 @@
 			<Meta content="summary_large_image" name="twitter:card"></Meta>
 		</Head>
 
-		<Body :class="story?.content?.page_black ? 'dark' : ''">
-			<StoryblokComponent v-if="story" :blok="story?.content" />
+		<Body>
+			<StoryblokComponent :blok="story?.content" />
 		</Body>
 	</div>
 </template>
 
 <script setup>
-	const config = useRuntimeConfig()
-
 	const { slug } = useRoute().params
 	const version = useRoute().query['_storyblok_tk[token]']
 		? 'draft'
 		: 'published'
-
 	const story = ref(null)
+
+	onMounted(async () => {
+		if (version === 'draft' && state?.story) {
+			await useStoryblokBridge(
+				story.value.id,
+				(evStory) => (story.value = evStory)
+			)
+		}
+	})
+
 	const storyblokApi = await useStoryblokApi()
 	const { data } = await useAsyncData(
 		'vue',
@@ -55,13 +62,4 @@
 			)
 	)
 	story.value = data.value.data.story
-
-	onMounted(async () => {
-		if (version === 'draft' && state?.story) {
-			await useStoryblokBridge(
-				story.value.id,
-				(evStory) => (story.value = evStory)
-			)
-		}
-	})
 </script>

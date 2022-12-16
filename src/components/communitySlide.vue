@@ -3,12 +3,15 @@
 		<div class="community-slide__head">
 			<h4>{{ content.title }}</h4>
 			<p class="mt-xsmall">
-				{{ content.description }} <NuxtLink :to="content.link.url" v-if="content.link" target="_blank">View more...</NuxtLink>
+				{{ content.description }}
+				<NuxtLink :to="content.link.url" v-if="content.link" target="_blank"
+					>View more...</NuxtLink
+				>
 			</p>
 		</div>
 		<div class="community-slide__body">
 			<h6>{{ content.authorName }}</h6>
-			<img src="/stars.svg"/>
+			<img src="/stars.svg" alt="Rated excellent - 5 stars" />
 		</div>
 	</div>
 </template>

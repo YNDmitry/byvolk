@@ -23,6 +23,7 @@
 									width="30"
 									height="30"
 									loading="lazy"
+									alt="Instagram avatar"
 								></NuxtImg>
 							</div>
 							<div class="instagram__photos-item-user">
@@ -38,6 +39,7 @@
 							provider="storyblok"
 							loading="lazy"
 							v-if="item?.image"
+							alt="Instagram picture"
 						></NuxtPicture>
 					</div>
 				</NuxtLink>
