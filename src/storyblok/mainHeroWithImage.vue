@@ -39,6 +39,8 @@
 					v-if="blok?.image"
 					class="hero-main__img fade"
 					role="presentation"
+					sizes="sm:100vw md:50vw lg:1400px"
+					:alt="blok?.image?.alt || 'Main image'"
 				></NuxtPicture>
 			</div>
 		</div>

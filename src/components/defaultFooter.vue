@@ -5,6 +5,7 @@
 				<NuxtImg
 					src="/footer-img.png"
 					width="200"
+					sizes="sm:100vw md:50vw lg:400px"
 					class="footer__img"
 					@click="backToTop()"
 					alt="Footer image"
