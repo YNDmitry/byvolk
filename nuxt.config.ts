@@ -20,8 +20,18 @@ export default defineNuxtConfig({
 		'nuxt-graphql-client',
 		'nuxt-font-loader',
 		'@nuxt/image-edge',
-		'@nuxtjs/robots',
+		'nuxt-sitemap-module',
 	],
+	sitemap: {
+		siteUrl: process.env.BASE_URL,
+		gzip: true,
+		routes: async () => {
+			const { data } = await fetch(
+				`https://api.storyblok.com/v1/cdn/stories?version=published&token=${process.env.STORYBLOK_ACCESS_TOKEN}`
+			)
+			return data.stories.map((story) => `/${story.slug}`)
+		},
+	},
 	build: {
 		transpile: ['gsap'],
 	},
