@@ -18,7 +18,7 @@
     "sass-loader": "^13.0.2"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.4.2",
+    "@pinia/nuxt": "^0.4.6",
     "@storyblok/nuxt": "^4.5.0",
     "axios": "^0.27.2",
     "gsap": "^3.11.3",
