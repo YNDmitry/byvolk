@@ -31,21 +31,6 @@ body.dark {
 	flex-direction: column;
 	position: relative;
 
-	&__picture-wrapper {
-		position: relative;
-
-		&::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			right: 0;
-			left: 0;
-			background-color: #f8f8f8;
-			opacity: 0.5;
-		}
-	}
-
 	&__info {
 		margin-top: 24px;
 

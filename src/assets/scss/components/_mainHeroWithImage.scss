@@ -44,6 +44,12 @@
 			& h1 {
 				margin-bottom: 30px;
 			}
+
+			&-buttons {
+				display: flex;
+				align-items: center;
+				column-gap: 20px;
+			}
 		}
 
 		&__content {

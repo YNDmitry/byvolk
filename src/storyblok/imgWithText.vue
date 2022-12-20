@@ -21,8 +21,9 @@
 						v-for="button in blok.button"
 						:key="button"
 						:class="[`button-${button.buttonType}`, 'mt-medium']"
-						>Projects</NuxtLink
 					>
+						{{ button.title }}
+					</NuxtLink>
 				</div>
 			</div>
 		</div>

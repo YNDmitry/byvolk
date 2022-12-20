@@ -1,5 +1,17 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
+const sitemap = async () => {
+	const { data } = await fetch(
+		`https://api.storyblok.com/v1/cdn/stories?version=published&token=${process.env.STORYBLOK_ACCESS_TOKEN}`
+	)
+
+	return [...data.stories].map((story) => {
+		{
+			url: story.slug
+		}
+	})
+}
+
 export default defineNuxtConfig({
 	srcDir: 'src/',
 	css: ['~/assets/scss/main.scss'],
@@ -24,13 +36,7 @@ export default defineNuxtConfig({
 	],
 	sitemap: {
 		siteUrl: process.env.BASE_URL,
-		gzip: true,
-		routes: async () => {
-			const { data } = await fetch(
-				`https://api.storyblok.com/v1/cdn/stories?version=published&token=${process.env.STORYBLOK_ACCESS_TOKEN}`
-			)
-			return data.stories.map((story) => `/${story.slug}`)
-		},
+		routes: [sitemap()],
 	},
 	build: {
 		transpile: ['gsap'],

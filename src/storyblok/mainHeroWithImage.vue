@@ -18,6 +18,11 @@
 										:to="button.link.cached_url"
 									>
 										{{ button.title }}
+										<NuxtImg
+											v-if="button?.image"
+											:src="button.image.filename"
+											width="150"
+										></NuxtImg>
 									</NuxtLink>
 								</template>
 							</div>
