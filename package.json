@@ -24,7 +24,7 @@
     "gsap": "^3.11.3",
     "nodemailer": "^6.8.0",
     "normalize.css": "^8.0.1",
-    "nuxt-graphql-client": "^0.2.14",
+    "nuxt-graphql-client": "^0.2.17",
     "nuxt-swiper": "^0.1.5",
     "pinia": "^2.0.22",
     "vanilla-cookieconsent": "^2.8.9"
