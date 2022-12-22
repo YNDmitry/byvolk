@@ -1,0 +1,22 @@
+.gridv2-card {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
+	column-gap: 100px;
+	row-gap: 40px;
+
+	@include phone-l {
+		grid-template-columns: 1fr;
+	}
+
+	&__rich {
+		& p {
+			margin-bottom: 50px;
+			margin-top: 15px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

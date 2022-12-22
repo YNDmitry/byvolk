@@ -2,6 +2,10 @@
 	padding: 64px 0px;
 }
 
+.section-grid-v2 {
+	padding: 64px 0;
+}
+
 .cards-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -9,27 +13,14 @@
 	row-gap: 100px;
 }
 
-.grid-v2 {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	column-gap: 35px;
-	row-gap: 50px;
-}
-
-body.dark {
-	& .grid-card {
-		&__picture-wrapper {
-			&::before {
-				background-color: black;
-			}
-		}
-	}
-}
-
 .grid-card {
 	display: flex;
 	flex-direction: column;
 	position: relative;
+
+	&__picture-wrapper {
+		margin-top: 12px;
+	}
 
 	&__info {
 		margin-top: 24px;

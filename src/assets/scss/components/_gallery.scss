@@ -1,21 +1,33 @@
 .gallery {
-  padding: 40px 0 60px 0;
+	padding: 40px 0 60px 0;
 
-  @include phone-l {
-    padding: 20px 0 40px 0;
-  }
-  
-  &__wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-    justify-content: center;
-    column-gap: 30px;
-    row-gap: 30px;
+	@include phone-l {
+		padding: 20px 0 40px 0;
+	}
 
-    @include phone-l {
-      column-gap: 10px;
-      row-gap: 10px;
-    }
-  }
+	& .swiper-wrapper .swiper-slide {
+		@include phone-l {
+			max-width: 400px;
+		}
+
+		@include phone {
+			max-width: 300px;
+		}
+	}
+
+	& .container {
+		@include phone-l {
+			width: 100%;
+		}
+
+		& .swiper {
+			@include phone-l {
+				padding-left: 30px;
+				padding-right: 30px;
+			}
+		}
+	}
+
+	&__item {
+	}
 }

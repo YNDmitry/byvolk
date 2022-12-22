@@ -6,7 +6,11 @@
 				:style="`grid-template-columns: repeat(${columnCount}, 1fr);`"
 				:data-columns="columnCount"
 			>
-				<div class="icons__card up" v-for="(card, idx) in blok.cards" :key="idx">
+				<div
+					class="icons__card up"
+					v-for="(card, idx) in blok.cards"
+					:key="idx"
+				>
 					<div class="icons__card-icon">
 						<img
 							v-if="card.image"
@@ -16,7 +20,9 @@
 						/>
 					</div>
 					<h5 class="fw-600" v-if="card.headline">{{ card.headline }}</h5>
-					<p class="p-18 mt-small" v-if="card.description">{{ card.description }}</p>
+					<p class="p-18 mt-small" v-if="card.description">
+						{{ card.description }}
+					</p>
 				</div>
 			</div>
 		</div>

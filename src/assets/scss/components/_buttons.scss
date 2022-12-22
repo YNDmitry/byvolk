@@ -14,7 +14,7 @@
 		cursor: pointer;
 		text-align: center;
 		transition: all 200ms ease;
-		letter-spacing: .08em;
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
 
 		@include phone-l {
@@ -51,7 +51,11 @@
 		}
 	}
 
-	&-transparent {
+	&-img {
+		transition: all 200ms ease;
+		&:hover {
+			transform: scale(1.1);
+		}
 	}
 
 	&-social {
@@ -87,7 +91,7 @@
 		color: $white;
 	}
 
-	&[disabled="true"] {
+	&[disabled='true'] {
 		opacity: 0.7;
 		cursor: not-allowed;
 		pointer-events: none;

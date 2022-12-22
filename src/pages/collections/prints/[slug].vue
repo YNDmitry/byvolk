@@ -8,20 +8,20 @@
 							<button
 								type="button"
 								aria-label="Product slider arrow next"
-								class="print__slider-arrow"
+								class="slider__nav-button print__slider-arrow"
 								id="arrow-next"
 								ref="arrowNext"
 							>
-								<IconsSliderArrow></IconsSliderArrow>
+								<IconsArrowRight></IconsArrowRight>
 							</button>
 							<button
 								type="button"
 								aria-label="Product slider arrow prev"
-								class="print__slider-arrow"
+								class="slider__nav-button print__slider-arrow"
 								id="arrow-prev"
 								ref="arrowPrev"
 							>
-								<IconsSliderArrow></IconsSliderArrow>
+								<IconsArrowRight></IconsArrowRight>
 							</button>
 							<Swiper
 								class="print__slider"

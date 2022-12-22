@@ -13,9 +13,9 @@
 			<h6>{{ content.authorName }}</h6>
 			<NuxtImg
 				src="https://a.storyblok.com/f/152732/500x178/a794883631/trustpilot.png"
+				alt="Rated excellent - 5 stars"
 				width="60"
 			></NuxtImg>
-			<img src="/stars.svg" alt="Rated excellent - 5 stars" />
 		</div>
 	</div>
 </template>

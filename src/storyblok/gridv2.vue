@@ -1,13 +1,13 @@
 <template>
 	<section v-editable="blok" class="section-grid-v2">
 		<div class="container">
-			<h2 v-if="blok.headline">{{ blok.headline }}</h2>
 			<div class="grid-v2" :class="{ 'mt-large': blok.headline }">
-				<CollectionCard
+				<Gridv2Card
 					v-for="card in blok.cards"
 					:key="card"
-					:blok="card"
-				></CollectionCard>
+					:img="card.image"
+					:description="card.body"
+				></Gridv2Card>
 			</div>
 		</div>
 	</section>

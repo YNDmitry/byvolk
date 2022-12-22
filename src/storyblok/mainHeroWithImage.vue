@@ -21,19 +21,11 @@
 										<NuxtImg
 											v-if="button?.image"
 											:src="button.image.filename"
-											width="150"
+											width="172"
 										></NuxtImg>
 									</NuxtLink>
 								</template>
 							</div>
-							<NuxtLink
-								to="#community"
-								class="hero-main__stars"
-								v-if="blok.reviewsCount > 1"
-							>
-								<img src="/stars.svg" alt="Rated excellent - 5 stars" />
-								<span>Rated Excellent ({{ blok.reviewsCount }}+ Reviews)</span>
-							</NuxtLink>
 						</div>
 					</div>
 				</div>
@@ -45,6 +37,7 @@
 					:alt="blok?.image?.alt || 'Main image'"
 					sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw"
 					preload
+					placeholder
 				></NuxtPicture>
 			</div>
 		</div>

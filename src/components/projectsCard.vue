@@ -10,19 +10,11 @@
 		>
 			<button
 				type="button"
-				class="print__slider-arrow"
+				class="slider__nav-button is-prev"
 				id="arrow-next"
 				ref="arrowNext"
 			>
-				<IconsSliderArrow></IconsSliderArrow>
-			</button>
-			<button
-				type="button"
-				class="print__slider-arrow"
-				id="arrow-prev"
-				ref="arrowPrev"
-			>
-				<IconsSliderArrow></IconsSliderArrow>
+				<IconsArrowRight></IconsArrowRight>
 			</button>
 			<Swiper
 				class="projects__card-slider"
@@ -45,6 +37,14 @@
 					></NuxtPicture>
 				</SwiperSlide>
 			</Swiper>
+			<button
+				type="button"
+				class="slider__nav-button is-next"
+				id="arrow-prev"
+				ref="arrowPrev"
+			>
+				<IconsArrowRight></IconsArrowRight>
+			</button>
 		</div>
 	</div>
 </template>
