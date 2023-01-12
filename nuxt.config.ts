@@ -1,17 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
-const sitemap = async () => {
-	const { data } = await fetch(
-		`https://api.storyblok.com/v1/cdn/stories?version=published&token=${process.env.STORYBLOK_ACCESS_TOKEN}`
-	)
-
-	return [...data.stories].map((story) => {
-		{
-			url: story.slug
-		}
-	})
-}
-
 export default defineNuxtConfig({
 	srcDir: 'src/',
 	css: ['~/assets/scss/main.scss'],
@@ -32,18 +20,13 @@ export default defineNuxtConfig({
 		'nuxt-graphql-client',
 		'nuxt-font-loader',
 		'@nuxt/image-edge',
-		'nuxt-sitemap-module',
+		'nuxt-simple-sitemap',
 	],
-	sitemap: {
-		siteUrl: process.env.BASE_URL,
-		routes: [sitemap()],
-	},
 	build: {
 		transpile: ['gsap'],
 	},
 	storyblok: {
 		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
-		useApiClient: true,
 	},
 	fontLoader: {
 		local: [
@@ -103,7 +86,24 @@ export default defineNuxtConfig({
 			mode: 'out-in',
 		},
 	},
+	sitemap: {
+		hostname: process.env.BASE_URL,
+	},
+	nitro: {
+		prerender: {
+			crawlLinks: true,
+			routes: [
+				'/',
+				'/collections',
+				'/projects',
+				'/commission',
+				'/materials',
+				'/contact',
+			],
+		},
+	},
 	runtimeConfig: {
+		siteUrl: process.env.BASE_URL,
 		public: {
 			baseUrl: process.env.BASE_URL || 'https://localhost:3000',
 			'graphql-client': {

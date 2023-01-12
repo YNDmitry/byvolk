@@ -23,7 +23,7 @@
 						class="footer__soc-link"
 						target="_blank"
 						aria-label="WhatsApp link"
-						href="#"
+						href="https://wa.me/message/FB7YI2TL5L6WC1"
 					>
 						<IconsSocialWhatsapp></IconsSocialWhatsapp>
 					</NuxtLink>
