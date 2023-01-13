@@ -39,20 +39,19 @@
 				},
 			})
 		})
-		gsap.utils.toArray('.grid-card').forEach((el) => {
+		gsap.utils.toArray('.grid-card').forEach((el, idx) => {
 			cardsTimeline.to(el, {
 				css: {
 					translateY: '0px',
 					opacity: 1,
 				},
-				duration: 1,
+				duration: 0.5,
 				ease: Power1.easeOut,
 			})
 		})
 	}
 
 	useNuxtApp().hook('app:beforeMount', () => {
-		// gsap.registerPlugin(ScrollTrigger)
 		gsap.utils.toArray('.grid-card').forEach((el) => {
 			gsap.set(el, {
 				css: {
@@ -61,10 +60,6 @@
 				},
 			})
 		})
-		return animInit()
-	})
-
-	useNuxtApp().hook('page:finish', () => {
 		return animInit()
 	})
 

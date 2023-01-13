@@ -1,7 +1,5 @@
 <template>
 	<main class="main">
-		<LazyNuxtLoadingIndicator></LazyNuxtLoadingIndicator>
-		<DefaultBanner></DefaultBanner>
 		<DefaultHeader></DefaultHeader>
 		<slot></slot>
 		<DefaultFooter></DefaultFooter>
@@ -12,7 +10,7 @@
 <script setup>
 	await preloadComponents(['DefaultHeader'])
 
-	useNuxtApp().hook('page:finish', () => {
+	useNuxtApp().hook('page:transition:finish', () => {
 		window.scrollTo(0, 0)
 	})
 </script>

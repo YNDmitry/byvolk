@@ -22,7 +22,7 @@
 			color: $white;
 		}
 
-		&	.header__menu-btn-burger {
+		& .header__menu-btn-burger {
 			background-color: $white;
 		}
 
@@ -98,6 +98,10 @@
 			font-weight: 500;
 			font-size: 13px;
 			transition: opacity 200ms ease;
+
+			&[disabled='true'] {
+				pointer-events: none;
+			}
 
 			@include phone-l {
 				font-size: 45px;

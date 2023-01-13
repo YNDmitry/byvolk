@@ -16,7 +16,11 @@
 							v-for="item in menu.data.value.data.datasource_entries"
 							:key="item.id"
 						>
-							<NuxtLink :to="item.value" class="header__link">
+							<NuxtLink
+								:to="item.value"
+								class="header__link"
+								:disabled="isHeaderLinkActive"
+							>
 								<div>{{ item.name }}</div>
 							</NuxtLink>
 						</li>
@@ -87,7 +91,16 @@
 	import { useCartStore } from '../store/cart'
 
 	let isOpen = ref(false)
+	let isHeaderLinkActive = ref(false)
 	const cartModal = useCartStore()
+
+	useNuxtApp().hook('page:start', () => {
+		isHeaderLinkActive.value = true
+	})
+
+	useNuxtApp().hook('page:transition:finish', () => {
+		isHeaderLinkActive.value = false
+	})
 
 	defineProps({
 		menu: {
