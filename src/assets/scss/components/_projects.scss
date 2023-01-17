@@ -45,8 +45,8 @@
 
 			&-wrapper {
 				position: relative;
-				width: 50%;
-				height: 600px;
+				width: 60%;
+				height: 500px;
 				margin-right: -70px;
 				@include flex-center;
 
@@ -91,7 +91,7 @@
 		}
 
 		&-info {
-			width: 50%;
+			width: 40%;
 			margin-right: 80px;
 
 			@include phone-l {

@@ -9,6 +9,10 @@ h6 {
 	font-weight: 500;
 	line-height: 120%;
 	color: $base-font-color;
+
+	@include phone-l {
+		text-align: center;
+	}
 }
 
 h1 {
