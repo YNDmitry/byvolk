@@ -2,14 +2,6 @@
 	<footer class="footer fade">
 		<div class="container">
 			<div class="footer__grid">
-				<NuxtImg
-					src="/footer-img.png"
-					width="200"
-					sizes="sm:100vw md:50vw lg:400px"
-					class="footer__img"
-					@click="backToTop()"
-					alt="Footer image"
-				/>
 				<div class="footer__soc">
 					<NuxtLink
 						class="footer__soc-link"
@@ -35,31 +27,51 @@
 						<IconsSocialEmail></IconsSocialEmail>
 					</NuxtLink>
 				</div>
-				<ul class="footer__links list-unstyled">
-					<li
-						v-for="link in data.data.datasource_entries.slice(
-							0,
-							data.data.datasource_entries.length / 2
-						)"
-						:key="link.id"
+			</div>
+		</div>
+		<div class="footer__links-wrapper">
+			<div class="container">
+				<div class="footer__links-grid">
+					<a
+						href="https://www.trustpilot.com/review/byvolk.com"
+						class="footer__trustpilot"
+						target="_blank"
 					>
-						<NuxtLink :to="link.value" class="footer__link">
-							{{ link.name }}
-						</NuxtLink>
-					</li>
-					<li class="footer__link center">© 2022 VOLK | ALL RIGHTS RESERVED</li>
-					<li
-						v-for="link in data.data.datasource_entries.slice(
-							data.data.datasource_entries.length / 2,
-							data.data.datasource_entries.length
-						)"
-						:key="link.id"
-					>
-						<NuxtLink :to="link.value" class="footer__link">
-							{{ link.name }}
-						</NuxtLink>
-					</li>
-				</ul>
+						<NuxtImg src="../public/trustpilot.png" width="150"></NuxtImg>
+					</a>
+					<ul class="footer__links list-unstyled">
+						<li
+							v-for="link in data.data.datasource_entries.slice(
+								0,
+								data.data.datasource_entries.length / 2
+							)"
+							:key="link.id"
+						>
+							<NuxtLink :to="link.value" class="footer__link">
+								{{ link.name }}
+							</NuxtLink>
+						</li>
+						<li class="footer__link center">
+							© 2022 VOLK | ALL RIGHTS RESERVED
+						</li>
+						<li
+							v-for="link in data.data.datasource_entries.slice(
+								data.data.datasource_entries.length / 2,
+								data.data.datasource_entries.length
+							)"
+							:key="link.id"
+						>
+							<NuxtLink :to="link.value" class="footer__link">
+								{{ link.name }}
+							</NuxtLink>
+						</li>
+					</ul>
+					<div class="footer__payments">
+						<IconsApplePay></IconsApplePay>
+						<IconsPaypal></IconsPaypal>
+						<IconsKlarna></IconsKlarna>
+					</div>
+				</div>
 			</div>
 		</div>
 	</footer>
@@ -74,8 +86,4 @@
 			}
 		)
 	})
-
-	const backToTop = () => {
-		window.scrollTo({ top: 0, behavior: 'smooth' })
-	}
 </script>

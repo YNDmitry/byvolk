@@ -1,6 +1,5 @@
 .footer {
 	margin-top: 60px;
-	padding-bottom: 20px;
 
 	&__soc {
 		margin-bottom: 15px;
@@ -32,6 +31,29 @@
 		@include flex-center;
 		flex-wrap: wrap;
 		margin: 0 auto;
+
+		&-wrapper {
+			background-color: #f8f8f8;
+		}
+
+		&-grid {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+
+	&__payments {
+		display: flex;
+		align-items: center;
+
+		& svg {
+			margin-left: 10px;
+		}
+	}
+
+	&__trustpilot {
+		@include flex-center;
 	}
 
 	&__link {
