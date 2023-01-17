@@ -61,5 +61,8 @@
 				}
 			)
 	)
+	if (!data.value) {
+		throw createError({ statusCode: 404, message: 'Page not found' })
+	}
 	story.value = data.value.data.story
 </script>

@@ -98,6 +98,10 @@
 		isHeaderLinkActive.value = true
 	})
 
+	useNuxtApp().hook('app:error:cleared', () => {
+		isHeaderLinkActive.value = false
+	})
+
 	useNuxtApp().hook('page:transition:finish', () => {
 		isHeaderLinkActive.value = false
 	})
