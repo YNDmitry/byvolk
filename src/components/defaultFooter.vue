@@ -37,7 +37,7 @@
 						class="footer__trustpilot"
 						target="_blank"
 					>
-						<NuxtImg src="../public/trustpilot.png" width="150"></NuxtImg>
+						<img src="/trustpilot.png" width="150" />
 					</a>
 					<ul class="footer__links list-unstyled">
 						<li

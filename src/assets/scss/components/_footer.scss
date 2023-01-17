@@ -32,6 +32,10 @@
 		flex-wrap: wrap;
 		margin: 0 auto;
 
+		@include tablet {
+			order: -1;
+		}
+
 		&-wrapper {
 			background-color: #f8f8f8;
 		}
@@ -40,6 +44,11 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			flex-wrap: wrap;
+
+			@include tablet {
+				justify-content: center;
+			}
 		}
 	}
 
