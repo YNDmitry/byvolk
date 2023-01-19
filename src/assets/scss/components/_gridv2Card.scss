@@ -17,6 +17,10 @@
 			&:last-child {
 				margin-bottom: 0;
 			}
+
+			@include phone-l {
+				text-align: center;
+			}
 		}
 	}
 }

@@ -18,6 +18,11 @@
 	& img {
 		width: 100%;
 	}
+
+	@include tablet {
+		margin-left: 0;
+	}
+
 	@include phone-l {
 		margin-bottom: 25px;
 	}

@@ -38,6 +38,10 @@
 
 		&-wrapper {
 			background-color: #f8f8f8;
+
+			@include tablet {
+				padding: 5px 0 10px 0;
+			}
 		}
 
 		&-grid {
@@ -80,6 +84,10 @@
 
 			@include tablet {
 				margin: 5px 15px;
+			}
+
+			@include phone-l {
+				order: 1;
 			}
 		}
 

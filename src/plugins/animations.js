@@ -2,8 +2,8 @@ import { gsap, Power1 } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default defineNuxtPlugin((nuxtApp) => {
+  gsap.registerPlugin(ScrollTrigger)
   nuxtApp.hook('app:beforeMount', () => {
-    gsap.registerPlugin(ScrollTrigger)
     gsap.utils.toArray('.up').forEach((el) => {
       gsap.set(el, {
         css: {

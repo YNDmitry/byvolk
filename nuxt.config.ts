@@ -24,6 +24,9 @@ export default defineNuxtConfig({
 	],
 	build: {
 		transpile: ['gsap'],
+		postcss: {
+			postcssOptions: require('./postcss.config'),
+		},
 	},
 	storyblok: {
 		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,

@@ -52,7 +52,7 @@
 							</NuxtLink>
 						</li>
 						<li class="footer__link center">
-							© 2022 VOLK | ALL RIGHTS RESERVED
+							© {{ new Date().getFullYear() }} VOLK | ALL RIGHTS RESERVED
 						</li>
 						<li
 							v-for="link in data.data.datasource_entries.slice(
