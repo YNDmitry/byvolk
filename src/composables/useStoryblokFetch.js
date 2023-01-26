@@ -34,7 +34,5 @@ export const useStoryblokFetch = async (locale) => {
 		).then((res) => res?.data?.value?.data?.story)
 	}
 
-	// if (!story) throw createError({ statusCode: 404, message: 'Page not found' })
-
 	return story
 }

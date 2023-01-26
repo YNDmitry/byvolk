@@ -105,7 +105,6 @@ export default defineNuxtConfig({
 		prerender: {
 			routes: [
 				'/',
-				'/sitemap.xml',
 				'/collections',
 				'/projects',
 				'/commission',
