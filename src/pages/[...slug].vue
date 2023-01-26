@@ -1,72 +1,43 @@
 <template>
 	<div>
 		<Head>
-			<Title>{{ story?.content.SEO?.title || 'BYVOLK' }}</Title>
-			<Meta
-				:content="story?.content.SEO?.description"
-				name="description"
-			></Meta>
+			<Title>{{ story?.content?.SEO?.title || 'BYVOLK' }}</Title>
+			<Meta :content="story?.SEO?.description" name="description"></Meta>
 			<Meta property="og:type" content="website"></Meta>
-			<Meta :content="story?.content.SEO?.og_title" property="og:title"></Meta>
+			<Meta :content="story?.SEO?.og_title" property="og:title"></Meta>
 			<Meta
-				:content="story?.content.SEO?.og_description"
+				:content="story?.content?.SEO?.og_description"
 				property="og:description"
 			></Meta>
-			<Meta :content="story?.content.SEO?.og_image" property="og:image"></Meta>
+			<Meta :content="story?.content?.SEO?.og_image" property="og:image"></Meta>
 			<Meta
-				:content="story?.content.SEO?.twitter_title"
+				:content="story?.content?.SEO?.twitter_title"
 				property="twitter:title"
 			></Meta>
 			<Meta
-				:content="story?.content.SEO?.twitter_description"
+				:content="story?.content?.SEO?.twitter_description"
 				property="twitter:description"
 			></Meta>
 			<Meta
-				:content="story?.content.SEO?.twitter_image"
+				:content="story?.content?.SEO?.twitter_image"
 				property="twitter:image"
 			></Meta>
 			<Meta content="summary_large_image" name="twitter:card"></Meta>
 		</Head>
 
 		<Body>
-			<StoryblokComponent :blok="story?.content" />
+			<Page :blok="story?.content" v-if="story"></Page>
+			<div v-if="!story" class="error text-center">
+				<h1 class="error__h">404</h1>
+				<p>Page not found or something went wrong</p>
+				<NuxtLink to="/" class="button-primary">Go to the home page</NuxtLink>
+			</div>
 		</Body>
 	</div>
 </template>
 
 <script setup>
-	const { slug } = useRoute().params
-	const version = useRoute().query['_storyblok_tk[token]']
-		? 'draft'
-		: 'published'
-	const story = ref(null)
-
-	onMounted(async () => {
-		if (version === 'draft' && state?.story) {
-			await useStoryblokBridge(
-				story.value.id,
-				(evStory) => (story.value = evStory)
-			)
-		}
-	})
-
-	const storyblokApi = await useStoryblokApi()
-	const { data } = await useAsyncData(
-		'vue',
-		async () =>
-			await storyblokApi.get(
-				`cdn/stories/${slug && slug.length > 0 ? slug.join('/') : 'home'}`,
-				{
-					version: version,
-				}
-			)
-	)
-	if (!data.value) {
-		throw createError({
-			statusCode: 404,
-			message: 'Page not found',
-			fatal: true,
-		})
-	}
-	story.value = data.value.data.story
+	const currentSlug = useRoute().path
+	const story = await useStoryblokFetch(currentSlug)
+	const error = ref('')
 </script>

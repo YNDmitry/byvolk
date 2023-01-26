@@ -1,6 +1,6 @@
 .product-card {
 	position: relative;
-	transition: all 200ms ease;
+	transition: transform 200ms ease;
 
 	&:hover {
 		transform: scale(1.05) !important;

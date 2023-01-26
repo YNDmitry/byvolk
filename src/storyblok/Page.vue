@@ -1,9 +1,10 @@
 <template>
 	<div v-editable="blok">
-		<StoryblokComponent
+		<component
 			v-for="item in blok?.body"
 			:key="item._uid"
 			:blok="item"
+			:is="item.component"
 		/>
 	</div>
 </template>

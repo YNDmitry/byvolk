@@ -34,7 +34,7 @@ export const useCartStore = defineStore('Cart', {
       } else {
         this.items.push({ variantId: item, quantity: 1 })
       }
-      
+
       localStorage.setItem('cartItems', JSON.stringify(this.items))
       this.handleModal()
     },
@@ -47,7 +47,7 @@ export const useCartStore = defineStore('Cart', {
     async submit() {
       if (this.items.length > 0) {
         this.isPending = true
-        const { data, pending } = await useAsyncGql({
+        await useAsyncGql({
           operation: 'CheckoutCreate',
           variables: {
             lineItems: [...this.items].map(el => el = {

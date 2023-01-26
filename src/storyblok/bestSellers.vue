@@ -36,7 +36,7 @@
 				>
 					<SwiperSlide
 						class="product-card"
-						v-for="product in productsArr?.collection?.products?.edges"
+						v-for="product in productsArr"
 						:key="product.node.id"
 					>
 						<ProductBlock
@@ -65,31 +65,21 @@
 		},
 	})
 
-	let productsArr = ref([])
-
-	await useAsyncData(
-		'collection',
-		async () => await GqlCollection({ handle: 'best-sellers' })
-	).then((res) => (productsArr.value = res.data.value))
-
+	let productsArr = useState('productArr', () => null)
+	const data = await GqlCollection({ handle: 'best-sellers' })
+	productsArr.value = data.collection.products.edges
 	const leftArr = ref(null)
 	const rightArr = ref(null)
 
 	const slidesPerView = computed(() => {
-		if (
-			useMediaQuery('(max-width: 991px)').value !=
+		return useMediaQuery('(max-width: 991px)').value !=
 			useMediaQuery('(max-width: 700px)').value
-		) {
-			return 3
-		} else if (
-			useMediaQuery('(max-width: 700px)').value !=
-			useMediaQuery('(max-width: 479px)').value
-		) {
-			return 2
-		} else if (useMediaQuery('(max-width: 479px)').value) {
-			return 1
-		} else {
-			return 5
-		}
+			? 3
+			: useMediaQuery('(max-width: 700px)').value !=
+			  useMediaQuery('(max-width: 479px)').value
+			? 2
+			: useMediaQuery('(max-width: 479px)').value
+			? 1
+			: 5
 	})
 </script>

@@ -6,27 +6,21 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook('app:beforeMount', () => {
     gsap.utils.toArray('.up').forEach((el) => {
       gsap.set(el, {
-        css: {
-          translateY: '70px',
-          opacity: 0
-        }
+        y: '70px',
+        opacity: 0
       })
     })
     gsap.utils.toArray('.fade').forEach((el) => {
       gsap.set(el, {
-        css: {
-          opacity: 0
-        }
+        opacity: 0
       })
     })
   })
   nuxtApp.hook('page:finish', () => {
     gsap.utils.toArray('.up').forEach((el) => {
       gsap.to(el, {
-        css: {
-          translateY: '0px',
-          opacity: 1,
-        },
+        y: '0px',
+        opacity: 1,
         scrollTrigger: {
           trigger: el,
           start: 'top 100%',
@@ -38,9 +32,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
     gsap.utils.toArray('.fade').forEach((el) => {
       gsap.to(el, {
-        css: {
-          opacity: 1,
-        },
+        opacity: 1,
         scrollTrigger: {
           trigger: el,
           start: 'top 100%',
@@ -54,16 +46,12 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook('page:transition:finish', () => {
     gsap.utils.toArray('.up').forEach((el) => {
       gsap.set(el, {
-        css: {
-          translateY: '70px',
-          opacity: 0
-        }
+        y: '70px',
+        opacity: 0
       })
       gsap.to(el, {
-        css: {
-          translateY: '0px',
-          opacity: 1,
-        },
+        y: '0px',
+        opacity: 1,
         scrollTrigger: {
           trigger: el,
           start: 'top 100%',
@@ -75,14 +63,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
     gsap.utils.toArray('.fade').forEach((el) => {
       gsap.set(el, {
-        css: {
-          opacity: 0
-        }
+        opacity: 0
       })
       gsap.to(el, {
-        css: {
-          opacity: 1,
-        },
+        opacity: 1,
         scrollTrigger: {
           trigger: el,
           start: 'top 100%',

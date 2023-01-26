@@ -1,6 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
+	telemetry: false,
 	srcDir: 'src/',
 	css: ['~/assets/scss/main.scss'],
 	components: {
@@ -24,12 +25,20 @@ export default defineNuxtConfig({
 	],
 	build: {
 		transpile: ['gsap'],
-		postcss: {
-			postcssOptions: require('./postcss.config'),
+	},
+	postcss: {
+		plugins: {
+			'postcss-import': {},
+			autoprefixer: {
+				overrideBrowserslist: ['last 10 versions'],
+			},
 		},
 	},
 	storyblok: {
 		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
+		useApiClient: true,
+		apiOptions: { cache: { type: 'memory' } },
+		bride: true,
 	},
 	fontLoader: {
 		local: [
@@ -96,6 +105,7 @@ export default defineNuxtConfig({
 		prerender: {
 			routes: [
 				'/',
+				'/sitemap.xml',
 				'/collections',
 				'/projects',
 				'/commission',

@@ -174,3 +174,15 @@ textarea {
 		display: block;
 	}
 }
+
+.error {
+	height: 50vh;
+
+	& h1 {
+		font-size: 100px;
+	}
+
+	& p {
+		margin: 5px 0 20px 0;
+	}
+}
