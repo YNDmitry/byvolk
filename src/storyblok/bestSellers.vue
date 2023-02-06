@@ -72,14 +72,20 @@
 	const rightArr = ref(null)
 
 	const slidesPerView = computed(() => {
-		return useMediaQuery('(max-width: 991px)').value !=
+		if (
+			useMediaQuery('(max-width: 991px)').value !=
 			useMediaQuery('(max-width: 700px)').value
-			? 3
-			: useMediaQuery('(max-width: 700px)').value !=
-			  useMediaQuery('(max-width: 479px)').value
-			? 2
-			: useMediaQuery('(max-width: 479px)').value
-			? 1
-			: 5
+		) {
+			return 3
+		} else if (
+			useMediaQuery('(max-width: 700px)').value !=
+			useMediaQuery('(max-width: 479px)').value
+		) {
+			return 2
+		} else if (useMediaQuery('(max-width: 479px)').value) {
+			return 1
+		} else {
+			return 5
+		}
 	})
 </script>

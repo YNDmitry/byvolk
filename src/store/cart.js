@@ -13,24 +13,21 @@ export const useCartStore = defineStore('Cart', {
   getters: {
     productPrice(state) {
       localStorage.setItem('cartItems', JSON.stringify(state.items))
-      return state.items.map(el => Number(el.variantId.price) * el.quantity).reduce((pV, cV) => pV + cV)
+      return state.items.reduce((totalPrice, item) => totalPrice + (Number(item.variantId.price) * item.quantity), 0)
     },
     currencyCode(state) {
-      return state.items.length > 0 ? state.items[0].variantId.currencyCode : ''
+      return state.items[0] ? state.items[0].variantId.currencyCode : '';
     },
   },
 
   actions: {
     handleModal() {
-      if (this.isOpen) {
-        return this.isOpen = false
-      }
-      return this.isOpen = true
+      this.isOpen = this.isOpen ? false : true
     },
 
     addToCart(item) {
       if (this.items.find(el => el.variantId.id === item.id)) {
-        this.items.find(el => el.variantId.id === item.id).quantity++
+        this.items[this.items.findIndex(el => el.variantId.id === item.id)].quantity++
       } else {
         this.items.push({ variantId: item, quantity: 1 })
       }
@@ -39,28 +36,27 @@ export const useCartStore = defineStore('Cart', {
       this.handleModal()
     },
 
-    removeFromCart(item) {
-      this.items.splice(item, 1)
+    removeFromCart(itemIndex) {
+      this.items.splice(itemIndex, 1)
       localStorage.setItem('cartItems', JSON.stringify(this.items))
     },
 
     async submit() {
       if (this.items.length > 0) {
-        this.isPending = true
-        await useAsyncGql({
-          operation: 'CheckoutCreate',
-          variables: {
-            lineItems: [...this.items].map(el => el = {
-              variantId: el.variantId.id,
-              quantity: el.quantity
-            })
-          }
-        })
-          .then(res => window.location = res.data.value.checkoutCreate.checkout.webUrl)
-          .catch(err => {
-            this.isError = err
-            this.isPending = false
+        try {
+          this.isPending = true
+          const response = await useAsyncGql({
+            operation: 'CheckoutCreate',
+            variables: {
+              lineItems: this.items.map(el => ({ variantId: el.variantId.id, quantity: el.quantity }))
+            }
           })
+
+          window.location = response.data.value.checkoutCreate.checkout.webUrl
+        } catch (error) {
+          this.isError = error
+          this.isPending = false
+        }
       }
     }
   }

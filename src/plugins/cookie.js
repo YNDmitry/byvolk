@@ -3,36 +3,16 @@ import 'vanilla-cookieconsent';
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook('page:finish', () => {
     window.CookieConsentApi = window.initCookieConsent()
-    window.CookieConsentApi.run({
+
+    const config = {
       current_lang: 'en',
-      page_scripts: true, // default: false
-      // mode: 'opt-in'                          // default: 'opt-in'; value: 'opt-in' or 'opt-out'
-      // delay: 0,                               // default: 0
-      // auto_language: null                     // default: null; could also be 'browser' or 'document'
-      // autorun: true,                          // default: true
-      // force_consent: false,                   // default: false
-      // hide_from_bots: false,                  // default: false
-      // remove_cookie_tables: false             // default: false
-      // cookie_name: 'cc_cookie',               // default: 'cc_cookie'
-      // cookie_expiration: 182,                 // default: 182 (days)
-      // cookie_necessary_only_expiration: 182   // default: disabled
-      // cookie_domain: location.hostname,       // default: current domain
-      // cookie_path: '/',                       // default: root
-      // cookie_same_site: 'Lax',                // default: 'Lax'
-      // use_rfc_cookie: false,                  // default: false
-      // revision: 0,                            // default: 0
+      page_scripts: true,
       gui_options: {
         consent_modal: {
           layout: 'box',
-          position: 'bottom left',     // bottom/middle/top + left/right/center
-          // transition: 'slide',           // zoom/slide
-          swap_buttons: false            // enable to invert buttons
+          position: 'bottom left',
+          swap_buttons: false
         },
-        settings_modal: {
-          // layout: 'bar',                 // box/bar
-          // position: 'right',           // left/right
-          // transition: 'slide'            // zoom/slide
-        }
       },
 
       languages: {
@@ -43,11 +23,11 @@ export default defineNuxtPlugin((nuxtApp) => {
               'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent. <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>',
             primary_btn: {
               text: 'Accept all',
-              role: 'accept_all', // 'accept_selected' or 'accept_all'
+              role: 'accept_all',
             },
             secondary_btn: {
               text: 'Reject all',
-              role: 'accept_necessary', // 'settings' or 'accept_necessary'
+              role: 'accept_necessary',
             },
           },
           settings_modal: {
@@ -69,7 +49,7 @@ export default defineNuxtPlugin((nuxtApp) => {
                 toggle: {
                   value: 'necessary',
                   enabled: true,
-                  readonly: true, // cookie categories with readonly=true are all treated as "necessary cookies"
+                  readonly: true,
                 },
               },
               {
@@ -77,7 +57,7 @@ export default defineNuxtPlugin((nuxtApp) => {
                 description:
                   'These items help the website operator understand how its website performs, how visitors interact with the site, and whether there may be technical issues. This storage type usually doesn’t collect information that identifies a visitor.',
                 toggle: {
-                  value: 'analytics', // your cookie category
+                  value: 'analytics',
                   enabled: false,
                   readonly: false,
                 },
@@ -96,6 +76,8 @@ export default defineNuxtPlugin((nuxtApp) => {
           },
         },
       },
-    })
+    }
+
+    window.CookieConsentApi.run(config)
   })
 })
