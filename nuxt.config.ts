@@ -103,14 +103,7 @@ export default defineNuxtConfig({
 	},
 	nitro: {
 		prerender: {
-			routes: [
-				'/',
-				'/collections',
-				'/projects',
-				'/commission',
-				'/materials',
-				'/contact',
-			],
+			routes: ['/'],
 		},
 	},
 	runtimeConfig: {
