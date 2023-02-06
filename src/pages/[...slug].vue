@@ -39,5 +39,4 @@
 <script setup>
 	const currentSlug = useRoute().path
 	const story = await useStoryblokFetch(currentSlug)
-	const error = ref('')
 </script>

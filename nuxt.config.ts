@@ -38,7 +38,6 @@ export default defineNuxtConfig({
 		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
 		useApiClient: true,
 		apiOptions: { cache: { type: 'memory' } },
-		bride: true,
 	},
 	fontLoader: {
 		local: [
