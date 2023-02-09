@@ -123,6 +123,12 @@ export default defineNuxtConfig({
 	sitemap: {
 		hostname: process.env.BASE_URL,
 	},
+	nitro: {
+		prerender: {
+			crawlLinks: true,
+			routes: ['/'],
+		},
+	},
 	image: {
 		dir: 'public',
 		storyblok: {
