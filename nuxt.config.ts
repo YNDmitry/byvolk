@@ -3,10 +3,47 @@ import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
 	telemetry: false,
 	srcDir: 'src/',
-	css: ['~/assets/scss/main.scss'],
+	css: ['assets/scss/main.scss'],
 	components: {
 		global: true,
 		dirs: ['~/components'],
+	},
+	vite: {
+		css: {
+			devSourcemap: true,
+		},
+	},
+	runtimeConfig: {
+		siteUrl: process.env.BASE_URL,
+		public: {
+			baseUrl: process.env.BASE_URL || 'https://localhost:3000',
+			'graphql-client': {
+				clients: {
+					default: {
+						host: 'https://byvolk.myshopify.com/api/2022-10/graphql.json',
+						headers: {
+							'X-Shopify-Storefront-Access-Token':
+								process.env.SHOPIFY_ACCESS_TOKEN,
+						},
+						retainToken: true,
+					},
+				},
+			},
+		},
+	},
+	app: {
+		head: {
+			title: 'BYVOLK',
+			link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+			noscript: [{ children: 'Javascript is required' }],
+			htmlAttrs: {
+				lang: 'en',
+			},
+		},
+		pageTransition: {
+			name: 'page',
+			mode: 'out-in',
+		},
 	},
 	modules: [
 		[
@@ -83,45 +120,8 @@ export default defineNuxtConfig({
 			},
 		],
 	},
-	app: {
-		head: {
-			title: 'BYVOLK',
-			link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
-			noscript: [{ children: 'Javascript is required' }],
-			htmlAttrs: {
-				lang: 'en',
-			},
-		},
-		pageTransition: {
-			name: 'page',
-			mode: 'out-in',
-		},
-	},
 	sitemap: {
 		hostname: process.env.BASE_URL,
-	},
-	nitro: {
-		prerender: {
-			routes: ['/'],
-		},
-	},
-	runtimeConfig: {
-		siteUrl: process.env.BASE_URL,
-		public: {
-			baseUrl: process.env.BASE_URL || 'https://localhost:3000',
-			'graphql-client': {
-				clients: {
-					default: {
-						host: 'https://byvolk.myshopify.com/api/2022-10/graphql.json',
-						headers: {
-							'X-Shopify-Storefront-Access-Token':
-								process.env.SHOPIFY_ACCESS_TOKEN,
-						},
-						retainToken: true,
-					},
-				},
-			},
-		},
 	},
 	image: {
 		dir: 'public',

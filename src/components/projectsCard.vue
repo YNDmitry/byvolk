@@ -11,8 +11,8 @@
 			<button
 				type="button"
 				class="slider__nav-button is-prev"
-				id="arrow-next"
-				ref="arrowNext"
+				id="arrow-prev"
+				ref="arrowPrev"
 			>
 				<IconsArrowRight></IconsArrowRight>
 			</button>
@@ -40,8 +40,8 @@
 			<button
 				type="button"
 				class="slider__nav-button is-next"
-				id="arrow-prev"
-				ref="arrowPrev"
+				id="arrow-next"
+				ref="arrowNext"
 			>
 				<IconsArrowRight></IconsArrowRight>
 			</button>

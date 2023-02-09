@@ -130,7 +130,7 @@
 								<span class="print__info-price">
 									Price:
 									<strong>{{
-										price(
+										usePrice(
 											currentProductVariant.price.amount,
 											currentProductVariant.price.currencyCode
 										)
@@ -170,9 +170,13 @@
 											: 'Sold out'
 									}}
 								</button>
-								<a href="#" class="print__info-footer-a m-auto mt-small"
-									>Ask a question</a
+								<NuxtLink
+									to="https://wa.me/message/FB7YI2TL5L6WC1"
+									target="_blank"
+									class="print__info-footer-a m-auto mt-small"
 								>
+									Ask a question
+								</NuxtLink>
 							</div>
 						</div>
 					</div>
@@ -217,47 +221,7 @@
 		},
 	})
 
-	await useHead({
-		title: data.value?.productByHandle?.title + ' - byvolk',
-		meta: [
-			{
-				name: 'description',
-				content: data.value?.productByHandle?.description,
-			},
-			{
-				name: 'og:type',
-				content: 'website',
-			},
-			{
-				property: 'og:title',
-				content: data.value?.productByHandle.title,
-			},
-			{
-				property: 'og:description',
-				content: data.value?.productByHandle.description,
-			},
-			{
-				property: 'og:image',
-				content: data.value?.productByHandle.images.edges[0].node.src,
-			},
-			{
-				property: 'twitter:title',
-				content: data.value?.productByHandle.title,
-			},
-			{
-				property: 'twitter:description',
-				content: data.value?.productByHandle.description,
-			},
-			{
-				property: 'twitter:image',
-				content: data.value?.productByHandle.images.edges[0].node.src,
-			},
-			{
-				name: 'twitter:card',
-				content: 'summary_large_image',
-			},
-		],
-	})
+	await useStoryblokHead(data.value?.productByHandle)
 
 	const { share, isSupported } = useShare()
 
@@ -273,13 +237,6 @@
 				: ''
 		})
 	})
-
-	const price = (amount, currencyCode) => {
-		return new Intl.NumberFormat('en-US', {
-			style: 'currency',
-			currency: currencyCode,
-		}).format(amount)
-	}
 
 	function startShare() {
 		share({
@@ -298,3 +255,5 @@
 		return (window.location.hash = 'slide1')
 	}
 </script>
+
+<style lang="scss" src="assets/scss/pages/_prints.scss"></style>

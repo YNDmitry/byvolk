@@ -20,7 +20,7 @@
 <script setup>
 	const props = defineProps({
 		img: {
-			type: String,
+			type: Object,
 		},
 		description: {
 			type: Object,
@@ -29,3 +29,5 @@
 
 	const richtext = asyncComputed(() => renderRichText(props.description))
 </script>
+
+<style lang="scss" src="assets/scss/components/_gridv2Card.scss"></style>

@@ -58,11 +58,6 @@
 			default: () => ({}),
 		},
 	})
-
-	const isMobile = computed(() => {
-		if (useMediaQuery('(max-width: 479px)').value) {
-			return false
-		}
-		return true
-	})
 </script>
+
+<style lang="scss" src="assets/scss/components/_instagramBlock.scss"></style>

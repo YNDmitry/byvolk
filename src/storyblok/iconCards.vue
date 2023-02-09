@@ -39,3 +39,5 @@
 
 	const columnCount = computedAsync(() => props.blok.columnCount)
 </script>
+
+<style lang="scss" src="assets/scss/components/_iconsCards.scss"></style>

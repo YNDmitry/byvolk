@@ -10,15 +10,19 @@
 							<icons-close></icons-close>
 						</button>
 					</div>
-					<div class="cart__body" v-if="cart.items.length > 0">
-						<TransitionGroup name="slide-left" tag="ul" class="list-cart list-unstyled">
+					<ul class="cart__body" v-if="cart.items.length > 0">
+						<TransitionGroup
+							name="transition"
+							mode="out-in"
+							class="list-cart list-unstyled"
+						>
 							<li
 								class="cart__body-card"
 								v-for="(card, idx) in cart.items"
 								:key="idx"
 							>
 								<div class="cart__body-card-img">
-									<img :src="card.variantId.image"/>
+									<img :src="card.variantId.image" />
 								</div>
 								<div class="cart__body-card-info">
 									<div class="cart__body-card-info-head">
@@ -49,16 +53,18 @@
 								</div>
 							</li>
 						</TransitionGroup>
-					</div>
+					</ul>
 					<div v-else class="cart__empty">Your cart is empty</div>
 					<div class="cart__footer" v-if="cart.items.length > 0">
 						<div class="cart__footer-info">
-							<span>Total price: 
+							<span
+								>Total price:
 								<strong>
-									{{ helpers.price(cart.productPrice, cart.currencyCode) }}
+									{{ usePrice(cart.productPrice, cart.currencyCode) }}
 								</strong>
 							</span>
-							<span>Total items: 
+							<span
+								>Total items:
 								<strong>{{ cart.items.length }}</strong>
 							</span>
 						</div>
@@ -78,9 +84,6 @@
 
 <script setup>
 	import { useCartStore } from '~~/src/store/cart'
-	import { useHelpersStore } from '~~/src/store/helpers';
-
-	const helpers = useHelpersStore()
 
 	const cart = useCartStore()
 
@@ -89,5 +92,18 @@
 			? JSON.parse(localStorage.getItem('cartItems'))
 			: []
 	})
-
 </script>
+
+<style lang="scss" src="assets/scss/components/_cart.scss">
+	.transition-enter {
+		opacity: 0;
+	}
+	.transition-leave-active {
+		transition: opacity 300ms ease-in;
+		opacity: 0;
+	}
+	.transition-enter-active {
+		transition: opacity 300ms ease-in;
+		opacity: 1;
+	}
+</style>

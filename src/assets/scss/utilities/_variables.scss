@@ -1,4 +1,5 @@
 // ! Base project variables
+
 $base-font-family: 'Avenir Next', sans-serif;
 $base-font-size: 16px;
 $base-line-height: 160%;
@@ -21,13 +22,3 @@ $dark-font-color: #ffffff;
 // ! Colors
 $white: #ffffff;
 // Colors !
-
-// Cookie
-:root {
-  --cc-border-radius: 0;
-  --cc-btn-primary-bg: #191a19;
-  --cc-text: $base-font-color;
-  --cc-btn-primary-hover-bg: #191a19;
-  --cc-btn-secondary-text: #191a19;
-}
-// Cookie !

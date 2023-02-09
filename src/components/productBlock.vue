@@ -27,8 +27,6 @@
 </template>
 
 <script setup>
-	import { useHelpersStore } from '../store/helpers'
-
 	const props = defineProps({
 		handle: {
 			type: String,
@@ -51,9 +49,9 @@
 		},
 	})
 
-	const helpers = useHelpersStore()
-
 	const price = asyncComputed(() => {
-		return helpers.price(props.minPrice, props.currencyCode)
+		return usePrice(props.minPrice, props.currencyCode)
 	})
 </script>
+
+<style lang="scss" src="assets/scss/components/_productBlock.scss"></style>

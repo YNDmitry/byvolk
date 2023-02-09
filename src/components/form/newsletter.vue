@@ -65,3 +65,5 @@
 			})
 	}
 </script>
+
+<style lang="scss" src="assets/scss/components/_formNewsletter.scss"></style>

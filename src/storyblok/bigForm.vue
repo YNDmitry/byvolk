@@ -68,21 +68,23 @@
 			return (model +=
 				`<strong>${el.placeholder}: </strong>` + el.value + '<br>')
 		})
-		await $fetch('/api/email', {
-			method: 'POST',
-			body: {
-				subject: 'Form',
-				html: model,
-			},
-		})
-			.then(() => {
-				return (isSuccess.value = true)
+
+		try {
+			await $fetch('/api/email', {
+				method: 'POST',
+				body: {
+					subject: 'Form',
+					html: model,
+				},
 			})
-			.catch((err) => {
-				isPending.value = false
-				return (isError.value = true)
-			})
+			return (isSuccess.value = true)
+		} catch (error) {
+			isPending.value = false
+			return (isError.value = true)
+		}
 	}
 
 	const richtext = computed(() => renderRichText(props.blok.description))
 </script>
+
+<style lang="scss" src="assets/scss/components/_bigForm.scss"></style>

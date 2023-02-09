@@ -1,5 +1,5 @@
 <template>
-	<div class="grid-card">
+	<div class="grid-card fade">
 		<h4 v-if="content.headline">{{ content.headline }}</h4>
 		<div class="grid-card__picture-wrapper">
 			<NuxtPicture
@@ -23,13 +23,6 @@
 			required: true,
 			default: () => ({}),
 		},
-	})
-
-	const isMobile = computed(() => {
-		if (useMediaQuery('(max-width: 769px)').value) {
-			return false
-		}
-		return true
 	})
 
 	const richtext = computed(() => renderRichText(props.content.description))

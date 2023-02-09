@@ -24,19 +24,4 @@
 	}
 </script>
 
-<style lang="scss">
-	.dropdown-leave-active,
-	.dropdown-enter-active {
-		transition: all 0.2s;
-		max-height: 230px;
-	}
-
-	.dropdown-enter-from {
-		max-height: 0px;
-	}
-
-	.dropdown-enter,
-	.dropdown-leave-to {
-		max-height: 0px;
-	}
-</style>
+<style lang="scss" src="assets/scss/components/_dropdown.scss"></style>

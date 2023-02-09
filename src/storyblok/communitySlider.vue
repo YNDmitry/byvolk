@@ -58,3 +58,5 @@
 	const leftArr = ref(null)
 	const rightArr = ref(null)
 </script>
+
+<style lang="scss" src="assets/scss/components/_communitySlider.scss"></style>

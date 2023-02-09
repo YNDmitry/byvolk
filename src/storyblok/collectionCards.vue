@@ -2,14 +2,18 @@
 	<section v-editable="blok" class="section-collections">
 		<div class="container">
 			<div v-if="collections">
-				<div 
-					class="collections__cards" 
+				<div
+					class="collections__cards"
 					v-for="collection in collections"
 					:key="collection"
 				>
 					<div class="collections__cards-head">
-						<h2 class="up" v-if="collection.node.title">{{ collection.node.title }}</h2>
-						<span class="up" v-if="collection.node.description">{{ collection.node.description }}</span>
+						<h2 class="up" v-if="collection.node.title">
+							{{ collection.node.title }}
+						</h2>
+						<span class="up" v-if="collection.node.description">{{
+							collection.node.description
+						}}</span>
 					</div>
 					<div class="collections__cards-items">
 						<ProductBlock
@@ -52,3 +56,8 @@
 				: ''
 	)
 </script>
+
+<style
+	lang="scss"
+	src="../assets/scss/components/_collectionCards.scss"
+></style>

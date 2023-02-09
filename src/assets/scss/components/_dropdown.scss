@@ -1,3 +1,5 @@
+@import '../utilities/mixins';
+
 .dropdown {
 	border-bottom: 1px solid #d8d9d8;
 	cursor: pointer;
@@ -26,5 +28,20 @@
 		& p {
 			padding: 10px 0 30px 0;
 		}
+	}
+
+	&-leave-active,
+	&-enter-active {
+		transition: all 0.2s;
+		max-height: 230px;
+	}
+
+	&-enter-from {
+		max-height: 0px;
+	}
+
+	&-enter,
+	&-leave-to {
+		max-height: 0px;
 	}
 }

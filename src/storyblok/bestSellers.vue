@@ -89,3 +89,5 @@
 		}
 	})
 </script>
+
+<style lang="scss" src="assets/scss/components/_bestSellers.scss"></style>

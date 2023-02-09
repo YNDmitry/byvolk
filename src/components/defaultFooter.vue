@@ -87,3 +87,5 @@
 		)
 	})
 </script>
+
+<style lang="scss" src="assets/scss/components/_footer.scss"></style>

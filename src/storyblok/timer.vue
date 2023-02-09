@@ -44,7 +44,9 @@
 	})
 
 	const richtext = computed(() => renderRichText(props.blok.description))
-	let isActive = asyncComputed(() => new Date(props.blok.date) <= new Date() ? false : true)
+	let isActive = asyncComputed(() =>
+		new Date(props.blok.date) <= new Date() ? false : true
+	)
 	let endTime = new Date(props.blok.date)
 
 	const timer = reactive({
@@ -53,14 +55,14 @@
 		minutes: 0,
 		seconds: 0,
 	})
-	
+
 	onMounted(() => {
 		const init = () => {
 			endTime = Date.parse(endTime) / 1000
 
 			let now = new Date()
 			now = Date.parse(now) / 1000
-			
+
 			if (endTime <= now) {
 				isActive.value = false
 				return clearInterval(interval)
@@ -95,3 +97,5 @@
 		}, 1000)
 	})
 </script>
+
+<style lang="scss" src="assets/scss/components/_timer.scss"></style>

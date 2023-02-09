@@ -30,3 +30,5 @@
 		},
 	})
 </script>
+
+<style lang="scss" src="../assets/scss/components/_gallery.scss"></style>

@@ -40,3 +40,5 @@
 
 	const richtext = computed(() => renderRichText(props.blok.description))
 </script>
+
+<style lang="scss" src="assets/scss/components/_imgWithText.scss"></style>

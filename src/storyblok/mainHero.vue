@@ -21,3 +21,5 @@
 
 	const richtext = asyncComputed(() => renderRichText(props.blok.description))
 </script>
+
+<style lang="scss" src="../assets/scss/components/_mainHero.scss"></style>

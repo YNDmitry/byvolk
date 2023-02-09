@@ -90,6 +90,12 @@
 <script setup>
 	import { useCartStore } from '../store/cart'
 
+	const props = defineProps({
+		menu: {
+			type: Object,
+		},
+	})
+
 	let isOpen = ref(false)
 	let isHeaderLinkActive = ref(false)
 	const cartModal = useCartStore()
@@ -106,17 +112,8 @@
 		isHeaderLinkActive.value = false
 	})
 
-	defineProps({
-		menu: {
-			type: Object,
-		},
-	})
-
 	const isMobile = computed(() => {
-		if (useMediaQuery('(max-width: 769px)').value) {
-			return false
-		}
-		return true
+		return useMediaQuery('(max-width: 769px)').value ? false : true
 	})
 
 	const menu = await useAsyncData('menu', async () => {
@@ -129,6 +126,8 @@
 	})
 
 	function openMenu() {
-		isOpen.value === false ? (isOpen.value = true) : (isOpen.value = false)
+		return (isOpen.value = isOpen.value === false ? true : false)
 	}
 </script>
+
+<style lang="scss" src="assets/scss/components/_header.scss"></style>

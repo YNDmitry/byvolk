@@ -1,6 +1,11 @@
+@import '../utilities/mixins';
+
 body.dark {
 	.cart-wrapper {
-		& h5, h6, p, span {
+		& h5,
+		h6,
+		p,
+		span {
 			color: black;
 		}
 
@@ -66,6 +71,7 @@ body.dark {
 			display: flex;
 			flex-direction: column;
 			padding: 25px 18px;
+			margin-top: 0;
 			margin-bottom: auto;
 
 			&-card {
