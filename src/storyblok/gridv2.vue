@@ -7,6 +7,7 @@
 					:key="card"
 					:img="card.image"
 					:description="card.body"
+					:heading="card.heading"
 				></Gridv2Card>
 			</div>
 		</div>

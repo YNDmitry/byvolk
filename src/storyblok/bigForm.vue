@@ -7,11 +7,7 @@
 					<div v-html="richtext" class="mt-medium up" v-if="richtext"></div>
 				</div>
 				<div>
-					<form
-						class="big-form"
-						@submit.prevent="submitHandler()"
-						v-if="!isSuccess"
-					>
+					<form class="big-form" @submit.prevent="submitHandler()" v-if="!isSuccess">
 						<div class="big-form__inputs">
 							<FormDefaultInput
 								:title="input.placeholder"
@@ -26,9 +22,11 @@
 								class="up"
 							></FormDefaultInput>
 						</div>
-						<button type="submit" class="button-primary up">
-							{{ isPending ? 'Loading...' : 'Submit' }}
-						</button>
+						<div class="up w-full text-center">
+							<button type="submit" class="button-primary">
+								{{ isPending ? 'Loading...' : 'Submit' }}
+							</button>
+						</div>
 					</form>
 					<div v-else-if="isSuccess && !isError" class="text-center">
 						Form submission is success
@@ -65,8 +63,7 @@
 		isPending.value = true
 		let model = ''
 		dataInputs.value.forEach((el) => {
-			return (model +=
-				`<strong>${el.placeholder}: </strong>` + el.value + '<br>')
+			return (model += `<strong>${el.placeholder}: </strong>` + el.value + '<br>')
 		})
 
 		try {

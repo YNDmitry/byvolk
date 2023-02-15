@@ -2,6 +2,10 @@
 
 .section-iwt {
 	padding: 96px 0;
+
+	@include phone-l {
+		padding: 40px 0;
+	}
 }
 
 .iwt__items {
@@ -30,20 +34,6 @@
 	}
 }
 
-.iwt__info-rich {
-	display: flex;
-	flex-direction: column;
-	text-align: left;
-
-	& p {
-		margin-bottom: 10px;
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-}
-
 .iwt__info {
 	order: 1;
 	margin-left: 64px;
@@ -53,5 +43,25 @@
 	@include phone-l {
 		margin-left: 0;
 		text-align: center;
+	}
+
+	&-rich {
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+
+		& p {
+			margin-bottom: 10px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		& h6 {
+			@include phone-l {
+				text-align: center;
+			}
+		}
 	}
 }

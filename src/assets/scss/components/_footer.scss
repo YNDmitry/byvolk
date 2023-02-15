@@ -38,6 +38,19 @@
 			order: -1;
 		}
 
+		@include phone {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+
+			& li {
+				text-align: center;
+			}
+
+			& .footer__link.center {
+				grid-column: 3 / 1;
+			}
+		}
+
 		&-wrapper {
 			background-color: #f8f8f8;
 

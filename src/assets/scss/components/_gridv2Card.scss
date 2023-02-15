@@ -12,6 +12,23 @@
 	}
 
 	&__rich {
+		margin-top: 20px;
+		margin-bottom: auto;
+
+		@include phone-l {
+			margin-top: 40px;
+		}
+
+		&-wrapper {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+
+			& h2 {
+				margin-bottom: auto;
+			}
+		}
+
 		& p {
 			margin-bottom: 50px;
 			margin-top: 15px;

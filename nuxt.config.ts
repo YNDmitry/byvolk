@@ -22,8 +22,7 @@ export default defineNuxtConfig({
 					default: {
 						host: 'https://byvolk.myshopify.com/api/2022-10/graphql.json',
 						headers: {
-							'X-Shopify-Storefront-Access-Token':
-								process.env.SHOPIFY_ACCESS_TOKEN,
+							'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_ACCESS_TOKEN,
 						},
 						retainToken: true,
 					},
@@ -75,6 +74,7 @@ export default defineNuxtConfig({
 		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
 		useApiClient: true,
 		apiOptions: { cache: { type: 'memory' } },
+		apiPlugin: true,
 	},
 	fontLoader: {
 		local: [
@@ -133,6 +133,10 @@ export default defineNuxtConfig({
 		dir: 'public',
 		storyblok: {
 			baseURL: 'https://a.storyblok.com',
+			modifiers: {
+				effect: 'sharpen:100',
+				quality: 'auto:best',
+			},
 		},
 		screens: {
 			xs: 320,

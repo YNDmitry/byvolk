@@ -34,6 +34,10 @@
 	padding: 96px 0px;
 	overflow: hidden;
 
+	@include phone-l {
+		padding: 40px 0;
+	}
+
 	&__head {
 		@include flex-space-between-center;
 

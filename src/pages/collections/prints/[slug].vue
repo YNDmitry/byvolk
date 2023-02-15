@@ -38,14 +38,11 @@
 							>
 								<SwiperSlide
 									class="print__slider-slide"
-									v-for="(image, index) in data.productByHandle?.images?.edges"
+									v-for="(image, index) in product.images?.edges"
 									:key="index"
 									:data-hash="'slide' + index"
 								>
-									<NuxtPicture
-										:src="image.node.src"
-										loading="lazy"
-									></NuxtPicture>
+									<NuxtPicture :src="image.node.src" loading="lazy"></NuxtPicture>
 								</SwiperSlide>
 							</Swiper>
 						</div>
@@ -56,10 +53,9 @@
 								</template>
 								<template #body>
 									<p>
-										Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-										Sapiente, dignissimos.Lorem, ipsum dolor sit amet
-										consectetur adipisicing elit. Sapiente, dignissimos.Lorem,
-										ipsum dolor
+										Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente,
+										dignissimos.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente,
+										dignissimos.Lorem, ipsum dolor
 									</p>
 								</template>
 							</Dropdown>
@@ -75,27 +71,27 @@
 					</div>
 					<div class="print__info">
 						<div class="print__info-head">
-							<h2 v-if="data.productByHandle.title">
-								{{ data.productByHandle.title }}
+							<h2 v-if="product.title">
+								{{ product.title }}
 							</h2>
-							<p class="mt-small" v-if="data.productByHandle.description">
-								{{ data.productByHandle.description }}
+							<p class="mt-small" v-if="product.description">
+								{{ product.description }}
 							</p>
 						</div>
 
 						<div class="print__info-body">
 							<div>
-								<div>Chose {{ data.productByHandle.options[0].name }}</div>
+								<div>Chose {{ product.options[0].name }}</div>
 								<div class="print__info-body-buttons">
 									<label
 										class="radio-button"
 										:class="{ 'is-active': frameVal === item }"
-										v-for="item in data.productByHandle.options[0].values"
+										v-for="item in product.options[0].values"
 										:key="item"
 									>
 										<input
 											type="radio"
-											:name="data.productByHandle.options[0].name"
+											:name="product.options[0].name"
 											:value="item"
 											v-model="frameVal"
 										/>
@@ -104,18 +100,18 @@
 								</div>
 							</div>
 							<div>
-								<div>Chose {{ data.productByHandle.options[1].name }}</div>
+								<div>Chose {{ product.options[1].name }}</div>
 								<div class="print__info-body-buttons">
 									<label
 										class="radio-button"
 										:class="{ 'is-active': sizeVal === item }"
-										v-for="item in data.productByHandle.options[1].values"
+										v-for="item in product.options[1].values"
 										:key="item"
 										@click.once="onSliderChange()"
 									>
 										<input
 											type="radio"
-											:name="data.productByHandle.options[1].name"
+											:name="product.options[1].name"
 											:value="item"
 											v-model="sizeVal"
 										/>
@@ -137,10 +133,7 @@
 									}}</strong>
 								</span>
 								<div>
-									<IconsShare
-										v-if="isSupported"
-										@click="startShare()"
-									></IconsShare>
+									<IconsShare v-if="isSupported" @click="startShare()"></IconsShare>
 								</div>
 							</div>
 
@@ -151,9 +144,9 @@
 									@click="
 										addToCart({
 											...currentProductVariant,
-											title: data.productByHandle.title,
-											description: data.productByHandle.description,
-											image: data.productByHandle.images.edges[0].node.src,
+											title: product.title,
+											description: product.description,
+											image: product.images.edges[0].node.src,
 											price: currentProductVariant.price.amount,
 											currencyCode: currentProductVariant.price.currencyCode,
 											variant: {
@@ -164,11 +157,7 @@
 									"
 									:disabled="!currentProductVariant.availableForSale"
 								>
-									{{
-										currentProductVariant.availableForSale
-											? 'Add to cart'
-											: 'Sold out'
-									}}
+									{{ currentProductVariant.availableForSale ? 'Add to cart' : 'Sold out' }}
 								</button>
 								<NuxtLink
 									to="https://wa.me/message/FB7YI2TL5L6WC1"
@@ -187,9 +176,9 @@
 							</template>
 							<template #body>
 								<p>
-									Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-									Sapiente, dignissimos.Lorem, ipsum dolor sit amet consectetur
-									adipisicing elit. Sapiente, dignissimos.Lorem, ipsum dolor
+									Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente,
+									dignissimos.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente,
+									dignissimos.Lorem, ipsum dolor
 								</p>
 							</template>
 						</Dropdown>
@@ -205,7 +194,7 @@
 				</div>
 			</div>
 		</section>
-		<sectionPrints :handle="data.productByHandle.id"></sectionPrints>
+		<sectionPrints :handle="product.id"></sectionPrints>
 	</div>
 </template>
 
@@ -214,23 +203,23 @@
 
 	const { slug } = useRoute().params
 
-	const { data } = await useAsyncGql({
+	const product = await useAsyncGql({
 		operation: 'ProductByHandle',
 		variables: {
 			handle: slug,
 		},
-	})
+	}).then((res) => res.data.value.productByHandle)
 
-	await useStoryblokHead(data.value?.productByHandle)
+	await useStoryblokHead(product)
 
 	const { share, isSupported } = useShare()
 
-	const frameVal = ref(data.value.productByHandle.options[0].values[0])
-	const sizeVal = ref(data.value.productByHandle.options[1].values[0])
+	const frameVal = ref(product.options[0].values[0])
+	const sizeVal = ref(product.options[1].values[0])
 	const currentProductVariant = ref(null)
 
 	asyncComputed(() => {
-		return data.value.productByHandle.variants.edges.find((el) => {
+		return product.variants.edges.find((el) => {
 			el.node.selectedOptions[0].value === frameVal.value &&
 			el.node.selectedOptions[1].value === sizeVal.value
 				? (currentProductVariant.value = el.node)
@@ -240,9 +229,9 @@
 
 	function startShare() {
 		share({
-			title: data.value?.productByHandle?.title,
-			text: data.value?.productByHandle?.description,
-			url: location.href,
+			title: product.title,
+			text: product.description,
+			url: product.href,
 		})
 	}
 

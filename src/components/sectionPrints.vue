@@ -8,6 +8,7 @@
 					class="slider__nav-button is-prev up"
 					id="prints-prev"
 					ref="leftArr"
+					v-if="products.length > slidesPerView"
 				>
 					<IconsArrowRight></IconsArrowRight>
 				</button>
@@ -18,6 +19,7 @@
 					id="prints-next"
 					class="slider__nav-button is-next up"
 					ref="rightArr"
+					v-if="products.length > slidesPerView"
 				>
 					<IconsArrowRight></IconsArrowRight>
 				</button>
@@ -34,11 +36,7 @@
 				:space-between="35"
 				ref="swiper"
 			>
-				<SwiperSlide
-					class="product-card up"
-					v-for="product in data.productRecommendations"
-					:key="product"
-				>
+				<SwiperSlide class="product-card up" v-for="product in products" :key="product">
 					<ProductBlock
 						:handle="product.handle"
 						:images="product.images.edges"
@@ -60,31 +58,27 @@
 		},
 	})
 
-	const { data } = await useAsyncGql({
+	const products = await useAsyncGql({
 		operation: 'ProductRecommendations',
 		variables: {
 			productId: props.handle,
 		},
-	})
+	}).then((res) => res.data.value.productRecommendations)
 
 	const leftArr = ref(null)
 	const rightArr = ref(null)
 
 	const slidesPerView = asyncComputed(() => {
-		if (
-			useMediaQuery('(max-width: 991px)').value !=
-			useMediaQuery('(max-width: 700px)').value
-		) {
+		if (useMediaQuery('(max-width: 991px)').value != useMediaQuery('(max-width: 700px)').value) {
 			return 3
 		} else if (
-			useMediaQuery('(max-width: 700px)').value !=
-			useMediaQuery('(max-width: 479px)').value
+			useMediaQuery('(max-width: 700px)').value != useMediaQuery('(max-width: 479px)').value
 		) {
 			return 2
 		} else if (useMediaQuery('(max-width: 479px)').value) {
 			return 'auto'
 		} else {
-			return data.value.productRecommendations.length
+			return products.length
 		}
 	})
 </script>

@@ -9,6 +9,7 @@
 						id="best-sellers-prev"
 						class="slider__nav-button is-prev up"
 						ref="leftArr"
+						v-if="products.length > slidesPerView"
 					>
 						<IconsArrowRight></IconsArrowRight>
 					</button>
@@ -19,6 +20,7 @@
 						id="best-sellers-next"
 						class="slider__nav-button is-next up"
 						ref="rightArr"
+						v-if="products.length > slidesPerView"
 					>
 						<IconsArrowRight></IconsArrowRight>
 					</button>
@@ -34,18 +36,12 @@
 						prevEl: leftArr,
 					}"
 				>
-					<SwiperSlide
-						class="product-card"
-						v-for="product in productsArr"
-						:key="product.node.id"
-					>
+					<SwiperSlide class="product-card" v-for="product in products" :key="product.node.id">
 						<ProductBlock
 							:handle="product.node.handle"
 							:images="product.node.images.edges"
 							:title="product.node.title"
-							:currencyCode="
-								product.node.priceRange.minVariantPrice.currencyCode
-							"
+							:currencyCode="product.node.priceRange.minVariantPrice.currencyCode"
 							:minPrice="product.node.priceRange.minVariantPrice.amount"
 							:totalInventory="product.node.totalInventory"
 							class="up"
@@ -65,21 +61,20 @@
 		},
 	})
 
-	let productsArr = useState('productArr', () => null)
-	const data = await GqlCollection({ handle: 'best-sellers' })
-	productsArr.value = data.collection.products.edges
+	const products = await useAsyncGql({
+		operation: 'Collection',
+		variables: {
+			handle: 'best-sellers',
+		},
+	}).then((res) => res.data.value.collection.products.edges)
 	const leftArr = ref(null)
 	const rightArr = ref(null)
 
 	const slidesPerView = computed(() => {
-		if (
-			useMediaQuery('(max-width: 991px)').value !=
-			useMediaQuery('(max-width: 700px)').value
-		) {
+		if (useMediaQuery('(max-width: 991px)').value != useMediaQuery('(max-width: 700px)').value) {
 			return 3
 		} else if (
-			useMediaQuery('(max-width: 700px)').value !=
-			useMediaQuery('(max-width: 479px)').value
+			useMediaQuery('(max-width: 700px)').value != useMediaQuery('(max-width: 479px)').value
 		) {
 			return 2
 		} else if (useMediaQuery('(max-width: 479px)').value) {

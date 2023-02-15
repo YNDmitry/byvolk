@@ -9,11 +9,12 @@
 			quality="80"
 			class="up"
 		></NuxtPicture>
-		<div
-			v-html="richtext"
-			v-if="description"
-			class="gridv2-card__rich up"
-		></div>
+		<div class="gridv2-card__rich-wrapper">
+			<h2 v-if="heading" class="up">
+				<strong>{{ heading }}</strong>
+			</h2>
+			<div v-html="richtext" v-if="description" class="gridv2-card__rich up"></div>
+		</div>
 	</div>
 </template>
 
@@ -21,6 +22,9 @@
 	const props = defineProps({
 		img: {
 			type: Object,
+		},
+		heading: {
+			type: String,
 		},
 		description: {
 			type: Object,

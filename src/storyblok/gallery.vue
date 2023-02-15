@@ -1,6 +1,7 @@
 <template>
 	<section v-editable="blok" class="gallery">
 		<div class="container">
+			<h2 class="text-center up" v-if="blok.Heading">{{ blok.Heading }}</h2>
 			<Swiper
 				:slides-per-view="3"
 				:space-between="30"
@@ -12,7 +13,7 @@
 						slidesPerView: 'auto',
 					},
 				}"
-				class="gallery__wrapper"
+				class="gallery__wrapper mt-medium"
 			>
 				<SwiperSlide v-for="img in blok.galleryBlocks" :key="img">
 					<GalleryItem :img="img.img.filename"></GalleryItem>
