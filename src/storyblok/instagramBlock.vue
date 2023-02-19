@@ -41,7 +41,7 @@
 								loading="lazy"
 								v-if="item?.image"
 								alt="Instagram picture"
-								sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw"
+								sizes="xs:100vw sm:100vw md:100vw"
 								quality="70"
 								width="325"
 							></NuxtPicture>

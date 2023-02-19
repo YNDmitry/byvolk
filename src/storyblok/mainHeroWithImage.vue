@@ -34,8 +34,9 @@
 					provider="storyblok"
 					v-if="blok?.image"
 					class="hero-main__img fade"
-					:alt="blok?.image?.alt || 'Byvolk prints'"
-					sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw"
+					:alt="blok?.image?.alt || 'Byvolk main image'"
+					width="650"
+					sizes="xs:100vw sm:100vw md:100vw lg:100vw"
 				></NuxtPicture>
 			</div>
 		</div>

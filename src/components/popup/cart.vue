@@ -14,7 +14,11 @@
 						<TransitionGroup name="transition" mode="out-in" class="list-cart list-unstyled">
 							<li class="cart__body-card" v-for="(card, idx) in cart.items" :key="idx">
 								<div class="cart__body-card-img">
-									<NuxtImg :src="card.variantId.image" :alt="card.variantId.title"></NuxtImg>
+									<NuxtImg
+										:src="card.variantId.image"
+										:alt="card.variantId.title"
+										width="90"
+									></NuxtImg>
 								</div>
 								<div class="cart__body-card-info">
 									<div class="cart__body-card-info-head">

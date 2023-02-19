@@ -19,11 +19,7 @@
 					>
 						<IconsSocialWhatsapp></IconsSocialWhatsapp>
 					</NuxtLink>
-					<NuxtLink
-						class="footer__soc-link"
-						to="mailto:info@byvolk.com"
-						aria-label="Email link"
-					>
+					<NuxtLink class="footer__soc-link" to="mailto:info@byvolk.com" aria-label="Email link">
 						<IconsSocialEmail></IconsSocialEmail>
 					</NuxtLink>
 				</div>
@@ -37,7 +33,7 @@
 						class="footer__trustpilot"
 						target="_blank"
 					>
-						<img src="/trustpilot.png" width="150" />
+						<img src="/trustpilot.png" width="150" alt="Byvolk trustpilot logo" />
 					</a>
 					<ul class="footer__links list-unstyled">
 						<li
@@ -79,12 +75,9 @@
 
 <script setup>
 	const { data } = await useAsyncData('footer', () => {
-		return useStoryblokApi().get(
-			'cdn/datasource_entries?datasource=footer-links',
-			{
-				version: 'published',
-			}
-		)
+		return useStoryblokApi().get('cdn/datasource_entries?datasource=footer-links', {
+			version: 'published',
+		})
 	})
 </script>
 
