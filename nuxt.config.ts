@@ -59,6 +59,7 @@ export default defineNuxtConfig({
 		'@nuxt/image-edge',
 		'nuxt-simple-sitemap',
 		'nuxt3-lazy-load',
+		'@nuxtjs/robots',
 	],
 	build: {
 		transpile: ['gsap'],
@@ -139,6 +140,9 @@ export default defineNuxtConfig({
 	},
 	sitemap: {
 		hostname: process.env.BASE_URL,
+	},
+	robots: {
+		configPath: './robots.config.ts',
 	},
 	nitro: {
 		prerender: {
