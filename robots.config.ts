@@ -1,7 +1,7 @@
 export default [
-  { UserAgent: '*' },
-  { Disallow: '/' },
-  { BlankLine: true },
-  { Comment: '' },
-  { Sitemap: (req) => `https://${req.headers.host}/sitemap.xml` }
+	{ UserAgent: '*' },
+	{ Disallow: '' },
+	{ BlankLine: false },
+	{ Comment: '' },
+	{ Sitemap: (req) => `https://${req.headers.host}/sitemap.xml` },
 ]
