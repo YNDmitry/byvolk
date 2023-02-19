@@ -60,6 +60,15 @@ h6 {
 	font-size: 13px;
 }
 
+.h-bebas {
+	font-size: 80px;
+	line-height: 90%;
+
+	@include phone {
+		font-size: 70px;
+	}
+}
+
 p {
 	font-family: $base-font-family;
 	font-style: italic;

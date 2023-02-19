@@ -74,6 +74,8 @@
 	&__payments {
 		display: flex;
 		align-items: center;
+		justify-content: flex-end;
+		min-width: 150px;
 
 		& svg {
 			margin-left: 10px;

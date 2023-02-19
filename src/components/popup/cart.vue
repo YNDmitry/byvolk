@@ -11,18 +11,10 @@
 						</button>
 					</div>
 					<ul class="cart__body" v-if="cart.items.length > 0">
-						<TransitionGroup
-							name="transition"
-							mode="out-in"
-							class="list-cart list-unstyled"
-						>
-							<li
-								class="cart__body-card"
-								v-for="(card, idx) in cart.items"
-								:key="idx"
-							>
+						<TransitionGroup name="transition" mode="out-in" class="list-cart list-unstyled">
+							<li class="cart__body-card" v-for="(card, idx) in cart.items" :key="idx">
 								<div class="cart__body-card-img">
-									<img :src="card.variantId.image" />
+									<NuxtImg :src="card.variantId.image" :alt="card.variantId.title"></NuxtImg>
 								</div>
 								<div class="cart__body-card-info">
 									<div class="cart__body-card-info-head">
@@ -68,11 +60,7 @@
 								<strong>{{ cart.items.length }}</strong>
 							</span>
 						</div>
-						<button
-							type="button"
-							class="button-primary w-full"
-							@click="cart.submit()"
-						>
+						<button type="button" class="button-primary w-full" @click="cart.submit()">
 							{{ cart.isPending ? 'Loading' : 'Checkout' }}
 						</button>
 					</div>

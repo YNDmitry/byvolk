@@ -12,7 +12,7 @@
     "@vueuse/core": "^9.3.0",
     "@vueuse/nuxt": "^9.3.0",
     "nuxt": "^3.2.0",
-    "nuxt-font-loader": "^2.2.1",
+    "nuxt-font-loader": "^2.3.1",
     "nuxt-simple-sitemap": "^0.5.9",
     "sass": "^1.55.0",
     "sass-loader": "^13.0.2"
@@ -25,6 +25,7 @@
     "nodemailer": "^6.8.0",
     "nuxt-graphql-client": "^0.2.14",
     "nuxt-swiper": "^0.1.5",
+    "nuxt3-lazy-load": "^1.0.2",
     "pinia": "^2.0.22",
     "vanilla-cookieconsent": "^2.8.9"
   }

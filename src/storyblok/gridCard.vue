@@ -1,5 +1,5 @@
 <template>
-	<div class="grid-card fade">
+	<div class="grid-card fade-card">
 		<h4 v-if="content.headline">{{ content.headline }}</h4>
 		<div class="grid-card__picture-wrapper">
 			<NuxtPicture

@@ -20,13 +20,29 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
+  const fadeInOutCards = (elements) => {
+    if (!elements) {
+      return
+    }
+
+    const cards = gsap.timeline({
+      defaults: { duration: 0.4, ease: "Power1.easeInOut" }
+    })
+    elements.forEach((card, i) => {
+      gsap.set(card, { opacity: 0 });
+      cards.to(card, { opacity: 1, stagger: 0.1 * i });
+    })
+  }
+
   nuxtApp.hook('app:beforeMount', (ctx) => {
     setUpAnimation('.up', '70px', 0)
     setUpAnimation('.fade', 0, 0)
+    fadeInOutCards(document.querySelectorAll('.fade-card'))
   })
 
   nuxtApp.hook('page:transition:finish', () => {
     setUpAnimation('.up', '70px', 0)
     setUpAnimation('.fade', 0, 0)
+    fadeInOutCards(document.querySelectorAll('.fade-card'))
   })
 })

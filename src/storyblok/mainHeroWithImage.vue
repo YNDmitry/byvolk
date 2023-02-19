@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="hero-main__content">
 				<div class="hero-main__info up">
-					<h1 v-if="blok.headline">{{ blok.headline }}</h1>
+					<h1 v-if="blok.headline" class="h-bebas">{{ blok.headline }}</h1>
 					<div class="hero-main__body">
 						<p v-if="blok.description" class="hero-main__p">
 							{{ blok.description }}

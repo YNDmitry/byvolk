@@ -8,8 +8,6 @@
 </template>
 
 <script setup>
-	await preloadComponents(['DefaultHeader'])
-
 	useNuxtApp().hook('page:transition:finish', () => {
 		window.scrollTo(0, 0)
 	})
