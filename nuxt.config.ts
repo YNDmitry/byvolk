@@ -34,7 +34,12 @@ export default defineNuxtConfig({
 		head: {
 			title: 'BYVOLK',
 			link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
-			noscript: [{ children: 'Javascript is required' }],
+			noscript: [
+				{
+					innerHTML:
+						'<div class="noscript">This site requires JavaScript to be enabled to work properly</div>',
+				},
+			],
 			htmlAttrs: {
 				lang: 'en',
 			},

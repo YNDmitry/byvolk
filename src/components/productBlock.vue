@@ -16,9 +16,7 @@
 				<div v-if="price && totalInventory !== 0">
 					From <span class="fw-600">{{ price }}</span>
 				</div>
-				<div class="product-card__sold-out" v-if="totalInventory === 0 ? true : false">
-					Sold out
-				</div>
+				<div class="product-card__sold-out" v-if="totalInventory === 0">Sold out</div>
 			</div>
 		</div>
 	</NuxtLink>

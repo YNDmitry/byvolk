@@ -1,5 +1,3 @@
-export const usePagePreview = () => useState('pagePreview', () => false);
-
 export const useStoryblokFetch = async (locale) => {
 	const route = useRoute();
 	let currentRoute = { ...route }
@@ -18,7 +16,7 @@ export const useStoryblokFetch = async (locale) => {
 
 	// Check if the page is in preview mode or not 
 	// and set the version accordingly 
-	let version;
+	let version
 	if (currentRoute.query._storyblok !== '') {
 		version = 'published'
 	} else {

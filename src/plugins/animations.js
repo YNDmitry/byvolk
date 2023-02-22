@@ -20,25 +20,37 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
+  const initHeader = () => {
+    const header = document.querySelector('header')
+
+    setTimeout(() => {
+      gsap.to(header, {
+        y: '0px',
+        duration: 0.5,
+      })
+    }, 300);
+  }
+
   const fadeInOutCards = (elements) => {
     if (!elements) {
       return
     }
 
     const cards = gsap.timeline({
-      defaults: { duration: 0.4, ease: "Power1.easeInOut" }
+      defaults: { duration: 0.3, ease: "Power1.easeInOut" }
     })
     elements.forEach((card, i) => {
       gsap.set(card, { opacity: 0 });
-      cards.to(card, { opacity: 1, stagger: 0.1 * i });
+      cards.to(card, { opacity: 1, stagger: 0.2 });
     })
   }
 
-  nuxtApp.hook('app:beforeMount', (ctx) => {
+  if (process.client) {
     setUpAnimation('.up', '70px', 0)
     setUpAnimation('.fade', 0, 0)
     fadeInOutCards(document.querySelectorAll('.fade-card'))
-  })
+    initHeader()
+  }
 
   nuxtApp.hook('page:transition:finish', () => {
     setUpAnimation('.up', '70px', 0)

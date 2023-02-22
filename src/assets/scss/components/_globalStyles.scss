@@ -244,3 +244,24 @@ textarea {
 		}
 	}
 }
+
+.up,
+.fade,
+.fade-cards {
+	opacity: 0;
+}
+
+.noscript {
+	@include flex-center;
+	padding: 30px;
+	position: fixed;
+	z-index: 10000000;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: black;
+	color: white;
+	font-size: 50px;
+	line-height: 120%;
+}
