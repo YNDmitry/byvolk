@@ -7,7 +7,7 @@
 					<div v-html="richtext" class="mt-medium up" v-if="richtext"></div>
 				</div>
 				<div>
-					<VForm class="big-form" @submit="submitHandler()" v-if="!isSuccess">
+					<form class="big-form" @submit="submitHandler()" v-if="!isSuccess">
 						<div class="big-form__inputs">
 							<FormDefaultInput
 								:title="input.placeholder"
@@ -33,7 +33,7 @@
 								{{ isPending ? 'Loading...' : 'Submit' }}
 							</button>
 						</div>
-					</VForm>
+					</form>
 					<div v-else-if="isSuccess && !isError" class="text-center">
 						Form submission is success
 					</div>
