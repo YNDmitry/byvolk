@@ -68,7 +68,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/robots',
 	],
 	build: {
-		transpile: ['gsap', 'yup', '@vee-validate/rules'],
+		transpile: ['gsap', 'yup', '@vee-validate/rules', 'vee-validate', 'vue-recaptcha'],
 	},
 	postcss: {
 		plugins: {
