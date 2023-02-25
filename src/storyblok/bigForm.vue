@@ -48,7 +48,6 @@
 
 <script setup>
 	import { string } from 'yup'
-	import { VueRecaptcha } from 'vue-recaptcha'
 	const props = defineProps({
 		blok: {
 			type: Object,

@@ -2,7 +2,7 @@
 	<div class="input__wrapper">
 		<label class="input">
 			<span :class="isInputValue ? 'is-active' : ''">{{ props.title }}</span>
-			<VField
+			<input
 				:type="props.type"
 				:name="props.name"
 				:value="props.inputValue"
@@ -11,13 +11,10 @@
 				@focusout="isActive = false"
 				@focusin="isActive = true"
 				:disabled="isPending ? true : false"
-				:as="props.inputType"
-				:validateOnBlur="true"
-				:rules="rules"
 				:class="{ 'is-error': !rules }"
+				required
 			/>
 		</label>
-		<VErrorMessage :name="props.name" class="input__error-message" />
 	</div>
 </template>
 
