@@ -17,6 +17,7 @@ export default defineNuxtConfig({
 		siteUrl: process.env.BASE_URL,
 		public: {
 			baseUrl: process.env.BASE_URL || 'https://localhost:3000',
+			recaptchaKey: process.env.RECAPTCHA_KEY,
 			'graphql-client': {
 				clients: {
 					default: {

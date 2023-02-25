@@ -37,12 +37,11 @@
 						<div class="instagram__photos-item-img-wrapper">
 							<NuxtPicture
 								:src="item?.image.filename"
+								v-if="item?.image"
 								provider="storyblok"
 								loading="lazy"
-								v-if="item?.image"
 								alt="Instagram picture"
-								sizes="xs:100vw sm:100vw md:100vw"
-								quality="70"
+								sizes="sm:100vw md:100vw"
 								width="325"
 							></NuxtPicture>
 						</div>

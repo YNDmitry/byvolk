@@ -50,6 +50,7 @@
 		right: 0;
 		background-color: black;
 		overflow: auto;
+		height: 100vh;
 
 		@include phone-l {
 			align-items: flex-start;

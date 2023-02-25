@@ -7,7 +7,7 @@
 					<div v-html="richtext" class="mt-medium up" v-if="richtext"></div>
 				</div>
 				<div>
-					<form class="big-form" @submit.prevent="submitHandler()" v-if="!isSuccess">
+					<VForm class="big-form" @submit="submitHandler()" v-if="!isSuccess">
 						<div class="big-form__inputs">
 							<FormDefaultInput
 								:title="input.placeholder"
@@ -16,18 +16,24 @@
 								v-for="input in dataInputs"
 								:key="input._uid"
 								:class="{ 'is-full': input.fullWidth }"
-								:isTextArea="input.textArea"
+								:inputType="input.textArea ? 'textarea' : 'input'"
 								v-model:inputValue="input.value"
 								:isPending="isPending"
+								:rules="input.rule"
 								class="up"
 							></FormDefaultInput>
 						</div>
 						<div class="up w-full text-center">
+							<VueRecaptcha
+								ref="recaptcha"
+								:sitekey="config.recaptchaKey"
+								class="text-center"
+							></VueRecaptcha>
 							<button type="submit" class="button-primary">
 								{{ isPending ? 'Loading...' : 'Submit' }}
 							</button>
 						</div>
-					</form>
+					</VForm>
 					<div v-else-if="isSuccess && !isError" class="text-center">
 						Form submission is success
 					</div>
@@ -41,6 +47,8 @@
 </template>
 
 <script setup>
+	import { string } from 'yup'
+	import { VueRecaptcha } from 'vue-recaptcha'
 	const props = defineProps({
 		blok: {
 			type: Object,
@@ -48,16 +56,23 @@
 		},
 	})
 
+	const config = useRuntimeConfig()
+
 	const dataInputs = ref(
 		props.blok.inputs.map((el) => ({
 			...el,
 			value: '',
+			rule:
+				el.type === 'email'
+					? string().required().email().label(el.placeholder)
+					: string().required().label(el.placeholder),
 		}))
 	)
 
 	const isPending = ref(false)
 	const isSuccess = ref(false)
 	const isError = ref(false)
+	const recaptcha = ref('')
 
 	const submitHandler = async () => {
 		isPending.value = true

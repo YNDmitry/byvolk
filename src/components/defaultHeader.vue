@@ -12,15 +12,8 @@
 				</NuxtLink>
 				<nav class="phone-hide" aria-label="Site menu">
 					<ul class="header__nav-list list-unstyled">
-						<li
-							v-for="item in menu.data.value.data.datasource_entries"
-							:key="item.id"
-						>
-							<NuxtLink
-								:to="item.value"
-								class="header__link"
-								:disabled="isHeaderLinkActive"
-							>
+						<li v-for="item in menu" :key="item.id">
+							<NuxtLink :to="item.value" class="header__link" :disabled="isHeaderLinkActive">
 								<div>{{ item.name }}</div>
 							</NuxtLink>
 						</li>
@@ -38,15 +31,8 @@
 					<div class="header__mobile-menu" v-if="isOpen">
 						<nav aria-label="Site mobile menu">
 							<ul class="header__nav-list list-unstyled">
-								<li
-									v-for="item in menu.data.value.data.datasource_entries"
-									:key="item.id"
-								>
-									<NuxtLink
-										:to="item.value"
-										class="header__link"
-										@click="openMenu()"
-									>
+								<li v-for="item in menu" :key="item.id">
+									<NuxtLink :to="item.value" class="header__link" @click="openMenu()">
 										<div>{{ item.name }}</div>
 									</NuxtLink>
 								</li>
@@ -54,16 +40,10 @@
 						</nav>
 						<div class="flex center">
 							<div class="header__cart" @click="cartModal.handleModal()">
-								<div
-									class="header__cart-count"
-									v-if="cartModal.items.length > 0"
-								>
+								<div class="header__cart-count" v-if="cartModal.items.length > 0">
 									{{ cartModal.items.length }}
 								</div>
-								<div
-									class="header__cart-count-txt"
-									v-if="cartModal.items.length > 0"
-								>
+								<div class="header__cart-count-txt" v-if="cartModal.items.length > 0">
 									({{ cartModal.items.length }})
 								</div>
 								<IconsCart></IconsCart>
@@ -76,11 +56,7 @@
 					:class="{ active: isOpen ? true : false }"
 					@click="openMenu()"
 				>
-					<div
-						v-for="item in 3"
-						:key="item"
-						class="header__menu-btn-burger"
-					></div>
+					<div v-for="item in 3" :key="item" class="header__menu-btn-burger"></div>
 				</div>
 			</div>
 		</div>
@@ -98,6 +74,7 @@
 
 	let isOpen = ref(false)
 	let isHeaderLinkActive = ref(false)
+	const isMobile = useIsMobile
 	const cartModal = useCartStore()
 
 	useNuxtApp().hook('page:start', () => {
@@ -112,21 +89,14 @@
 		isHeaderLinkActive.value = false
 	})
 
-	const isMobile = computed(() => {
-		return useMediaQuery('(max-width: 769px)').value ? false : true
-	})
-
 	const menu = await useAsyncData('menu', async () => {
-		return await useStoryblokApi().get(
-			'cdn/datasource_entries?datasource=menu-links',
-			{
-				version: 'published',
-			}
-		)
-	})
+		return await useStoryblokApi().get('cdn/datasource_entries?datasource=menu-links', {
+			version: 'published',
+		})
+	}).then((res) => res.data.value.data.datasource_entries)
 
 	function openMenu() {
-		return (isOpen.value = isOpen.value === false ? true : false)
+		return (isOpen.value = !isOpen.value ? true : false)
 	}
 </script>
 

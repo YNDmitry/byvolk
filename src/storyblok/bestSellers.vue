@@ -9,7 +9,7 @@
 						id="best-sellers-prev"
 						class="slider__nav-button is-prev up"
 						ref="leftArr"
-						v-if="products.length > slidesPerView"
+						v-if="products.length > slides"
 					>
 						<IconsArrowRight></IconsArrowRight>
 					</button>
@@ -20,7 +20,7 @@
 						id="best-sellers-next"
 						class="slider__nav-button is-next up"
 						ref="rightArr"
-						v-if="products.length > slidesPerView"
+						v-if="products.length > slides"
 					>
 						<IconsArrowRight></IconsArrowRight>
 					</button>
@@ -29,7 +29,7 @@
 				<Swiper
 					class="b-sellers__slider mt-medium"
 					:modules="[SwiperNavigation]"
-					:slides-per-view="slidesPerView"
+					:slides-per-view="slides"
 					:space-between="35"
 					:navigation="{
 						nextEl: rightArr,
@@ -70,19 +70,22 @@
 	const leftArr = ref(null)
 	const rightArr = ref(null)
 
-	const slidesPerView = computed(() => {
+	const slides = ref(null)
+
+	const slidesPerView = () => {
 		if (useMediaQuery('(max-width: 991px)').value != useMediaQuery('(max-width: 700px)').value) {
-			return 3
+			return (slides.value = 3)
 		} else if (
 			useMediaQuery('(max-width: 700px)').value != useMediaQuery('(max-width: 479px)').value
 		) {
-			return 2
+			return (slides.value = 2)
 		} else if (useMediaQuery('(max-width: 479px)').value) {
-			return 1
+			return (slides.value = 1)
 		} else {
-			return 5
+			return (slides.value = 5)
 		}
-	})
+	}
+	slidesPerView()
 </script>
 
 <style lang="scss" src="assets/scss/components/_bestSellers.scss"></style>

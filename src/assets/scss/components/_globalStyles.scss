@@ -168,14 +168,6 @@ textarea {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 	cursor: text;
 
-	&.is-full {
-		grid-column: span 2;
-
-		@include phone {
-			grid-column: span 1 !important;
-		}
-	}
-
 	& span {
 		position: absolute;
 		left: 1px;
@@ -195,10 +187,28 @@ textarea {
 		}
 	}
 
+	&__wrapper {
+		&.is-full {
+			grid-column: span 2;
+
+			@include phone {
+				grid-column: span 1 !important;
+			}
+		}
+	}
+
+	&__error-message {
+		position: absolute;
+		color: red;
+		font-size: 12px;
+	}
+
 	& input,
 	textarea {
 		border: 0;
 		width: 100%;
+		min-height: 48px;
+		line-height: 100%;
 
 		&:disabled {
 			background-color: transparent;

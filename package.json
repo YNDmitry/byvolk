@@ -21,6 +21,7 @@
     "@nuxtjs/robots": "^3.0.0",
     "@pinia/nuxt": "^0.4.2",
     "@storyblok/nuxt": "^4.6.0",
+    "@vee-validate/rules": "^4.7.4",
     "axios": "^0.27.2",
     "gsap": "^3.11.3",
     "nodemailer": "^6.8.0",
@@ -28,6 +29,9 @@
     "nuxt-swiper": "^0.1.5",
     "nuxt3-lazy-load": "^1.0.2",
     "pinia": "^2.0.22",
-    "vanilla-cookieconsent": "^2.8.9"
+    "vanilla-cookieconsent": "^2.8.9",
+    "vee-validate": "^4.7.4",
+    "vue-recaptcha": "^2.0.3",
+    "yup": "^1.0.0"
   }
 }

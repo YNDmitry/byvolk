@@ -1,30 +1,24 @@
 <template>
-	<label class="input">
-		<span :class="isInputValue ? 'is-active' : ''">{{ props.title }}</span>
-		<textarea
-			:name="props.name"
-			v-if="isTextArea"
-			:value="props.inputValue"
-			@input="$emit('update:inputValue', $event.target.value)"
-			@focus="isActive = true"
-			@focusout="isActive = false"
-			@focusin="isActive = true"
-			:disabled="isPending ? true : false"
-			required
-		></textarea>
-		<input
-			v-else
-			:type="props.type"
-			:name="props.name"
-			:value="props.inputValue"
-			@input="$emit('update:inputValue', $event.target.value)"
-			@focus="isActive = true"
-			@focusout="isActive = false"
-			@focusin="isActive = true"
-			:disabled="isPending ? true : false"
-			required
-		/>
-	</label>
+	<div class="input__wrapper">
+		<label class="input">
+			<span :class="isInputValue ? 'is-active' : ''">{{ props.title }}</span>
+			<VField
+				:type="props.type"
+				:name="props.name"
+				:value="props.inputValue"
+				@input="$emit('update:inputValue', $event.target.value)"
+				@focus="isActive = true"
+				@focusout="isActive = false"
+				@focusin="isActive = true"
+				:disabled="isPending ? true : false"
+				:as="props.inputType"
+				:validateOnBlur="true"
+				:rules="rules"
+				:class="{ 'is-error': !rules }"
+			/>
+		</label>
+		<VErrorMessage :name="props.name" class="input__error-message" />
+	</div>
 </template>
 
 <script setup>
@@ -44,6 +38,11 @@
 			default: 'text',
 			required: true,
 		},
+		inputType: {
+			type: String,
+			default: 'input',
+			required: false,
+		},
 		isTextArea: {
 			type: Boolean,
 			default: false,
@@ -56,6 +55,10 @@
 			type: Boolean,
 			default: false,
 		},
+		rules: {
+			type: Object,
+			default: () => {},
+		},
 	})
 
 	defineEmits(['update:inputValue'])
@@ -63,6 +66,6 @@
 	let isActive = ref(false)
 
 	const isInputValue = computed(() => {
-		return props.inputValue?.length > 0 ? (isActive = true) : (isActive = false)
+		return (isActive = props.inputValue?.length > 0 ? true : false)
 	})
 </script>

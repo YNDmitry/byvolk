@@ -20,8 +20,14 @@
 	flex-direction: column;
 	position: relative;
 
-	&__picture-wrapper {
-		margin-top: 12px;
+	&__picture {
+		& img {
+			width: 100%;
+		}
+
+		&-wrapper {
+			margin-top: 12px;
+		}
 	}
 
 	&__info {

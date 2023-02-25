@@ -1,5 +1,10 @@
 <template>
 	<div class="gridv2-card">
+		<ClientOnly>
+			<h2 v-if="heading && useIsMobile">
+				<strong>{{ heading }}</strong>
+			</h2>
+		</ClientOnly>
 		<NuxtPicture
 			provider="storyblok"
 			:src="img.filename"
@@ -10,9 +15,11 @@
 			class="up"
 		></NuxtPicture>
 		<div class="gridv2-card__rich-wrapper">
-			<h2 v-if="heading" class="up">
-				<strong>{{ heading }}</strong>
-			</h2>
+			<ClientOnly>
+				<h2 v-if="heading && !useIsMobile">
+					<strong>{{ heading }}</strong>
+				</h2>
+			</ClientOnly>
 			<div v-html="richtext" v-if="description" class="gridv2-card__rich up"></div>
 		</div>
 	</div>

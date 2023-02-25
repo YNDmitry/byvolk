@@ -48,13 +48,21 @@ export default defineNuxtPlugin((nuxtApp) => {
   if (process.client) {
     setUpAnimation('.up', '70px', 0)
     setUpAnimation('.fade', 0, 0)
-    fadeInOutCards(document.querySelectorAll('.fade-card'))
     initHeader()
+    if (!useIsMobile.value) {
+      fadeInOutCards(document.querySelectorAll('.fade-card'))
+    } else {
+      setUpAnimation('.fade-card', '70px', 0)
+    }
   }
 
   nuxtApp.hook('page:transition:finish', () => {
     setUpAnimation('.up', '70px', 0)
     setUpAnimation('.fade', 0, 0)
-    fadeInOutCards(document.querySelectorAll('.fade-card'))
+    if (!useIsMobile.value) {
+      fadeInOutCards(document.querySelectorAll('.fade-card'))
+    } else {
+      setUpAnimation('.fade-card', '70px', 0)
+    }
   })
 })
