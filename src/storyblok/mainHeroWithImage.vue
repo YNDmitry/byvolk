@@ -32,12 +32,24 @@
 				<NuxtPicture
 					:src="blok?.image?.filename"
 					provider="storyblok"
-					v-if="blok?.image"
+					v-if="blok?.image && blok?.isVideo === false"
 					class="hero-main__img fade"
 					:alt="blok?.image?.alt || 'Byvolk main image'"
 					width="650"
 					sizes="xs:100vw sm:100vw md:100vw lg:100vw"
 				></NuxtPicture>
+				<video
+					playsinline
+					loop="loop"
+					autoplay="autoplay"
+					muted="muted"
+					preload="metadata"
+					v-else
+					width="650"
+					class="hero-main__video fade"
+				>
+					<source :src="blok?.image?.filename" type="video/mp4" />
+				</video>
 			</div>
 		</div>
 	</section>

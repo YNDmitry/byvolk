@@ -13,14 +13,6 @@
 	transform: translateY(-100%);
 	transition: transform 800ms ease-in-out;
 
-	@include phone-l {
-		& .locations-select__toggle {
-			& svg:nth-child(2) {
-				color: $white;
-			}
-		}
-	}
-
 	&.menu-is-open {
 		& .header__brand {
 			color: $white;
