@@ -26,9 +26,12 @@
 								ref="recaptcha"
 								:sitekey="config.recaptchaKey"
 								class="text-center"
-								@verify="verify($event)"
+								@verify="captchaVerify()"
+								@expired="captchaExpired()"
+								@error="captchaError()"
 							></VueRecaptcha>
-							<button type="submit" class="button-primary">
+							<div class="input__error-message" v-if="!isCaptchaVerify">Required</div>
+							<button type="submit" class="button-primary mt-small">
 								{{ isPending ? 'Loading...' : 'Submit' }}
 							</button>
 						</div>
@@ -70,15 +73,22 @@
 	const recaptcha = ref('')
 	const { validate } = useForm()
 
-	const verify = (event) => {
-		isCaptchaVerify.value = event
-		console.log(event)
+	const captchaVerify = () => {
+		return (isCaptchaVerify.value = true)
+	}
+
+	const captchaExpired = () => {
+		return (isCaptchaVerify.value = false)
+	}
+
+	const captchaError = () => {
+		return (isCaptchaVerify.value = false)
 	}
 
 	const submitHandler = async () => {
 		const { valid } = await validate()
 
-		if (valid) {
+		if (valid && isCaptchaVerify.value) {
 			isPending.value = true
 			let model = ''
 			dataInputs.value.forEach((el) => {
