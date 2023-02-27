@@ -26,7 +26,7 @@
 								ref="recaptcha"
 								:sitekey="config.recaptchaKey"
 								class="text-center"
-								@verify="validate"
+								@verify="verify(event)"
 							></VueRecaptcha>
 							<button type="submit" class="button-primary">
 								{{ isPending ? 'Loading...' : 'Submit' }}
@@ -66,8 +66,14 @@
 	const isPending = ref(false)
 	const isSuccess = ref(false)
 	const isError = ref(false)
+	const isCaptchaVerify = ref(false)
 	const recaptcha = ref('')
 	const { validate } = useForm()
+
+	const verify = (event) => {
+		isCaptchaVerify.value = event
+		console.log(event)
+	}
 
 	const submitHandler = async () => {
 		const { valid } = await validate()
