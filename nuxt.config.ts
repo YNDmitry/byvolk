@@ -68,7 +68,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/robots',
 	],
 	build: {
-		transpile: ['gsap'],
+		transpile: ['zod', '@vee-validate/zod', 'vee-validate', 'vue-recaptcha', 'gsap'],
 	},
 	postcss: {
 		plugins: {
@@ -82,7 +82,7 @@ export default defineNuxtConfig({
 		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
 		useApiClient: true,
 		apiOptions: { cache: { type: 'memory' } },
-		apiPlugin: true,
+		apiPlugin: false,
 	},
 	fontLoader: {
 		local: [

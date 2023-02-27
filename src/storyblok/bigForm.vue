@@ -7,7 +7,7 @@
 					<div v-html="richtext" class="mt-medium up" v-if="richtext"></div>
 				</div>
 				<div>
-					<form class="big-form" @submit="submitHandler()" v-if="!isSuccess">
+					<form class="big-form" @submit.prevent="submitHandler()" v-if="!isSuccess">
 						<div class="big-form__inputs">
 							<FormDefaultInput
 								:title="input.placeholder"
@@ -17,13 +17,11 @@
 								:key="input._uid"
 								:class="{ 'is-full': input.fullWidth }"
 								:inputType="input.textArea ? 'textarea' : 'input'"
-								v-model:inputValue="input.value"
+								v-model:inputValue.trim="input.value"
 								:isPending="isPending"
-								:rules="input.rule"
-								class="up"
 							></FormDefaultInput>
 						</div>
-						<div class="up w-full text-center">
+						<div class="w-full text-center">
 							<VueRecaptcha
 								ref="recaptcha"
 								:sitekey="config.recaptchaKey"
@@ -47,7 +45,7 @@
 </template>
 
 <script setup>
-	import { string } from 'yup'
+	import { useForm } from 'vee-validate'
 	const props = defineProps({
 		blok: {
 			type: Object,
@@ -61,10 +59,6 @@
 		props.blok.inputs.map((el) => ({
 			...el,
 			value: '',
-			rule:
-				el.type === 'email'
-					? string().required().email().label(el.placeholder)
-					: string().required().label(el.placeholder),
 		}))
 	)
 
@@ -72,26 +66,31 @@
 	const isSuccess = ref(false)
 	const isError = ref(false)
 	const recaptcha = ref('')
+	const { validate } = useForm()
 
 	const submitHandler = async () => {
-		isPending.value = true
-		let model = ''
-		dataInputs.value.forEach((el) => {
-			return (model += `<strong>${el.placeholder}: </strong>` + el.value + '<br>')
-		})
+		const { valid } = await validate()
 
-		try {
-			await $fetch('/api/email', {
-				method: 'POST',
-				body: {
-					subject: 'Form',
-					html: model,
-				},
+		if (valid) {
+			isPending.value = true
+			let model = ''
+			dataInputs.value.forEach((el) => {
+				return (model += `<strong>${el.placeholder}: </strong>` + el.value + '<br>')
 			})
-			return (isSuccess.value = true)
-		} catch (error) {
-			isPending.value = false
-			return (isError.value = true)
+
+			try {
+				await $fetch('/api/email', {
+					method: 'POST',
+					body: {
+						subject: 'Form',
+						html: model,
+					},
+				})
+				return (isSuccess.value = true)
+			} catch (error) {
+				isPending.value = false
+				return (isError.value = true)
+			}
 		}
 	}
 

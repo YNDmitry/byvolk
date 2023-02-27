@@ -1,24 +1,26 @@
 <template>
 	<div class="input__wrapper">
 		<label class="input">
-			<span :class="isInputValue ? 'is-active' : ''">{{ props.title }}</span>
-			<input
+			<span :class="{ 'is-active': isInputValue }">{{ props.title }}</span>
+			<component
+				:is="props.inputType"
 				:type="props.type"
 				:name="props.name"
 				:value="props.inputValue"
 				@input="$emit('update:inputValue', $event.target.value)"
-				@focus="isActive = true"
-				@focusout="isActive = false"
-				@focusin="isActive = true"
+				@change=";(value = props.inputValue), change()"
 				:disabled="isPending ? true : false"
-				:class="{ 'is-error': !rules }"
-				required
-			/>
+			></component>
 		</label>
+		<div class="input__error-message">{{ errorMessage }}</div>
 	</div>
 </template>
 
 <script setup>
+	import { useField } from 'vee-validate'
+	import { toFieldValidator } from '@vee-validate/zod'
+	import * as zod from 'zod'
+
 	const props = defineProps({
 		title: {
 			type: String,
@@ -52,17 +54,24 @@
 			type: Boolean,
 			default: false,
 		},
-		rules: {
-			type: Object,
-			default: () => {},
-		},
 	})
 
 	defineEmits(['update:inputValue'])
 
 	let isActive = ref(false)
 
+	const fieldSchema = toFieldValidator(
+		props.type === 'email'
+			? zod.string().nonempty(`${props.title} is required`).email('Must be a valid email')
+			: zod.string().nonempty(`${props.title} is required`)
+	)
+	let { value, errorMessage } = useField(props.name, fieldSchema)
+
+	function change() {
+		console.log(errorMessage.value, value.value)
+	}
+
 	const isInputValue = computed(() => {
-		return (isActive = props.inputValue?.length > 0 ? true : false)
+		return (isActive.value = props.inputValue?.length > 0 ? true : false)
 	})
 </script>

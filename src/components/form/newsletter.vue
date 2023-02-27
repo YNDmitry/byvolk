@@ -1,15 +1,14 @@
 <template>
-	<VForm class="form-newsletter" @submit="handleSubmit()">
-		<h6 v-if="title" class="up">{{ title }}</h6>
+	<form class="form-newsletter" @submit.prevent="handleSubmit()">
+		<h6 v-if="title">{{ title }}</h6>
 		<template v-if="!isSuccess">
-			<div :class="['form-newsletter__input-wrapper', { 'is-white': isWhite }, 'up']">
+			<div :class="['form-newsletter__input-wrapper', { 'is-white': isWhite }]">
 				<FormDefaultInput
 					:title="'Email address'"
 					:name="'Email'"
 					:type="'email'"
-					v-model:input-value="email"
+					v-model:inputValue="email"
 					:isPending="isPending"
-					:rules="emailRules"
 				></FormDefaultInput>
 				<button type="submit" class="button-primary">
 					{{ isPending ? 'Loading...' : 'Subscribe' }}
@@ -20,12 +19,11 @@
 		<div v-if="!isSuccess && isError" style="color: red" class="mt-small">
 			Something went wrong. Try again later
 		</div>
-	</VForm>
+	</form>
 </template>
 
 <script setup>
-	import { string } from 'yup'
-
+	import { useForm } from 'vee-validate'
 	const props = defineProps({
 		title: {
 			type: String,
@@ -43,24 +41,26 @@
 	const isSuccess = ref(false)
 	const isError = ref(false)
 	const email = ref('')
-	const emailRules = string().required().email().label('Email address')
+	const { validate } = useForm()
 
 	const handleSubmit = async () => {
-		isPending.value = true
-		await $fetch('/api/email', {
-			method: 'POST',
-			body: {
-				subject: 'Newsletter Form',
-				html: `<strong>Email: </strong>${email.value}`,
-			},
-		})
-			.then(() => {
+		const { valid } = await validate()
+		if (valid) {
+			isPending.value = true
+			try {
+				await $fetch('/api/email', {
+					method: 'POST',
+					body: {
+						subject: 'Newsletter Form',
+						html: `<strong>Email: </strong>${email.value}`,
+					},
+				})
 				return (isSuccess.value = true)
-			})
-			.catch((err) => {
+			} catch (error) {
 				isPending.value = false
 				return (isError.value = true)
-			})
+			}
+		}
 	}
 </script>
 
