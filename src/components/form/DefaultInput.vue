@@ -8,7 +8,7 @@
 				:name="props.name"
 				:value="props.inputValue"
 				@input="$emit('update:inputValue', $event.target.value)"
-				@change=";(value = props.inputValue), change()"
+				@change="value = props.inputValue"
 				:disabled="isPending ? true : false"
 			></component>
 		</label>
@@ -66,10 +66,6 @@
 			: zod.string().nonempty(`${props.title} is required`)
 	)
 	let { value, errorMessage } = useField(props.name, fieldSchema)
-
-	function change() {
-		console.log(errorMessage.value, value.value)
-	}
 
 	const isInputValue = computed(() => {
 		return (isActive.value = props.inputValue?.length > 0 ? true : false)
