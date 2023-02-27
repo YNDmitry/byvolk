@@ -26,6 +26,7 @@
 								ref="recaptcha"
 								:sitekey="config.recaptchaKey"
 								class="text-center"
+								@verify="validate"
 							></VueRecaptcha>
 							<button type="submit" class="button-primary">
 								{{ isPending ? 'Loading...' : 'Submit' }}
