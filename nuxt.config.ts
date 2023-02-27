@@ -18,6 +18,7 @@ export default defineNuxtConfig({
 		public: {
 			baseUrl: process.env.BASE_URL || 'https://localhost:3000',
 			recaptchaKey: process.env.RECAPTCHA_KEY,
+			storyblokPreview: process.env.STORYBLOK_PREVIEW_ACCESS_TOKEN,
 			'graphql-client': {
 				clients: {
 					default: {
@@ -79,10 +80,14 @@ export default defineNuxtConfig({
 		},
 	},
 	storyblok: {
-		accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
+		accessToken: process.env.STORYBLOK_PUBLIC_ACCESS_TOKEN,
 		useApiClient: true,
-		apiOptions: { cache: { type: 'memory' } },
+		apiOptions: {
+			cache: { type: 'memory', clear: 'auto' },
+			https: true,
+		},
 		apiPlugin: false,
+		bridge: true,
 	},
 	fontLoader: {
 		local: [

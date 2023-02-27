@@ -1,12 +1,5 @@
 <template>
-	<div v-editable="blok">
-		<component
-			v-for="item in blok?.body"
-			:key="item._uid"
-			:blok="item"
-			:is="item.component"
-		/>
-	</div>
+	<StoryblokComponent v-for="item in blok?.body" :key="item._uid" :blok="item" />
 </template>
 
 <script setup>

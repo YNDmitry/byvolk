@@ -1,4 +1,5 @@
 export const useStoryblokFetch = async (locale) => {
+	const config = useRuntimeConfig()
 	const route = useRoute();
 	let currentRoute = { ...route }
 
@@ -9,31 +10,22 @@ export const useStoryblokFetch = async (locale) => {
 	}
 
 	if (currentRoute.path === '/') {
-		currentRoute.path = 'home'
+		currentRoute.path = '/home'
 	}
 
 	const storyblokApiInstance = useStoryblokApi()
 
-	// Check if the page is in preview mode or not 
-	// and set the version accordingly 
-	let version
-	if (currentRoute.query._storyblok !== '') {
-		version = 'published'
-	} else {
-		version = 'draft'
-	}
-
 	let story
 
-	// If the page is in preview mode, get the story from StoryblokBridge, otherwise get it from AsyncData hook 
-	if (version === 'draft') {
-		story = await useStoryblokBridge(story?.id, (evStory) => {
-			story = evStory
+	if (route.query._storyblok !== undefined) {
+		story = await useAsyncStoryblok(currentRoute.path, {
+			version: 'draft',
+			token: config.storyblokPreview
 		})
 	} else {
 		story = await useAsyncData(`${currentRoute.path}-asyncdata`, async () =>
-			await storyblokApiInstance.get(`cdn/stories/${currentRoute.path}`, {
-				version: version,
+			await storyblokApiInstance.get(`cdn/stories${currentRoute.path}`, {
+				version: 'published',
 			})).then((res) => res?.data?.value?.data?.story)
 	}
 

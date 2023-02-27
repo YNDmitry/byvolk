@@ -1,10 +1,10 @@
 <template>
-	<main class="main">
+	<div class="default-layout">
 		<DefaultHeader></DefaultHeader>
 		<slot></slot>
 		<DefaultFooter></DefaultFooter>
 		<PopupCart></PopupCart>
-	</main>
+	</div>
 </template>
 
 <script setup>
