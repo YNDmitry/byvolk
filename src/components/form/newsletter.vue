@@ -2,18 +2,20 @@
 	<form class="form-newsletter" @submit.prevent="handleSubmit()">
 		<h6 v-if="title">{{ title }}</h6>
 		<template v-if="!isSuccess">
-			<div :class="['form-newsletter__input-wrapper', { 'is-white': isWhite }]">
-				<FormDefaultInput
-					:title="'Email address'"
-					:name="'Email'"
-					:type="'email'"
-					v-model:inputValue="email"
-					:isPending="isPending"
-				></FormDefaultInput>
-				<button type="submit" class="button-primary">
-					{{ isPending ? 'Loading...' : 'Subscribe' }}
-				</button>
-			</div>
+			<ClientOnly>
+				<div :class="['form-newsletter__input-wrapper', { 'is-white': isWhite }]">
+					<FormDefaultInput
+						:title="'Email address'"
+						:name="'Email'"
+						:type="'email'"
+						v-model:inputValue="email"
+						:isPending="isPending"
+					></FormDefaultInput>
+					<button type="submit" class="button-primary">
+						{{ isPending ? 'Loading...' : 'Subscribe' }}
+					</button>
+				</div>
+			</ClientOnly>
 		</template>
 		<div v-else-if="isSuccess && !isError">Form submission is success</div>
 		<div v-if="!isSuccess && isError" style="color: red" class="mt-small">

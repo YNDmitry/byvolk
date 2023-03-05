@@ -18,7 +18,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       )
     }
 
-    if (to.hash && to.hash !== ('#slide0' && '#slide1')) {
+    if (to.hash) {
       let el = await findEl(to.hash)
       if ('scrollBehavior' in document.documentElement.style) {
         return window.scrollTo({ top: el.offsetTop - document.querySelector('header').clientHeight, behavior: 'smooth' })

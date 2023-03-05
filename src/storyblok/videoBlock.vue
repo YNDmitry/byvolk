@@ -1,14 +1,6 @@
 <template>
 	<section v-editable="blok" class="section-video">
-		<video
-			playsinline
-			loop="loop"
-			autoplay="autoplay"
-			muted="muted"
-			preload="metadata"
-		>
-			<source :src="blok.video.url" type="video/mp4" />
-		</video>
+		<Video :video-src="blok.video.url" />
 	</section>
 </template>
 

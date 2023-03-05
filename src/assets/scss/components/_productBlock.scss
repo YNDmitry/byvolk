@@ -6,6 +6,36 @@
 
 	&:hover {
 		transform: scale(1.05) !important;
+
+		& .product-card__body {
+			color: black;
+
+			& h5 {
+				color: black;
+			}
+		}
+	}
+
+	&__frame {
+		padding: 20px;
+		background-color: white;
+		border: 15px solid black;
+		height: 100%;
+		transition: all 200ms ease;
+
+		&--decor {
+			position: absolute;
+			right: 100px;
+			top: 15px;
+			width: 250px;
+			height: 300px;
+		}
+	}
+
+	&__img {
+		& img {
+			height: 100%;
+		}
 	}
 
 	&__sold-out {
@@ -51,16 +81,6 @@
 			font-size: 13px;
 			color: #353735ad;
 			transition: all 200ms ease;
-		}
-	}
-
-	&:hover {
-		& .product-card__body {
-			color: black;
-
-			& h5 {
-				color: black;
-			}
 		}
 	}
 }

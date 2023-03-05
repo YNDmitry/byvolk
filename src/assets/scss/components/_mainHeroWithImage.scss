@@ -8,6 +8,46 @@
 		padding-bottom: 48px;
 	}
 
+	&--video {
+		@include flex-center;
+		padding: 50px 0;
+		min-height: 50vh;
+		color: white;
+
+		& .container {
+			z-index: 2;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+			background-color: rgba(0, 0, 0, 0.6);
+		}
+
+		& h1 {
+			color: white;
+		}
+	}
+
+	&__bg-video {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 100%;
+		width: 100%;
+		filter: grayscale(100%);
+		object-fit: cover;
+	}
+
 	& .hero-main {
 		&__body {
 			display: flex;
@@ -45,6 +85,15 @@
 			justify-content: flex-start;
 			flex-direction: column;
 			padding: 60px 0;
+
+			&-600 {
+				max-width: 800px;
+				margin: 0 auto;
+
+				& .hero-main__info-buttons {
+					justify-content: center;
+				}
+			}
 
 			@include phone-l {
 				padding: 40px 0 0 0;
