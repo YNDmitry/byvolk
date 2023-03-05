@@ -17,7 +17,7 @@
 	}
 
 	&__frame {
-		padding: 20px;
+		padding: 10px;
 		background-color: white;
 		border: 15px solid black;
 		height: 100%;
@@ -58,9 +58,12 @@
 		height: 280px;
 		overflow: hidden;
 
-		& img:nth-child(1) {
+		& img {
 			height: 100%;
 			object-fit: contain;
+			border: 8px solid black;
+			padding: 15px 10px;
+			background-color: white;
 		}
 	}
 

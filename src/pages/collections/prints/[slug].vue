@@ -236,7 +236,7 @@
 	const frameColors = ref({
 		Black: '#000000',
 		White: '#F0F0F0',
-		Natural: '#8B5A2B',
+		Natural: 'rgb(192, 178, 157, 0.6)',
 		'No Frame': 'transparent',
 	})
 
