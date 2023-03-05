@@ -43,3 +43,5 @@
 
 	const richtext = computed(() => renderRichText(props.blok.body))
 </script>
+
+<style lang="scss" src="../assets/scss/components/_mainHeroWithImage.scss"></style>
