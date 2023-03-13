@@ -23,12 +23,28 @@
 		height: 100%;
 		transition: all 200ms ease;
 
+		@include phone-l {
+			border-width: 10px;
+		}
+
 		&--decor {
 			position: absolute;
 			right: 100px;
 			top: 15px;
 			width: 250px;
 			height: 300px;
+
+			@include tablet {
+				width: 200px;
+				height: 250px;
+				right: 50px;
+			}
+
+			@include phone {
+				width: 150px;
+				height: 200px;
+				right: 5%;
+			}
 		}
 	}
 

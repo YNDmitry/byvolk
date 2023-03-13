@@ -20,12 +20,13 @@ export const useStoryblokFetch = async (locale) => {
 	if (route.query._storyblok !== undefined) {
 		story = await useAsyncStoryblok(currentRoute.path, {
 			version: 'draft',
-			token: config.storyblokPreview
+			token: config.public.storyblokPreview
 		})
 	} else {
 		story = await useAsyncData(`${currentRoute.path}-asyncdata`, async () =>
 			await storyblokApiInstance.get(`cdn/stories${currentRoute.path}`, {
 				version: 'published',
+				token: config.public.storyblokPublic
 			})).then((res) => res?.data?.value?.data?.story)
 	}
 

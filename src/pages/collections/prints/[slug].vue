@@ -35,6 +35,7 @@
 								<SwiperSlide class="print__slider-slide" :data-hash="'slide0'">
 									<div
 										class="product-card__frame"
+										v-if="product.images.edges[0].node.src"
 										:style="{
 											'border-color': frameColors[frameColor],
 											transform: `scale(${sizes[frameSize]})`,
@@ -44,12 +45,14 @@
 											:src="product.images.edges[0].node.src"
 											loading="lazy"
 											class="product-card__img"
+											width="360"
 										></NuxtPicture>
 									</div>
 								</SwiperSlide>
 								<SwiperSlide class="print__slider-slide" :data-hash="'slide1'">
 									<div
 										class="product-card__frame product-card__frame--decor"
+										v-if="product.images.edges[1].node.src"
 										:style="{
 											'border-color': frameColors[frameColor],
 											transform: `scale(${sizes[frameSize]})`,
@@ -61,7 +64,7 @@
 											class="product-card__img"
 										></NuxtPicture>
 									</div>
-									<NuxtPicture :src="product.images.edges[1].node.src" loading="lazy"></NuxtPicture>
+									<NuxtPicture :src="product.images.edges[1].node.src"></NuxtPicture>
 								</SwiperSlide>
 							</Swiper>
 						</div>

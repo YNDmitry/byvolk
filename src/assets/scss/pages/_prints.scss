@@ -44,6 +44,7 @@
 		position: sticky;
 		top: 150px;
 		width: 100%;
+		max-width: 550px;
 
 		@include phone-l {
 			margin-left: 0;
@@ -145,6 +146,7 @@
 
 		&-slide:nth-child(1) {
 			padding: 64px;
+
 			& img {
 				max-width: 450px;
 			}

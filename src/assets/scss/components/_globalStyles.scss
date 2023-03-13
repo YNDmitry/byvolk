@@ -73,6 +73,7 @@ textarea {
 	&:active {
 		outline: none;
 	}
+
 	&:focus {
 		outline: none;
 	}
@@ -80,6 +81,7 @@ textarea {
 
 .nuxt-loading-indicator {
 	background: black !important;
+	height: 1px !important;
 }
 
 .container,

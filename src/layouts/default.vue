@@ -1,5 +1,6 @@
 <template>
 	<div class="default-layout">
+		<NuxtLoadingIndicator class="nuxt-loading-indicator" />
 		<DefaultHeader></DefaultHeader>
 		<slot></slot>
 		<DefaultFooter></DefaultFooter>

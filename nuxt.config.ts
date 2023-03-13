@@ -19,6 +19,7 @@ export default defineNuxtConfig({
 			baseUrl: process.env.BASE_URL || 'https://localhost:3000',
 			recaptchaKey: process.env.RECAPTCHA_KEY,
 			storyblokPreview: process.env.STORYBLOK_PREVIEW_ACCESS_TOKEN,
+			storyblokPublic: process.env.STORYBLOK_PUBLIC_ACCESS_TOKEN,
 			'graphql-client': {
 				clients: {
 					default: {

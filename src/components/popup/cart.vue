@@ -11,44 +11,42 @@
 						</button>
 					</div>
 					<ul class="cart__body" v-if="cart.items.length > 0">
-						<TransitionGroup name="transition" mode="out-in" class="list-cart list-unstyled">
-							<li class="cart__body-card" v-for="(card, idx) in cart.items" :key="idx">
-								<div class="cart__body-card-img">
-									<NuxtImg
-										:src="card.variantId.image"
-										:alt="card.variantId.title"
-										width="90"
-									></NuxtImg>
-								</div>
-								<div class="cart__body-card-info">
-									<div class="cart__body-card-info-head">
-										<h6>{{ card.variantId.title }}</h6>
-										<p>
-											{{ card.variantId.description }}
-										</p>
-										<div class="cart__body-card-variant mt-xsmall flex">
-											<div>Frame: {{ card.variantId?.variant['frame'] }}</div>
-											<div class="cart__body-card-sep">|</div>
-											<div>Size: {{ card.variantId?.variant['size'] }}</div>
-										</div>
-									</div>
-									<div class="cart__body-card-info-footer mt-xsmall">
-										<PlusMinusInput
-											:value="card.quantity"
-											@increment="card.quantity++"
-											@decrement="card.quantity--"
-										></PlusMinusInput>
-										<button
-											type="button"
-											class="cart__body-card-remove"
-											@click="cart.removeFromCart(idx)"
-										>
-											Remove
-										</button>
+						<li class="cart__body-card" v-for="(card, idx) in cart.items" :key="idx">
+							<div class="cart__body-card-img" v-if="card.variantId.image">
+								<NuxtImg
+									:src="card.variantId.image"
+									:alt="card.variantId.title"
+									width="90"
+								></NuxtImg>
+							</div>
+							<div class="cart__body-card-info">
+								<div class="cart__body-card-info-head">
+									<h6>{{ card.variantId.title }}</h6>
+									<p>
+										{{ card.variantId.description }}
+									</p>
+									<div class="cart__body-card-variant mt-xsmall flex">
+										<div>Frame: {{ card.variantId?.variant['frame'] }}</div>
+										<div class="cart__body-card-sep">|</div>
+										<div>Size: {{ card.variantId?.variant['size'] }}</div>
 									</div>
 								</div>
-							</li>
-						</TransitionGroup>
+								<div class="cart__body-card-info-footer mt-xsmall">
+									<PlusMinusInput
+										:value="card.quantity"
+										@increment="card.quantity++"
+										@decrement="card.quantity--"
+									></PlusMinusInput>
+									<button
+										type="button"
+										class="cart__body-card-remove"
+										@click="cart.removeFromCart(idx)"
+									>
+										Remove
+									</button>
+								</div>
+							</div>
+						</li>
 					</ul>
 					<div v-else class="cart__empty">Your cart is empty</div>
 					<div class="cart__footer" v-if="cart.items.length > 0">
