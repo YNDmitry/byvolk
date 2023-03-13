@@ -17,7 +17,7 @@ export const useStoryblokFetch = async (locale) => {
 
 	let story
 
-	if (route.query._storyblok !== undefined) {
+	if (route.query['_storyblok_tk[token]'] !== undefined) {
 		story = await useAsyncStoryblok(currentRoute.path, {
 			version: 'draft',
 			token: config.public.storyblokPreview
