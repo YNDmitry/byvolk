@@ -17,7 +17,7 @@ export const useStoryblokFetch = async (locale) => {
 
 	let story
 
-	if (route.query['_storyblok_tk[token]'] !== undefined) {
+	if (version === 'draft') {
 		story = await useAsyncStoryblok(currentRoute.path, {
 			version: version,
 		})
