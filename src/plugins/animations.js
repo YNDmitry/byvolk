@@ -37,11 +37,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
 
     const cards = gsap.timeline({
-      defaults: { duration: 0.3, ease: "Power1.easeInOut" }
+      defaults: { duration: 0.6, ease: "Power1.easeInOut" }
     })
     elements.forEach((card, i) => {
       gsap.set(card, { opacity: 0 });
-      cards.to(card, { opacity: 1, stagger: 0.2 });
+      cards.to(card, { opacity: 1, stagger: 0.1 });
     })
   }
 

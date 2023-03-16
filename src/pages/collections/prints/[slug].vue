@@ -38,7 +38,7 @@
 										v-if="product.images.edges[0].node.src"
 										:style="{
 											'border-color': frameColors[frameColor],
-											transform: `scale(${sizes[frameSize]})`,
+											transform: `scale(${sizes[frameSize].value})`,
 										}"
 									>
 										<NuxtPicture
@@ -55,7 +55,7 @@
 										v-if="product.images.edges[1].node.src"
 										:style="{
 											'border-color': frameColors[frameColor],
-											transform: `scale(${sizes[frameSize]})`,
+											transform: `scale(${sizes[frameSize].value})`,
 										}"
 									>
 										<NuxtPicture
@@ -121,7 +121,7 @@
 									</label>
 								</div>
 							</div>
-							<div>
+							<div class="mt-medium">
 								<div>Chose {{ product.options[1].name }}</div>
 								<div class="print__info-body-buttons">
 									<label
@@ -137,6 +137,7 @@
 											v-model="frameSize"
 										/>
 										<span>{{ item }}</span>
+										<span class="radio-button__tooltip">{{ sizes[item].size }} in</span>
 									</label>
 								</div>
 							</div>
@@ -244,7 +245,11 @@
 	})
 
 	const frameSize = ref(product.options[1].values[0])
-	const sizes = ref({ A1: '1', A2: '0.8', A3: '0.6' })
+	const sizes = ref({
+		A1: { value: '1', size: '28x40' },
+		A2: { value: '0.8', size: '20x28' },
+		A3: { value: '0.6', size: '16x20' },
+	})
 
 	const currentProductVariant = ref(null)
 
