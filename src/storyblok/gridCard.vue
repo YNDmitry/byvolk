@@ -8,6 +8,7 @@
 				class="grid-card__picture"
 				width="400"
 				sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw"
+				v-lazy-load
 			></NuxtPicture>
 		</div>
 		<div class="grid-card__info">
@@ -24,10 +25,6 @@
 			required: true,
 			default: () => ({}),
 		},
-	})
-
-	const isMobile = computedAsync(() => {
-		return useMediaQuery('(max-width: 769px)').value ? false : true
 	})
 
 	const richtext = computed(() => renderRichText(props.content.description))

@@ -8,12 +8,7 @@
 				height: height + 'px',
 			}"
 		>
-			<button
-				type="button"
-				class="slider__nav-button is-prev"
-				id="arrow-prev"
-				ref="arrowPrev"
-			>
+			<button type="button" class="slider__nav-button is-prev" id="arrow-prev" ref="arrowPrev">
 				<IconsArrowRight></IconsArrowRight>
 			</button>
 			<Swiper
@@ -34,15 +29,11 @@
 						provider="storyblok"
 						:src="img.filename"
 						sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw"
+						v-lazy-load
 					></NuxtPicture>
 				</SwiperSlide>
 			</Swiper>
-			<button
-				type="button"
-				class="slider__nav-button is-next"
-				id="arrow-next"
-				ref="arrowNext"
-			>
+			<button type="button" class="slider__nav-button is-next" id="arrow-next" ref="arrowNext">
 				<IconsArrowRight></IconsArrowRight>
 			</button>
 		</div>

@@ -37,6 +37,7 @@
 					:alt="blok?.image?.alt || 'Byvolk main image'"
 					width="650"
 					sizes="xs:100vw sm:100vw md:100vw lg:100vw"
+					v-lazy-load
 				></NuxtPicture>
 				<video
 					playsinline
@@ -47,6 +48,7 @@
 					v-else
 					width="650"
 					class="hero-main__video fade"
+					v-lazy-load
 				>
 					<source :src="blok?.image?.filename" type="video/mp4" />
 				</video>

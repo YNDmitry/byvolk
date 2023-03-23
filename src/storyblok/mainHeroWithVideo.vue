@@ -23,6 +23,7 @@
 									v-if="button.image?.filename"
 									:src="button.image.filename"
 									width="172"
+									v-lazy-load
 								></NuxtImg>
 							</NuxtLink>
 						</template>

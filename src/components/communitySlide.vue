@@ -4,9 +4,7 @@
 			<h4>{{ content.title }}</h4>
 			<p class="mt-xsmall">
 				{{ content.description }}
-				<NuxtLink :to="content.link.url" v-if="content.link" target="_blank"
-					>View more...</NuxtLink
-				>
+				<NuxtLink :to="content.link.url" v-if="content.link" target="_blank">View more...</NuxtLink>
 			</p>
 		</div>
 		<div class="community-slide__body">
@@ -15,6 +13,7 @@
 				src="https://a.storyblok.com/f/152732/500x178/a794883631/trustpilot.png"
 				alt="Rated excellent - 5 stars"
 				width="60"
+				v-lazy-load
 			></NuxtImg>
 		</div>
 	</div>

@@ -23,8 +23,8 @@
 										v-if="item.avatar.filename"
 										width="30"
 										height="30"
-										loading="lazy"
 										alt="Instagram avatar"
+										v-lazy-load
 									></NuxtImg>
 								</div>
 								<div class="instagram__photos-item-user">
@@ -39,10 +39,10 @@
 								:src="item?.image.filename"
 								v-if="item?.image"
 								provider="storyblok"
-								loading="lazy"
 								alt="Instagram picture"
 								sizes="sm:100vw md:100vw"
 								width="325"
+								v-lazy-load
 							></NuxtPicture>
 						</div>
 					</NuxtLink>

@@ -14,6 +14,7 @@
 						style: { 'max-width': blok.imageWidth + 'px' },
 					}"
 					:width="blok.imageWidth"
+					v-lazy-load
 				></NuxtPicture>
 				<div class="iwt__info up">
 					<div v-html="richtext" class="iwt__info-rich"></div>
