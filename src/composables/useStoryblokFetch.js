@@ -18,7 +18,7 @@ export const useStoryblokFetch = async (locale) => {
 	let story
 
 	if (version === 'draft') {
-		story = await useAsyncStoryblok(currentRoute.path, {
+		story = await useStoryblok(currentRoute.path, {
 			version: version,
 		})
 	} else {
