@@ -7,7 +7,7 @@
 				:alt="title"
 				sizes="(max-width: 320px) 100vw, (max-width: 640px) 100vw"
 				width="180"
-				loading="lazy"
+				v-lazy-load
 			></NuxtImg>
 		</div>
 		<div class="product-card__body">

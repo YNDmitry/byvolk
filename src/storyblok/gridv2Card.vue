@@ -13,6 +13,7 @@
 			width="720"
 			quality="80"
 			class="up"
+			v-lazy-load
 		></NuxtPicture>
 		<div class="gridv2-card__rich-wrapper">
 			<ClientOnly>

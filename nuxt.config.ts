@@ -65,8 +65,14 @@ export default defineNuxtConfig({
 		'nuxt-font-loader',
 		'@nuxt/image-edge',
 		'nuxt-simple-sitemap',
-		'nuxt3-lazy-load',
+		[
+			'nuxt3-lazy-load',
+			{
+				directiveOnly: true,
+			},
+		],
 		'@nuxtjs/robots',
+		'@nuxtjs/web-vitals',
 	],
 	build: {
 		transpile: ['zod', '@vee-validate/zod', 'vee-validate', 'vue-recaptcha', 'gsap'],
@@ -87,7 +93,7 @@ export default defineNuxtConfig({
 			cache: { type: 'memory', clear: 'auto' },
 			https: true,
 		},
-		apiPlugin: false,
+		apiPlugin: true,
 		bridge: true,
 	},
 	fontLoader: {

@@ -14,6 +14,7 @@
 							:alt="card.headline"
 							class="icons__card-icon-img"
 							provider="storyblok"
+							v-lazy-load
 						></NuxtPicture>
 					</div>
 					<h5 class="fw-600" v-if="card.headline">{{ card.headline }}</h5>
