@@ -5,24 +5,26 @@
 				<div class="print__wrapper" id="wrapper">
 					<div class="print__left">
 						<div class="print__slider">
-							<button
-								type="button"
-								aria-label="Product slider arrow next"
-								class="slider__nav-button print__slider-arrow"
-								id="arrow-next"
-								ref="arrowNext"
-							>
-								<IconsArrowRight></IconsArrowRight>
-							</button>
-							<button
-								type="button"
-								aria-label="Product slider arrow prev"
-								class="slider__nav-button print__slider-arrow"
-								id="arrow-prev"
-								ref="arrowPrev"
-							>
-								<IconsArrowRight></IconsArrowRight>
-							</button>
+							<ClientOnly>
+								<button
+									type="button"
+									aria-label="Product slider arrow next"
+									class="slider__nav-button print__slider-arrow"
+									id="arrow-next"
+									ref="arrowNext"
+								>
+									<IconsArrowRight></IconsArrowRight>
+								</button>
+								<button
+									type="button"
+									aria-label="Product slider arrow prev"
+									class="slider__nav-button print__slider-arrow"
+									id="arrow-prev"
+									ref="arrowPrev"
+								>
+									<IconsArrowRight></IconsArrowRight>
+								</button>
+							</ClientOnly>
 							<Swiper
 								class="print__slider"
 								:modules="[SwiperNavigation, SwiperHashNavigation]"
@@ -37,16 +39,22 @@
 										class="product-card__frame"
 										v-if="product.images.edges[0].node.src"
 										:style="{
-											'border-color': frameColors[frameColor],
+											background: frameColors[frameColor],
 											transform: `scale(${sizes[frameSize].value})`,
 										}"
 									>
-										<NuxtPicture
-											:src="product.images.edges[0].node.src"
-											loading="lazy"
-											class="product-card__img"
-											width="360"
-										></NuxtPicture>
+										<div
+											class="product-card__frame-texture"
+											:style="{ opacity: frameColors[frameColor] === 'none' ? 0 : 0.2 }"
+										></div>
+										<div class="product-card__frame-img-wrapper">
+											<NuxtPicture
+												:src="product.images.edges[0].node.src"
+												loading="lazy"
+												class="product-card__img"
+												width="360"
+											></NuxtPicture>
+										</div>
 									</div>
 								</SwiperSlide>
 								<SwiperSlide class="print__slider-slide" :data-hash="'slide1'">
@@ -54,15 +62,21 @@
 										class="product-card__frame product-card__frame--decor"
 										v-if="product.images.edges[1].node.src"
 										:style="{
-											'border-color': frameColors[frameColor],
+											background: frameColors[frameColor],
 											transform: `scale(${sizes[frameSize].value})`,
 										}"
 									>
-										<NuxtPicture
-											:src="product.images.edges[0].node.src"
-											loading="lazy"
-											class="product-card__img"
-										></NuxtPicture>
+										<div
+											class="product-card__frame-texture"
+											:style="{ opacity: frameColors[frameColor] === 'none' ? 0 : 0.2 }"
+										></div>
+										<div class="product-card__frame-img-wrapper">
+											<NuxtPicture
+												:src="product.images.edges[0].node.src"
+												loading="lazy"
+												class="product-card__img"
+											></NuxtPicture>
+										</div>
 									</div>
 									<NuxtPicture :src="product.images.edges[1].node.src"></NuxtPicture>
 								</SwiperSlide>
@@ -154,9 +168,11 @@
 										)
 									}}</strong>
 								</span>
-								<div>
-									<IconsShare v-if="isSupported" @click="startShare()"></IconsShare>
-								</div>
+								<ClientOnly>
+									<div>
+										<IconsShare v-if="isSupported" @click="startShare()"></IconsShare>
+									</div>
+								</ClientOnly>
 							</div>
 
 							<div class="print__info-footer-buttons">
@@ -239,9 +255,9 @@
 	const frameColor = ref(product.options[0].values[0])
 	const frameColors = ref({
 		Black: '#000000',
-		White: '#F0F0F0',
+		White: '#ffffff',
 		Natural: 'rgb(192, 178, 157, 0.6)',
-		'No Frame': 'transparent',
+		'No Frame': 'none',
 	})
 
 	const frameSize = ref(product.options[1].values[0])

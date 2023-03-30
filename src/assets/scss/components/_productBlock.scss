@@ -17,14 +17,32 @@
 	}
 
 	&__frame {
-		padding: 10px;
+		position: relative;
 		background-color: white;
-		border: 15px solid black;
 		height: 100%;
 		transition: all 200ms ease;
+		padding: 15px;
+
+		&-texture {
+			background-image: url('../../../public/texture.jpeg');
+			opacity: 0.2;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
 
 		@include phone-l {
 			border-width: 10px;
+		}
+
+		&-img-wrapper {
+			position: relative;
+			z-index: 1;
+			height: 100%;
+			background-color: white;
+			padding: 15px;
 		}
 
 		&--decor {
