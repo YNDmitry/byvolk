@@ -45,7 +45,7 @@
 									>
 										<div
 											class="product-card__frame-texture"
-											:style="{ opacity: frameColors[frameColor] === 'none' ? 0 : 0.2 }"
+											:style="{ opacity: frameOpacity }"
 										></div>
 										<div class="product-card__frame-img-wrapper">
 											<NuxtPicture
@@ -68,7 +68,7 @@
 									>
 										<div
 											class="product-card__frame-texture"
-											:style="{ opacity: frameColors[frameColor] === 'none' ? 0 : 0.2 }"
+											:style="{ opacity: frameOpacity }"
 										></div>
 										<div class="product-card__frame-img-wrapper">
 											<NuxtPicture
@@ -258,6 +258,19 @@
 		White: '#ffffff',
 		Natural: 'rgb(192, 178, 157, 0.6)',
 		'No Frame': 'none',
+	})
+	const frameOpacity = ref(0)
+
+	asyncComputed(() => {
+		if (frameColor.value === 'Black') {
+			return (frameOpacity.value = 0.5)
+		} else if (frameColor.value === 'White') {
+			return (frameOpacity.value = 0.3)
+		} else if (frameColor.value === 'Natural') {
+			return (frameOpacity.value = 0.7)
+		} else {
+			return (frameOpacity.value = 0)
+		}
 	})
 
 	const frameSize = ref(product.options[1].values[0])
