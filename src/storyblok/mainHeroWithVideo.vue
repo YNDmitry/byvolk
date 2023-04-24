@@ -1,30 +1,30 @@
 <template>
   <section v-editable="blok" class="section-hero-main section-hero-main--video">
     <Video
-      :video-src="blok.video.filename"
       v-if="blok.video?.filename"
-      class="section-hero-main__bg-video"
       v-motion-fade
+      :video-src="blok.video.filename"
+      class="section-hero-main__bg-video"
     />
     <div class="container text-center">
       <div class="hero-main__info-600" v-motion-up>
         <h1 v-if="blok.headline" class="h-bebas">{{ blok.headline }}</h1>
-        <div class="hero-main__body" v-if="blok.body" v-html="richtext"></div>
+        <div v-if="blok.body" v-html="richtext" class="hero-main__body"></div>
         <div class="hero-main__footer">
           <div class="hero-main__info-buttons">
             <template v-if="blok.buttons.length > 0">
               <NuxtLink
-                :class="`button-${button.buttonType}`"
                 v-for="button in blok.buttons"
+                :class="`button-${button.buttonType}`"
                 :key="button"
                 :to="button.link.cached_url"
               >
                 {{ button.title }}
                 <NuxtImg
                   v-if="button.image?.filename"
+                  v-lazy-load
                   :src="button.image.filename"
                   width="172"
-                  v-lazy-load
                 ></NuxtImg>
               </NuxtLink>
             </template>

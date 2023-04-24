@@ -2,7 +2,7 @@
   <section class="section-hero-main" v-editable="blok">
     <div class="container">
       <div class="hero-main__content">
-        <div class="hero-main__info up">
+        <div v-motion-up class="hero-main__info">
           <h1 v-if="blok.headline" class="h-bebas">{{ blok.headline }}</h1>
           <div class="hero-main__body">
             <p v-if="blok.description" class="hero-main__p">
@@ -30,25 +30,27 @@
           </div>
         </div>
         <NuxtPicture
-          :src="blok?.image?.filename"
-          provider="storyblok"
           v-if="blok?.image && blok?.isVideo === false"
-          class="hero-main__img fade"
+          v-lazy-load
+          v-motion-fade
+          :src="blok?.image?.filename"
           :alt="blok?.image?.alt || 'Byvolk main image'"
+          provider="storyblok"
+          class="hero-main__img"
           width="650"
           sizes="xs:100vw sm:100vw md:100vw lg:100vw"
-          v-lazy-load
         ></NuxtPicture>
         <video
+          v-else
+          v-motion-fade
+          v-lazy-load
           playsinline
           loop="loop"
           autoplay="autoplay"
           muted="muted"
           preload="metadata"
-          v-else
           width="650"
-          class="hero-main__video fade"
-          v-lazy-load
+          class="hero-main__video"
         >
           <source :src="blok?.image?.filename" type="video/mp4" />
         </video>
