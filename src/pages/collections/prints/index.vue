@@ -1,5 +1,5 @@
 <script setup>
 useNuxtApp().hook('page:finish', () => {
-	navigateTo('/')
+  navigateTo('/')
 })
 </script>

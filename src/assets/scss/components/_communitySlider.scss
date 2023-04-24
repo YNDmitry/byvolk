@@ -1,101 +1,101 @@
 @import '../utilities/mixins';
 
 .swiper-slide.slider__slider-slide {
-	width: 33.33%;
+  width: 33.33%;
 
-	@include tablet {
-		width: 50%;
-	}
+  @include tablet {
+    width: 50%;
+  }
 
-	@include phone {
-		width: 100%;
-	}
+  @include phone {
+    width: 100%;
+  }
 }
 
 .community-slide {
-	background-color: #f8f8f8;
-	padding: 32px 25px;
-	transition: all 200ms ease;
+  background-color: #f8f8f8;
+  padding: 32px 25px;
+  transition: all 200ms ease;
 
-	&:hover {
-		transform: scale(1.05) !important;
-	}
+  &:hover {
+    transform: scale(1.05) !important;
+  }
 
-	&__body {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		column-gap: 10px;
-		margin-top: 64px;
-	}
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 10px;
+    margin-top: 64px;
+  }
 }
 
 .slider {
-	padding: 96px 0px;
-	overflow: hidden;
+  padding: 96px 0px;
+  overflow: hidden;
 
-	@include phone-l {
-		padding: 40px 0;
-	}
+  @include phone-l {
+    padding: 40px 0;
+  }
 
-	&__head {
-		@include flex-space-between-center;
+  &__head {
+    @include flex-space-between-center;
 
-		& h2 {
-			text-align: center;
-			width: 100%;
-		}
+    & h2 {
+      text-align: center;
+      width: 100%;
+    }
 
-		&-button {
-			margin-left: 25px;
+    &-button {
+      margin-left: 25px;
 
-			@include phone-l {
-				margin-left: auto;
-			}
-		}
-	}
+      @include phone-l {
+        margin-left: auto;
+      }
+    }
+  }
 
-	&__slider {
-		overflow: visible !important;
-	}
+  &__slider {
+    overflow: visible !important;
+  }
 
-	&__nav {
-		display: flex;
-		align-items: center;
-		column-gap: 15px;
+  &__nav {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
 
-		@include phone-l {
-			width: 100%;
-			margin-top: 24px;
-		}
+    @include phone-l {
+      width: 100%;
+      margin-top: 24px;
+    }
 
-		&-button {
-			@include flex-center;
-			max-width: 48px;
-			min-width: 48px;
-			height: 48px;
-			border-radius: 100%;
-			background-color: #f8f8f8;
-			transition: all 200ms ease;
+    &-button {
+      @include flex-center;
+      max-width: 48px;
+      min-width: 48px;
+      height: 48px;
+      border-radius: 100%;
+      background-color: #f8f8f8;
+      transition: all 200ms ease;
 
-			@include tablet {
-				opacity: 1 !important;
-			}
+      @include tablet {
+        opacity: 1 !important;
+      }
 
-			&.is-prev {
-				& svg {
-					transform: rotate(180deg);
-				}
-			}
+      &.is-prev {
+        & svg {
+          transform: rotate(180deg);
+        }
+      }
 
-			&[disabled] {
-				cursor: not-allowed;
-				opacity: 0.5 !important;
-			}
+      &[disabled] {
+        cursor: not-allowed;
+        opacity: 0.5 !important;
+      }
 
-			&:hover {
-				transform: scale(1.1);
-			}
-		}
-	}
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
 }

@@ -1,29 +1,29 @@
 query Collection($handle: String) {
-	collection(handle: $handle) {
-		handle
-		products(first: 10) {
-			edges {
-				node {
-					id
-					images(first: 2) {
-						edges {
-							node {
-								src
-							}
-						}
-					}
-					title
-					description
-					priceRange {
-						minVariantPrice {
-							amount
-							currencyCode
-						}
-					}
-					totalInventory
-					handle
-				}
-			}
-		}
-	}
+  collection(handle: $handle) {
+    handle
+    products(first: 10) {
+      edges {
+        node {
+          id
+          images(first: 2) {
+            edges {
+              node {
+                src
+              }
+            }
+          }
+          title
+          description
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+          totalInventory
+          handle
+        }
+      }
+    }
+  }
 }

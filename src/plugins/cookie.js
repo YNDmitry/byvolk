@@ -1,4 +1,4 @@
-import 'vanilla-cookieconsent';
+import 'vanilla-cookieconsent'
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook('page:finish', () => {
@@ -12,7 +12,7 @@ export default defineNuxtPlugin((nuxtApp) => {
           layout: 'box',
           position: 'bottom left',
           swap_buttons: false
-        },
+        }
       },
 
       languages: {
@@ -23,12 +23,12 @@ export default defineNuxtPlugin((nuxtApp) => {
               'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent. <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>',
             primary_btn: {
               text: 'Accept all',
-              role: 'accept_all',
+              role: 'accept_all'
             },
             secondary_btn: {
               text: 'Reject all',
-              role: 'accept_necessary',
-            },
+              role: 'accept_necessary'
+            }
           },
           settings_modal: {
             title: 'Cookie Settings',
@@ -40,7 +40,7 @@ export default defineNuxtPlugin((nuxtApp) => {
               {
                 title: 'Cookie usage 📢',
                 description:
-                  'I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want. For more details relative to cookies and other sensitive data, please read the full <a href="/privacy-policy" class="cc-link">privacy policy</a>.',
+                  'I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want. For more details relative to cookies and other sensitive data, please read the full <a href="/privacy-policy" class="cc-link">privacy policy</a>.'
               },
               {
                 title: 'Strictly necessary cookies',
@@ -49,8 +49,8 @@ export default defineNuxtPlugin((nuxtApp) => {
                 toggle: {
                   value: 'necessary',
                   enabled: true,
-                  readonly: true,
-                },
+                  readonly: true
+                }
               },
               {
                 title: 'Performance and Analytics cookies',
@@ -59,8 +59,8 @@ export default defineNuxtPlugin((nuxtApp) => {
                 toggle: {
                   value: 'analytics',
                   enabled: false,
-                  readonly: false,
-                },
+                  readonly: false
+                }
               },
               {
                 title: 'Advertisement and Targeting cookies',
@@ -69,13 +69,13 @@ export default defineNuxtPlugin((nuxtApp) => {
                 toggle: {
                   value: 'targeting',
                   enabled: false,
-                  readonly: false,
-                },
-              },
-            ],
-          },
-        },
-      },
+                  readonly: false
+                }
+              }
+            ]
+          }
+        }
+      }
     }
 
     window.CookieConsentApi.run(config)

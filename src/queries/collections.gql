@@ -1,36 +1,36 @@
 query Collections($first: Int) {
-	collections(first: $first) {
-		edges {
-			node {
-				handle
-				description
-				title
-				image {
-					src
-				}
-				products(first: 10) {
-					edges {
-						node {
-							images(first: 2) {
-								edges {
-									node {
-										src
-									}
-								}
-							}
-							title
-							priceRange {
-								minVariantPrice {
-									amount
-									currencyCode
-								}
-							}
-							handle
-							totalInventory
-						}
-					}
-				}
-			}
-		}
-	}
+  collections(first: $first) {
+    edges {
+      node {
+        handle
+        description
+        title
+        image {
+          src
+        }
+        products(first: 10) {
+          edges {
+            node {
+              images(first: 2) {
+                edges {
+                  node {
+                    src
+                  }
+                }
+              }
+              title
+              priceRange {
+                minVariantPrice {
+                  amount
+                  currencyCode
+                }
+              }
+              handle
+              totalInventory
+            }
+          }
+        }
+      }
+    }
+  }
 }

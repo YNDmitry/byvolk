@@ -1,160 +1,159 @@
 .button {
+  &-primary,
+  &-secondary,
+  &-bordered,
+  &-transparent {
+    display: inline-block;
+    font-family: $base-font-family;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    min-width: 180px;
+    padding: 16px 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: all 200ms ease;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 
-	&-primary,
-	&-secondary,
-	&-bordered,
-	&-transparent {
-		display: inline-block;
-		font-family: $base-font-family;
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 140%;
-		min-width: 180px;
-		padding: 16px 25px;
-		border: none;
-		cursor: pointer;
-		text-align: center;
-		transition: all 200ms ease;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
+    @include phone-l {
+      padding: 13px 20px;
+      font-size: 14px;
+    }
+  }
 
-		@include phone-l {
-			padding: 13px 20px;
-			font-size: 14px;
-		}
-	}
+  &-primary {
+    background-color: $dark-background-color;
+    color: $dark-font-color;
 
-	&-primary {
-		background-color: $dark-background-color;
-		color: $dark-font-color;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 
-		&:hover {
-			transform: scale(1.1);
-		}
-	}
+  &-secondary {
+    background-color: $base-background-color;
+    color: $base-font-color;
 
-	&-secondary {
-		background-color: $base-background-color;
-		color: $base-font-color;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 
-		&:hover {
-			transform: scale(1.1);
-		}
-	}
+  &-bordered {
+    border: 2px solid $base-dark-background-color;
 
-	&-bordered {
-		border: 2px solid $base-dark-background-color;
+    &:hover {
+      color: $white;
+      background-color: $base-dark-background-color;
+    }
+  }
 
-		&:hover {
-			color: $white;
-			background-color: $base-dark-background-color;
-		}
-	}
+  &-img {
+    transition: all 200ms ease;
 
-	&-img {
-		transition: all 200ms ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 
-		&:hover {
-			transform: scale(1.1);
-		}
-	}
+  &-social {
+    @include flex-center;
+    min-width: 48px;
+    max-width: 48px;
+    width: 100%;
+    height: 48px;
 
-	&-social {
-		@include flex-center;
-		min-width: 48px;
-		max-width: 48px;
-		width: 100%;
-		height: 48px;
-
-		& svg {
-			width: 26px;
-			height: 26px;
-		}
-	}
+    & svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
 }
 
 .radio-button {
-	display: inline-block;
-	padding: 6px 13px;
-	border: 1px solid #d8d9d8;
-	font-size: 16px;
-	line-height: 22px;
-	transition: all 200ms ease;
-	cursor: pointer;
-	position: relative;
-	@include flex-center;
+  display: inline-block;
+  padding: 6px 13px;
+  border: 1px solid #d8d9d8;
+  font-size: 16px;
+  line-height: 22px;
+  transition: all 200ms ease;
+  cursor: pointer;
+  position: relative;
+  @include flex-center;
 
-	&:hover {
-		& .radio-button__tooltip {
-			opacity: 1;
-		}
-	}
+  &:hover {
+    & .radio-button__tooltip {
+      opacity: 1;
+    }
+  }
 
-	& input {
-		display: none;
-	}
+  & input {
+    display: none;
+  }
 
-	&.is-active {
-		border: 1px solid black;
-		background-color: black;
-		color: $white;
-	}
+  &.is-active {
+    border: 1px solid black;
+    background-color: black;
+    color: $white;
+  }
 
-	&[disabled='true'] {
-		opacity: 0.7;
-		cursor: not-allowed;
-		pointer-events: none;
-	}
+  &[disabled='true'] {
+    opacity: 0.7;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 
-	&__tooltip {
-		position: absolute;
-		padding: 5px 10px;
-		background-color: black;
-		border-radius: 4px;
-		bottom: -40px;
-		color: white;
-		transition: opacity 200ms ease-in-out;
-		opacity: 0;
-		white-space: nowrap;
+  &__tooltip {
+    position: absolute;
+    padding: 5px 10px;
+    background-color: black;
+    border-radius: 4px;
+    bottom: -40px;
+    color: white;
+    transition: opacity 200ms ease-in-out;
+    opacity: 0;
+    white-space: nowrap;
 
-		@include tablet {
-			position: static;
-			margin-left: 10px;
-			background-color: transparent;
-			padding: 0;
-			color: inherit;
-			opacity: 1;
-			white-space: normal;
-		}
-	}
+    @include tablet {
+      position: static;
+      margin-left: 10px;
+      background-color: transparent;
+      padding: 0;
+      color: inherit;
+      opacity: 1;
+      white-space: normal;
+    }
+  }
 }
 
 .big-link {
-	padding: 34px 0;
+  padding: 34px 0;
 
-	@include phone-l {
-		padding: 18px 0;
-	}
+  @include phone-l {
+    padding: 18px 0;
+  }
 
-	& a {
-		border: 1px solid black;
-		padding: 15px;
-		font-family: $base-font-family;
-		font-size: 16px;
-		text-transform: uppercase;
-		letter-spacing: 0.3em;
-		line-height: 120%;
-		color: black;
-		transition: all 200ms ease;
+  & a {
+    border: 1px solid black;
+    padding: 15px;
+    font-family: $base-font-family;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    line-height: 120%;
+    color: black;
+    transition: all 200ms ease;
 
-		@include phone-l {
-			padding: 20px 10px;
-			font-size: 16px;
-		}
+    @include phone-l {
+      padding: 20px 10px;
+      font-size: 16px;
+    }
 
-		&:hover {
-			color: white;
-			background-color: black;
-		}
-	}
+    &:hover {
+      color: white;
+      background-color: black;
+    }
+  }
 }

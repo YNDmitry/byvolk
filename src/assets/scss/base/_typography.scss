@@ -4,87 +4,87 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Montserrat', sans-serif;
-	text-transform: uppercase;
-	font-weight: 500;
-	line-height: 120%;
-	color: $base-font-color;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 120%;
+  color: $base-font-color;
 
-	@include phone-l {
-		text-align: center;
-	}
+  @include phone-l {
+    text-align: center;
+  }
 }
 
 h1 {
-	font-size: 50px;
-	font-weight: 700;
+  font-size: 50px;
+  font-weight: 700;
 
-	@include tablet {
-		font-size: 45px;
-	}
+  @include tablet {
+    font-size: 45px;
+  }
 
-	@include phone-l {
-		font-size: 40px;
-	}
+  @include phone-l {
+    font-size: 40px;
+  }
 }
 
 h2 {
-	font-size: 28px;
+  font-size: 28px;
 
-	@include tablet {
-		font-size: 20px;
-	}
+  @include tablet {
+    font-size: 20px;
+  }
 }
 
 h3 {
-	font-size: 23px;
+  font-size: 23px;
 
-	@include tablet {
-		font-size: 18px;
-	}
+  @include tablet {
+    font-size: 18px;
+  }
 }
 
 h4 {
-	font-size: 16px;
+  font-size: 16px;
 
-	@include tablet {
-		font-size: 16px;
-	}
+  @include tablet {
+    font-size: 16px;
+  }
 }
 
 h5 {
-	font-size: 13px;
+  font-size: 13px;
 }
 
 h6 {
-	font-size: 13px;
+  font-size: 13px;
 }
 
 .h-bebas {
-	font-size: 80px;
-	line-height: 90%;
+  font-size: 80px;
+  line-height: 90%;
 
-	@include phone {
-		font-size: 70px;
-	}
+  @include phone {
+    font-size: 70px;
+  }
 }
 
 p {
-	font-family: $base-font-family;
-	font-style: italic;
-	font-size: 16px;
-	line-height: $base-line-height;
+  font-family: $base-font-family;
+  font-style: italic;
+  font-size: 16px;
+  line-height: $base-line-height;
 
-	@include phone-l {
-		font-size: 14px;
-	}
+  @include phone-l {
+    font-size: 14px;
+  }
 }
 
 .p-18 {
-	font-size: 18px;
-	line-height: 140%;
+  font-size: 18px;
+  line-height: 140%;
 }
 
 .m-auto {
-	margin: 0 auto;
+  margin: 0 auto;
 }

@@ -1,41 +1,41 @@
 @import './variables';
 
 @mixin flex-center {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @mixin flex-align-center {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 @mixin flex-space-between {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 @mixin flex-space-between-center {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @mixin tablet {
-	@media screen and (max-width: $layout-breakpoint-tablet) {
-		@content;
-	}
+  @media screen and (max-width: $layout-breakpoint-tablet) {
+    @content;
+  }
 }
 
 @mixin phone-l {
-	@media screen and (max-width: $layout-breakpoint-mobile-landscape) {
-		@content;
-	}
+  @media screen and (max-width: $layout-breakpoint-mobile-landscape) {
+    @content;
+  }
 }
 
 @mixin phone {
-	@media screen and (max-width: $layout-breakpoint-phone) {
-		@content;
-	}
+  @media screen and (max-width: $layout-breakpoint-phone) {
+    @content;
+  }
 }

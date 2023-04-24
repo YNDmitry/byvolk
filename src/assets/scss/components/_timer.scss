@@ -1,44 +1,44 @@
 @import '../utilities/mixins';
 
 .section-timer {
-	margin: 96px 0;
+  margin: 96px 0;
 }
 .timer {
-	&__body {
-		display: flex;
-		flex-direction: column;
-		column-gap: 36px;
-	}
+  &__body {
+    display: flex;
+    flex-direction: column;
+    column-gap: 36px;
+  }
 
-	&__success {
-		display: flex;
-		flex-direction: column;
-	}
+  &__success {
+    display: flex;
+    flex-direction: column;
+  }
 
-	&__bl {
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
+  &__bl {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 
-		& .timer__card {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			width: 100%;
-			max-width: 150px;
+    & .timer__card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 150px;
 
-			&-time {
-				font-family: 'Montserrat', sans-serif;
-				font-weight: 600;
-				font-size: 62px;
-				line-height: 140%;
-				letter-spacing: 0.1em;
-			}
+      &-time {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 62px;
+        line-height: 140%;
+        letter-spacing: 0.1em;
+      }
 
-			&-title {
-				font-size: 20px;
-				text-transform: uppercase;
-			}
-		}
-	}
+      &-title {
+        font-size: 20px;
+        text-transform: uppercase;
+      }
+    }
+  }
 }

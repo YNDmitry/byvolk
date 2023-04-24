@@ -1,47 +1,47 @@
 @import '../utilities/mixins';
 
 .collections__cards {
-	padding: 120px 0;
+  padding: 120px 0;
 
-	&:last-child {
-		padding-top: 0;
-	}
+  &:last-child {
+    padding-top: 0;
+  }
 
-	&-head {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		text-align: center;
+  &-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 
-		& span {
-			display: inline-block;
-			font-size: 10px;
-			line-height: 110%;
-			text-transform: uppercase;
-			color: #999999;
+    & span {
+      display: inline-block;
+      font-size: 10px;
+      line-height: 110%;
+      text-transform: uppercase;
+      color: #999999;
 
-			@include phone {
-				font-size: 14px;
-			}
-		}
-	}
+      @include phone {
+        font-size: 14px;
+      }
+    }
+  }
 
-	&-items {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, 20rem);
-		justify-content: center;
-		column-gap: 35px;
-		row-gap: 40px;
-		margin-top: 32px;
+  &-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 20rem);
+    justify-content: center;
+    column-gap: 35px;
+    row-gap: 40px;
+    margin-top: 32px;
 
-		@include phone-l {
-			grid-template-columns: repeat(auto-fill, 12rem);
-			column-gap: 20px;
-		}
+    @include phone-l {
+      grid-template-columns: repeat(auto-fill, 12rem);
+      column-gap: 20px;
+    }
 
-		@include phone {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
+    @include phone {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }

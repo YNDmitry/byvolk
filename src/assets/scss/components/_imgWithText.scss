@@ -1,67 +1,67 @@
 @import '../utilities/mixins';
 
 .section-iwt {
-	padding: 96px 0;
+  padding: 96px 0;
 
-	@include phone-l {
-		padding: 40px 0;
-	}
+  @include phone-l {
+    padding: 40px 0;
+  }
 }
 
 .iwt__items {
-	display: flex;
-	align-items: center;
-	margin: 0 auto;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
 
-	@include phone-l {
-		flex-direction: column;
-	}
+  @include phone-l {
+    flex-direction: column;
+  }
 }
 
 .iwt__img {
-	margin-left: auto;
+  margin-left: auto;
 
-	& img {
-		width: 100%;
-	}
+  & img {
+    width: 100%;
+  }
 
-	@include tablet {
-		margin-left: 0;
-	}
+  @include tablet {
+    margin-left: 0;
+  }
 
-	@include phone-l {
-		margin-bottom: 25px;
-	}
+  @include phone-l {
+    margin-bottom: 25px;
+  }
 }
 
 .iwt__info {
-	order: 1;
-	margin-left: 64px;
-	max-width: 650px;
-	margin-right: auto;
+  order: 1;
+  margin-left: 64px;
+  max-width: 650px;
+  margin-right: auto;
 
-	@include phone-l {
-		margin-left: 0;
-		text-align: center;
-	}
+  @include phone-l {
+    margin-left: 0;
+    text-align: center;
+  }
 
-	&-rich {
-		display: flex;
-		flex-direction: column;
-		text-align: left;
+  &-rich {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 
-		& p {
-			margin-bottom: 10px;
+    & p {
+      margin-bottom: 10px;
 
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
 
-		& h6 {
-			@include phone-l {
-				text-align: center;
-			}
-		}
-	}
+    & h6 {
+      @include phone-l {
+        text-align: center;
+      }
+    }
+  }
 }

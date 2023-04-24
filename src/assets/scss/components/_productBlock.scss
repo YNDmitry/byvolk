@@ -1,135 +1,135 @@
 @import '../utilities/mixins';
 
 .product-card {
-	position: relative;
-	transition: transform 200ms ease;
+  position: relative;
+  transition: transform 200ms ease;
 
-	&:hover {
-		transform: scale(1.05) !important;
+  &:hover {
+    transform: scale(1.05) !important;
 
-		& .product-card__body {
-			color: black;
+    & .product-card__body {
+      color: black;
 
-			& h5 {
-				color: black;
-			}
-		}
-	}
+      & h5 {
+        color: black;
+      }
+    }
+  }
 
-	&__frame {
-		position: relative;
-		background-color: white;
-		height: 100%;
-		transition: all 200ms ease;
-		padding: 15px;
+  &__frame {
+    position: relative;
+    background-color: white;
+    height: 100%;
+    transition: all 200ms ease;
+    padding: 15px;
 
-		&-texture {
-			background-image: url('/texture.jpeg');
-			opacity: 1;
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-		}
+    &-texture {
+      background-image: url('/texture.jpeg');
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
 
-		@include phone-l {
-			border-width: 10px;
-		}
+    @include phone-l {
+      border-width: 10px;
+    }
 
-		&-img-wrapper {
-			position: relative;
-			z-index: 1;
-			height: 100%;
-			background-color: white;
-			padding: 15px;
-		}
+    &-img-wrapper {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      background-color: white;
+      padding: 15px;
+    }
 
-		&--decor {
-			position: absolute;
-			right: 100px;
-			top: 15px;
-			width: 250px;
-			height: 300px;
+    &--decor {
+      position: absolute;
+      right: 100px;
+      top: 15px;
+      width: 250px;
+      height: 300px;
 
-			@include tablet {
-				width: 200px;
-				height: 250px;
-				right: 50px;
-			}
+      @include tablet {
+        width: 200px;
+        height: 250px;
+        right: 50px;
+      }
 
-			@include phone {
-				width: 150px;
-				height: 200px;
-				right: 5%;
-			}
-		}
-	}
+      @include phone {
+        width: 150px;
+        height: 200px;
+        right: 5%;
+      }
+    }
+  }
 
-	&__img {
-		& img {
-			height: 100%;
-		}
-	}
+  &__img {
+    & img {
+      height: 100%;
+    }
+  }
 
-	&__sold-out {
-		display: inline-block;
-		padding: 5px 10px;
-		font-size: 10px;
-		text-align: center;
-		background-color: black;
-		color: white;
-		text-transform: uppercase;
-		letter-spacing: 0.03em;
-		margin-top: -5px;
-	}
+  &__sold-out {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 10px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-top: -5px;
+  }
 
-	&__head {
-		@include flex-center;
-		position: relative;
-		background-color: #f8f8f8;
-		padding: 30px 20px;
-		height: 280px;
-		overflow: hidden;
+  &__head {
+    @include flex-center;
+    position: relative;
+    background-color: #f8f8f8;
+    padding: 30px 20px;
+    height: 280px;
+    overflow: hidden;
 
-		& img {
-			height: 100%;
-			object-fit: contain;
-			border: 8px solid black;
-			padding: 15px 10px;
-			background-color: white;
+    & img {
+      height: 100%;
+      object-fit: contain;
+      border: 8px solid black;
+      padding: 15px 10px;
+      background-color: white;
 
-			@include phone-l {
-				height: auto;
-			}
-		}
-	}
+      @include phone-l {
+        height: auto;
+      }
+    }
+  }
 
-	&__body {
-		margin-top: 14px;
-		text-align: center;
-		font-size: 10px;
-		line-height: 110%;
-		color: #353735ad;
-		transition: all 200ms ease;
+  &__body {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 110%;
+    color: #353735ad;
+    transition: all 200ms ease;
 
-		&-price {
-			margin-top: 10px;
-			row-gap: 10px;
-		}
+    &-price {
+      margin-top: 10px;
+      row-gap: 10px;
+    }
 
-		& h5 {
-			font-size: 13px;
-			color: #353735ad;
-			transition: all 200ms ease;
-		}
-	}
+    & h5 {
+      font-size: 13px;
+      color: #353735ad;
+      transition: all 200ms ease;
+    }
+  }
 }
 
 .print__info-footer-buttons {
-	& button[disabled] {
-		cursor: not-allowed;
-		pointer-events: none;
-		opacity: 0.6;
-	}
+  & button[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+  }
 }
