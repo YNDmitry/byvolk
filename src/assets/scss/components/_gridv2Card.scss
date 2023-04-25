@@ -1,45 +1,45 @@
 @import '../utilities/mixins';
 
 .gridv2-card {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	align-items: center;
-	column-gap: 100px;
-	row-gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  column-gap: 100px;
+  row-gap: 40px;
 
-	@include phone-l {
-		grid-template-columns: 1fr;
-	}
+  @include phone-l {
+    grid-template-columns: 1fr;
+  }
 
-	&__rich {
-		margin-top: 20px;
-		margin-bottom: auto;
+  &__rich {
+    margin-top: 20px;
+    margin-bottom: auto;
 
-		@include phone-l {
-			margin-top: 40px;
-		}
+    @include phone-l {
+      margin-top: 40px;
+    }
 
-		&-wrapper {
-			display: flex;
-			flex-direction: column;
-			height: 100%;
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
 
-			& h2 {
-				margin-bottom: auto;
-			}
-		}
+      & h2 {
+        margin-bottom: auto;
+      }
+    }
 
-		& p {
-			margin-bottom: 50px;
-			margin-top: 15px;
+    & p {
+      margin-bottom: 50px;
+      margin-top: 15px;
 
-			&:last-child {
-				margin-bottom: 0;
-			}
+      &:last-child {
+        margin-bottom: 0;
+      }
 
-			@include phone-l {
-				text-align: center;
-			}
-		}
-	}
+      @include phone-l {
+        text-align: center;
+      }
+    }
+  }
 }

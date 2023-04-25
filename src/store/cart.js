@@ -6,18 +6,21 @@ export const useCartStore = defineStore('Cart', {
       isOpen: false,
       isPending: false,
       isError: null,
-      items: [],
+      items: []
     }
   },
 
   getters: {
     productPrice(state) {
       localStorage.setItem('cartItems', JSON.stringify(state.items))
-      return state.items.reduce((totalPrice, item) => totalPrice + (Number(item.variantId.price) * item.quantity), 0)
+      return state.items.reduce(
+        (totalPrice, item) => totalPrice + Number(item.variantId.price) * item.quantity,
+        0
+      )
     },
     currencyCode(state) {
-      return state.items[0] ? state.items[0].variantId.currencyCode : '';
-    },
+      return state.items[0] ? state.items[0].variantId.currencyCode : ''
+    }
   },
 
   actions: {
@@ -26,8 +29,8 @@ export const useCartStore = defineStore('Cart', {
     },
 
     addToCart(item) {
-      if (this.items.find(el => el.variantId.id === item.id)) {
-        this.items[this.items.findIndex(el => el.variantId.id === item.id)].quantity++
+      if (this.items.find((el) => el.variantId.id === item.id)) {
+        this.items[this.items.findIndex((el) => el.variantId.id === item.id)].quantity++
       } else {
         this.items.push({ variantId: item, quantity: 1 })
       }
@@ -48,7 +51,10 @@ export const useCartStore = defineStore('Cart', {
           const response = await useAsyncGql({
             operation: 'CheckoutCreate',
             variables: {
-              lineItems: this.items.map(el => ({ variantId: el.variantId.id, quantity: el.quantity }))
+              lineItems: this.items.map((el) => ({
+                variantId: el.variantId.id,
+                quantity: el.quantity
+              }))
             }
           })
 

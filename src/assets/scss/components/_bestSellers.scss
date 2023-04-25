@@ -1,24 +1,24 @@
 @import '../utilities/mixins';
 
 .section-b-sellers {
-	padding: 48px 0;
-	overflow: hidden;
+  padding: 48px 0;
+  overflow: hidden;
 }
 
 .b-sellers__wrapper {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .b-sellers__slider {
-	width: 100%;
-	overflow: visible !important;
+  width: 100%;
+  overflow: visible !important;
 }
 
 .b-sellers__head {
-	@include flex-space-between-center;
+  @include flex-space-between-center;
 }
 
 .swiper-slide.product-card {
-	width: 100%;
+  width: 100%;
 }

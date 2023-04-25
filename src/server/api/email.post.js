@@ -1,4 +1,4 @@
-import { mailOptions, transporter } from '~~/src/config/nodemailer'
+import { mailOptions, transporter } from '~/config/nodemailer.config'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)

@@ -1,26 +1,34 @@
+:root {
+  --cc-border-radius: 0;
+  --cc-btn-primary-bg: #191a19;
+  --cc-text: $base-font-color;
+  --cc-btn-primary-hover-bg: #191a19;
+  --cc-btn-secondary-text: #191a19;
+}
+
 #cc_div {
-	font-family: $base-font-family;
+  font-family: $base-font-family;
 
-	& div[role='heading'] {
-		font-family: 'Montserrat', sans-serif;
-	}
+  & div[role='heading'] {
+    font-family: 'Montserrat', sans-serif;
+  }
 
-	& .c-bn {
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		border-radius: 0;
-	}
+  & .c-bn {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 0;
+  }
 
-	& #c-s-bn {
-		border: 1px solid black;
-		background-color: transparent;
-	}
+  & #c-s-bn {
+    border: 1px solid black;
+    background-color: transparent;
+  }
 
-	& #cm {
-		left: 36px;
+  & #cm {
+    left: 36px;
 
-		@include phone-l {
-			left: 16px;
-		}
-	}
+    @include phone-l {
+      left: 16px;
+    }
+  }
 }

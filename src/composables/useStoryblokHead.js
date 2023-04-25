@@ -8,40 +8,40 @@ export const useStoryblokHead = async (seo) => {
     meta: [
       {
         name: 'description',
-        content: seo.description || null,
+        content: seo.description || null
       },
       {
         name: 'og:type',
-        content: 'website',
+        content: 'website'
       },
       {
         property: 'og:title',
-        content: seo.title || null,
+        content: seo.title || null
       },
       {
         property: 'og:description',
-        content: seo.description || null,
+        content: seo.description || null
       },
       {
         property: 'og:image',
-        content: seo.images?.edges[0]?.node?.src || null,
+        content: seo.images?.edges[0]?.node?.src || null
       },
       {
         property: 'twitter:title',
-        content: seo.title,
+        content: seo.title
       },
       {
         property: 'twitter:description',
-        content: seo.description || null,
+        content: seo.description || null
       },
       {
         property: 'twitter:image',
-        content: seo.images?.edges[0]?.node?.src || null,
+        content: seo.images?.edges[0]?.node?.src || null
       },
       {
         name: 'twitter:card',
-        content: 'summary_large_image',
-      },
-    ],
+        content: 'summary_large_image'
+      }
+    ]
   })
 }

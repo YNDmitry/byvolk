@@ -1,39 +1,39 @@
 @import '../utilities/mixins';
 
 .section-big-form {
-	padding: 124px 0 100px 0;
+  padding: 124px 0 100px 0;
 
-	@include tablet {
-		padding: 64px 0 50px 0;
-	}
+  @include tablet {
+    padding: 64px 0 50px 0;
+  }
 
-	&__wrapper {
-		max-width: 800px;
-		margin: 0 auto;
-	}
+  &__wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
 
-	&__head {
-		text-align: center;
-		margin-bottom: 40px;
-	}
+  &__head {
+    text-align: center;
+    margin-bottom: 40px;
+  }
 
-	& .big-form {
-		display: flex;
-		flex-direction: column;
+  & .big-form {
+    display: flex;
+    flex-direction: column;
 
-		&__inputs {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			column-gap: 35px;
-			row-gap: 25px;
-			margin-bottom: 36px;
+    &__inputs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 35px;
+      row-gap: 25px;
+      margin-bottom: 36px;
 
-			@include phone {
-				grid-template-columns: repeat(1, 1fr);
-			}
-		}
-		& button[type='submit'] {
-			margin: 30px auto 0 auto;
-		}
-	}
+      @include phone {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+    & button[type='submit'] {
+      margin: 30px auto 0 auto;
+    }
+  }
 }

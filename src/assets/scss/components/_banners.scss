@@ -1,35 +1,35 @@
 .banner {
-	height: 30px;
-	background-color: $base-block-color;
-	padding: 4px 0;
+  height: 30px;
+  background-color: $base-block-color;
+  padding: 4px 0;
 
-	& p {
-		position: absolute;
-		left: 50%;
-		font-size: 8px;
-		text-transform: uppercase;
-		letter-spacing: 0.3em;
-		transform: translate(-50%, 0%);
-		font-style: normal;
+  & p {
+    position: absolute;
+    left: 50%;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    transform: translate(-50%, 0%);
+    font-style: normal;
 
-		@include phone-l {
-			transform: translate(0, 0);
-			position: static;
-			display: none;
-		}
-	}
+    @include phone-l {
+      transform: translate(0, 0);
+      position: static;
+      display: none;
+    }
+  }
 
-	&__content {
-		@include flex-space-between-center;
-	}
+  &__content {
+    @include flex-space-between-center;
+  }
 
-	&__payments {
-		display: flex;
-		margin-left: auto;
+  &__payments {
+    display: flex;
+    margin-left: auto;
 
-		& svg {
-			margin-left: 10px;
-			filter: grayscale(100%);
-		}
-	}
+    & svg {
+      margin-left: 10px;
+      filter: grayscale(100%);
+    }
+  }
 }
