@@ -7,16 +7,16 @@
       class="section-hero-main__bg-video"
     />
     <div class="container text-center">
-      <div class="hero-main__info-600" v-motion-up>
+      <div v-motion-up class="hero-main__info-600">
         <h1 v-if="blok.headline" class="h-bebas">{{ blok.headline }}</h1>
-        <div v-if="blok.body" v-html="richtext" class="hero-main__body"></div>
+        <div v-if="blok.body" class="hero-main__body" v-html="richtext"></div>
         <div class="hero-main__footer">
           <div class="hero-main__info-buttons">
             <template v-if="blok.buttons.length > 0">
               <NuxtLink
                 v-for="button in blok.buttons"
-                :class="`button-${button.buttonType}`"
                 :key="button"
+                :class="`button-${button.buttonType}`"
                 :to="button.link.cached_url"
               >
                 {{ button.title }}

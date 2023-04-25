@@ -1,21 +1,21 @@
 <template>
-  <section class="section-timer" v-editable="blok">
+  <section v-editable="blok" class="section-timer">
     <div class="container">
       <div class="grid-2-col">
         <div class="timer__head">
           <h2 v-if="blok.headline" class="up">{{ blok.headline }}</h2>
-          <div class="mt-small up" v-html="richtext" v-if="richtext"></div>
+          <div v-if="richtext" class="mt-small up" v-html="richtext"></div>
         </div>
-        <div class="timer__body" v-if="isActive">
+        <div v-if="isActive" class="timer__body">
           <div class="timer__bl">
-            <div class="timer__card up" v-for="(item, idx) in timer" :key="idx">
+            <div v-for="(item, idx) in timer" :key="idx" class="timer__card up">
               <span class="timer__card-time">{{ item }}</span>
               <span class="timer__card-title">{{ idx }}</span>
             </div>
           </div>
-          <FormNewsletter :isWhite="true" class="up"></FormNewsletter>
+          <FormNewsletter :is-white="true" class="up"></FormNewsletter>
         </div>
-        <div class="timer__success" v-else>
+        <div v-else class="timer__success">
           <h4 class="m-auto up">Already dropped!</h4>
           <template v-if="blok.successButton">
             <div class="mt-medium w-full up">
@@ -44,7 +44,7 @@ const props = defineProps({
 })
 
 const richtext = computed(() => renderRichText(props.blok.description))
-let isActive = asyncComputed(() => (new Date(props.blok.date) <= new Date() ? false : true))
+const isActive = asyncComputed(() => !(new Date(props.blok.date) <= new Date()))
 let endTime = new Date(props.blok.date)
 
 const timer = ref({
@@ -66,9 +66,9 @@ onMounted(() => {
       return clearInterval(interval)
     }
 
-    let timeLeft = endTime - now
+    const timeLeft = endTime - now
 
-    let days = Math.floor(timeLeft / 86400)
+    const days = Math.floor(timeLeft / 86400)
     let hours = Math.floor((timeLeft - days * 86400) / 3600)
     let minutes = Math.floor((timeLeft - days * 86400 - hours * 3600) / 60)
     let seconds = Math.floor(timeLeft - days * 86400 - hours * 3600 - minutes * 60)

@@ -1,5 +1,5 @@
 <template>
-  <section class="section-instagram" v-editable="blok">
+  <section v-editable="blok" class="section-instagram">
     <div class="container">
       <h2 v-if="blok.headline" v-motion-up class="up">{{ blok.headline }}</h2>
       <Swiper
@@ -19,13 +19,13 @@
               <div class="instagram__photos-item-info">
                 <div class="instagram__photos-item-avatar">
                   <NuxtImg
+                    v-if="item.avatar.filename"
+                    v-lazy-load
                     provider="storyblok"
                     :src="item.avatar.filename"
-                    v-if="item.avatar.filename"
                     width="30"
                     height="30"
                     alt="Instagram avatar"
-                    v-lazy-load
                   ></NuxtImg>
                 </div>
                 <div class="instagram__photos-item-user">
@@ -37,13 +37,13 @@
             </div>
             <div class="instagram__photos-item-img-wrapper">
               <NuxtPicture
-                :src="item?.image.filename"
                 v-if="item?.image"
+                v-lazy-load
+                :src="item?.image.filename"
                 provider="storyblok"
                 alt="Instagram picture"
                 sizes="sm:100vw md:100vw"
                 width="325"
-                v-lazy-load
               ></NuxtPicture>
             </div>
           </NuxtLink>
@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   blok: {
     type: Object,
     default: () => ({})

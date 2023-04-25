@@ -1,8 +1,8 @@
 <template>
-  <section class="contact-hero" v-editable="blok">
+  <section v-editable="blok" class="contact-hero">
     <div class="contact-hero__container">
       <div class="contact-hero__social">
-        <NuxtLink class="contact-hero__link" v-motion-up to="mailto:info@byvolk.com">
+        <NuxtLink v-motion-up class="contact-hero__link" to="mailto:info@byvolk.com">
           <div>info@byvolk.com</div>
         </NuxtLink>
       </div>
@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   blok: {
     type: Object,
     default: () => ({})

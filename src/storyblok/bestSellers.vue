@@ -1,35 +1,32 @@
 <template>
-  <section class="section-b-sellers" v-editable="blok">
+  <section v-editable="blok" class="section-b-sellers">
     <div class="container">
       <div class="b-sellers__wrapper">
         <div class="slider__head">
           <button
+            v-if="products.length > slides"
+            ref="leftArr"
+            v-motion-up
             type="button"
             aria-label="Best sellers slider arrow prev"
-            id="best-sellers-prev"
             class="slider__nav-button is-prev"
-            v-motion-up
-            ref="leftArr"
-            v-if="products.length > slides"
           >
             <IconsArrowRight></IconsArrowRight>
           </button>
           <h2 v-if="blok.headline" v-motion-up>{{ blok.headline }}</h2>
           <button
+            v-if="products.length > slides"
+            ref="rightArr"
+            v-motion-up
             type="button"
             aria-label="Best sellers slider arrow next"
-            id="best-sellers-next"
             class="slider__nav-button is-next"
-            v-motion-up
-            ref="rightArr"
-            v-if="products.length > slides"
           >
             <IconsArrowRight></IconsArrowRight>
           </button>
         </div>
 
         <Swiper
-          class="b-sellers__slider mt-medium"
           v-motion-up
           :modules="[SwiperNavigation]"
           :slides-per-view="slides"
@@ -38,15 +35,16 @@
             nextEl: rightArr,
             prevEl: leftArr
           }"
+          class="b-sellers__slider mt-medium"
         >
-          <SwiperSlide class="product-card" v-for="product in products" :key="product.node.id">
+          <SwiperSlide v-for="product in products" :key="product.node.id" class="product-card">
             <ProductBlock
               :handle="product.node.handle"
               :images="product.node.images.edges"
               :title="product.node.title"
-              :currencyCode="product.node.priceRange.minVariantPrice.currencyCode"
-              :minPrice="product.node.priceRange.minVariantPrice.amount"
-              :totalInventory="product.node.totalInventory"
+              :currency-code="product.node.priceRange.minVariantPrice.currencyCode"
+              :min-price="product.node.priceRange.minVariantPrice.amount"
+              :total-inventory="product.node.totalInventory"
             ></ProductBlock>
           </SwiperSlide>
         </Swiper>
@@ -56,7 +54,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   blok: {
     type: Object,
     default: () => {}
@@ -75,10 +73,10 @@ const rightArr = ref(null)
 const slides = ref(null)
 
 const slidesPerView = () => {
-  if (useMediaQuery('(max-width: 991px)').value != useMediaQuery('(max-width: 700px)').value) {
+  if (useMediaQuery('(max-width: 991px)').value !== useMediaQuery('(max-width: 700px)').value) {
     return (slides.value = 3)
   } else if (
-    useMediaQuery('(max-width: 700px)').value != useMediaQuery('(max-width: 479px)').value
+    useMediaQuery('(max-width: 700px)').value !== useMediaQuery('(max-width: 479px)').value
   ) {
     return (slides.value = 2)
   } else if (useMediaQuery('(max-width: 479px)').value) {

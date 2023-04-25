@@ -5,25 +5,25 @@
         <div class="section-big-form__wrapper">
           <div class="section-big-form__head">
             <h2 v-if="blok.headline" v-motion-up>{{ blok.headline }}</h2>
-            <div v-if="richtext" v-motion-up v-html="richtext" class="mt-medium"></div>
+            <div v-if="richtext" v-motion-up class="mt-medium" v-html="richtext"></div>
           </div>
           <div>
-            <form class="big-form" @submit.prevent="submitHandler()" v-if="!isSuccess">
+            <form v-if="!isSuccess" class="big-form" @submit.prevent="submitHandler()">
               <div class="big-form__inputs">
                 <FormDefaultInput
+                  v-for="input in dataInputs"
+                  :key="input._uid"
+                  v-model:inputValue.trim="input.value"
                   v-motion-up
+                  :input-type="input.textArea ? 'textarea' : 'input'"
+                  :is-pending="isPending"
                   :title="input.placeholder"
                   :name="input.name"
                   :type="input.type"
-                  v-for="input in dataInputs"
-                  :key="input._uid"
                   :class="{ 'is-full': input.fullWidth }"
-                  :inputType="input.textArea ? 'textarea' : 'input'"
-                  v-model:inputValue.trim="input.value"
-                  :isPending="isPending"
                 ></FormDefaultInput>
               </div>
-              <div class="w-full text-center" v-motion-up>
+              <div v-motion-up class="w-full text-center">
                 <VueRecaptcha
                   ref="recaptcha"
                   :sitekey="config.recaptchaKey"
@@ -32,7 +32,7 @@
                   @expired="captchaExpired()"
                   @error="captchaError()"
                 ></VueRecaptcha>
-                <div class="input__error-message" v-if="!isCaptchaVerify">Required</div>
+                <div v-if="!isCaptchaVerify" class="input__error-message">Required</div>
                 <button v-motion-up type="submit" class="button-primary mt-small">
                   {{ isPending ? 'Loading...' : 'Submit' }}
                 </button>

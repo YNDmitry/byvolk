@@ -1,3 +1,4 @@
+import { default } from '../components/icons/applePay.vue';
 <template>
   <div class="gridv2-card">
     <ClientOnly>
@@ -21,7 +22,7 @@
           <strong>{{ heading }}</strong>
         </h2>
       </ClientOnly>
-      <div v-if="description" v-html="richtext" v-motion-up class="gridv2-card__rich"></div>
+      <div v-if="description" v-motion-up class="gridv2-card__rich" v-html="richtext"></div>
     </div>
   </div>
 </template>
@@ -29,13 +30,16 @@
 <script setup>
 const props = defineProps({
   img: {
-    type: Object
+    type: Object,
+    default: () => {}
   },
   heading: {
-    type: String
+    type: String,
+    default: ''
   },
   description: {
-    type: Object
+    type: Object,
+    default: () => {}
   }
 })
 

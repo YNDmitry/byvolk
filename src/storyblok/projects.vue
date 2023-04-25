@@ -1,5 +1,5 @@
 <template>
-  <section class="projects" v-editable="blok">
+  <section v-editable="blok" class="projects">
     <div class="container">
       <ProjectsCard
         v-for="project in blok.projectsCard"
@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   blok: {
     type: Object,
     default: () => {}

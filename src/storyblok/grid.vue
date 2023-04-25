@@ -5,7 +5,6 @@
         <GridCard
           v-for="(card, idx) in blok.cards"
           :key="card"
-          :content="card"
           v-motion="{
             initial: {
               y: 70,
@@ -20,6 +19,7 @@
               }
             }
           }"
+          :content="card"
         ></GridCard>
       </div>
     </div>

@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <ClientOnly>
-      <FormNewsletter :title="blok.title" v-editable="blok"></FormNewsletter>
+      <FormNewsletter v-editable="blok" :title="blok.title"></FormNewsletter>
     </ClientOnly>
   </div>
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   blok: {
     type: Object,
     default: () => {}

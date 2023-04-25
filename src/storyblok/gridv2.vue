@@ -5,9 +5,6 @@
         <Gridv2Card
           v-for="(card, idx) in blok.cards"
           :key="card"
-          :img="card.image"
-          :description="card.body"
-          :heading="card.heading"
           v-motion="{
             initial: {
               y: 70,
@@ -22,6 +19,9 @@
               }
             }
           }"
+          :img="card.image"
+          :description="card.body"
+          :heading="card.heading"
         ></Gridv2Card>
       </div>
     </div>

@@ -1,12 +1,12 @@
 <template>
-  <section class="section-hero" v-editable="blok">
+  <section v-editable="blok" class="section-hero">
     <div class="container-md up">
       <h1 v-motion-up>{{ blok.headline }}</h1>
       <div
         v-if="props.blok.description.content.length > 0"
-        v-html="richtext"
         v-motion-up
         class="mt-small"
+        v-html="richtext"
       ></div>
     </div>
   </section>

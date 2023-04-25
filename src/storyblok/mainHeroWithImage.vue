@@ -1,5 +1,5 @@
 <template>
-  <section class="section-hero-main" v-editable="blok">
+  <section v-editable="blok" class="section-hero-main">
     <div class="container">
       <div class="hero-main__content">
         <div v-motion-up class="hero-main__info">
@@ -12,9 +12,9 @@
               <div class="hero-main__info-buttons">
                 <template v-if="blok.buttons.length > 0">
                   <NuxtLink
-                    :class="`button-${button.buttonType}`"
                     v-for="button in blok.buttons"
                     :key="button"
+                    :class="`button-${button.buttonType}`"
                     :to="button.link.cached_url"
                   >
                     {{ button.title }}

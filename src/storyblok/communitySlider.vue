@@ -1,25 +1,25 @@
 <template>
-  <section class="slider" v-editable="blok" id="community">
+  <section id="community" v-editable="blok" class="slider">
     <div class="container">
       <div class="slider__head">
         <button
+          id="community-prev"
+          ref="leftArr"
           v-motion-up
           type="button"
           aria-label="Community slider arrow prev"
-          id="community-prev"
           class="slider__nav-button is-prev"
-          ref="leftArr"
         >
           <IconsArrowRight></IconsArrowRight>
         </button>
         <h2 v-if="blok.headline" v-motion-up class="up">{{ blok.headline }}</h2>
         <button
+          id="community-next"
+          ref="rightArr"
           v-motion-up
           type="button"
           aria-label="Community slider arrow next"
-          id="community-next"
           class="slider__nav-button is-next"
-          ref="rightArr"
         >
           <IconsArrowRight></IconsArrowRight>
         </button>
@@ -31,11 +31,11 @@
         :centered-slides="true"
         :space-between="35"
         :loop="true"
-        :grabCursor="true"
         :navigation="{
           nextEl: rightArr,
           prevEl: leftArr
         }"
+        :grab-cursor="true"
         class="slider__slider mt-medium"
       >
         <SwiperSlide
@@ -51,7 +51,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   blok: {
     type: Object,
     default: () => ({})

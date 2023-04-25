@@ -1,5 +1,5 @@
 <template>
-  <section class="section-icons" v-editable="blok">
+  <section v-editable="blok" class="section-icons">
     <div class="container">
       <div
         class="icons__grid"
@@ -10,15 +10,15 @@
           <div class="icons__card-icon">
             <NuxtPicture
               v-if="card.image"
+              v-lazy-load
               :src="card.image.filename"
               :alt="card.headline"
               class="icons__card-icon-img"
               provider="storyblok"
-              v-lazy-load
             ></NuxtPicture>
           </div>
-          <h5 class="fw-600" v-if="card.headline">{{ card.headline }}</h5>
-          <p class="p-18 mt-small" v-if="card.description">
+          <h5 v-if="card.headline" class="fw-600">{{ card.headline }}</h5>
+          <p v-if="card.description" class="p-18 mt-small">
             {{ card.description }}
           </p>
         </div>

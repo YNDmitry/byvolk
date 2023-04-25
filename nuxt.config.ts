@@ -66,8 +66,8 @@ export default defineNuxtConfig({
     useApiClient: true,
     apiOptions: { cache: { type: 'memory' }, https: true },
     apiPlugin: true,
-    bridge: process.env.NODE_ENV !== 'production',
-    devtools: true
+    bridge: process.env.NUXT_STORYBLOK_VERSION !== 'published',
+    devtools: false
   },
   fontLoader: { local: fontsConfig },
   sitemap: { hostname: process.env.NUXT_BASE_URL },

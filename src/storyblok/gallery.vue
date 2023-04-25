@@ -1,7 +1,7 @@
 <template>
   <section v-editable="blok" class="gallery">
     <div class="container">
-      <h2 class="text-center" v-motion-up v-if="blok.Heading">{{ blok.Heading }}</h2>
+      <h2 v-if="blok.Heading" v-motion-up class="text-center">{{ blok.Heading }}</h2>
       <Swiper
         :slides-per-view="3"
         :space-between="30"
@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   blok: {
     type: Object,
     default: () => {}
