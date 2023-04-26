@@ -13,7 +13,8 @@ export default defineNuxtConfig({
     dirs: ['~/components']
   },
   vite: {
-    css: { devSourcemap: true }
+    css: { devSourcemap: true },
+    optimizeDeps: { exclude: ['fsevents'] }
   },
   typescript: { strict: true },
   runtimeConfig: {
@@ -63,9 +64,9 @@ export default defineNuxtConfig({
   },
   storyblok: {
     accessToken: process.env.NUXT_STORYBLOK_ACCESS_TOKEN,
-    useApiClient: true,
+    usePlugin: true,
+    useApiPlugin: true,
     apiOptions: { cache: { type: 'memory' }, https: true },
-    apiPlugin: true,
     bridge: process.env.NUXT_STORYBLOK_VERSION !== 'published',
     devtools: false
   },

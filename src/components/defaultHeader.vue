@@ -1,7 +1,5 @@
 <template>
   <header
-    class="header"
-    :class="{ 'menu-is-open': isOpen ? true : false }"
     v-motion="{
       initial: {
         y: '-1000'
@@ -10,6 +8,8 @@
         y: '0'
       }
     }"
+    class="header"
+    :class="{ 'menu-is-open': isOpen ? true : false }"
   >
     <div class="container">
       <div class="header__desk-content">
@@ -31,15 +31,15 @@
           </ul>
         </nav>
         <div class="flex center phone-hide">
-          <div class="header__cart" @click="cartModal.handleModal()">
-            <div class="header__cart-count" v-if="cartModal.items.length > 0">
-              {{ cartModal.items.length }}
-            </div>
+          <div class="header__cart" @click="cart.handleModal()">
+            <!-- <div v-if="cart.$state.items.length > 0" class="header__cart-count">
+              {{ cart.$state.items.length }}
+            </div> -->
             <IconsCart></IconsCart>
           </div>
         </div>
         <Transition name="menu-open">
-          <div class="header__mobile-menu" v-if="isOpen">
+          <div v-if="isOpen" class="header__mobile-menu">
             <nav aria-label="Site mobile menu">
               <ul class="header__nav-list list-unstyled">
                 <li v-for="item in menu" :key="item.id">
@@ -50,13 +50,13 @@
               </ul>
             </nav>
             <div class="flex center">
-              <div class="header__cart" @click="cartModal.handleModal()">
-                <div class="header__cart-count" v-if="cartModal.items.length > 0">
-                  {{ cartModal.items.length }}
+              <div class="header__cart" @click="cart.handleModal()">
+                <!-- <div v-if="cart.$state.items.length > 0" class="header__cart-count">
+                  {{ cart.$state.items.length }}
                 </div>
-                <div class="header__cart-count-txt" v-if="cartModal.items.length > 0">
-                  ({{ cartModal.items.length }})
-                </div>
+                <div v-if="cart.$state.items.length > 0" class="header__cart-count-txt">
+                  ({{ cart.$state.items.items.length }})
+                </div> -->
                 <IconsCart></IconsCart>
               </div>
             </div>
@@ -77,18 +77,18 @@
 <script setup>
 import { useCartStore } from '../store/cart'
 
-let isOpen = ref(false)
+const isOpen = ref(false)
 const isMobile = useIsMobile
-const cartModal = useCartStore()
+const cart = useCartStore()
 
 const menu = await useAsyncData('menu', async () => {
-  return await useStoryblokApi().get('cdn/datasource_entries?datasource=menu-links', {
-    version: 'published'
+  return await useStoryblokApi().get('cdn/datasource_entries', {
+    datasource: 'menu-links'
   })
 }).then((res) => res.data.value.data.datasource_entries)
 
 function openMenu() {
-  return (isOpen.value = !isOpen.value ? true : false)
+  return (isOpen.value = !isOpen.value)
 }
 </script>
 

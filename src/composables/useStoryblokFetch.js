@@ -1,7 +1,7 @@
 export const useStoryblokFetch = async (locale) => {
   const version = useRuntimeConfig().public.storyblokVersion
   const route = useRoute()
-  let currentRoute = { ...route }
+  const currentRoute = { ...route }
 
   const localeString = `/${locale}`
 
@@ -19,17 +19,17 @@ export const useStoryblokFetch = async (locale) => {
 
   if (version === 'draft') {
     story = await useStoryblok(currentRoute.path, {
-      version: version
+      version
     })
     onMounted(() => {
-      useStoryblokBridge(story.id, (evStory) => story = evStory)
+      useStoryblokBridge(story.id, (evStory) => (story = evStory))
     })
   } else {
     story = await useAsyncData(
       `${currentRoute.path}-asyncdata`,
       async () =>
         await storyblokApiInstance.get(`cdn/stories${currentRoute.path}`, {
-          version: version
+          version
         })
     ).then((res) => res?.data?.value?.data?.story)
   }

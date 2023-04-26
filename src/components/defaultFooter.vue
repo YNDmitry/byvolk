@@ -67,8 +67,8 @@
 <script setup>
 const { data: footerLinks } = await useAsyncData('footer', async () => {
   return await useStoryblokApi()
-    .get('cdn/datasource_entries?datasource=footer-links', {
-      version: 'published'
+    .get('cdn/datasource_entries', {
+      datasource: 'footer-links'
     })
     .then((res) => res.data.datasource_entries)
 })

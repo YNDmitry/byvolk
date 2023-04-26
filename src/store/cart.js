@@ -25,7 +25,7 @@ export const useCartStore = defineStore('Cart', {
 
   actions: {
     handleModal() {
-      this.isOpen = this.isOpen ? false : true
+      this.isOpen = !this.isOpen
     },
 
     addToCart(item) {
