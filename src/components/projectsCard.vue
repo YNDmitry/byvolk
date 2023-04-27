@@ -1,15 +1,15 @@
 <template>
   <div class="projects__card">
-    <div class="projects__card-info" v-motion-up v-html="body"></div>
+    <div v-motion-up class="projects__card-info" v-html="body"></div>
     <div
-      class="projects__card-slider-wrapper"
       v-motion-up
+      class="projects__card-slider-wrapper"
       :style="{
         maxWidth: width + 'px',
         height: height + 'px'
       }"
     >
-      <button type="button" class="slider__nav-button is-prev" id="arrow-prev" ref="arrowPrev">
+      <button id="arrow-prev" ref="arrowPrev" type="button" class="slider__nav-button is-prev">
         <IconsArrowRight></IconsArrowRight>
       </button>
       <Swiper
@@ -27,14 +27,14 @@
       >
         <SwiperSlide v-for="img in images" :key="img">
           <NuxtPicture
+            v-lazy-load
             provider="storyblok"
             :src="img.filename"
             sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw"
-            v-lazy-load
           ></NuxtPicture>
         </SwiperSlide>
       </Swiper>
-      <button type="button" class="slider__nav-button is-next" id="arrow-next" ref="arrowNext">
+      <button id="arrow-next" ref="arrowNext" type="button" class="slider__nav-button is-next">
         <IconsArrowRight></IconsArrowRight>
       </button>
     </div>
@@ -42,18 +42,22 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   images: {
-    type: Array
+    type: Array,
+    default: () => []
   },
   body: {
-    type: String
+    type: String,
+    default: ''
   },
   width: {
-    type: String
+    type: String,
+    default: ''
   },
   height: {
-    type: String
+    type: String,
+    default: ''
   }
 })
 

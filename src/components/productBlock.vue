@@ -1,13 +1,13 @@
 <template>
   <NuxtLink :to="'/collections/prints/' + props?.handle" class="w-full">
-    <div class="product-card__head" v-if="images[0].node.src">
+    <div v-if="images[0].node.src" class="product-card__head">
       <NuxtImg
+        v-lazy-load
         :src="images[0].node.src"
         :srcset="`${images[0].node.src}&width=320 320w, ${images[0].node.src}&width=640 640w`"
         :alt="title"
         sizes="(max-width: 320px) 100vw, (max-width: 640px) 100vw"
         width="180"
-        v-lazy-load
       ></NuxtImg>
     </div>
     <div class="product-card__body">
@@ -16,7 +16,7 @@
         <div v-if="price && totalInventory !== 0">
           From <span class="fw-600">{{ price }}</span>
         </div>
-        <div class="product-card__sold-out" v-if="totalInventory === 0">Sold out</div>
+        <div v-if="totalInventory === 0" class="product-card__sold-out">Sold out</div>
       </div>
     </div>
   </NuxtLink>
@@ -29,19 +29,24 @@ const props = defineProps({
     required: true
   },
   images: {
-    type: Array
+    type: Array,
+    default: () => []
   },
   title: {
-    type: String
+    type: String,
+    default: ''
   },
   minPrice: {
-    type: String
+    type: String,
+    default: ''
   },
   currencyCode: {
-    type: String
+    type: String,
+    default: ''
   },
   totalInventory: {
-    type: Number
+    type: Number,
+    default: 0
   }
 })
 

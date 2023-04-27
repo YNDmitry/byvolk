@@ -4,11 +4,11 @@
     <template v-if="!isSuccess">
       <div v-motion-up :class="['form-newsletter__input-wrapper', { 'is-white': isWhite }]">
         <FormDefaultInput
+          v-model:inputValue="email"
           :title="'Email address'"
           :name="'Email'"
           :type="'email'"
-          v-model:inputValue="email"
-          :isPending="isPending"
+          :is-pending="isPending"
         ></FormDefaultInput>
         <button type="submit" class="button-primary">
           {{ isPending ? 'Loading...' : 'Subscribe' }}

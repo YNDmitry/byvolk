@@ -14,8 +14,18 @@ module.exports = {
     ],
     'no-irregular-whitespace': ['error', { skipStrings: true, skipComments: true }],
     semi: 'error',
-    'component-name': 'off'
+    'component-name': 'off',
+    'vue/no-v-html': 'off',
+    'vue/multi-word-component-names': 'off'
   },
+  overrides: [
+    {
+      files: ['src/components/icons/**/*'],
+      rules: {
+        'max-len': 'off'
+      }
+    }
+  ],
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser'

@@ -1,25 +1,26 @@
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.$router.options.scrollBehavior = async (to, from, savedPosition) => {
+  nuxtApp.$router.options.scrollBehavior = async (to, _, savedPosition) => {
     if (savedPosition) {
       return savedPosition
     }
 
-    const findEl = async (hash, x) => {
-      return (
-        document.querySelector(hash) ||
-        new Promise((resolve, reject) => {
-          if (x > 50) {
-            return resolve()
-          }
+    const findEl = (hash, x) => {
+      return new Promise((resolve) => {
+        const el = document.querySelector(hash)
+        if (el) {
+          resolve()
+        } else if (x > 50) {
+          resolve()
+        } else {
           setTimeout(() => {
-            resolve(findEl(hash, ++x || 1))
+            resolve(findEl(hash, x + 1 || 1))
           }, 100)
-        })
-      )
+        }
+      })
     }
 
     if (to.hash) {
-      let el = await findEl(to.hash)
+      const el = await findEl(to.hash)
       if ('scrollBehavior' in document.documentElement.style) {
         return window.scrollTo({
           top: el.offsetTop - document.querySelector('header').clientHeight,

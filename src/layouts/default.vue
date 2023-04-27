@@ -1,7 +1,7 @@
 <template>
   <div class="default-layout">
     <NuxtLoadingIndicator class="nuxt-loading-indicator" />
-    <DefaultHeader></DefaultHeader>
+    <TheHeader></TheHeader>
     <slot></slot>
     <DefaultFooter></DefaultFooter>
     <PopupCart></PopupCart>

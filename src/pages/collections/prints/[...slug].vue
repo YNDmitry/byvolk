@@ -2,25 +2,25 @@
   <div>
     <section class="section-print">
       <div class="container">
-        <div class="print__wrapper" id="wrapper">
+        <div id="wrapper" class="print__wrapper">
           <div class="print__left">
             <ClientOnly>
               <div class="print__slider">
                 <button
+                  id="arrow-next"
+                  ref="arrowNext"
                   type="button"
                   aria-label="Product slider arrow next"
                   class="slider__nav-button print__slider-arrow"
-                  id="arrow-next"
-                  ref="arrowNext"
                 >
                   <IconsArrowRight></IconsArrowRight>
                 </button>
                 <button
+                  id="arrow-prev"
+                  ref="arrowPrev"
                   type="button"
                   aria-label="Product slider arrow prev"
                   class="slider__nav-button print__slider-arrow"
-                  id="arrow-prev"
-                  ref="arrowPrev"
                 >
                   <IconsArrowRight></IconsArrowRight>
                 </button>
@@ -35,8 +35,8 @@
                 >
                   <SwiperSlide class="print__slider-slide" :data-hash="'slide0'">
                     <div
-                      class="product-card__frame"
                       v-if="product.images.edges[0].node.src"
+                      class="product-card__frame"
                       :style="{
                         background: frameColors[frameColor],
                         transform: `scale(${sizes[frameSize].value})`
@@ -58,8 +58,8 @@
                   </SwiperSlide>
                   <SwiperSlide class="print__slider-slide" :data-hash="'slide1'">
                     <div
-                      class="product-card__frame product-card__frame--decor"
                       v-if="product.images.edges[1].node.src"
+                      class="product-card__frame product-card__frame--decor"
                       :style="{
                         background: frameColors[frameColor],
                         transform: `scale(${sizes[frameSize].value})`
@@ -110,7 +110,7 @@
               <h2 v-if="product.title">
                 {{ product.title }}
               </h2>
-              <p class="mt-small" v-if="product.description">
+              <p v-if="product.description" class="mt-small">
                 {{ product.description }}
               </p>
             </div>
@@ -120,16 +120,16 @@
                 <div>Chose {{ product.options[0].name }}</div>
                 <div class="print__info-body-buttons">
                   <label
-                    class="radio-button"
-                    :class="{ 'is-active': frameColor === item }"
                     v-for="item in product.options[0].values"
                     :key="item"
+                    class="radio-button"
+                    :class="{ 'is-active': frameColor === item }"
                   >
                     <input
+                      v-model="frameColor"
                       type="radio"
                       :name="product.options[0].name"
                       :value="item"
-                      v-model="frameColor"
                     />
                     <span>{{ item }}</span>
                   </label>
@@ -139,16 +139,16 @@
                 <div>Chose {{ product.options[1].name }}</div>
                 <div class="print__info-body-buttons">
                   <label
-                    class="radio-button"
-                    :class="{ 'is-active': frameSize === item }"
                     v-for="item in product.options[1].values"
                     :key="item"
+                    class="radio-button"
+                    :class="{ 'is-active': frameSize === item }"
                   >
                     <input
+                      v-model="frameSize"
                       type="radio"
                       :name="product.options[1].name"
                       :value="item"
-                      v-model="frameSize"
                     />
                     <span>{{ item }}</span>
                     <span class="radio-button__tooltip">{{ sizes[item].size }} in</span>
@@ -179,6 +179,7 @@
                 <button
                   type="button"
                   class="button-primary w-full"
+                  :disabled="!currentProductVariant.availableForSale"
                   @click="
                     addToCart({
                       ...currentProductVariant,
@@ -193,7 +194,6 @@
                       }
                     })
                   "
-                  :disabled="!currentProductVariant.availableForSale"
                 >
                   {{ currentProductVariant.availableForSale ? 'Add to cart' : 'Sold out' }}
                 </button>
@@ -248,7 +248,7 @@ const product = await useAsyncGql({
   }
 })
   .then((res) => res.data.value.productByHandle)
-  .catch((err) => {
+  .catch(() => {
     throw createError({
       statusCode: 404,
       statusMessage: 'Product not found or something went wrong'
@@ -290,12 +290,13 @@ const sizes = ref({
 const currentProductVariant = ref(null)
 
 asyncComputed(() => {
-  return product.variants.edges.find((el) => {
-    el.node.selectedOptions[0].value === frameColor.value &&
-    el.node.selectedOptions[1].value === frameSize.value
-      ? (currentProductVariant.value = el.node)
-      : ''
-  })
+  const variant = product.variants.edges.find(
+    (el) =>
+      el.node.selectedOptions[0].value === frameColor.value &&
+      el.node.selectedOptions[1].value === frameSize.value
+  )
+  currentProductVariant.value = variant.node
+  return variant
 })
 
 function startShare() {

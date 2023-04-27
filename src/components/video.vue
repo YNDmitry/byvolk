@@ -15,7 +15,8 @@
 <script setup>
 defineProps({
   videoSrc: {
-    type: String
+    type: String,
+    default: ''
   }
 })
 </script>

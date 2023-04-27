@@ -7,9 +7,9 @@
         :type="props.type"
         :name="props.name"
         :value="props.inputValue"
+        :disabled="isPending ? true : false"
         @input="$emit('update:inputValue', $event.target.value)"
         @change="value = props.inputValue"
-        :disabled="isPending ? true : false"
       ></component>
     </label>
     <div class="input__error-message">{{ errorMessage }}</div>
@@ -51,7 +51,8 @@ const props = defineProps({
     required: false
   },
   inputValue: {
-    type: String
+    type: String,
+    default: ''
   },
   isPending: {
     type: Boolean,
@@ -61,16 +62,16 @@ const props = defineProps({
 
 defineEmits(['update:inputValue'])
 
-let isActive = ref(false)
+const isActive = ref(false)
 
 const fieldSchema = toFieldValidator(
   props.type === 'email'
     ? zod.string().nonempty(`${props.title} is required`).email('Must be a valid email')
     : zod.string().nonempty(`${props.title} is required`)
 )
-let { value, errorMessage } = useField(props.name, fieldSchema)
+const { value, errorMessage } = useField(props.name, fieldSchema)
 
 const isInputValue = computed(() => {
-  return (isActive.value = props.inputValue?.length > 0 ? true : false)
+  return (isActive.value = props.inputValue?.length > 0)
 })
 </script>

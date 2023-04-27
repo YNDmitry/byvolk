@@ -1,11 +1,11 @@
 <template>
-  <div class="dropdown" @click="open()" ref="target">
+  <div ref="target" class="dropdown" @click="open()">
     <div class="dropdown__toggle">
       <slot name="head"></slot>
       <IconsPluse :class="{ 'is-active': isOpen }"></IconsPluse>
     </div>
     <Transition name="dropdown">
-      <div class="dropdown__list" v-show="isOpen">
+      <div v-show="isOpen" class="dropdown__list">
         <slot name="body" class="dropdown__list-content"></slot>
       </div>
     </Transition>

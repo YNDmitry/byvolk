@@ -4,30 +4,31 @@
       <div class="slider__head">
         <button
           v-if="products.length > slidesPerView"
+          id="prints-prev"
+          ref="leftArr"
           v-motion-up
           type="button"
           aria-label="You may also like slider arrow prev"
           class="slider__nav-button is-prev"
-          id="prints-prev"
-          ref="leftArr"
         >
           <IconsArrowRight></IconsArrowRight>
         </button>
         <h2 class="text-center">You May Also Like</h2>
         <button
           v-if="products.length > slidesPerView"
+          id="prints-next"
+          ref="rightArr"
           v-motion-up
           type="button"
           aria-label="You may also like slider arrow next"
-          id="prints-next"
           class="slider__nav-button is-next"
-          ref="rightArr"
         >
           <IconsArrowRight></IconsArrowRight>
         </button>
       </div>
 
       <Swiper
+        ref="swiper"
         :modules="[SwiperNavigation]"
         :navigation="{
           nextEl: rightArr,
@@ -35,7 +36,6 @@
         }"
         :slides-per-view="slidesPerView"
         :space-between="35"
-        ref="swiper"
         class="b-sellers__slider mt-medium"
       >
         <SwiperSlide v-for="(product, idx) in products" :key="product" class="product-card">
@@ -48,9 +48,9 @@
             :handle="product.handle"
             :images="product.images.edges"
             :title="product.title"
-            :currencyCode="product.priceRange.minVariantPrice.currencyCode"
-            :minPrice="product.priceRange.minVariantPrice.amount"
-            :totalInventory="product.totalInventory"
+            :currency-code="product.priceRange.minVariantPrice.currencyCode"
+            :min-price="product.priceRange.minVariantPrice.amount"
+            :total-inventory="product.totalInventory"
           ></ProductBlock>
         </SwiperSlide>
       </Swiper>
@@ -77,10 +77,10 @@ const leftArr = ref(null)
 const rightArr = ref(null)
 
 const slidesPerView = asyncComputed(() => {
-  if (useMediaQuery('(max-width: 991px)').value != useMediaQuery('(max-width: 700px)').value) {
+  if (useMediaQuery('(max-width: 991px)').value !== useMediaQuery('(max-width: 700px)').value) {
     return 3
   } else if (
-    useMediaQuery('(max-width: 700px)').value != useMediaQuery('(max-width: 479px)').value
+    useMediaQuery('(max-width: 700px)').value !== useMediaQuery('(max-width: 479px)').value
   ) {
     return 2
   } else if (useMediaQuery('(max-width: 479px)').value) {

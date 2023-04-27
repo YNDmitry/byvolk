@@ -32,9 +32,9 @@
         </nav>
         <div class="flex center phone-hide">
           <div class="header__cart" @click="cart.handleModal()">
-            <!-- <div v-if="cart.$state.items.length > 0" class="header__cart-count">
+            <div v-if="cart.$state.items.length > 0" class="header__cart-count">
               {{ cart.$state.items.length }}
-            </div> -->
+            </div>
             <IconsCart></IconsCart>
           </div>
         </div>
@@ -51,12 +51,12 @@
             </nav>
             <div class="flex center">
               <div class="header__cart" @click="cart.handleModal()">
-                <!-- <div v-if="cart.$state.items.length > 0" class="header__cart-count">
+                <div v-if="cart.$state.items.length > 0" class="header__cart-count">
                   {{ cart.$state.items.length }}
                 </div>
                 <div v-if="cart.$state.items.length > 0" class="header__cart-count-txt">
                   ({{ cart.$state.items.items.length }})
-                </div> -->
+                </div>
                 <IconsCart></IconsCart>
               </div>
             </div>
@@ -75,7 +75,7 @@
 </template>
 
 <script setup>
-import { useCartStore } from '../store/cart'
+import { useCartStore } from '../../store/cart'
 
 const isOpen = ref(false)
 const isMobile = useIsMobile

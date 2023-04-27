@@ -1,7 +1,7 @@
 <template>
   <main class="main">
     <Body>
-      <StoryblokComponent :blok="story?.content" v-if="story?.content" />
+      <StoryblokComponent v-if="story?.content" :blok="story?.content" />
     </Body>
   </main>
 </template>

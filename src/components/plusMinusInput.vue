@@ -23,5 +23,5 @@ const props = defineProps({
 
 const emit = defineEmits(['increment', 'decrement'])
 
-const isDisabled = computed(() => (props.value > 1 ? false : true))
+const isDisabled = computed(() => !(props.value > 1))
 </script>

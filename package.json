@@ -6,10 +6,10 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint:js": "eslint --ext \".ts,.vue,.js\" --ignore-path .gitignore .eslintignore .",
-    "lint:prettier": "prettier --check .",
+    "lint:js": "eslint --ext \".ts,.vue,.js\" --ignore-path .eslintignore .",
+    "lint:prettier": "prettier --check **/*.{ts,vue,js,json,scss,css,md}",
     "lint": "npm run lint:js && npm run lint:prettier",
-    "lint:fix": "prettier --write --list-different . && npm run lint:js --fix"
+    "lint:fix": "prettier --write **/*.{ts,vue,js,json,scss,css,md} && eslint --ext \".ts,.vue,.js\" --fix ."
   },
   "overrides": {
     "vue": "latest"

@@ -1,7 +1,7 @@
 <template>
   <Teleport to="body">
     <Transition name="modal-cart">
-      <div class="cart-wrapper" v-if="cart.isOpen">
+      <div v-if="cart.isOpen" class="cart-wrapper">
         <div class="cart-wrapper__overlay" @click="cart.handleModal()"></div>
         <div class="cart">
           <div class="cart__head">
@@ -10,9 +10,9 @@
               <icons-close></icons-close>
             </button>
           </div>
-          <ul class="cart__body" v-if="cart.items.length > 0">
-            <li class="cart__body-card" v-for="(card, idx) in cart.items" :key="idx">
-              <div class="cart__body-card-img" v-if="card.variantId.image">
+          <ul v-if="cart.items.length > 0" class="cart__body">
+            <li v-for="(card, idx) in cart.items" :key="idx" class="cart__body-card">
+              <div v-if="card.variantId.image" class="cart__body-card-img">
                 <NuxtImg
                   :src="card.variantId.image"
                   :alt="card.variantId.title"
@@ -49,7 +49,7 @@
             </li>
           </ul>
           <div v-else class="cart__empty">Your cart is empty</div>
-          <div class="cart__footer" v-if="cart.items.length > 0">
+          <div v-if="cart.items.length > 0" class="cart__footer">
             <div class="cart__footer-info">
               <span
                 >Total price:
